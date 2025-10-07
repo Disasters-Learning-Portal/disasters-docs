@@ -1,3 +1,0 @@
-# OCO-2 GEOS Column CO₂ Concentrations
-
-![Data Flow Diagram Extending From Acquisition/Creation to User Delivery](./media/oco2geos-co2-daygrid-v10r_Data_Flow.png)
