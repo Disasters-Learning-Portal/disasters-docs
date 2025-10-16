@@ -1,0 +1,685 @@
+[
+  {
+    "objectID": "workflow.html",
+    "href": "workflow.html",
+    "title": "U.S. Greenhouse Gas Center: Data Flow Diagrams",
+    "section": "",
+    "text": "Welcome to the homepage for U.S. Greenhouse Gas (GHG) Center data flow diagrams. These diagrams summarize the process a dataset goes through from acquisition to integration in the U.S. GHG Center.\nClick on a dataset name to view the data flow diagram for that dataset.\nView the US GHG Center Data Catalog",
+    "crumbs": [
+      "Data Flow Diagrams"
+    ]
+  },
+  {
+    "objectID": "workflow.html#contact",
+    "href": "workflow.html#contact",
+    "title": "U.S. Greenhouse Gas Center: Data Flow Diagrams",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
+    "crumbs": [
+      "Data Flow Diagrams"
+    ]
+  },
+  {
+    "objectID": "utility.html",
+    "href": "utility.html",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks Utility Functions",
+    "section": "",
+    "text": "Welcome to the U.S. Greenhouse Gas (GHG) Center data usage notebooks utility functions, your gateway to exploring and analyzing curated datasets on greenhouse gas emissions. Our cloud-based system offers seamless access to GHG curated datasets. Dive into the data with our utility functions, which demonstrate how to explore, access, visualize, and conduct basic data analysis for each GHG Center dataset in a code notebook environment.\nJoin us in our mission to make data-driven environmental solutions. Explore, analyze, and make a difference with the US GHG Center.\nView the US GHG Center Data Catalog"
+  },
+  {
+    "objectID": "utility.html#utilities",
+    "href": "utility.html#utilities",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks Utility Functions",
+    "section": "Utilities",
+    "text": "Utilities\nSection contains multiple utility functions\n\nimport requests\nimport pandas as pd\nimport datetime\nimport matplotlib.pyplot as plt\nfrom matplotlib.colors import rgb2hex\nimport numpy as np\nimport sys\n\nRASTER_API_URL = \"https://earth.gov/ghgcenter/api/raster\"\n\n# Functions mentioned below are defined in stats_module.py\n\ndef generate_stats(item, geojson, asset_name):\n    \"\"\"\n    Retrieve statistics for a specific granule (item) within a GeoJSON-defined polygon.\n\n    Args:\n        item (dict): The granule containing item details (including assets and metadata).\n        geojson (dict): A GeoJSON Feature or FeatureCollection specifying the bounding box.\n        asset_name (str): The asset name or raster identifier to be used.\n\n    Returns:\n        dict: A dictionary with computed statistics and the item's datetime information.\n    \"\"\"\n    result = requests.post(\n        f\"{RASTER_API_URL}/cog/statistics\",\n        params={\"url\": item[\"assets\"][asset_name][\"href\"]},\n        json=geojson,\n    ).json()\n\n    print(result)\n\n    # Handle cases where either \"start_datetime\" or \"datetime\" is present\n    datetime_value = item[\"properties\"].get(\"start_datetime\", item[\"properties\"].get(\"datetime\"))\n\n    return {\n        **result[\"properties\"],\n        \"datetime\": datetime_value,\n    }\n\n\n\ndef clean_stats(stats_json):\n    \"\"\"\n    Clean and normalize the statistics JSON data and convert it into a pandas DataFrame.\n\n    Args:\n        stats_json (list of dict): List of statistics dictionaries for each granule.\n\n    Returns:\n        pd.DataFrame: A DataFrame with flattened and cleaned statistics.\n    \"\"\"\n    df = pd.json_normalize(stats_json)\n    df.columns = [col.replace(\"statistics.b1.\", \"\") for col in df.columns]\n    df[\"date\"] = pd.to_datetime(df[\"datetime\"])\n    return df\n\n\ndef display_stats(df, num_rows=5):\n    \"\"\"\n    Display the top rows of the cleaned statistics DataFrame.\n\n    Args:\n        df (pd.DataFrame): DataFrame containing the cleaned statistics.\n        num_rows (int): Number of rows to display (default is 5).\n    \"\"\"\n    print(df.head(num_rows))\n\n# Functions mentioned below are defined in ghgc_utlis.py\n\ndef raster_stats(item, geojson,**kwargs):\n    \"\"\"\n    Returns Raster API statistics for an item. Inputs: item, geojson, url = Raster API url, asset = asset name within item. Outputs: dictionary containing statistics over the bounding box and item's datetime information.\n    \"\"\"\n\n    try:\n        url = item[\"assets\"][kwargs[\"asset\"]][\"href\"]\n    except TypeError as err:\n        url = item.assets[kwargs[\"asset\"]].href\n    except KeyError as err:\n        print('KeyError in raster_stats: Make sure you include \\'url\\' and \\'asset\\' as keyword arguments!')\n        sys.exit()      \n    \n    # A POST request is made to submit the data associated with the item of interest (specific observation) within the boundaries of the polygon to compute its statistics\n    result = requests.post(\n\n        # Raster API Endpoint for computing statistics\n        f\"{kwargs['url']}/cog/statistics\",\n\n        # Pass the URL to the item, asset name, and raster identifier as parameters\n        params={\"url\": url},\n\n        # Send the GeoJSON object (polygon) along with the request\n        json=geojson,\n\n    # Return the response in JSON format\n    ).json()\n\n\n    # Print the result\n    ##print(result)\n\n    # Return a dictionary containing the computed statistics along with the item's datetime information.\n    try:\n        return {\n            **result[\"properties\"],\n            \"datetime\": item[\"properties\"][\"start_datetime\"],\n        }\n    except KeyError as err:\n        try:\n            return {\n                **result[\"features\"][0][\"properties\"],\n                'datetime': item[\"properties\"][\"start_datetime\"],\n            }\n        except TypeError as err:\n            return {\n                **result[\"features\"][0][\"properties\"],\n                \"datetime\": item.properties[\"start_datetime\"]\n            }\n    except TypeError as err:\n        return {\n            **result[\"properties\"],\n            \"datetime\": item.properties[\"start_datetime\"]\n        }\n\ndef clean_stats(stats_json) -&gt; pd.DataFrame:\n    \"\"\"\n    Takes dictionary output from generate_stats() and returns a neater, more intuitively-titled pandas DataFrame.\n    \"\"\"\n    pd.set_option('display.float_format', '{:.20f}'.format)\n    stats_json_ = [stats_json[datetime] for datetime in stats_json] \n    # Normalize the JSON data \n    df = pd.json_normalize(stats_json_)\n\n    # Replace the naming \"statistics.b1\" in the columns\n    df.columns = [col.replace(\"statistics.b1.\", \"\") for col in df.columns]\n\n    # Set the datetime format\n    df[\"date\"] = pd.to_datetime(df[\"datetime\"])\n\n    # Return the cleaned format\n    return df\n\ndef generate_stats(items,geojson,**kwargs):\n    \"\"\"\n    Runs raster_stats() and clean-stats() on all items. Inputs: List containing multiple items; geojson; url = URL for Raster API, asset = asset name for item field. Outputs: Pandas DataFrame of cleaned statistics for all items in list.\n    \"\"\"\n    stats = {}\n    print('Generating stats...')\n    for item in items:\n        try:\n            date = item[\"properties\"][\"start_datetime\"]  # Get the associated date\n        except TypeError:\n            date = item.properties[\"start_datetime\"]\n        year_month = date[:7].replace('-', '')  # Convert datetime to year-month\n        stats[year_month] = raster_stats(item, geojson,**kwargs)\n    df = clean_stats(stats)\n    print('Done!')\n    return df\n\ndef generate_html_colorbar(color_map,rescale_values,label=None,dark=False):\n    \"\"\"\n    Creates html-formatted string which can be added to Folium maps to display a colorbar. Required inputs: colormap (matplotlib-accepted string), rescale_values in the form of a dictionary containing keys 'max' and 'min' which specify the desired colorbar range. Optional inputs: label, which will display above the colorbar. Output: html-formatted string detailing construction of the colorbar.\n    \"\"\"\n    # Pull out colors from our chosen colormap\n    cmap = plt.get_cmap(color_map)\n    colors = cmap(np.linspace(0,1,11))\n    colors = [rgb2hex(c) for c in colors]\n    # Define custom tick values for the legend bar\n    tick_val = np.round(np.linspace(rescale_values['min'],rescale_values['max'],5),decimals=6)\n    # Create a HTML representation\n    legend_html = cmap._repr_html_()\n\n    # Create a customized HTML structure for the legend\n#    legend_html = f'''\n#    &lt;div style=\"position: fixed; bottom: 50px; left: 175px; z-index: 1000; width: 400px; height: auto; #background-color: rgba(255, 255, 255, 0.8);\n#             border-radius: 5px; border: 1px solid grey; padding: 10px; font-size: 12px; color: black;\"&gt;\n#        &lt;b&gt;{label}&lt;/b&gt;&lt;br&gt;\n#        &lt;div style=\"display: flex; justify-content: space-between;\"&gt;\n#            &lt;div&gt;{tick_val[0]}&lt;/div&gt; \n#            &lt;div&gt;{tick_val[1]}&lt;/div&gt; \n#            &lt;div&gt;{tick_val[2]}&lt;/div&gt; \n#            &lt;div&gt;{tick_val[3]}&lt;/div&gt; \n#            &lt;div&gt;{tick_val[4]}&lt;/div&gt; \n#        &lt;/div&gt;\n#        &lt;div style=\"background: linear-gradient(to right,\n#                {colors[0]}, {colors[1]} {20}%,\n#                {colors[1]} {20}%, {colors[2]} {40}%,\n#                {colors[2]} {40}%, {colors[3]} {50}%,\n#                {colors[3]} {50}%, {colors[4]} {80}%,\n#                {colors[4]} {80}%, {colors[5]}); height: 10px;\"&gt;&lt;/div&gt;\n#    &lt;/div&gt;\n#    '''\n    if dark:\n        bg_color = \"rgba(0, 0, 0, 0.8)\"\n        font_color=\"white\"\n    else:\n        bg_color = \"rgba(255, 255, 255, 0.8)\"\n        font_color=\"black\"\n    \n    legend_html = f'''\n    &lt;div style=\"position: fixed; bottom: 50px; left: 175px; z-index: 1000; width: 400px; height: auto; background-color: {bg_color};\n             border-radius: 5px; border: 1px solid grey; padding: 10px; font-size: 12px; color: {font_color};\"&gt;\n        &lt;b&gt;{label}&lt;/b&gt;&lt;br&gt;\n        &lt;div style=\"display: flex; justify-content: space-between;\"&gt;\n            &lt;div&gt;{tick_val[0]}&lt;/div&gt; \n            &lt;div&gt;{tick_val[1]}&lt;/div&gt; \n            &lt;div&gt;{tick_val[2]}&lt;/div&gt; \n            &lt;div&gt;{tick_val[3]}&lt;/div&gt; \n            &lt;div&gt;{tick_val[4]}&lt;/div&gt;\n        &lt;/div&gt;\n        &lt;div style=\"background: linear-gradient(to right,\n                {colors[0]}, {colors[1]} {10}%,\n                {colors[1]} {10}%, {colors[2]} {20}%,\n                {colors[2]} {20}%, {colors[3]} {30}%,\n                {colors[3]} {30}%, {colors[4]} {40}%,\n                {colors[4]} {40}%, {colors[5]} {50}%,\n                {colors[5]} {50}%, {colors[6]} {60}%,\n                {colors[6]} {60}%, {colors[7]} {70}%,\n                {colors[7]} {70}%, {colors[8]} {80}%,\n                {colors[8]} {80}%, {colors[9]} {90}%,\n                {colors[9]} {90}%, {colors[10]}); height: 10px;\"&gt;&lt;/div&gt;\n    &lt;/div&gt;\n    '''\n    return legend_html"
+  },
+  {
+    "objectID": "utility.html#contact",
+    "href": "utility.html#contact",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks Utility Functions",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "section": "",
+    "text": "The U.S. Greenhouse Gas (GHG) Center provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.\nOn this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "section": "",
+    "text": "The U.S. Greenhouse Gas (GHG) Center provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.\nOn this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "section": "Contents",
+    "text": "Contents\n\nServices provided for accessing and analyzing the US GHG Center datasets, such as the JupyterHub environment for interactive computing.\nDataset usage examples, e.g. for the Wetland Methane Emissions from the LPJ-EOSIM model dataset, that shows how to load the dataset in Python in JupyterHub.\nDataset transformation scripts, which document the code used to transform datasets for display in the US GHG Center. An example is the ODIAC Fossil Fuel CO₂ Emissions dataset transformation code.\nData processing and verification reports that openly present the process we used to check and verify that any transformation did not alter the original source data. An example is the GOSAT-based Top-down Total and Natural Methane Emissions dataset.\nData Flow Diagrams, which provide a high level summary of how each dataset was integrated into the US GHG Center. See the MiCASA Land Carbon Flux Flow Diagram as an example.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "datausage.html",
+    "href": "datausage.html",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
+    "section": "",
+    "text": "Welcome to the homepage for the U.S. Greenhouse Gas (GHG) Center data usage notebooks. Each dataset available in the GHG Center Data Catalog has an associated “Introductory notebook” created by the GHG Center team which demonstrates how to access, visualize, and conduct basic data analysis in a Jupyter Notebook environment. Additional notebooks may be provided with each dataset. Click on a dataset under “GHG Center Dataset Tutorials” to learn more about the dataset and to view the associated code notebooks.\nAlong with GHG Center-curated notebooks, science users can also contribute notebooks that use GHG Center datasets. Notebooks submitted by the scientific community can be found under the “Community-Contributed Tutorials” section.",
+    "crumbs": [
+      "Data Usage Notebooks"
+    ]
+  },
+  {
+    "objectID": "datausage.html#ghg-center-dataset-tutorials",
+    "href": "datausage.html#ghg-center-dataset-tutorials",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
+    "section": "GHG Center Dataset Tutorials",
+    "text": "GHG Center Dataset Tutorials\nTutorial notebooks created by the GHG Center team. Introductory notebooks demonstrate how to access, visualize, and conduct basic data analysis for each dataset available in the GHG Center Data Catalog. Notebooks demonstrating how to conduct additional or more specialized analyses may also be listed under the relevant dataset.\n\nAir-Sea CO₂ Flux, ECCO-Darwin Model v5\n\nIntroductory notebook\n\nAtmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory\n\nIntroductory notebook\n\nCarbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)\n\nIntroductory notebook\n\nCarbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project\n\nIntroductory notebook\n\nCarbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed\n\nIntroductory notebook\n\nCarbonTracker-CH₄ Isotopic Methane Inverse Fluxes\n\nIntroductory notebook\n\nEMIT Methane Point Source Plume Complexes\n\nIntroductory notebook\n\nGeostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure\n\nIntroductory notebook\n\nGOSAT-based Top-down Total and Natural Methane Emissions\n\nIntroductory notebook\n\nGRA²PES Greenhouse Gas and Air Quality Species\n\nIntroductory notebook\n\nMiCASA Land Carbon Flux\n\nIntroductory notebook\n\nOCO-2 GEOS Column CO₂ Concentrations\n\nIntroductory notebook\n\nOCO-2 MIP Top-Down CO₂ Budgets\n\nIntroductory notebook\nIntermediate level notebook to read and visualize National CO₂ Budgets using OCO-2 MIP Top-Down CO₂ Budget country total data. This notebook utilizes the country totals available at https://ceos.org/gst/carbon-dioxide.html, which compliment the global 1° x 1° gridded CO₂ Budget data featured in the US GHG Center.\n\nODIAC Fossil Fuel CO₂ Emissions\n\nIntroductory notebook\n\nSEDAC Gridded World Population Density\n\nIntroductory notebook\n\nU.S. Gridded Anthropogenic Methane Emissions Inventory\n\nIntroductory notebook\n\nVulcan Fossil Fuel CO₂ Emissions\n\nIntroductory notebook\n\nWetland Methane Emissions, LPJ-EOSIM Model\n\nIntroductory notebook",
+    "crumbs": [
+      "Data Usage Notebooks"
+    ]
+  },
+  {
+    "objectID": "datausage.html#community-contributed-tutorials",
+    "href": "datausage.html#community-contributed-tutorials",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
+    "section": "Community-Contributed Tutorials",
+    "text": "Community-Contributed Tutorials\nNotebooks provided by the scientific community that use GHG Center datasets. The GHG Center is in the process of establishing a workflow for community notebook contribution. Once available, the contribution process will be published here. In the meantime, please submit any notebook contribution inquiries through the US GHG Center Contact Form.\nNote: these notebooks are contributed by the scientific community, and are not actively maintained by the GHG Center team.",
+    "crumbs": [
+      "Data Usage Notebooks"
+    ]
+  },
+  {
+    "objectID": "datausage.html#contact",
+    "href": "datausage.html#contact",
+    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
+    "crumbs": [
+      "Data Usage Notebooks"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html",
+    "href": "AWS/AWS_SSO_Setup_Guide.html",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "This guide walks you through setting up AWS Single Sign-On (SSO) to securely manage your AWS credentials without storing them in plain text.\n\n\n\n\n\n✅ AWS CLI v2 installed (version 2.x or higher)\n✅ Access to AWS Identity Center (formerly AWS SSO)\n✅ Your organization’s SSO portal URL\n\n\n\n\n\n\n\naws configure sso\n\n\n\nWhen prompted for SSO session name, enter a descriptive name for your profile:\nSSO session name (Recommended): disasters\n💡 Tip: Use meaningful names like prod-admin, dev-poweruser, etc.\n\n\n\nFind your SSO URL in the AWS Identity Center portal and enter it:\nSSO start URL [None]: https://d-9067c5bbc5.awsapps.com/start/#\n📍 Where to find: Navigate to your AWS SSO portal → Look for the URL in your browser\n\n\n\nEnter the region where your Identity Center is configured:\nSSO region [None]: us-east-1\n\n\n\nPress Enter to accept the default:\nSSO registration scopes [sso:account:access]: \n✨ The default scope is sufficient for most use cases\n\n\n\n🌐 A browser window will open automatically: 1. Log in with your corporate credentials 2. Click “Allow” to grant access to AWS CLI (botocore) 3. Return to your terminal\n\n\n\nEnter your AWS account ID (12 digits):\nAWS account ID: 867530900000\n📝 Find this in your AWS SSO portal under the accounts tab\n\n\n\nSelect from available roles:\nThere are 2 roles available to you.\n&gt; Project-Power-User\n  ReadOnlyAccess\nUse arrow keys to select, then press Enter\n\n\n\nConfirm or change the AWS region:\nCLI default region [us-east-1]: us-east-1\n\n\n\nChoose your preferred output format:\nCLI default output format [None]: json\nOptions: json, yaml, text, table\n\n\n\n\n\nTest your configuration:\naws s3 ls --profile disasters-sso\nExpected output:\n                           PRE browseui/\n                           PRE california_wildfires_202501/\n                           PRE disasters/\n                           ...\n\n\n\n\n\n\naws sso login --profile disasters-sso\n\n\n\n# List S3 buckets\naws s3 ls --profile disasters-sso\n\n# Get caller identity\naws sts get-caller-identity --profile disasters-sso\n\n\n\nTo avoid passing --profile disasters-sso with every command, you can set the AWS_PROFILE environment variable:\n# Set the environment variable\nexport AWS_PROFILE=disasters-sso\n\n# Now you can run commands without --profile\naws s3 ls\naws sts get-caller-identity\nThis is especially helpful when running many AWS commands in a session.\n\n\n\naws sso logout\n\n\n\n\n\nYour SSO configuration is stored in ~/.aws/config:\n[profile disasters-sso]\nsso_session = disasters\nsso_account_id = 867530900000\nsso_role_name = Project-Power-User\nregion = us-east-1\noutput = json\n\n[sso-session disasters]\nsso_start_url = https://d-9067c5bbc5.awsapps.com/start/#\nsso_region = us-east-1\nsso_registration_scopes = sso:account:access\n\n\n\n\n\n\n\nAWS SSO provides temporary credentials that expire after 1-12 hours\nCredentials are automatically refreshed when you run commands\nNo permanent credentials are stored on your machine\n\n\n\n\nAWS-Vault expects permanent credentials to generate temporary ones. Since AWS SSO already provides temporary credentials: - Adding SSO temporary credentials to aws-vault causes authentication errors - SSO handles credential refresh automatically, making aws-vault redundant - Use AWS SSO for temporary credential profiles, aws-vault for permanent ones\n\n\n\n\n\n\n\nCause: Trying to use expired temporary credentials Solution: Run aws sso login --profile your-profile to refresh\n\n\n\nSolution: Add --use-device-code flag:\naws sso login --profile disasters-sso --use-device-code\n\n\n\nCreate separate profiles for each account/role combination:\n[profile prod-admin]\nsso_session = mycompany\nsso_account_id = 111111111111\nsso_role_name = Administrator\n\n[profile dev-readonly]\nsso_session = mycompany\nsso_account_id = 222222222222\nsso_role_name = ReadOnlyAccess\n\n\n\n\n\n\nNever store credentials in plain text ❌\nUse SSO for all AWS access ✅\nLogout when finished working 🔒\nUse descriptive profile names 📝\nSet up MFA on your SSO account 🔐\n\n\n\n\n\n\nRemove plain text credentials from ~/.aws/credentials\nUpdate scripts to use --profile flag\nSet default profile: export AWS_PROFILE=disasters-sso\nConsider using aws-sso-util for enhanced SSO features\n\n\n\n\n\n\nAWS CLI SSO Documentation\nIAM Identity Center User Guide\nAWS CLI Command Reference\n\n\n🔐 Remember: Security is everyone’s responsibility. Keep your credentials safe!",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#secure-your-aws-credentials-with-aws-identity-center-sso",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#secure-your-aws-credentials-with-aws-identity-center-sso",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "This guide walks you through setting up AWS Single Sign-On (SSO) to securely manage your AWS credentials without storing them in plain text.",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#prerequisites",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#prerequisites",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "✅ AWS CLI v2 installed (version 2.x or higher)\n✅ Access to AWS Identity Center (formerly AWS SSO)\n✅ Your organization’s SSO portal URL",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#step-by-step-setup-instructions",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#step-by-step-setup-instructions",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "aws configure sso\n\n\n\nWhen prompted for SSO session name, enter a descriptive name for your profile:\nSSO session name (Recommended): disasters\n💡 Tip: Use meaningful names like prod-admin, dev-poweruser, etc.\n\n\n\nFind your SSO URL in the AWS Identity Center portal and enter it:\nSSO start URL [None]: https://d-9067c5bbc5.awsapps.com/start/#\n📍 Where to find: Navigate to your AWS SSO portal → Look for the URL in your browser\n\n\n\nEnter the region where your Identity Center is configured:\nSSO region [None]: us-east-1\n\n\n\nPress Enter to accept the default:\nSSO registration scopes [sso:account:access]: \n✨ The default scope is sufficient for most use cases\n\n\n\n🌐 A browser window will open automatically: 1. Log in with your corporate credentials 2. Click “Allow” to grant access to AWS CLI (botocore) 3. Return to your terminal\n\n\n\nEnter your AWS account ID (12 digits):\nAWS account ID: 867530900000\n📝 Find this in your AWS SSO portal under the accounts tab\n\n\n\nSelect from available roles:\nThere are 2 roles available to you.\n&gt; Project-Power-User\n  ReadOnlyAccess\nUse arrow keys to select, then press Enter\n\n\n\nConfirm or change the AWS region:\nCLI default region [us-east-1]: us-east-1\n\n\n\nChoose your preferred output format:\nCLI default output format [None]: json\nOptions: json, yaml, text, table",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#verification",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#verification",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "Test your configuration:\naws s3 ls --profile disasters-sso\nExpected output:\n                           PRE browseui/\n                           PRE california_wildfires_202501/\n                           PRE disasters/\n                           ...",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#daily-usage",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#daily-usage",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "aws sso login --profile disasters-sso\n\n\n\n# List S3 buckets\naws s3 ls --profile disasters-sso\n\n# Get caller identity\naws sts get-caller-identity --profile disasters-sso\n\n\n\nTo avoid passing --profile disasters-sso with every command, you can set the AWS_PROFILE environment variable:\n# Set the environment variable\nexport AWS_PROFILE=disasters-sso\n\n# Now you can run commands without --profile\naws s3 ls\naws sts get-caller-identity\nThis is especially helpful when running many AWS commands in a session.\n\n\n\naws sso logout",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#configuration-files",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#configuration-files",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "Your SSO configuration is stored in ~/.aws/config:\n[profile disasters-sso]\nsso_session = disasters\nsso_account_id = 867530900000\nsso_role_name = Project-Power-User\nregion = us-east-1\noutput = json\n\n[sso-session disasters]\nsso_start_url = https://d-9067c5bbc5.awsapps.com/start/#\nsso_region = us-east-1\nsso_registration_scopes = sso:account:access",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#important-notes",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#important-notes",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "AWS SSO provides temporary credentials that expire after 1-12 hours\nCredentials are automatically refreshed when you run commands\nNo permanent credentials are stored on your machine\n\n\n\n\nAWS-Vault expects permanent credentials to generate temporary ones. Since AWS SSO already provides temporary credentials: - Adding SSO temporary credentials to aws-vault causes authentication errors - SSO handles credential refresh automatically, making aws-vault redundant - Use AWS SSO for temporary credential profiles, aws-vault for permanent ones",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#troubleshooting",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#troubleshooting",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "Cause: Trying to use expired temporary credentials Solution: Run aws sso login --profile your-profile to refresh\n\n\n\nSolution: Add --use-device-code flag:\naws sso login --profile disasters-sso --use-device-code\n\n\n\nCreate separate profiles for each account/role combination:\n[profile prod-admin]\nsso_session = mycompany\nsso_account_id = 111111111111\nsso_role_name = Administrator\n\n[profile dev-readonly]\nsso_session = mycompany\nsso_account_id = 222222222222\nsso_role_name = ReadOnlyAccess",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#best-practices",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#best-practices",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "Never store credentials in plain text ❌\nUse SSO for all AWS access ✅\nLogout when finished working 🔒\nUse descriptive profile names 📝\nSet up MFA on your SSO account 🔐",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#next-steps",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#next-steps",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "Remove plain text credentials from ~/.aws/credentials\nUpdate scripts to use --profile flag\nSet default profile: export AWS_PROFILE=disasters-sso\nConsider using aws-sso-util for enhanced SSO features",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Setup_Guide.html#resources",
+    "href": "AWS/AWS_SSO_Setup_Guide.html#resources",
+    "title": "🚀 AWS SSO Configuration Guide",
+    "section": "",
+    "text": "AWS CLI SSO Documentation\nIAM Identity Center User Guide\nAWS CLI Command Reference\n\n\n🔐 Remember: Security is everyone’s responsibility. Keep your credentials safe!",
+    "crumbs": [
+      "AWS",
+      "🚀 AWS SSO Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html",
+    "href": "AWS/aws-s3-commands-guide.html",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "AWS CLI Installation and Configuration\nBasic S3 Commands\nS3 API Commands\nRecursive Operations\nData Upload and Sync Operations\nBucket Management\nObject Management\nAccess Control and Permissions\nPerformance Optimization\nCost Management\nTroubleshooting\nOfficial AWS Resources\n\n\n\n\n\n\n# macOS using Homebrew\nbrew install awscli\n\n# Using pip\npip install awscli --upgrade --user\n\n# Verify installation\naws --version\n\n\n\n# Configure AWS CLI with credentials\naws configure\n\n# Configure specific profile\naws configure --profile myprofile\n\n# List configuration\naws configure list\n\n# Set region for current session\nexport AWS_DEFAULT_REGION=us-east-1\n\n\n\n\n\n\n# List all buckets\naws s3 ls\n\n# List objects in a bucket\naws s3 ls s3://my-bucket/\n\n# List objects with human-readable sizes\naws s3 ls s3://my-bucket/ --human-readable\n\n# List objects with summary\naws s3 ls s3://my-bucket/ --summarize\n\n# List objects recursively\naws s3 ls s3://my-bucket/ --recursive\n\n# List objects with specific prefix\naws s3 ls s3://my-bucket/prefix/ --recursive\n\n\n\n# Copy file to S3\naws s3 cp file.txt s3://my-bucket/\n\n# Copy from S3 to local\naws s3 cp s3://my-bucket/file.txt ./\n\n# Copy between S3 buckets\naws s3 cp s3://source-bucket/file.txt s3://dest-bucket/\n\n# Copy with specific storage class\naws s3 cp file.txt s3://my-bucket/ --storage-class GLACIER\n\n# Copy with server-side encryption\naws s3 cp file.txt s3://my-bucket/ --sse AES256\n\n\n\n# Move file to S3\naws s3 mv file.txt s3://my-bucket/\n\n# Move from S3 to local\naws s3 mv s3://my-bucket/file.txt ./\n\n# Move between S3 locations\naws s3 mv s3://my-bucket/old-path/ s3://my-bucket/new-path/ --recursive\n\n\n\n# Delete single object\naws s3 rm s3://my-bucket/file.txt\n\n# Delete all objects with prefix\naws s3 rm s3://my-bucket/prefix/ --recursive\n\n# Delete bucket (must be empty)\naws s3 rb s3://my-bucket/\n\n# Force delete bucket with contents\naws s3 rb s3://my-bucket/ --force\n\n\n\n\n\n\n# Create bucket (us-east-1)\naws s3api create-bucket --bucket my-bucket\n\n# Create bucket in specific region\naws s3api create-bucket --bucket my-bucket \\\n  --region us-west-2 \\\n  --create-bucket-configuration LocationConstraint=us-west-2\n\n# Enable versioning\naws s3api put-bucket-versioning --bucket my-bucket \\\n  --versioning-configuration Status=Enabled\n\n# Enable server-side encryption by default\naws s3api put-bucket-encryption --bucket my-bucket \\\n  --server-side-encryption-configuration '{\n    \"Rules\": [{\n      \"ApplyServerSideEncryptionByDefault\": {\n        \"SSEAlgorithm\": \"AES256\"\n      }\n    }]\n  }'\n\n\n\n# Put object\naws s3api put-object --bucket my-bucket --key file.txt --body ./file.txt\n\n# Put object with metadata\naws s3api put-object --bucket my-bucket --key file.txt \\\n  --body ./file.txt \\\n  --metadata '{\"author\":\"John Doe\",\"version\":\"1.0\"}'\n\n# Put object with content type\naws s3api put-object --bucket my-bucket --key image.jpg \\\n  --body ./image.jpg \\\n  --content-type image/jpeg\n\n# Put object with tags\naws s3api put-object --bucket my-bucket --key file.txt \\\n  --body ./file.txt \\\n  --tagging 'environment=production&team=data'\n\n\n\n# Initiate multipart upload\naws s3api create-multipart-upload --bucket my-bucket --key large-file.zip\n\n# Upload part\naws s3api upload-part --bucket my-bucket \\\n  --key large-file.zip \\\n  --part-number 1 \\\n  --body part1.dat \\\n  --upload-id \"upload-id-here\"\n\n# Complete multipart upload\naws s3api complete-multipart-upload --bucket my-bucket \\\n  --key large-file.zip \\\n  --upload-id \"upload-id-here\" \\\n  --multipart-upload file://parts.json\n\n# Abort multipart upload\naws s3api abort-multipart-upload --bucket my-bucket \\\n  --key large-file.zip \\\n  --upload-id \"upload-id-here\"\n\n\n\n# Get object metadata\naws s3api head-object --bucket my-bucket --key file.txt\n\n# Get object ACL\naws s3api get-object-acl --bucket my-bucket --key file.txt\n\n# Get object tags\naws s3api get-object-tagging --bucket my-bucket --key file.txt\n\n# List object versions\naws s3api list-object-versions --bucket my-bucket --prefix folder/\n\n\n\n\n\n\n# Sync local directory to S3\naws s3 sync ./local-folder s3://my-bucket/folder/\n\n# Sync S3 to local\naws s3 sync s3://my-bucket/folder/ ./local-folder\n\n# Sync with delete (remove files not in source)\naws s3 sync ./local-folder s3://my-bucket/folder/ --delete\n\n# Sync only specific file types\naws s3 sync ./local-folder s3://my-bucket/folder/ \\\n  --exclude \"*\" --include \"*.jpg\"\n\n# Sync with size-only comparison (faster)\naws s3 sync ./local-folder s3://my-bucket/folder/ --size-only\n\n# Dry run to preview changes\naws s3 sync ./local-folder s3://my-bucket/folder/ --dryrun\n\n\n\n# Copy entire directory\naws s3 cp ./local-folder s3://my-bucket/folder/ --recursive\n\n# Copy with exclude patterns\naws s3 cp s3://my-bucket/ s3://backup-bucket/ \\\n  --recursive \\\n  --exclude \"*.tmp\" \\\n  --exclude \"logs/*\"\n\n# Copy with include patterns\naws s3 cp s3://my-bucket/ s3://backup-bucket/ \\\n  --recursive \\\n  --exclude \"*\" \\\n  --include \"*.pdf\" \\\n  --include \"*.docx\"\n\n# Copy files modified after specific date\naws s3 cp s3://my-bucket/ ./local-folder/ \\\n  --recursive \\\n  --exclude \"*\" \\\n  --include \"*\" \\\n  --metadata-directive COPY\n\n\n\n\n\n\n# Upload multiple files with parallel transfers\naws s3 cp ./data-folder s3://my-bucket/data/ \\\n  --recursive \\\n  --cli-write-timeout 0 \\\n  --cli-read-timeout 0\n\n# Upload with progress bar\naws s3 cp large-file.zip s3://my-bucket/ \\\n  --no-guess-mime-type \\\n  --cli-progress-bar on\n\n# Upload with bandwidth limit (KB/s)\naws configure set s3.max_bandwidth 5000KB/s\naws s3 cp ./large-folder s3://my-bucket/ --recursive\n\n\n\n# Sync with exact timestamps\naws s3 sync ./folder s3://my-bucket/ --exact-timestamps\n\n# Sync with follow symlinks\naws s3 sync ./folder s3://my-bucket/ --follow-symlinks\n\n# Sync with no follow symlinks\naws s3 sync ./folder s3://my-bucket/ --no-follow-symlinks\n\n# Sync with ACL settings\naws s3 sync ./folder s3://my-bucket/ --acl public-read\n\n# Sync with storage class\naws s3 sync ./folder s3://my-bucket/ \\\n  --storage-class INTELLIGENT_TIERING\n\n\n\n\n\n\n# Get bucket policy\naws s3api get-bucket-policy --bucket my-bucket\n\n# Put bucket policy\naws s3api put-bucket-policy --bucket my-bucket \\\n  --policy file://bucket-policy.json\n\n# Delete bucket policy\naws selman get-bucket-policy --bucket my-bucket\n\n# Example bucket policy (bucket-policy.json)\ncat &gt; bucket-policy.json &lt;&lt; 'EOF'\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"PublicReadGetObject\",\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::my-bucket/*\"\n    }\n  ]\n}\nEOF\n\n\n\n# Put lifecycle configuration\naws s3api put-bucket-lifecycle-configuration \\\n  --bucket my-bucket \\\n  --lifecycle-configuration file://lifecycle.json\n\n# Get lifecycle configuration\naws s3api get-bucket-lifecycle-configuration --bucket my-bucket\n\n# Example lifecycle configuration\ncat &gt; lifecycle.json &lt;&lt; 'EOF'\n{\n  \"Rules\": [\n    {\n      \"ID\": \"Archive old files\",\n      \"Status\": \"Enabled\",\n      \"Transitions\": [\n        {\n          \"Days\": 30,\n          \"StorageClass\": \"INTELLIGENT_TIERING\"\n        },\n        {\n          \"Days\": 90,\n          \"StorageClass\": \"GLACIER\"\n        }\n      ]\n    }\n  ]\n}\nEOF\n\n\n\n# Put CORS configuration\naws s3api put-bucket-cors --bucket my-bucket \\\n  --cors-configuration file://cors.json\n\n# Get CORS configuration\naws s3api get-bucket-cors --bucket my-bucket\n\n# Example CORS configuration\ncat &gt; cors.json &lt;&lt; 'EOF'\n{\n  \"CORSRules\": [\n    {\n      \"AllowedOrigins\": [\"*\"],\n      \"AllowedMethods\": [\"GET\", \"PUT\", \"POST\"],\n      \"AllowedHeaders\": [\"*\"],\n      \"MaxAgeSeconds\": 3000\n    }\n  ]\n}\nEOF\n\n\n\n\n\n\n# Copy object within same bucket\naws s3api copy-object \\\n  --bucket my-bucket \\\n  --copy-source my-bucket/old-key \\\n  --key new-key\n\n# Restore object from Glacier\naws s3api restore-object \\\n  --bucket my-bucket \\\n  --key archived-file.txt \\\n  --restore-request Days=7\n\n# Generate presigned URL (expires in 1 hour)\naws s3 presign s3://my-bucket/file.txt --expires-in 3600\n\n# Batch delete objects\naws s3api delete-objects --bucket my-bucket \\\n  --delete file://delete.json\n\n# Example delete.json\ncat &gt; delete.json &lt;&lt; 'EOF'\n{\n  \"Objects\": [\n    {\"Key\": \"file1.txt\"},\n    {\"Key\": \"file2.txt\"},\n    {\"Key\": \"folder/file3.txt\"}\n  ]\n}\nEOF\n\n\n\n# Put object tags\naws s3api put-object-tagging \\\n  --bucket my-bucket \\\n  --key file.txt \\\n  --tagging 'TagSet=[{Key=environment,Value=prod},{Key=owner,Value=teamA}]'\n\n# Get object tags\naws s3api get-object-tagging --bucket my-bucket --key file.txt\n\n# Delete object tags\naws s3api delete-object-tagging --bucket my-bucket --key file.txt\n\n\n\n\n\n\n# Put bucket ACL\naws s3api put-bucket-acl --bucket my-bucket --acl private\n\n# Put object ACL\naws s3api put-object-acl --bucket my-bucket --key file.txt --acl public-read\n\n# Grant specific permissions\naws s3api put-object-acl --bucket my-bucket --key file.txt \\\n  --grant-read emailaddress=user@example.com \\\n  --grant-write emailaddress=admin@example.com\n\n# Put bucket public access block\naws s3api put-public-access-block --bucket my-bucket \\\n  --public-access-block-configuration \\\n  BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=false,RestrictPublicBuckets=false\n\n\n\n# Example IAM policy for S3 access\ncat &gt; s3-policy.json &lt;&lt; 'EOF'\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:PutObject\",\n        \"s3:DeleteObject\"\n      ],\n      \"Resource\": \"arn:aws:s3:::my-bucket/*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:ListBucket\",\n      \"Resource\": \"arn:aws:s3:::my-bucket\"\n    }\n  ]\n}\nEOF\n\n# Attach policy to user\naws iam put-user-policy --user-name myuser \\\n  --policy-name S3Access \\\n  --policy-document file://s3-policy.json\n\n\n\n\n\n\n# Enable transfer acceleration\naws s3api put-bucket-accelerate-configuration \\\n  --bucket my-bucket \\\n  --accelerate-configuration Status=Enabled\n\n# Use accelerated endpoint\naws s3 cp file.txt s3://my-bucket/ \\\n  --endpoint-url https://my-bucket.s3-accelerate.amazonaws.com\n\n\n\n# Configure concurrent requests\naws configure set s3.max_concurrent_requests 20\naws configure set s3.max_queue_size 10000\n\n# Use multipart threshold for large files\naws configure set s3.multipart_threshold 64MB\naws configure set s3.multipart_chunksize 16MB\n\n# Set max bandwidth\naws configure set s3.max_bandwidth 100MB/s\n\n\n\n# Enable requester pays\naws s3api put-bucket-request-payment \\\n  --bucket my-bucket \\\n  --request-payment-configuration Payer=Requester\n\n# Access requester-pays bucket\naws s3 cp s3://requester-pays-bucket/file.txt ./ --request-payer requester\n\n\n\n\n\n\n# Put analytics configuration\naws s3api put-bucket-analytics-configuration \\\n  --bucket my-bucket \\\n  --id analysis-1 \\\n  --analytics-configuration file://analytics.json\n\n# List analytics configurations\naws s3api list-bucket-analytics-configurations --bucket my-bucket\n\n\n\n# Put intelligent tiering configuration\naws s3api put-bucket-intelligent-tiering-configuration \\\n  --bucket my-bucket \\\n  --id config-1 \\\n  --intelligent-tiering-configuration file://tiering.json\n\n\n\n# Get bucket metrics configuration\naws s3api get-bucket-metrics-configuration \\\n  --bucket my-bucket \\\n  --id metrics-1\n\n# List bucket metrics\naws s3api list-bucket-metrics-configurations --bucket my-bucket\n\n\n\n\n\n\n\n\n# Test if bucket exists\naws s3api head-bucket --bucket my-bucket\n\n# Check bucket location\naws s3api get-bucket-location --bucket my-bucket\n\n# List bucket with debug output\naws s3 ls s3://my-bucket/ --debug\n\n\n\n# Check IAM permissions\naws iam simulate-principal-policy \\\n  --policy-source-arn arn:aws:iam::123456789012:user/username \\\n  --action-names s3:GetObject s3:PutObject \\\n  --resource-arns arn:aws:s3:::my-bucket/*\n\n\n\n# Test S3 endpoint connectivity\naws s3 ls --debug 2&gt;&1 | grep \"endpoint\"\n\n# Use specific endpoint\naws s3 ls --endpoint-url https://s3.us-west-2.amazonaws.com\n\n# Check DNS resolution\nnslookup s3.amazonaws.com\n\n\n\n\n\n\n\n# Query CSV file with S3 Select\naws s3api select-object-content \\\n  --bucket my-bucket \\\n  --key data.csv \\\n  --expression \"SELECT * FROM S3Object WHERE age &gt; 25\" \\\n  --expression-type SQL \\\n  --input-serialization '{\"CSV\": {\"FileHeaderInfo\": \"USE\"}}' \\\n  --output-serialization '{\"CSV\": {}}' \\\n  output.csv\n\n\n\n# Put inventory configuration\naws s3api put-bucket-inventory-configuration \\\n  --bucket my-bucket \\\n  --id inventory-1 \\\n  --inventory-configuration file://inventory.json\n\n\n\n# Create batch job\naws s3control create-job \\\n  --account-id 123456789012 \\\n  --manifest file://manifest.json \\\n  --operation file://operation.json \\\n  --priority 10 \\\n  --role-arn arn:aws:iam::123456789012:role/batch-operations-role\n\n\n\n\n\n\n# Enable default encryption\naws s3api put-bucket-encryption --bucket my-bucket \\\n  --server-side-encryption-configuration '{\n    \"Rules\": [{\n      \"ApplyServerSideEncryptionByDefault\": {\n        \"SSEAlgorithm\": \"aws:kms\",\n        \"KMSMasterKeyID\": \"arn:aws:kms:us-east-1:123456789012:key/12345678\"\n      }\n    }]\n  }'\n\n# Enable bucket logging\naws s3api put-bucket-logging --bucket my-bucket \\\n  --bucket-logging-status file://logging.json\n\n# Enable MFA delete\naws s3api put-bucket-versioning --bucket my-bucket \\\n  --versioning-configuration Status=Enabled,MFADelete=Enabled \\\n  --mfa \"arn:aws:iam::123456789012:mfa/root-account-mfa-device 123456\"\n\n\n\n# Upload with checksum\naws s3api put-object --bucket my-bucket --key file.txt \\\n  --body ./file.txt \\\n  --content-md5 $(openssl dgst -md5 -binary file.txt | base64)\n\n# Verify object integrity\naws s3api head-object --bucket my-bucket --key file.txt \\\n  --checksum-mode ENABLED\n\n\n\n\n\n\n\nAWS CLI Command Reference\nAWS S3 API Reference\nS3 User Guide\nS3 Best Practices\nS3 Security Best Practices\n\n\n\n\n\nGetting Started with S3\nS3 Storage Classes\nS3 Transfer Acceleration\nS3 Lifecycle Policies\nS3 Replication\n\n\n\n\n\nAWS SDK for Python (Boto3)\nAWS SDK for JavaScript\nS3 API Examples\nS3 Select Examples\n\n\n\n\n\nAWS CLI Installation\nAWS CLI Configuration\nS3 Browser Tools\nCloudFormation S3 Templates\n\n\n\n\n\nS3 CloudWatch Metrics\nS3 Access Logging\nS3 Troubleshooting\nS3 Error Responses\n\n\n\n\n\nS3 Pricing\nS3 Cost Optimization\nS3 Storage Lens\nAWS Cost Explorer\n\n\n\n\n\nS3 Compliance\nS3 Object Lock\nAWS Config Rules for S3\nS3 Access Points\n\n\n\n\n\n\n\n# Upload file\naws s3 cp file.txt s3://bucket/\n\n# Download file\naws s3 cp s3://bucket/file.txt ./\n\n# Sync directory\naws s3 sync ./folder s3://bucket/folder/\n\n# List contents\naws s3 ls s3://bucket/ --recursive\n\n# Delete file\naws s3 rm s3://bucket/file.txt\n\n# Create bucket\naws s3 mb s3://new-bucket/\n\n# Remove bucket\naws s3 rb s3://bucket/ --force\n\n# Get object info\naws s3api head-object --bucket bucket --key file.txt\n\n# Generate presigned URL\naws s3 presign s3://bucket/file.txt\n\n# Check bucket access\naws s3api head-bucket --bucket bucket\n\n\n\n\n# AWS Credentials\nexport AWS_ACCESS_KEY_ID=your-access-key\nexport AWS_SECRET_ACCESS_KEY=your-secret-key\nexport AWS_SESSION_TOKEN=your-session-token\n\n# AWS Configuration\nexport AWS_DEFAULT_REGION=us-east-1\nexport AWS_DEFAULT_OUTPUT=json\nexport AWS_PROFILE=myprofile\n\n# S3 Specific\nexport AWS_S3_ENDPOINT=https://s3.amazonaws.com\nexport S3_USE_ACCELERATE_ENDPOINT=true\n\n\n\nThis guide covers the essential AWS S3 commands and operations for data management. Always refer to the official AWS documentation for the most up-to-date information and additional features. Remember to follow security best practices and implement proper access controls when working with S3 buckets and objects.",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#table-of-contents",
+    "href": "AWS/aws-s3-commands-guide.html#table-of-contents",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "AWS CLI Installation and Configuration\nBasic S3 Commands\nS3 API Commands\nRecursive Operations\nData Upload and Sync Operations\nBucket Management\nObject Management\nAccess Control and Permissions\nPerformance Optimization\nCost Management\nTroubleshooting\nOfficial AWS Resources",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#aws-cli-installation-and-configuration",
+    "href": "AWS/aws-s3-commands-guide.html#aws-cli-installation-and-configuration",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# macOS using Homebrew\nbrew install awscli\n\n# Using pip\npip install awscli --upgrade --user\n\n# Verify installation\naws --version\n\n\n\n# Configure AWS CLI with credentials\naws configure\n\n# Configure specific profile\naws configure --profile myprofile\n\n# List configuration\naws configure list\n\n# Set region for current session\nexport AWS_DEFAULT_REGION=us-east-1",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#basic-s3-commands",
+    "href": "AWS/aws-s3-commands-guide.html#basic-s3-commands",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# List all buckets\naws s3 ls\n\n# List objects in a bucket\naws s3 ls s3://my-bucket/\n\n# List objects with human-readable sizes\naws s3 ls s3://my-bucket/ --human-readable\n\n# List objects with summary\naws s3 ls s3://my-bucket/ --summarize\n\n# List objects recursively\naws s3 ls s3://my-bucket/ --recursive\n\n# List objects with specific prefix\naws s3 ls s3://my-bucket/prefix/ --recursive\n\n\n\n# Copy file to S3\naws s3 cp file.txt s3://my-bucket/\n\n# Copy from S3 to local\naws s3 cp s3://my-bucket/file.txt ./\n\n# Copy between S3 buckets\naws s3 cp s3://source-bucket/file.txt s3://dest-bucket/\n\n# Copy with specific storage class\naws s3 cp file.txt s3://my-bucket/ --storage-class GLACIER\n\n# Copy with server-side encryption\naws s3 cp file.txt s3://my-bucket/ --sse AES256\n\n\n\n# Move file to S3\naws s3 mv file.txt s3://my-bucket/\n\n# Move from S3 to local\naws s3 mv s3://my-bucket/file.txt ./\n\n# Move between S3 locations\naws s3 mv s3://my-bucket/old-path/ s3://my-bucket/new-path/ --recursive\n\n\n\n# Delete single object\naws s3 rm s3://my-bucket/file.txt\n\n# Delete all objects with prefix\naws s3 rm s3://my-bucket/prefix/ --recursive\n\n# Delete bucket (must be empty)\naws s3 rb s3://my-bucket/\n\n# Force delete bucket with contents\naws s3 rb s3://my-bucket/ --force",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#s3-api-commands",
+    "href": "AWS/aws-s3-commands-guide.html#s3-api-commands",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Create bucket (us-east-1)\naws s3api create-bucket --bucket my-bucket\n\n# Create bucket in specific region\naws s3api create-bucket --bucket my-bucket \\\n  --region us-west-2 \\\n  --create-bucket-configuration LocationConstraint=us-west-2\n\n# Enable versioning\naws s3api put-bucket-versioning --bucket my-bucket \\\n  --versioning-configuration Status=Enabled\n\n# Enable server-side encryption by default\naws s3api put-bucket-encryption --bucket my-bucket \\\n  --server-side-encryption-configuration '{\n    \"Rules\": [{\n      \"ApplyServerSideEncryptionByDefault\": {\n        \"SSEAlgorithm\": \"AES256\"\n      }\n    }]\n  }'\n\n\n\n# Put object\naws s3api put-object --bucket my-bucket --key file.txt --body ./file.txt\n\n# Put object with metadata\naws s3api put-object --bucket my-bucket --key file.txt \\\n  --body ./file.txt \\\n  --metadata '{\"author\":\"John Doe\",\"version\":\"1.0\"}'\n\n# Put object with content type\naws s3api put-object --bucket my-bucket --key image.jpg \\\n  --body ./image.jpg \\\n  --content-type image/jpeg\n\n# Put object with tags\naws s3api put-object --bucket my-bucket --key file.txt \\\n  --body ./file.txt \\\n  --tagging 'environment=production&team=data'\n\n\n\n# Initiate multipart upload\naws s3api create-multipart-upload --bucket my-bucket --key large-file.zip\n\n# Upload part\naws s3api upload-part --bucket my-bucket \\\n  --key large-file.zip \\\n  --part-number 1 \\\n  --body part1.dat \\\n  --upload-id \"upload-id-here\"\n\n# Complete multipart upload\naws s3api complete-multipart-upload --bucket my-bucket \\\n  --key large-file.zip \\\n  --upload-id \"upload-id-here\" \\\n  --multipart-upload file://parts.json\n\n# Abort multipart upload\naws s3api abort-multipart-upload --bucket my-bucket \\\n  --key large-file.zip \\\n  --upload-id \"upload-id-here\"\n\n\n\n# Get object metadata\naws s3api head-object --bucket my-bucket --key file.txt\n\n# Get object ACL\naws s3api get-object-acl --bucket my-bucket --key file.txt\n\n# Get object tags\naws s3api get-object-tagging --bucket my-bucket --key file.txt\n\n# List object versions\naws s3api list-object-versions --bucket my-bucket --prefix folder/",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#recursive-operations",
+    "href": "AWS/aws-s3-commands-guide.html#recursive-operations",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Sync local directory to S3\naws s3 sync ./local-folder s3://my-bucket/folder/\n\n# Sync S3 to local\naws s3 sync s3://my-bucket/folder/ ./local-folder\n\n# Sync with delete (remove files not in source)\naws s3 sync ./local-folder s3://my-bucket/folder/ --delete\n\n# Sync only specific file types\naws s3 sync ./local-folder s3://my-bucket/folder/ \\\n  --exclude \"*\" --include \"*.jpg\"\n\n# Sync with size-only comparison (faster)\naws s3 sync ./local-folder s3://my-bucket/folder/ --size-only\n\n# Dry run to preview changes\naws s3 sync ./local-folder s3://my-bucket/folder/ --dryrun\n\n\n\n# Copy entire directory\naws s3 cp ./local-folder s3://my-bucket/folder/ --recursive\n\n# Copy with exclude patterns\naws s3 cp s3://my-bucket/ s3://backup-bucket/ \\\n  --recursive \\\n  --exclude \"*.tmp\" \\\n  --exclude \"logs/*\"\n\n# Copy with include patterns\naws s3 cp s3://my-bucket/ s3://backup-bucket/ \\\n  --recursive \\\n  --exclude \"*\" \\\n  --include \"*.pdf\" \\\n  --include \"*.docx\"\n\n# Copy files modified after specific date\naws s3 cp s3://my-bucket/ ./local-folder/ \\\n  --recursive \\\n  --exclude \"*\" \\\n  --include \"*\" \\\n  --metadata-directive COPY",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#data-upload-and-sync-operations",
+    "href": "AWS/aws-s3-commands-guide.html#data-upload-and-sync-operations",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Upload multiple files with parallel transfers\naws s3 cp ./data-folder s3://my-bucket/data/ \\\n  --recursive \\\n  --cli-write-timeout 0 \\\n  --cli-read-timeout 0\n\n# Upload with progress bar\naws s3 cp large-file.zip s3://my-bucket/ \\\n  --no-guess-mime-type \\\n  --cli-progress-bar on\n\n# Upload with bandwidth limit (KB/s)\naws configure set s3.max_bandwidth 5000KB/s\naws s3 cp ./large-folder s3://my-bucket/ --recursive\n\n\n\n# Sync with exact timestamps\naws s3 sync ./folder s3://my-bucket/ --exact-timestamps\n\n# Sync with follow symlinks\naws s3 sync ./folder s3://my-bucket/ --follow-symlinks\n\n# Sync with no follow symlinks\naws s3 sync ./folder s3://my-bucket/ --no-follow-symlinks\n\n# Sync with ACL settings\naws s3 sync ./folder s3://my-bucket/ --acl public-read\n\n# Sync with storage class\naws s3 sync ./folder s3://my-bucket/ \\\n  --storage-class INTELLIGENT_TIERING",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#bucket-management",
+    "href": "AWS/aws-s3-commands-guide.html#bucket-management",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Get bucket policy\naws s3api get-bucket-policy --bucket my-bucket\n\n# Put bucket policy\naws s3api put-bucket-policy --bucket my-bucket \\\n  --policy file://bucket-policy.json\n\n# Delete bucket policy\naws selman get-bucket-policy --bucket my-bucket\n\n# Example bucket policy (bucket-policy.json)\ncat &gt; bucket-policy.json &lt;&lt; 'EOF'\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"PublicReadGetObject\",\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::my-bucket/*\"\n    }\n  ]\n}\nEOF\n\n\n\n# Put lifecycle configuration\naws s3api put-bucket-lifecycle-configuration \\\n  --bucket my-bucket \\\n  --lifecycle-configuration file://lifecycle.json\n\n# Get lifecycle configuration\naws s3api get-bucket-lifecycle-configuration --bucket my-bucket\n\n# Example lifecycle configuration\ncat &gt; lifecycle.json &lt;&lt; 'EOF'\n{\n  \"Rules\": [\n    {\n      \"ID\": \"Archive old files\",\n      \"Status\": \"Enabled\",\n      \"Transitions\": [\n        {\n          \"Days\": 30,\n          \"StorageClass\": \"INTELLIGENT_TIERING\"\n        },\n        {\n          \"Days\": 90,\n          \"StorageClass\": \"GLACIER\"\n        }\n      ]\n    }\n  ]\n}\nEOF\n\n\n\n# Put CORS configuration\naws s3api put-bucket-cors --bucket my-bucket \\\n  --cors-configuration file://cors.json\n\n# Get CORS configuration\naws s3api get-bucket-cors --bucket my-bucket\n\n# Example CORS configuration\ncat &gt; cors.json &lt;&lt; 'EOF'\n{\n  \"CORSRules\": [\n    {\n      \"AllowedOrigins\": [\"*\"],\n      \"AllowedMethods\": [\"GET\", \"PUT\", \"POST\"],\n      \"AllowedHeaders\": [\"*\"],\n      \"MaxAgeSeconds\": 3000\n    }\n  ]\n}\nEOF",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#object-management",
+    "href": "AWS/aws-s3-commands-guide.html#object-management",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Copy object within same bucket\naws s3api copy-object \\\n  --bucket my-bucket \\\n  --copy-source my-bucket/old-key \\\n  --key new-key\n\n# Restore object from Glacier\naws s3api restore-object \\\n  --bucket my-bucket \\\n  --key archived-file.txt \\\n  --restore-request Days=7\n\n# Generate presigned URL (expires in 1 hour)\naws s3 presign s3://my-bucket/file.txt --expires-in 3600\n\n# Batch delete objects\naws s3api delete-objects --bucket my-bucket \\\n  --delete file://delete.json\n\n# Example delete.json\ncat &gt; delete.json &lt;&lt; 'EOF'\n{\n  \"Objects\": [\n    {\"Key\": \"file1.txt\"},\n    {\"Key\": \"file2.txt\"},\n    {\"Key\": \"folder/file3.txt\"}\n  ]\n}\nEOF\n\n\n\n# Put object tags\naws s3api put-object-tagging \\\n  --bucket my-bucket \\\n  --key file.txt \\\n  --tagging 'TagSet=[{Key=environment,Value=prod},{Key=owner,Value=teamA}]'\n\n# Get object tags\naws s3api get-object-tagging --bucket my-bucket --key file.txt\n\n# Delete object tags\naws s3api delete-object-tagging --bucket my-bucket --key file.txt",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#access-control-and-permissions",
+    "href": "AWS/aws-s3-commands-guide.html#access-control-and-permissions",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Put bucket ACL\naws s3api put-bucket-acl --bucket my-bucket --acl private\n\n# Put object ACL\naws s3api put-object-acl --bucket my-bucket --key file.txt --acl public-read\n\n# Grant specific permissions\naws s3api put-object-acl --bucket my-bucket --key file.txt \\\n  --grant-read emailaddress=user@example.com \\\n  --grant-write emailaddress=admin@example.com\n\n# Put bucket public access block\naws s3api put-public-access-block --bucket my-bucket \\\n  --public-access-block-configuration \\\n  BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=false,RestrictPublicBuckets=false\n\n\n\n# Example IAM policy for S3 access\ncat &gt; s3-policy.json &lt;&lt; 'EOF'\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:PutObject\",\n        \"s3:DeleteObject\"\n      ],\n      \"Resource\": \"arn:aws:s3:::my-bucket/*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:ListBucket\",\n      \"Resource\": \"arn:aws:s3:::my-bucket\"\n    }\n  ]\n}\nEOF\n\n# Attach policy to user\naws iam put-user-policy --user-name myuser \\\n  --policy-name S3Access \\\n  --policy-document file://s3-policy.json",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#performance-optimization",
+    "href": "AWS/aws-s3-commands-guide.html#performance-optimization",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Enable transfer acceleration\naws s3api put-bucket-accelerate-configuration \\\n  --bucket my-bucket \\\n  --accelerate-configuration Status=Enabled\n\n# Use accelerated endpoint\naws s3 cp file.txt s3://my-bucket/ \\\n  --endpoint-url https://my-bucket.s3-accelerate.amazonaws.com\n\n\n\n# Configure concurrent requests\naws configure set s3.max_concurrent_requests 20\naws configure set s3.max_queue_size 10000\n\n# Use multipart threshold for large files\naws configure set s3.multipart_threshold 64MB\naws configure set s3.multipart_chunksize 16MB\n\n# Set max bandwidth\naws configure set s3.max_bandwidth 100MB/s\n\n\n\n# Enable requester pays\naws s3api put-bucket-request-payment \\\n  --bucket my-bucket \\\n  --request-payment-configuration Payer=Requester\n\n# Access requester-pays bucket\naws s3 cp s3://requester-pays-bucket/file.txt ./ --request-payer requester",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#cost-management",
+    "href": "AWS/aws-s3-commands-guide.html#cost-management",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Put analytics configuration\naws s3api put-bucket-analytics-configuration \\\n  --bucket my-bucket \\\n  --id analysis-1 \\\n  --analytics-configuration file://analytics.json\n\n# List analytics configurations\naws s3api list-bucket-analytics-configurations --bucket my-bucket\n\n\n\n# Put intelligent tiering configuration\naws s3api put-bucket-intelligent-tiering-configuration \\\n  --bucket my-bucket \\\n  --id config-1 \\\n  --intelligent-tiering-configuration file://tiering.json\n\n\n\n# Get bucket metrics configuration\naws s3api get-bucket-metrics-configuration \\\n  --bucket my-bucket \\\n  --id metrics-1\n\n# List bucket metrics\naws s3api list-bucket-metrics-configurations --bucket my-bucket",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#troubleshooting",
+    "href": "AWS/aws-s3-commands-guide.html#troubleshooting",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Test if bucket exists\naws s3api head-bucket --bucket my-bucket\n\n# Check bucket location\naws s3api get-bucket-location --bucket my-bucket\n\n# List bucket with debug output\naws s3 ls s3://my-bucket/ --debug\n\n\n\n# Check IAM permissions\naws iam simulate-principal-policy \\\n  --policy-source-arn arn:aws:iam::123456789012:user/username \\\n  --action-names s3:GetObject s3:PutObject \\\n  --resource-arns arn:aws:s3:::my-bucket/*\n\n\n\n# Test S3 endpoint connectivity\naws s3 ls --debug 2&gt;&1 | grep \"endpoint\"\n\n# Use specific endpoint\naws s3 ls --endpoint-url https://s3.us-west-2.amazonaws.com\n\n# Check DNS resolution\nnslookup s3.amazonaws.com",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#advanced-operations",
+    "href": "AWS/aws-s3-commands-guide.html#advanced-operations",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Query CSV file with S3 Select\naws s3api select-object-content \\\n  --bucket my-bucket \\\n  --key data.csv \\\n  --expression \"SELECT * FROM S3Object WHERE age &gt; 25\" \\\n  --expression-type SQL \\\n  --input-serialization '{\"CSV\": {\"FileHeaderInfo\": \"USE\"}}' \\\n  --output-serialization '{\"CSV\": {}}' \\\n  output.csv\n\n\n\n# Put inventory configuration\naws s3api put-bucket-inventory-configuration \\\n  --bucket my-bucket \\\n  --id inventory-1 \\\n  --inventory-configuration file://inventory.json\n\n\n\n# Create batch job\naws s3control create-job \\\n  --account-id 123456789012 \\\n  --manifest file://manifest.json \\\n  --operation file://operation.json \\\n  --priority 10 \\\n  --role-arn arn:aws:iam::123456789012:role/batch-operations-role",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#best-practices",
+    "href": "AWS/aws-s3-commands-guide.html#best-practices",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Enable default encryption\naws s3api put-bucket-encryption --bucket my-bucket \\\n  --server-side-encryption-configuration '{\n    \"Rules\": [{\n      \"ApplyServerSideEncryptionByDefault\": {\n        \"SSEAlgorithm\": \"aws:kms\",\n        \"KMSMasterKeyID\": \"arn:aws:kms:us-east-1:123456789012:key/12345678\"\n      }\n    }]\n  }'\n\n# Enable bucket logging\naws s3api put-bucket-logging --bucket my-bucket \\\n  --bucket-logging-status file://logging.json\n\n# Enable MFA delete\naws s3api put-bucket-versioning --bucket my-bucket \\\n  --versioning-configuration Status=Enabled,MFADelete=Enabled \\\n  --mfa \"arn:aws:iam::123456789012:mfa/root-account-mfa-device 123456\"\n\n\n\n# Upload with checksum\naws s3api put-object --bucket my-bucket --key file.txt \\\n  --body ./file.txt \\\n  --content-md5 $(openssl dgst -md5 -binary file.txt | base64)\n\n# Verify object integrity\naws s3api head-object --bucket my-bucket --key file.txt \\\n  --checksum-mode ENABLED",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#official-aws-resources",
+    "href": "AWS/aws-s3-commands-guide.html#official-aws-resources",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "AWS CLI Command Reference\nAWS S3 API Reference\nS3 User Guide\nS3 Best Practices\nS3 Security Best Practices\n\n\n\n\n\nGetting Started with S3\nS3 Storage Classes\nS3 Transfer Acceleration\nS3 Lifecycle Policies\nS3 Replication\n\n\n\n\n\nAWS SDK for Python (Boto3)\nAWS SDK for JavaScript\nS3 API Examples\nS3 Select Examples\n\n\n\n\n\nAWS CLI Installation\nAWS CLI Configuration\nS3 Browser Tools\nCloudFormation S3 Templates\n\n\n\n\n\nS3 CloudWatch Metrics\nS3 Access Logging\nS3 Troubleshooting\nS3 Error Responses\n\n\n\n\n\nS3 Pricing\nS3 Cost Optimization\nS3 Storage Lens\nAWS Cost Explorer\n\n\n\n\n\nS3 Compliance\nS3 Object Lock\nAWS Config Rules for S3\nS3 Access Points",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#quick-reference-card",
+    "href": "AWS/aws-s3-commands-guide.html#quick-reference-card",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# Upload file\naws s3 cp file.txt s3://bucket/\n\n# Download file\naws s3 cp s3://bucket/file.txt ./\n\n# Sync directory\naws s3 sync ./folder s3://bucket/folder/\n\n# List contents\naws s3 ls s3://bucket/ --recursive\n\n# Delete file\naws s3 rm s3://bucket/file.txt\n\n# Create bucket\naws s3 mb s3://new-bucket/\n\n# Remove bucket\naws s3 rb s3://bucket/ --force\n\n# Get object info\naws s3api head-object --bucket bucket --key file.txt\n\n# Generate presigned URL\naws s3 presign s3://bucket/file.txt\n\n# Check bucket access\naws s3api head-bucket --bucket bucket",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#environment-variables",
+    "href": "AWS/aws-s3-commands-guide.html#environment-variables",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "# AWS Credentials\nexport AWS_ACCESS_KEY_ID=your-access-key\nexport AWS_SECRET_ACCESS_KEY=your-secret-key\nexport AWS_SESSION_TOKEN=your-session-token\n\n# AWS Configuration\nexport AWS_DEFAULT_REGION=us-east-1\nexport AWS_DEFAULT_OUTPUT=json\nexport AWS_PROFILE=myprofile\n\n# S3 Specific\nexport AWS_S3_ENDPOINT=https://s3.amazonaws.com\nexport S3_USE_ACCELERATE_ENDPOINT=true",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-s3-commands-guide.html#conclusion",
+    "href": "AWS/aws-s3-commands-guide.html#conclusion",
+    "title": "AWS S3 Commands and Operations Guide",
+    "section": "",
+    "text": "This guide covers the essential AWS S3 commands and operations for data management. Always refer to the official AWS documentation for the most up-to-date information and additional features. Remember to follow security best practices and implement proper access controls when working with S3 buckets and objects.",
+    "crumbs": [
+      "AWS",
+      "AWS S3 Commands and Operations Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html",
+    "href": "AWS/aws-mfa-setup.html",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Overview\nPrerequisites\nInitial Setup\nScript Installation\nUsage\nTroubleshooting\nBest Practices\nSecurity Considerations\n\n\n\n\n\n\n\nMulti-Factor Authentication (MFA) adds an extra layer of security to your AWS account by requiring two forms of identification: 1. Something you know (your password/credentials) 2. Something you have (a time-based token from your MFA device)\n\n\n\n\nEnhanced Security: Temporary credentials automatically expire, reducing the risk if they’re compromised\nCompliance: Many organizations require MFA for production AWS access\nBest Practice: AWS recommends using temporary credentials instead of long-lived access keys\nSession Management: Temporary credentials can be scoped with specific permissions\n\n\n\n\nThe ~/aws_mfa.sh script is a lightweight utility that you call with aws_env to: - Automatically detect your current AWS user - Find your configured MFA device - Generate temporary 12-hour session credentials - Export them to your current shell environment - Optionally save them for use in Jupyter notebooks\n\n\n\n\n\n\n\n\nAWS CLI (version 2.x recommended)\n# Check if AWS CLI is installed\naws --version\n\n# Install AWS CLI on macOS\nbrew install awscli\n\n# Install AWS CLI on Linux\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\nBash Shell (standard on macOS and Linux)\n# Check bash version\nbash --version\nPython (optional, for Jupyter notebook integration)\n# Check Python installation\npython --version\n\n\n\n\n\nIAM User Account with:\n\nProgrammatic access enabled\nMFA device configured\nAppropriate permissions for your tasks\n\nMFA Device Setup\n\nVirtual MFA device (Google Authenticator, Authy, etc.)\nHardware MFA token (YubiKey, RSA SecurID, etc.)\n\n\n\n\n\n\n\n\n\nCreate or edit ~/.aws/credentials:\n[smce-veda]\naws_access_key_id = YOUR_ACCESS_KEY_ID\naws_secret_access_key = YOUR_SECRET_ACCESS_KEY\nNOTE: These credentials are obtained within the AWS console when you register for an AWS account. You must get approval for this account.\n\n\n\nCreate or edit ~/.aws/config:\n[smce-veda]\nregion = us-west-2\n\n\n\n\nLog into AWS Console\nNavigate to IAM → Users → Your Username\nSelect “Security credentials” tab\nClick “Manage” next to MFA devices\nFollow the setup wizard for your MFA device type\n\nNOTE: I’ve found that having ONLY the MFA through phone app (e.g., Google Authenticator) is the only way to make this work. If you select Passkey and have an MFA through phone, they seem to conflict and the steps outlined will not work.\n\n\n\n# Replace YOUR_USERNAME with your actual IAM username\naws iam list-mfa-devices --user-name YOUR_USERNAME\n\n# Output should show:\n# \"SerialNumber\": \"arn:aws:iam::123456789012:mfa/YOUR_USERNAME\"\n\n\n\n\n\n\n\nCreate the file ~/aws_mfa.sh:\n#!/bin/bash\n\n# 🔒 AWS MFA Credential Generator\n# This script creates temporary (12-hour) credentials using your MFA device\n# Requires terminal access for secure input\n# License: GPL 2 or higher\n\n# Check for terminal access\nif [ ! -t 0 ]; then\n  echo \"❌ Error: This script requires terminal access for secure input\" &gt;&2\n  return\nfi\n\n# Prevent token conflicts\nif [ -n \"$AWS_SESSION_TOKEN\" ]; then\n  echo \"⚠️  Active session detected! \n   To generate new credentials, clear your current session:\n   unset AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID\n   Then ensure you have valid profile credentials configured.\" &gt;&2\n  return\nfi\n\n# Identify current user\nidentity=$(aws sts get-caller-identity --output json)\nusername=$(echo -- \"$identity\" | sed -n 's!.*\"arn:aws:iam::.*:user/\\(.*\\)\".*!\\1!p')\n\nif [ -z \"$username\" ]; then\n  echo \"❌ Unable to identify user. Expected format:\n    arn:aws:iam::.....:user/YOUR_USERNAME\n  \nCurrent identity output:\n$identity\" &gt;&2\n  return\nfi\n\necho \"👤 Authenticated as: $username\" &gt;&2\n\n# Find MFA device\nmfa=$(aws iam list-mfa-devices --user-name \"$username\" --output json)\ndevice=$(echo -- \"$mfa\" | sed -n 's!.*\"SerialNumber\": \"\\(.*\\)\".*!\\1!p')\n\nif [ -z \"$device\" ]; then\n  echo \"❌ No MFA device found for user: $username\n  \nMFA device output:\n$mfa\" &gt;&2\n  return\nfi\n\necho \"📱 MFA device found: $device\" &gt;&2\n\n# Request MFA code\necho -n \"🔢 Enter your MFA code: \" &gt;&2\nread code\n\n# Generate temporary credentials\ntokens=$(aws sts get-session-token --serial-number \"$device\" --token-code $code --output json)\n\necho $tokens\n\n# Extract credentials\nsecret=$(echo -- \"$tokens\" | sed -n 's!.*\"SecretAccessKey\": \"\\(.*\\)\".*!\\1!p')\nsession=$(echo -- \"$tokens\" | sed -n 's!.*\"SessionToken\": \"\\(.*\\)\".*!\\1!p')\naccess=$(echo -- \"$tokens\" | sed -n 's!.*\"AccessKeyId\": \"\\(.*\\)\".*!\\1!p')\nexpire=$(echo -- \"$tokens\" | sed -n 's!.*\"Expiration\": \"\\(.*\\)\".*!\\1!p')\n\nif [ -z \"$secret\" -o -z \"$session\" -o -z \"$access\" ]; then\n  echo \"❌ Failed to generate temporary credentials\n  \nToken response:\n$tokens\" &gt;&2\n  return\nfi\n\n# Export credentials to environment\nexport AWS_SESSION_TOKEN=$session\nexport AWS_SECRET_ACCESS_KEY=$secret\nexport AWS_ACCESS_KEY_ID=$access\n\necho \"✅ Temporary credentials activated! Expires: $expire\" &gt;&2\n\n# Save credentials to .env file for Jupyter notebooks (optional)\n# This will save the new credentials to a .env file in the current directory where you called \"aws_env\"\npython ~/set_aws_creds.py\n\n\n\nchmod +x ~/aws_mfa.sh\n\n\n\nAdd to your ~/.zshrc (or ~/.bashrc):\n##################### CREATE AWS temporary credentials\n\n# 🎯 AWS Environment Switcher\n# Seamlessly switch between AWS accounts with MFA support\naws_env() {\n  # Clear any existing session\n  unset AWS_SESSION_TOKEN\n\n  # Load credentials for the specified profile\n  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile $1)\n  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile $1)\n  export AWS_DEFAULT_REGION=$(aws configure get region --profile $1)\n\n  # Profiles requiring MFA authentication\n  MFA_PROFILES=(\"veda-smce\" \"smce-veda\" \"aq\" \"uah-veda\")\n\n  # Check if MFA is required for this profile\n  if [[ \" ${MFA_PROFILES[@]} \" =~ \" ${1} \" ]]; then\n    echo \"🔐 MFA required for profile: $1\"\n    source ~/aws_mfa.sh\n  fi\n\n  echo \"✅ Successfully switched to $1 environment!\"\n}\nAlternatively, if you organize your shell configuration, you can add this to ~/.zshrc.d/functions or similar.\nReload your shell configuration:\nsource ~/.zshrc  # or source ~/.bashrc\n\n\n\nIf you use Jupyter notebooks, create ~/set_aws_creds.py:\n#!/usr/bin/env python\nimport os\n\n# Get credentials from environment\naccess_key = os.environ.get('AWS_ACCESS_KEY_ID')\nsecret_key = os.environ.get('AWS_SECRET_ACCESS_KEY')\nsession_token = os.environ.get('AWS_SESSION_TOKEN')\n\nif access_key and secret_key and session_token:\n    # Save to .env file for Jupyter notebooks\n    with open(os.path.expanduser('~/.env'), 'w') as f:\n        f.write(f'AWS_ACCESS_KEY_ID={access_key}\\n')\n        f.write(f'AWS_SECRET_ACCESS_KEY={secret_key}\\n')\n        f.write(f'AWS_SESSION_TOKEN={session_token}\\n')\n    print(\"✅ Credentials saved to ~/.env for Jupyter notebooks\")\nelse:\n    print(\"❌ No credentials found in environment\")\n\n\n\n\n\n\n\n\n\n# Switch to a profile with MFA support\naws_env smce-veda\n\n# For profiles without MFA requirement\naws_env other-profile\n\n# Or source the MFA script directly\nsource ~/aws_mfa.sh\nThe aws_env function will: 1. Load credentials for the specified profile 2. Check if MFA is required for that profile 3. If MFA is needed, automatically call the MFA script 4. The MFA script will detect your user and prompt for MFA code 5. Generate and export temporary credentials\n\n\n\n$ aws_env smce-veda\n🔐 MFA required for profile: smce-veda\n👤 Authenticated as: john.doe\n📱 MFA device found: arn:aws:iam::123456789012:mfa/john.doe\n🔢 Enter your MFA code: 123456\n✅ Temporary credentials activated! Expires: 2024-01-01T12:00:00Z\n✅ Successfully switched to smce-veda environment!\n\n\n\n\nOnce authenticated, you can use AWS CLI commands normally:\n# List S3 buckets\naws s3 ls s3://nasa-disasters/\n\n# Get current identity\naws sts get-caller-identity\n\n\n\nTo clear your current MFA session:\nunset AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID\n\n\n\n\n\n\n\n\n\nSolution: Clear your current session:\nunset AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID\n\n\n\nSolutions: - Verify your AWS credentials are configured correctly - Check that your credentials have permission to call sts:GetCallerIdentity - Ensure you’re using the correct AWS profile (if using multiple profiles)\n\n\n\nSolutions: - Verify MFA is enabled on your IAM user - Check that your user has permission to call iam:ListMFADevices - Ensure the MFA device is properly attached to your user\n\n\n\nSolutions: - Verify the MFA code is correct and hasn’t expired - Check that your user has permission to call sts:GetSessionToken - Ensure your system clock is synchronized (MFA codes are time-based)\n\n\n\nSolution: Make sure to use source or the function:\n# Correct - runs in current shell\nsource ~/aws_mfa.sh\n\n# Wrong - runs in subshell\n~/aws_mfa.sh\n\n\n\n\n\n\n# View current identity\naws sts get-caller-identity\n\n# Check environment variables\nenv | grep AWS\n\n\n\n# Replace USERNAME with your IAM username\naws iam list-mfa-devices --user-name USERNAME\n\n\n\n# Test basic permissions\naws iam get-user\naws sts get-session-token --serial-number YOUR_MFA_ARN --token-code 123456\n\n\n\n\n\n\n\n\n\nNever Share MFA Tokens\n\nMFA tokens are time-sensitive but should still be kept private\nDon’t log or store MFA tokens in scripts\n\nRegular Credential Rotation\n# Create new access key\naws iam create-access-key --user-name YOUR_USERNAME\n\n# Delete old access key\naws iam delete-access-key --access-key-id OLD_ACCESS_KEY_ID --user-name YOUR_USERNAME\nSecure Credential Storage\n# Set restrictive permissions on AWS files\nchmod 600 ~/.aws/credentials\nchmod 600 ~/.aws/config\nchmod 700 ~/.aws\nUse Least Privilege\n\nOnly grant permissions necessary for your tasks\nConsider using AWS IAM roles when possible\n\n\n\n\n\n\nMultiple AWS Profiles If you use multiple AWS accounts, configure profiles in ~/.aws/credentials:\n[smce-veda]\naws_access_key_id = KEY1\naws_secret_access_key = SECRET1\n\n[veda-smce]\naws_access_key_id = KEY2\naws_secret_access_key = SECRET2\n\n[aq]\naws_access_key_id = KEY3\naws_secret_access_key = SECRET3\nFUN FACT: You can have different credentials opened within each terminal. This can alleviate having to re-authenticate for different accounts.\nSwitch profiles using the aws_env function:\n# Switch to a profile with automatic MFA handling\naws_env smce-veda\n\n# Switch to another profile\naws_env aq\nAutomate Common Tasks Create helper functions in your shell configuration:\n# Quick S3 listing\ns3ls() {\n    aws s3 ls \"s3://$1\"\n}\nSession Management Check if your session is still valid:\naws sts get-caller-identity &&gt;/dev/null && echo \"✅ Session valid\" || echo \"❌ Session expired\"\n\n\n\n\n\n\n\n\n\nNever Commit Credentials Add to .gitignore:\n# AWS credentials\n.aws/credentials\n.aws/config\n.env\n*.pem\nEnvironment Variables\n\nTemporary credentials are stored in environment variables\nThey’re only available in the current shell session\nClosing the terminal clears the credentials\n\nSession Duration\n\nDefault session duration is 12 hours (43200 seconds)\nSessions automatically expire and cannot be renewed\nMust generate new credentials after expiration\n\n\n\n\n\n\nVirtual MFA Best Practices\n\nUse reputable authenticator apps\nEnable cloud backup for MFA seeds\nKeep backup codes in secure location\n\nHardware MFA Best Practices\n\nStore device in secure location\nConsider having a backup MFA device\nTest device regularly\n\n\n\n\n\n\nUse VPN for Sensitive Operations\n\nConsider using VPN when accessing AWS from public networks\nBe aware of IP-based IAM policies\n\nAudit Trail\n\nEnable CloudTrail for API call logging\nRegularly review access patterns\nMonitor for unusual activity\n\n\n\n\n\n\n\n\nAWS MFA Documentation\nAWS CLI Configuration\nSTS GetSessionToken API\nIAM Best Practices\nAWS Security Best Practices\n\n\nLast Updated: 2024 Version: 2.0",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#table-of-contents",
+    "href": "AWS/aws-mfa-setup.html#table-of-contents",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Overview\nPrerequisites\nInitial Setup\nScript Installation\nUsage\nTroubleshooting\nBest Practices\nSecurity Considerations",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#overview",
+    "href": "AWS/aws-mfa-setup.html#overview",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Multi-Factor Authentication (MFA) adds an extra layer of security to your AWS account by requiring two forms of identification: 1. Something you know (your password/credentials) 2. Something you have (a time-based token from your MFA device)\n\n\n\n\nEnhanced Security: Temporary credentials automatically expire, reducing the risk if they’re compromised\nCompliance: Many organizations require MFA for production AWS access\nBest Practice: AWS recommends using temporary credentials instead of long-lived access keys\nSession Management: Temporary credentials can be scoped with specific permissions\n\n\n\n\nThe ~/aws_mfa.sh script is a lightweight utility that you call with aws_env to: - Automatically detect your current AWS user - Find your configured MFA device - Generate temporary 12-hour session credentials - Export them to your current shell environment - Optionally save them for use in Jupyter notebooks",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#prerequisites",
+    "href": "AWS/aws-mfa-setup.html#prerequisites",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "AWS CLI (version 2.x recommended)\n# Check if AWS CLI is installed\naws --version\n\n# Install AWS CLI on macOS\nbrew install awscli\n\n# Install AWS CLI on Linux\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\nBash Shell (standard on macOS and Linux)\n# Check bash version\nbash --version\nPython (optional, for Jupyter notebook integration)\n# Check Python installation\npython --version\n\n\n\n\n\nIAM User Account with:\n\nProgrammatic access enabled\nMFA device configured\nAppropriate permissions for your tasks\n\nMFA Device Setup\n\nVirtual MFA device (Google Authenticator, Authy, etc.)\nHardware MFA token (YubiKey, RSA SecurID, etc.)",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#initial-setup",
+    "href": "AWS/aws-mfa-setup.html#initial-setup",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Create or edit ~/.aws/credentials:\n[smce-veda]\naws_access_key_id = YOUR_ACCESS_KEY_ID\naws_secret_access_key = YOUR_SECRET_ACCESS_KEY\nNOTE: These credentials are obtained within the AWS console when you register for an AWS account. You must get approval for this account.\n\n\n\nCreate or edit ~/.aws/config:\n[smce-veda]\nregion = us-west-2\n\n\n\n\nLog into AWS Console\nNavigate to IAM → Users → Your Username\nSelect “Security credentials” tab\nClick “Manage” next to MFA devices\nFollow the setup wizard for your MFA device type\n\nNOTE: I’ve found that having ONLY the MFA through phone app (e.g., Google Authenticator) is the only way to make this work. If you select Passkey and have an MFA through phone, they seem to conflict and the steps outlined will not work.\n\n\n\n# Replace YOUR_USERNAME with your actual IAM username\naws iam list-mfa-devices --user-name YOUR_USERNAME\n\n# Output should show:\n# \"SerialNumber\": \"arn:aws:iam::123456789012:mfa/YOUR_USERNAME\"",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#script-installation",
+    "href": "AWS/aws-mfa-setup.html#script-installation",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Create the file ~/aws_mfa.sh:\n#!/bin/bash\n\n# 🔒 AWS MFA Credential Generator\n# This script creates temporary (12-hour) credentials using your MFA device\n# Requires terminal access for secure input\n# License: GPL 2 or higher\n\n# Check for terminal access\nif [ ! -t 0 ]; then\n  echo \"❌ Error: This script requires terminal access for secure input\" &gt;&2\n  return\nfi\n\n# Prevent token conflicts\nif [ -n \"$AWS_SESSION_TOKEN\" ]; then\n  echo \"⚠️  Active session detected! \n   To generate new credentials, clear your current session:\n   unset AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID\n   Then ensure you have valid profile credentials configured.\" &gt;&2\n  return\nfi\n\n# Identify current user\nidentity=$(aws sts get-caller-identity --output json)\nusername=$(echo -- \"$identity\" | sed -n 's!.*\"arn:aws:iam::.*:user/\\(.*\\)\".*!\\1!p')\n\nif [ -z \"$username\" ]; then\n  echo \"❌ Unable to identify user. Expected format:\n    arn:aws:iam::.....:user/YOUR_USERNAME\n  \nCurrent identity output:\n$identity\" &gt;&2\n  return\nfi\n\necho \"👤 Authenticated as: $username\" &gt;&2\n\n# Find MFA device\nmfa=$(aws iam list-mfa-devices --user-name \"$username\" --output json)\ndevice=$(echo -- \"$mfa\" | sed -n 's!.*\"SerialNumber\": \"\\(.*\\)\".*!\\1!p')\n\nif [ -z \"$device\" ]; then\n  echo \"❌ No MFA device found for user: $username\n  \nMFA device output:\n$mfa\" &gt;&2\n  return\nfi\n\necho \"📱 MFA device found: $device\" &gt;&2\n\n# Request MFA code\necho -n \"🔢 Enter your MFA code: \" &gt;&2\nread code\n\n# Generate temporary credentials\ntokens=$(aws sts get-session-token --serial-number \"$device\" --token-code $code --output json)\n\necho $tokens\n\n# Extract credentials\nsecret=$(echo -- \"$tokens\" | sed -n 's!.*\"SecretAccessKey\": \"\\(.*\\)\".*!\\1!p')\nsession=$(echo -- \"$tokens\" | sed -n 's!.*\"SessionToken\": \"\\(.*\\)\".*!\\1!p')\naccess=$(echo -- \"$tokens\" | sed -n 's!.*\"AccessKeyId\": \"\\(.*\\)\".*!\\1!p')\nexpire=$(echo -- \"$tokens\" | sed -n 's!.*\"Expiration\": \"\\(.*\\)\".*!\\1!p')\n\nif [ -z \"$secret\" -o -z \"$session\" -o -z \"$access\" ]; then\n  echo \"❌ Failed to generate temporary credentials\n  \nToken response:\n$tokens\" &gt;&2\n  return\nfi\n\n# Export credentials to environment\nexport AWS_SESSION_TOKEN=$session\nexport AWS_SECRET_ACCESS_KEY=$secret\nexport AWS_ACCESS_KEY_ID=$access\n\necho \"✅ Temporary credentials activated! Expires: $expire\" &gt;&2\n\n# Save credentials to .env file for Jupyter notebooks (optional)\n# This will save the new credentials to a .env file in the current directory where you called \"aws_env\"\npython ~/set_aws_creds.py\n\n\n\nchmod +x ~/aws_mfa.sh\n\n\n\nAdd to your ~/.zshrc (or ~/.bashrc):\n##################### CREATE AWS temporary credentials\n\n# 🎯 AWS Environment Switcher\n# Seamlessly switch between AWS accounts with MFA support\naws_env() {\n  # Clear any existing session\n  unset AWS_SESSION_TOKEN\n\n  # Load credentials for the specified profile\n  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile $1)\n  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile $1)\n  export AWS_DEFAULT_REGION=$(aws configure get region --profile $1)\n\n  # Profiles requiring MFA authentication\n  MFA_PROFILES=(\"veda-smce\" \"smce-veda\" \"aq\" \"uah-veda\")\n\n  # Check if MFA is required for this profile\n  if [[ \" ${MFA_PROFILES[@]} \" =~ \" ${1} \" ]]; then\n    echo \"🔐 MFA required for profile: $1\"\n    source ~/aws_mfa.sh\n  fi\n\n  echo \"✅ Successfully switched to $1 environment!\"\n}\nAlternatively, if you organize your shell configuration, you can add this to ~/.zshrc.d/functions or similar.\nReload your shell configuration:\nsource ~/.zshrc  # or source ~/.bashrc\n\n\n\nIf you use Jupyter notebooks, create ~/set_aws_creds.py:\n#!/usr/bin/env python\nimport os\n\n# Get credentials from environment\naccess_key = os.environ.get('AWS_ACCESS_KEY_ID')\nsecret_key = os.environ.get('AWS_SECRET_ACCESS_KEY')\nsession_token = os.environ.get('AWS_SESSION_TOKEN')\n\nif access_key and secret_key and session_token:\n    # Save to .env file for Jupyter notebooks\n    with open(os.path.expanduser('~/.env'), 'w') as f:\n        f.write(f'AWS_ACCESS_KEY_ID={access_key}\\n')\n        f.write(f'AWS_SECRET_ACCESS_KEY={secret_key}\\n')\n        f.write(f'AWS_SESSION_TOKEN={session_token}\\n')\n    print(\"✅ Credentials saved to ~/.env for Jupyter notebooks\")\nelse:\n    print(\"❌ No credentials found in environment\")",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#usage",
+    "href": "AWS/aws-mfa-setup.html#usage",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "# Switch to a profile with MFA support\naws_env smce-veda\n\n# For profiles without MFA requirement\naws_env other-profile\n\n# Or source the MFA script directly\nsource ~/aws_mfa.sh\nThe aws_env function will: 1. Load credentials for the specified profile 2. Check if MFA is required for that profile 3. If MFA is needed, automatically call the MFA script 4. The MFA script will detect your user and prompt for MFA code 5. Generate and export temporary credentials\n\n\n\n$ aws_env smce-veda\n🔐 MFA required for profile: smce-veda\n👤 Authenticated as: john.doe\n📱 MFA device found: arn:aws:iam::123456789012:mfa/john.doe\n🔢 Enter your MFA code: 123456\n✅ Temporary credentials activated! Expires: 2024-01-01T12:00:00Z\n✅ Successfully switched to smce-veda environment!\n\n\n\n\nOnce authenticated, you can use AWS CLI commands normally:\n# List S3 buckets\naws s3 ls s3://nasa-disasters/\n\n# Get current identity\naws sts get-caller-identity\n\n\n\nTo clear your current MFA session:\nunset AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#troubleshooting",
+    "href": "AWS/aws-mfa-setup.html#troubleshooting",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Solution: Clear your current session:\nunset AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID\n\n\n\nSolutions: - Verify your AWS credentials are configured correctly - Check that your credentials have permission to call sts:GetCallerIdentity - Ensure you’re using the correct AWS profile (if using multiple profiles)\n\n\n\nSolutions: - Verify MFA is enabled on your IAM user - Check that your user has permission to call iam:ListMFADevices - Ensure the MFA device is properly attached to your user\n\n\n\nSolutions: - Verify the MFA code is correct and hasn’t expired - Check that your user has permission to call sts:GetSessionToken - Ensure your system clock is synchronized (MFA codes are time-based)\n\n\n\nSolution: Make sure to use source or the function:\n# Correct - runs in current shell\nsource ~/aws_mfa.sh\n\n# Wrong - runs in subshell\n~/aws_mfa.sh\n\n\n\n\n\n\n# View current identity\naws sts get-caller-identity\n\n# Check environment variables\nenv | grep AWS\n\n\n\n# Replace USERNAME with your IAM username\naws iam list-mfa-devices --user-name USERNAME\n\n\n\n# Test basic permissions\naws iam get-user\naws sts get-session-token --serial-number YOUR_MFA_ARN --token-code 123456",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#best-practices",
+    "href": "AWS/aws-mfa-setup.html#best-practices",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Never Share MFA Tokens\n\nMFA tokens are time-sensitive but should still be kept private\nDon’t log or store MFA tokens in scripts\n\nRegular Credential Rotation\n# Create new access key\naws iam create-access-key --user-name YOUR_USERNAME\n\n# Delete old access key\naws iam delete-access-key --access-key-id OLD_ACCESS_KEY_ID --user-name YOUR_USERNAME\nSecure Credential Storage\n# Set restrictive permissions on AWS files\nchmod 600 ~/.aws/credentials\nchmod 600 ~/.aws/config\nchmod 700 ~/.aws\nUse Least Privilege\n\nOnly grant permissions necessary for your tasks\nConsider using AWS IAM roles when possible\n\n\n\n\n\n\nMultiple AWS Profiles If you use multiple AWS accounts, configure profiles in ~/.aws/credentials:\n[smce-veda]\naws_access_key_id = KEY1\naws_secret_access_key = SECRET1\n\n[veda-smce]\naws_access_key_id = KEY2\naws_secret_access_key = SECRET2\n\n[aq]\naws_access_key_id = KEY3\naws_secret_access_key = SECRET3\nFUN FACT: You can have different credentials opened within each terminal. This can alleviate having to re-authenticate for different accounts.\nSwitch profiles using the aws_env function:\n# Switch to a profile with automatic MFA handling\naws_env smce-veda\n\n# Switch to another profile\naws_env aq\nAutomate Common Tasks Create helper functions in your shell configuration:\n# Quick S3 listing\ns3ls() {\n    aws s3 ls \"s3://$1\"\n}\nSession Management Check if your session is still valid:\naws sts get-caller-identity &&gt;/dev/null && echo \"✅ Session valid\" || echo \"❌ Session expired\"",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#security-considerations",
+    "href": "AWS/aws-mfa-setup.html#security-considerations",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "Never Commit Credentials Add to .gitignore:\n# AWS credentials\n.aws/credentials\n.aws/config\n.env\n*.pem\nEnvironment Variables\n\nTemporary credentials are stored in environment variables\nThey’re only available in the current shell session\nClosing the terminal clears the credentials\n\nSession Duration\n\nDefault session duration is 12 hours (43200 seconds)\nSessions automatically expire and cannot be renewed\nMust generate new credentials after expiration\n\n\n\n\n\n\nVirtual MFA Best Practices\n\nUse reputable authenticator apps\nEnable cloud backup for MFA seeds\nKeep backup codes in secure location\n\nHardware MFA Best Practices\n\nStore device in secure location\nConsider having a backup MFA device\nTest device regularly\n\n\n\n\n\n\nUse VPN for Sensitive Operations\n\nConsider using VPN when accessing AWS from public networks\nBe aware of IP-based IAM policies\n\nAudit Trail\n\nEnable CloudTrail for API call logging\nRegularly review access patterns\nMonitor for unusual activity",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/aws-mfa-setup.html#additional-resources",
+    "href": "AWS/aws-mfa-setup.html#additional-resources",
+    "title": "AWS MFA Authentication Setup and Usage Guide",
+    "section": "",
+    "text": "AWS MFA Documentation\nAWS CLI Configuration\nSTS GetSessionToken API\nIAM Best Practices\nAWS Security Best Practices\n\n\nLast Updated: 2024 Version: 2.0",
+    "crumbs": [
+      "AWS",
+      "AWS MFA Authentication Setup and Usage Guide"
+    ]
+  },
+  {
+    "objectID": "aws.html",
+    "href": "aws.html",
+    "title": "AWS Authentication and S3 Operations Guides",
+    "section": "",
+    "text": "Welcome to the homepage for AWS access configuration and data management resources.\nThis collection of guides provides step-by-step instructions for securely managing AWS authentication (using MFA or SSO) and for operating with Amazon S3 using the AWS Command Line Interface (CLI).\nEach guide is designed to help users configure secure AWS environments, automate access through scripts or profiles, and perform efficient data operations across AWS services.",
+    "crumbs": [
+      "AWS"
+    ]
+  },
+  {
+    "objectID": "aws.html#aws-access-and-security-configuration-guides",
+    "href": "aws.html#aws-access-and-security-configuration-guides",
+    "title": "AWS Authentication and S3 Operations Guides",
+    "section": "AWS Access and Security Configuration Guides",
+    "text": "AWS Access and Security Configuration Guides\nTutorial-style guides demonstrating secure authentication methods and credential management for AWS users.\n\nAWS Multi-Factor Authentication (MFA) Setup and Usage\n\nGuide\nLearn how to enable and use AWS MFA for secure, temporary session credentials.\nThis guide explains how to:\nConfigure MFA devices (virtual or hardware)\n\nCreate and use the aws_mfa.sh script for automatic token-based authentication\n\nIntegrate temporary credentials into your shell or Jupyter notebooks\n\nImplement best practices for session management and credential security\n\n\nAWS Single Sign-On (SSO) Configuration with AWS Identity Center\n\nGuide\nStep-by-step instructions for setting up and using AWS Identity Center (formerly AWS SSO) for passwordless, secure access.\nThis guide includes:\nAWS CLI SSO configuration walkthrough\n\nUsing browser-based authentication\n\nManaging multiple AWS accounts and IAM roles\n\nDaily login and logout workflow for SSO sessions\n\nBest practices for avoiding plain-text credentials and ensuring secure session management",
+    "crumbs": [
+      "AWS"
+    ]
+  },
+  {
+    "objectID": "aws.html#aws-data-operations-and-management",
+    "href": "aws.html#aws-data-operations-and-management",
+    "title": "AWS Authentication and S3 Operations Guides",
+    "section": "AWS Data Operations and Management",
+    "text": "AWS Data Operations and Management\nPractical reference for working with Amazon S3 using the AWS CLI, including data upload, access control, and cost optimization.\n\nAWS S3 Commands and Operations Guide\n\nGuide\nA complete reference of commonly used AWS S3 CLI commands for bucket and object management.\nKey sections include:\nCLI installation and configuration\n\nFile operations (cp, mv, rm, sync)\n\nRecursive uploads and downloads\n\nAccess control, encryption, and bucket policies\n\nPerformance and cost management techniques\n\nSecurity best practices and troubleshooting methods",
+    "crumbs": [
+      "AWS"
+    ]
+  },
+  {
+    "objectID": "aws.html#best-practices-summary",
+    "href": "aws.html#best-practices-summary",
+    "title": "AWS Authentication and S3 Operations Guides",
+    "section": "Best Practices Summary",
+    "text": "Best Practices Summary\nWhen working with AWS authentication and S3: - Use temporary credentials through MFA or SSO — avoid storing permanent keys.\n- Enable encryption and versioning for critical S3 data.\n- Regularly rotate access keys and restrict IAM permissions by least privilege.\n- Test access with aws sts get-caller-identity and validate your session before running commands.\n- Review CloudTrail and CloudWatch logs to monitor activity.",
+    "crumbs": [
+      "AWS"
+    ]
+  },
+  {
+    "objectID": "aws.html#community-contributed-scripts-and-tools",
+    "href": "aws.html#community-contributed-scripts-and-tools",
+    "title": "AWS Authentication and S3 Operations Guides",
+    "section": "Community-Contributed Scripts and Tools",
+    "text": "Community-Contributed Scripts and Tools\nCommunity utilities and automation scripts for enhanced AWS usability may be added here in the future.\nThese will include: - MFA and SSO integration helpers\n- Automated credential refreshers\n- Advanced S3 sync and cost-analysis scripts",
+    "crumbs": [
+      "AWS"
+    ]
+  },
+  {
+    "objectID": "aws.html#contact",
+    "href": "aws.html#contact",
+    "title": "AWS Authentication and S3 Operations Guides",
+    "section": "Contact",
+    "text": "Contact\nFor questions, feedback, or contribution inquiries, please contact your AWS system administrator or submit requests through your organization’s AWS support channel.\nAlways follow internal security policies and AWS best practices when managing credentials or data access.",
+    "crumbs": [
+      "AWS"
+    ]
+  },
+  {
+    "objectID": "index2.html",
+    "href": "index2.html",
+    "title": "NASA Disasters: Documentation",
+    "section": "",
+    "text": "The U.S. Greenhouse Gas (GHG) Center provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.\nOn this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index2.html#welcome",
+    "href": "index2.html#welcome",
+    "title": "NASA Disasters: Documentation",
+    "section": "",
+    "text": "The U.S. Greenhouse Gas (GHG) Center provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.\nOn this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index2.html#contents",
+    "href": "index2.html#contents",
+    "title": "NASA Disasters: Documentation",
+    "section": "Contents",
+    "text": "Contents\n\nServices provided for accessing and analyzing the US GHG Center datasets, such as the JupyterHub environment for interactive computing.\nDataset usage examples, e.g. for the Wetland Methane Emissions from the LPJ-EOSIM model dataset, that shows how to load the dataset in Python in JupyterHub.\nDataset transformation scripts, which document the code used to transform datasets for display in the US GHG Center. An example is the ODIAC Fossil Fuel CO₂ Emissions dataset transformation code.\nData processing and verification reports that openly present the process we used to check and verify that any transformation did not alter the original source data. An example is the GOSAT-based Top-down Total and Natural Methane Emissions dataset.\nData Flow Diagrams, which provide a high level summary of how each dataset was integrated into the US GHG Center. See the MiCASA Land Carbon Flux Flow Diagram as an example.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index2.html#contact",
+    "href": "index2.html#contact",
+    "title": "NASA Disasters: Documentation",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
+    "crumbs": [
+      "Welcome"
+    ]
+  }
+]

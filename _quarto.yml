@@ -14,7 +14,7 @@ website:
     left: "&copy; CC-By US GHG Center, 2022-2023"
 
   sidebar:
-    logo: "logo/ghgc-logo-light.svg"
+    logo: "logo/disasters_logo.png"
     pinned: true
     align: center
     tools:
@@ -32,6 +32,14 @@ website:
     search: true
     collapse-level: 1
     contents:
+      - href: index2.qmd
+        text: Welcome
+      - section: aws.qmd
+        text: AWS
+        contents:
+          - AWS/AWS_SSO_Setup_Guide.qmd
+          - AWS/aws-mfa-setup.qmd
+          - AWS/aws-s3-commands-guide.qmd
       - href: index.qmd
         text: Welcome
       - section: User Services
@@ -149,7 +157,7 @@ website:
           - text: "U.S. Gridded Anthropogenic Methane Emissions Inventory"
             href: data_workflow/epa-ch4emission-grid-v2express_Data_Flow.qmd
           - data_workflow/vulcan-ffco2-yeargrid-v4_Data_Flow.qmd  
-          - data_workflow/lpjeosim-wetlandch4-grid-v1_Data_Flow.qmd             
+          - data_workflow/lpjeosim-wetlandch4-grid-v1_Data_Flow.qmd        
   
 format:
   html:
