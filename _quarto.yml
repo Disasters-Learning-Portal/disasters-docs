@@ -40,6 +40,11 @@ website:
           - AWS/AWS_SSO_Setup_Guide.qmd
           - AWS/aws-mfa-setup.qmd
           - AWS/aws-s3-commands-guide.qmd
+      - section: git-github-comprehensive-guide.qmd
+        text: GitHub
+        contents:
+          - text: "The VEDA Project"
+            href: GitHub/veda-preview.qmd
       - href: index.qmd
         text: Welcome
       - section: User Services
