@@ -1,0 +1,132 @@
+## Resources & Links
+
+### Official Documentation
+
+- **Git Documentation**: [https://git-scm.com/doc](https://git-scm.com/doc)
+- **GitHub Docs**: [https://docs.github.com](https://docs.github.com)
+- **GitHub CLI Manual**: [https://cli.github.com/manual](https://cli.github.com/manual)
+- **GitHub Learning Lab**: [https://lab.github.com](https://lab.github.com)
+
+### Interactive Learning
+
+- **Learn Git Branching**: [https://learngitbranching.js.org](https://learngitbranching.js.org)
+- **GitHub Skills**: [https://skills.github.com](https://skills.github.com)
+- **Atlassian Git Tutorial**: [https://www.atlassian.com/git/tutorials](https://www.atlassian.com/git/tutorials)
+- **Oh My Git! (Game)**: [https://ohmygit.org](https://ohmygit.org)
+
+### Cheat Sheets
+
+- **GitHub Git Cheat Sheet**: [https://education.github.com/git-cheat-sheet-education.pdf](https://education.github.com/git-cheat-sheet-education.pdf)
+- **Interactive Git Cheat Sheet**: [https://ndpsoftware.com/git-cheatsheet.html](https://ndpsoftware.com/git-cheatsheet.html)
+- **GitHub CLI Cheat Sheet**: [https://github.com/cli/cli#commands](https://github.com/cli/cli#commands)
+
+### Advanced Topics
+
+- **Pro Git Book (Free)**: [https://git-scm.com/book](https://git-scm.com/book)
+- **Git Flow**: [https://nvie.com/posts/a-successful-git-branching-model](https://nvie.com/posts/a-successful-git-branching-model)
+- **Conventional Commits**: [https://www.conventionalcommits.org](https://www.conventionalcommits.org)
+- **Semantic Versioning**: [https://semver.org](https://semver.org)
+
+### GUI Tools
+
+- **GitHub Desktop**: [https://desktop.github.com](https://desktop.github.com)
+- **SourceTree**: [https://www.sourcetreeapp.com](https://www.sourcetreeapp.com)
+- **GitKraken**: [https://www.gitkraken.com](https://www.gitkraken.com)
+- **Tower**: [https://www.git-tower.com](https://www.git-tower.com)
+
+### VS Code Extensions
+
+- **GitLens**: Enhanced Git capabilities
+- **Git Graph**: Visualize branch structure
+- **GitHub Pull Requests**: Manage PRs from VS Code
+- **Git History**: View and search git log
+
+### Troubleshooting Resources
+
+- **GitHub Status**: [https://www.githubstatus.com](https://www.githubstatus.com)
+- **Stack Overflow Git Tag**: [https://stackoverflow.com/questions/tagged/git](https://stackoverflow.com/questions/tagged/git)
+- **GitHub Community Forum**: [https://github.community](https://github.community)
+
+### YouTube Channels
+
+- **GitHub YouTube**: [https://youtube.com/github](https://youtube.com/github)
+- **The Net Ninja Git Tutorial**: Comprehensive video series
+- **Traversy Media Git Crash Course**: Quick overview
+
+### Markdown Resources
+
+- **GitHub Flavored Markdown**: [https://github.github.com/gfm](https://github.github.com/gfm)
+- **Markdown Guide**: [https://www.markdownguide.org](https://www.markdownguide.org)
+- **Shields.io (Badges)**: [https://shields.io](https://shields.io)
+
+---
+
+## Appendix: Quick Setup Script
+
+Save this as `setup-git-github.sh` and run to quickly set up your environment:
+
+```bash
+#!/bin/bash
+
+echo "🚀 Git and GitHub Setup Script for macOS"
+echo "======================================="
+
+# Install Homebrew if not present
+if ! command -v brew &> /dev/null; then
+    echo "📦 Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Install Git
+echo "📦 Installing Git..."
+brew install git
+
+# Install GitHub CLI
+echo "📦 Installing GitHub CLI..."
+brew install gh
+
+# Git configuration
+echo "⚙️ Configuring Git..."
+read -p "Enter your name: " name
+read -p "Enter your email: " email
+
+git config --global user.name "$name"
+git config --global user.email "$email"
+git config --global init.defaultBranch main
+git config --global color.ui auto
+
+# Generate SSH key
+echo "🔑 Generating SSH key..."
+ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N ""
+
+# Start SSH agent and add key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Copy SSH key to clipboard
+pbcopy < ~/.ssh/id_ed25519.pub
+echo "📋 SSH public key copied to clipboard!"
+
+# GitHub CLI authentication
+echo "🔐 Authenticating with GitHub..."
+gh auth login
+
+echo "✅ Setup complete!"
+echo ""
+echo "Next steps:"
+echo "1. Go to GitHub Settings → SSH Keys"
+echo "2. Add a new SSH key (already in clipboard)"
+echo "3. Test with: ssh -T git@github.com"
+```
+
+Make executable and run:
+```bash
+chmod +x setup-git-github.sh
+./setup-git-github.sh
+```
+---
+
+*Last Updated: 2024*
+*Version: 1.0*
+
+*This guide is a living document. Contribute improvements at: [your-repo-url]*

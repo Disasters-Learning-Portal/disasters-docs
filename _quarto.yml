@@ -4,14 +4,14 @@ project:
 website:
   page-navigation: true
   back-to-top-navigation: true
-  title: "U.S. Greenhouse Gas Center Documentation"
-  site-url: "https://us-ghg-center.github.io/ghgc-docs"
-  repo-url: https://github.com/us-ghg-center/ghgc-docs
+  title: "NASA Disasters Documentation"
+  site-url: "https://us-ghg-center.github.io/ghgc-docs" #should I change these
+  repo-url: https://github.com/us-ghg-center/ghgc-docs  
   repo-actions: [edit, issue]
 
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/)."
-    left: "&copy; CC-By US GHG Center, 2022-2023"
+    left: "&copy; CC-By US GHG Center, 2022-2023"  #how should I change this
 
   sidebar:
     logo: "logo/disasters_logo.png"
@@ -22,10 +22,10 @@ website:
       #   href: https://www.earthdata.nasa.gov/esds/veda
       #   text: "earthdata.nasa.gov/esds/veda"
       - icon: globe-americas
-        href: https://earth.gov/ghgcenter
-        text: "US GHG Center Website"
+        href: https://disasters.openveda.cloud/
+        text: "NASA Disasters Portal"
       - icon: github
-        href: https://github.com/us-ghg-center/ghgc-docs
+        href: https://github.com/Disasters-Learning-Portal
         text: "Repository home"
 
     style: "docked"
@@ -45,6 +45,14 @@ website:
         contents:
           - text: "The VEDA Project"
             href: GitHub/veda-preview.qmd
+          - GitHub/setup.qmd
+          - GitHub/commands.qmd
+          - GitHub/resources.qmd
+      - section: jupyterhub.qmd
+        text: JupyterHub
+        contents:
+          - Jupyterhub/jupyterhub-training-guide.qmd
+          - Jupyterhub/setup-disaster-repo.qmd
       - href: index.qmd
         text: Welcome
       - section: User Services
