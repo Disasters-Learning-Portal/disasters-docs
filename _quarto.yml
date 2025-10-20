@@ -55,6 +55,11 @@ website:
           - Jupyterhub/setup-disaster-repo.qmd
           - Jupyterhub/convert_to_geotiff.qmd
           - Jupyterhub/simple_disaster_template.ipynb
+      -  section: workflow2.qmd
+         text: Data Workflow Diagrams
+         contents:
+          - data_workflow2/NRT_data_download.qmd
+          - data_workflow2/NRT_directory_structure.qmd
       - href: index.qmd
         text: Welcome
       - section: User Services
