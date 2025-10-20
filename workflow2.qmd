@@ -1,0 +1,13 @@
+---
+title: "NASA Disasters: Data Flow Diagrams"
+---
+
+Welcome to the homepage for [NASA Disasters](https://appliedsciences.nasa.gov/what-we-do/disasters) data flow diagrams. These diagrams summarize the process of how to find, download, and process data for NASA Disasters.
+
+Click on a dataset name to view the data flow diagram for that dataset.
+
+[View the NASA Disasters Resources](https://appliedsciences.nasa.gov/what-we-do/disasters/practitioner-resources#portal)
+
+- [NRT Data Download](data_workflow2/NRT_data_download.qmd)
+
+- [NRT Directory Structure](data_workflow2/NRT_directory_structure.qmd)

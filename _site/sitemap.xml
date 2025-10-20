@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/Jupyterhub/jupyterhub-training-guide.html</loc>
-    <lastmod>2025-10-16T17:20:22.946Z</lastmod>
+    <lastmod>2025-10-20T22:17:08.579Z</lastmod>
   </url>
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/GitHub/setup.html</loc>
@@ -71,5 +71,29 @@
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/Jupyterhub/convert_to_geotiff.html</loc>
     <lastmod>2025-10-17T19:05:36.860Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/data_workflow/eccodarwin-co2flux-monthgrid-v5_Data_Flow.html</loc>
+    <lastmod>2025-10-13T20:00:41.798Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/data_workflow2/test.html</loc>
+    <lastmod>2025-10-20T18:14:06.514Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/data_workflow2/NRT_directory_structure.html</loc>
+    <lastmod>2025-10-20T21:52:55.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/data_workflow2/NRT_data_download.html</loc>
+    <lastmod>2025-10-20T21:52:50.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/workflow2.html</loc>
+    <lastmod>2025-10-20T22:00:22.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/jupyterhub.html</loc>
+    <lastmod>2025-10-20T22:13:44.216Z</lastmod>
   </url>
 </urlset>

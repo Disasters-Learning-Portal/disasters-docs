@@ -55,7 +55,7 @@ The **Disasters Hub** (https://hub.disasters.2i2c.cloud/) is a specialized Jupyt
 
 1. **Navigate to the Hub**
    - Open your web browser (Chrome, Firefox, Safari, or Edge recommended)
-   - Go to: https://hub.disasters.2i2c.cloud/
+   - Go to: [https://hub.disasters.2i2c.cloud/](https://hub.disasters.2i2c.cloud/)
    - Bookmark this URL for easy access
 
 2. **Authentication**

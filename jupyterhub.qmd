@@ -1,0 +1,33 @@
+# JupyterHub Training Guide - Disasters Hub
+
+---
+
+## Introduction
+
+### What is JupyterHub?
+
+JupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:
+
+- **Access powerful computing resources** through your web browser
+- **Write and execute code** in Python, R, Julia, and other languages
+- **Visualize data** with interactive plots and charts
+- **Collaborate** with team members on shared projects
+- **Work from anywhere** without local setup requirements
+
+### The Disasters Hub
+
+The [Disasters Hub](https://hub.disasters.2i2c.cloud/) is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:
+
+- Pre-configured environments for geospatial analysis
+- Access to disaster-related datasets
+- Collaboration tools for response teams
+- Integration with cloud storage services
+- Scalable computing resources
+
+### Key Benefits
+
+✅ **No Installation Required** - Everything runs in your browser  
+✅ **Pre-configured Environments** - Common packages already installed  
+✅ **Persistent Storage** - Your work is saved between sessions  
+✅ **Collaboration Ready** - Share notebooks with team members  
+✅ **Scalable Resources** - Access to GPU and high-memory instances when needed  
