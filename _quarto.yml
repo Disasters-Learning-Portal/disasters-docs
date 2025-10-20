@@ -57,10 +57,20 @@ website:
           - Jupyterhub/simple_disaster_template.ipynb
       - href: index.qmd
         text: Welcome
+      - section: Documentation
+        contents:
+          - text: "Quarto Guide for Beginners"
+            href: quarto-guide.qmd
       - section: User Services
         contents:
           - services/apis.qmd
           - services/jupyterhub.qmd
+      - section: Presentations
+        contents:
+          - text: "Disasters Logo and Template Overview"
+            href: Presentations/disasters-powerpoint-template.qmd
+          - text: "AWS and Grafana Monitoring Tutorial"
+            href: Presentations/aws-grafana-tutorial.qmd
       # - href: datausage.qmd
       #   text: Data Usage Notebooks   
       # - href: datatransformation.qmd
