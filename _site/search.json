@@ -1391,5 +1391,203 @@
       "GitHub",
       "Resources & Links"
     ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html",
+    "href": "Jupyterhub/simple_disaster_template.html",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "",
+    "text": "This simplified notebook converts disaster satellite imagery to Cloud Optimized GeoTIFFs (COGs) with just a few cells.",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#features",
+    "href": "Jupyterhub/simple_disaster_template.html#features",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "✨ Features",
+    "text": "✨ Features\n\nSee files first - List S3 files before configuring\nSmart configuration - Define filename functions after seeing actual files\nAuto-discovery - Automatically categorizes your files\nSimple processing - Just run the cells in order\n\n\n\n🚀 Launch in VEDA JupyterHub (requires access)\n\n\nTo obtain credentials to VEDA Hub,  follow this link for more information.\n\n\nDisclaimer: it is highly recommended to run a tutorial within NASA VEDA JupyterHub, which already includes functions for processing and visualizing data specific to VEDA stories. Running the tutorial outside of the VEDA JupyterHub may lead to errors, specifically related to EarthData authentication. Additionally, it is recommended to use the Pangeo workspace within the VEDA JupyterHub, since certain packages relevant to this tutorial are already installed.\n\n\nIf you do not have a VEDA Jupyterhub Account you can launch this notebook on your local environment using MyBinder by clicking the icon below.",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#step-1-basic-configuration",
+    "href": "Jupyterhub/simple_disaster_template.html#step-1-basic-configuration",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "📋 Step 1: Basic Configuration",
+    "text": "📋 Step 1: Basic Configuration\nSet your event details and S3 paths:\n\n# ========================================\n# INPUTS\n# ========================================\n\n# S3 Paths\nBUCKET = 'nasa-disasters'    # S3 bucket (DO NOT CHANGE)\nDESTINATION_BASE = 'drcs_activations_new'  # Where to save COGs in S3 bucket (DO NOT CHANGE)\nGEOTIFF_DIR = 'geotiffs_to_convert' # This is where all non-converted files should be placed\n\n\n# Event Details\nSATELLITE_NAME = '202408_TropicalStorm_Debby'  # Your sensor or product name (e.g, Sentinel-1, Planet, Landsat)\nSUB_PRODUCT_NAME = 'landsat8'         # Sub-directories within PRODUCT_NAME (RGB, trueColor, SWIR, etc.). Can leave blank and it will read from PRODUCT_NAME.\nSOURCE_PATH = f'{GEOTIFF_DIR}/{SATELLITE_NAME}/{SUB_PRODUCT_NAME}'      # Where your files are\n\n\n# Processing Options\nOVERWRITE = False      # Set to True to replace existing files\nVERIFY = True          # Set to True to verify results after processing\nSAVE_RESULTS = True    # Set to False to skip saving results CSV to /output directory\n\nprint(f\"Event: {EVENT_NAME}\")\nprint(f\"Source: s3://{BUCKET}/{SOURCE_PATH}\")\nprint(f\"Destination: s3://{BUCKET}/{DESTINATION_BASE}/\")\n\nEvent: 202408_TropicalStorm_Debby\nSource: s3://nasa-disasters/geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8\nDestination: s3://nasa-disasters/drcs_activations_new/",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#step-2-connect-to-s3-and-list-files",
+    "href": "Jupyterhub/simple_disaster_template.html#step-2-connect-to-s3-and-list-files",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "🔍 Step 2: Connect to S3 and List Files",
+    "text": "🔍 Step 2: Connect to S3 and List Files\nLet’s see what files are available before configuring filename transformations:\n\n# Import necessary modules\nimport sys\nimport os\nfrom pathlib import Path\n\n# Add parent directory to path\nsys.path.insert(0, str(Path('..').resolve()))\n\n# Import S3 operations\nfrom core.s3_operations import (\n    initialize_s3_client,\n    list_s3_files,\n    get_file_size_from_s3\n)\n\n# Initialize S3 client\nprint(\"🌐 Connecting to S3...\")\ns3_client, _ = initialize_s3_client(bucket_name=BUCKET, verbose=False)\n\nif s3_client:\n    print(\"✅ Connected to S3\\n\")\n    \n    # List all TIF files\n    print(f\"📂 Files in s3://{BUCKET}/{SOURCE_PATH}:\")\n    print(\"=\"*60)\n    \n    files = list_s3_files(s3_client, BUCKET, SOURCE_PATH, suffix='.tif')\n    \n    if files:\n        print(f\"Found {len(files)} .tif files:\\n\")\n        for i, file_path in enumerate(files[:10], 1):  # Show first 10\n            filename = os.path.basename(file_path)\n            try:\n                size_gb = get_file_size_from_s3(s3_client, BUCKET, file_path)\n                print(f\"{i:2}. {filename:&lt;60} ({size_gb:.2f} GB)\")\n            except:\n                print(f\"{i:2}. {filename}\")\n        \n        if len(files) &gt; 10:\n            print(f\"\\n... and {len(files) - 10} more files\")\n        \n        print(\"\\n\" + \"=\"*60)\n        print(\"\\n💡 Use this information to create filename functions in Step 3\")\n    else:\n        print(\"⚠️ No .tif files found in the specified path.\")\n        print(\"   Check your SOURCE_PATH configuration.\")\nelse:\n    print(\"❌ Could not connect to S3. Check your AWS credentials.\")\n    files = []\n\n🌐 Connecting to S3...\n✅ Connected to S3\n\n📂 Files in s3://nasa-disasters/geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8:\n============================================================\n⚠️ No .tif files found in the specified path.\n   Check your SOURCE_PATH configuration.",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#step-3a-define-categorization-and-filename-transformations",
+    "href": "Jupyterhub/simple_disaster_template.html#step-3a-define-categorization-and-filename-transformations",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "🏷️ Step 3a: Define Categorization and Filename Transformations",
+    "text": "🏷️ Step 3a: Define Categorization and Filename Transformations\nBased on the files you see above, configure: 1. Categorization patterns - Regex patterns to identify file types 2. Filename functions - How to transform filenames 3. Output directories - Where each category should be saved\n\n# ========================================\n# CATEGORIZATION AND OUTPUT CONFIGURATION\n# ========================================\n\nimport re\n\n# STEP 1: Define how to extract dates from filenames\ndef extract_date_from_filename(filename):\n    \"\"\"Extract date from filename in YYYYMMDD format.\"\"\"\n    dates = re.findall(r'\\d{8}', filename)\n    if dates:\n        date_str = dates[0]\n        return f\"{date_str[0:4]}-{date_str[4:6]}-{date_str[6:8]}\"\n    return None\n\n# STEP 2: Define filename transformation functions for each category\ndef create_truecolor_filename(original_path, event_name):\n    \"\"\"Create filename for trueColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n    \n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\ndef create_colorinfrared_filename(original_path, event_name):\n    \"\"\"Create filename for colorInfrared products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n    \n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\ndef create_naturalcolor_filename(original_path, event_name):\n    \"\"\"Create filename for naturalColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n    \n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\n# STEP 3: Configure categorization patterns (REQUIRED)\n# These regex patterns determine which files belong to which category\nCATEGORIZATION_PATTERNS = {\n    'trueColor': r'trueColor|truecolor|true_color',\n    'colorInfrared': r'colorInfrared|colorIR|color_infrared',\n    'naturalColor': r'naturalColor|natural_color',\n    # Add patterns for ALL file types you want to process\n    # Files not matching any pattern will be skipped with a warning\n}\n\n# STEP 4: Map categories to filename transformation functions\nFILENAME_CREATORS = {\n    'trueColor': create_truecolor_filename,\n    'colorInfrared': create_colorinfrared_filename,\n    'naturalColor': create_naturalcolor_filename,\n    # Must have an entry for each category in CATEGORIZATION_PATTERNS\n}\n\n# STEP 5: Specify output directories for each category\nOUTPUT_DIRS = {\n    'trueColor': 'Landsat/trueColor',\n    'colorInfrared': 'Landsat/colorIR',\n    'naturalColor': 'Landsat/naturalColor',\n    # Must have an entry for each category in CATEGORIZATION_PATTERNS\n}\n\n# OPTIONAL: Specify no-data values (None = auto-detect)\nNODATA_VALUES = {\n    'trueColor': 0,\n    'colorInfrared': 0,\n    'naturalColor': 0\n    # Leave empty or set to None for auto-detection\n}",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#step-3b-test-the-new-functions-to-verify-what-the-inputs-and-outputs-will-be.",
+    "href": "Jupyterhub/simple_disaster_template.html#step-3b-test-the-new-functions-to-verify-what-the-inputs-and-outputs-will-be.",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "🏷️ Step 3b: Test the new functions to verify what the inputs and outputs will be.",
+    "text": "🏷️ Step 3b: Test the new functions to verify what the inputs and outputs will be.\n\nprint(\"✅ Configuration defined\")\nprint(f\"\\n📂 Categories and output paths:\")\nfor category, path in OUTPUT_DIRS.items():\n    pattern = CATEGORIZATION_PATTERNS.get(category, 'No pattern defined')\n    print(f\"   • {category}:\")\n    print(f\"     Pattern: {pattern}\")\n    print(f\"     Output:  {DESTINATION_BASE}/{path}\")\n\n# Test with sample filename if files exist\nif files:\n    sample_file = files[0]\n    sample_name = os.path.basename(sample_file)\n    \n    # Check which category it would match\n    matched_category = None\n    for cat, pattern in CATEGORIZATION_PATTERNS.items():\n        if re.search(pattern, sample_name, re.IGNORECASE):\n            matched_category = cat\n            break\n    \n    if matched_category:\n        new_name = FILENAME_CREATORS[matched_category](sample_file, EVENT_NAME)\n        print(f\"\\n📝 Example transformation:\")\n        print(f\"   Original: {sample_name}\")\n        print(f\"   Category: {matched_category}\")\n        print(f\"   → New:    {new_name}\")\n        print(f\"   → Output: {DESTINATION_BASE}/{OUTPUT_DIRS[matched_category]}/{new_name}\")\n    else:\n        print(f\"\\n⚠️ Warning: Sample file doesn't match any category pattern:\")\n        print(f\"   File: {sample_name}\")\n        print(f\"   Add a pattern to CATEGORIZATION_PATTERNS to process this file type\")\n\n✅ Configuration defined\n\n📂 Categories and output paths:\n   • trueColor:\n     Pattern: trueColor|truecolor|true_color\n     Output:  drcs_activations_new/Landsat/trueColor\n   • colorInfrared:\n     Pattern: colorInfrared|colorIR|color_infrared\n     Output:  drcs_activations_new/Landsat/colorIR\n   • naturalColor:\n     Pattern: naturalColor|natural_color\n     Output:  drcs_activations_new/Landsat/naturalColor",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#step-4-initialize-processor-and-preview",
+    "href": "Jupyterhub/simple_disaster_template.html#step-4-initialize-processor-and-preview",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "🚀 Step 4: Initialize Processor and Preview",
+    "text": "🚀 Step 4: Initialize Processor and Preview\nNow let’s set up the processor and preview all transformations:",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#step-5-process-files",
+    "href": "Jupyterhub/simple_disaster_template.html#step-5-process-files",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "⚙️ Step 5: Process Files",
+    "text": "⚙️ Step 5: Process Files\nRun this cell to start processing all files:\n\n# Import our simplified helper\nfrom notebooks.notebook_helpers import SimpleProcessor\n\n# Create full configuration with categorization patterns\nconfig = {\n    'event_name': EVENT_NAME,\n    'bucket': BUCKET,\n    'source_path': SOURCE_PATH,\n    'destination_base': DESTINATION_BASE,\n    'overwrite': OVERWRITE,\n    'verify': VERIFY,\n    'save_results': SAVE_RESULTS,  # Add save results flag\n    'categorization_patterns': CATEGORIZATION_PATTERNS,  # IMPORTANT: Include patterns\n    'filename_creators': FILENAME_CREATORS,\n    'output_dirs': OUTPUT_DIRS,\n    'nodata_values': NODATA_VALUES\n}\n\n# Initialize processor\nprocessor = SimpleProcessor(config)\n\n# Connect to S3 (already connected, but needed for processor)\nif processor.connect_to_s3():\n    print(\"✅ Processor ready\\n\")\n    \n    # Discover and categorize files\n    num_files = processor.discover_files()\n    \n    if num_files &gt; 0:\n        # Show preview of transformations\n        processor.preview_processing()\n        \n        print(\"\\n📌 Review the transformations above.\")\n        print(\"   • Files will be saved to the directories specified in OUTPUT_DIRS\")\n        print(\"   • If files appear as 'uncategorized', add patterns to CATEGORIZATION_PATTERNS\")\n        print(\"   • When ready, proceed to Step 5 to process the files.\")\n    else:\n        print(\"⚠️ No files found to process.\")\nelse:\n    print(\"❌ Could not initialize processor.\")\n\n✅ All modules loaded successfully\n\n🌐 Connecting to S3...\n✅ Connected to S3 successfully\n✅ Processor ready\n\n\n🔍 Searching for files in: geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8\n⚠️ No .tif files found\n⚠️ No files found to process.\n\n\n\n# Process all files\nif 'num_files' in locals() and num_files &gt; 0:\n    print(\"🚀 Starting processing...\")\n    print(\"This may take several minutes depending on file sizes.\\n\")\n    \n    # Process everything\n    results = processor.process_all()\n    \n    # Display results\n    if not results.empty:\n        print(\"\\n📊 Processing Complete!\")\n        display(results) if 'display' in dir() else print(results)\nelse:\n    print(\"⚠️ No files to process. Complete Steps 1-4 first.\")\n\n🚀 Starting processing...\nThis may take several minutes depending on file sizes.\n\n\n🚀 Starting processing...\n\n📦 Processing colorInfrared (3 files)\n  ⏭️ Skipped: LC08_colorInfrared_20240715_155319_016036.tif (exists)\n  ⏭️ Skipped: LC08_colorInfrared_20240715_155343_016037.tif (exists)\n  ⏭️ Skipped: LC08_colorInfrared_20240715_15547_016038.tif (exists)\n\n📦 Processing naturalColor (3 files)\n  ⏭️ Skipped: LC08_naturalColor_20240715_155319_016036.tif (exists)\n  ⏭️ Skipped: LC08_naturalColor_20240715_155343_016037.tif (exists)\n  ⏭️ Skipped: LC08_naturalColor_20240715_15547_016038.tif (exists)\n\n📦 Processing trueColor (3 files)\n  ⏭️ Skipped: LC08_trueColor_20240715_155319_016036.tif (exists)\n  ⏭️ Skipped: LC08_trueColor_20240715_155343_016037.tif (exists)\n  ⏭️ Skipped: LC08_trueColor_20240715_15547_016038.tif (exists)\n\n============================================================\n✅ PROCESSING COMPLETE\n============================================================\n\nResults:\n  ⏭️ Skipped: 9\n\nProcessing time: 0.0 minutes\n\n📁 Results saved to: output/202408_TropicalStorm_Debby/results_20250929_191143.csv\n============================================================\n\n📊 Processing Complete!\n                                     source_file       category   status  \\\n0  LC08_colorInfrared_20240715_155319_016036.tif  colorInfrared  skipped   \n1  LC08_colorInfrared_20240715_155343_016037.tif  colorInfrared  skipped   \n2   LC08_colorInfrared_20240715_15547_016038.tif  colorInfrared  skipped   \n3   LC08_naturalColor_20240715_155319_016036.tif   naturalColor  skipped   \n4   LC08_naturalColor_20240715_155343_016037.tif   naturalColor  skipped   \n5    LC08_naturalColor_20240715_15547_016038.tif   naturalColor  skipped   \n6      LC08_trueColor_20240715_155319_016036.tif      trueColor  skipped   \n7      LC08_trueColor_20240715_155343_016037.tif      trueColor  skipped   \n8       LC08_trueColor_20240715_15547_016038.tif      trueColor  skipped   \n\n           reason                                        output_path  \\\n0  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n1  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n2  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n3  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n4  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n5  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n6  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n7  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n8  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n\n   time_seconds  \n0             0  \n1             0  \n2             0  \n3             0  \n4             0  \n5             0  \n6             0  \n7             0  \n8             0  \n\n\n\n# Analyze results\nif 'results' in locals() and not results.empty:\n    print(\"📊 PROCESSING STATISTICS\")\n    print(\"=\"*40)\n    \n    # Success rate\n    total = len(results)\n    success = len(results[results['status'] == 'success'])\n    failed = len(results[results['status'] == 'failed'])\n    skipped = len(results[results['status'] == 'skipped'])\n    \n    print(f\"Total files: {total}\")\n    print(f\"✅ Success: {success}\")\n    print(f\"❌ Failed: {failed}\")\n    print(f\"⏭️ Skipped: {skipped}\")\n    print(f\"\\nSuccess rate: {(success/total*100):.1f}%\")\n    \n    # Failed files\n    if failed &gt; 0:\n        print(\"\\n❌ Failed files:\")\n        failed_df = results[results['status'] == 'failed']\n        for idx, row in failed_df.iterrows():\n            print(f\"  - {row['source_file']}: {row.get('error', 'Unknown error')}\")\n    \n    # Processing times\n    if 'time_seconds' in results.columns:\n        success_df = results[results['status'] == 'success']\n        if not success_df.empty:\n            avg_time = success_df['time_seconds'].mean()\n            max_time = success_df['time_seconds'].max()\n            print(f\"\\n⏱️ Timing:\")\n            print(f\"Average: {avg_time:.1f} seconds per file\")\n            print(f\"Slowest: {max_time:.1f} seconds\")\nelse:\n    print(\"No results to analyze. Run Step 5 first.\")",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/simple_disaster_template.html#tips-troubleshooting",
+    "href": "Jupyterhub/simple_disaster_template.html#tips-troubleshooting",
+    "title": "🌍 Simple Disaster COG Processing",
+    "section": "💡 Tips & Troubleshooting",
+    "text": "💡 Tips & Troubleshooting\n\nWorkflow Summary:\n\nConfigure basic settings (Step 1)\nList files from S3 to see naming patterns (Step 2)\nDefine functions to transform filenames (Step 3)\nPreview transformations (Step 4)\nProcess all files (Step 5)\nReview results (Step 6)\n\n\n\nCommon Issues:\n\n“No files found”\n\nCheck SOURCE_PATH in Step 1\nVerify bucket permissions\nEnsure files have .tif extension\n\nWrong filename transformations\n\nReview actual filenames in Step 2\nAdjust functions in Step 3\nRe-run Step 4 to preview\n\nFiles being skipped\n\nFiles already exist in destination\nSet OVERWRITE = True in Step 1\n\nProcessing errors\n\nCheck AWS credentials\nVerify S3 write permissions\nCheck available disk space for temp files\n\n\n\n\nNeed More Control?\nUse the full template at disaster_processing_template.ipynb for: - Manual chunk configuration - Custom compression settings - Detailed memory management - Advanced processing options",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "🌍 Simple Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html",
+    "href": "Jupyterhub/convert_to_geotiff.html",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "This guide helps you get started with converting disaster satellite imagery to Cloud Optimized GeoTIFFs (COGs).\n\n\n\n\nUse templates/simple_disaster_template.ipynb for a streamlined experience with just 5 cells:\n\nOpen the notebook\njupyter notebook templates/simple_disaster_template.ipynb\nConfigure your event (Cell 1)\n\nSet EVENT_NAME (e.g., ‘202408_TropicalStorm_Debby’)\nSet PRODUCT_NAME (e.g., ‘landsat8’)\nModify filename functions to control output names\n\nRun the cells in order\n\nCell 2: Imports and initializes\nCell 3: Discovers files and shows preview\nCell 4: Processes all files\nCell 5: Reviews results\n\n\n\n\n\nUse templates/disaster_processing_template.ipynb for full control over: - Memory management - Chunk configurations - Processing parameters - Verification options - Detailed error handling\n\n\n\n\n\n\nEVENT_NAME = '202408_TropicalStorm_Debby'\nPRODUCT_NAME = 'landsat8'\nBUCKET = 'nasa-disasters'\nSOURCE_PATH = f'drcs_activations/{EVENT_NAME}/{PRODUCT_NAME}'\nDESTINATION_BASE = 'drcs_activations_new'\nOVERWRITE = False  # Set True to replace existing files\n\n\n\nDefine how your files are renamed:\ndef create_truecolor_filename(original_path, event_name):\n    \"\"\"Create filename for trueColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n\n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\n\n\nFILENAME_CREATORS = {\n    'trueColor': create_truecolor_filename,\n    'colorInfrared': create_colorinfrared_filename,\n    'naturalColor': create_naturalcolor_filename,\n}\n\n\n\n\nThe system automatically: - Discovers files in your S3 source path - Categorizes them by product type (trueColor, NDVI, etc.) - Applies the appropriate filename function - Saves to organized output directories\n\n\ndrcs_activations_new/\n├── imagery/\n│   ├── trueColor/\n│   ├── colorIR/\n│   └── naturalColor/\n├── indices/\n│   ├── NDVI/\n│   └── MNDWI/\n└── SAR/\n    └── processed/\n\n\n\n\n\n\nThe system automatically detects and processes different product types:\n# Files are auto-categorized by these patterns:\n- 'trueColor' → imagery/trueColor/\n- 'colorInfrared' → imagery/colorIR/\n- 'NDVI' → indices/NDVI/\n- 'MNDWI' → indices/MNDWI/\n- 'SAR' → SAR/processed/\n\n\n\nNODATA_VALUES = {\n    'NDVI': -9999,      # Specific value for NDVI\n    'MNDWI': -9999,     # Specific value for MNDWI\n    'trueColor': None,  # Auto-detect for imagery\n}\n\n\n\nOUTPUT_DIRS = {\n    'trueColor': 'Landsat/trueColor',\n    'colorInfrared': 'Landsat/colorIR',\n    'naturalColor': 'Landsat/naturalColor',\n}\n\n\n\n\n\n\n\nCheck SOURCE_PATH is correct\nVerify files exist: aws s3 ls s3://bucket/path/\n\n\n\n\n\nCheck AWS credentials: aws configure list\nEnsure bucket access permissions\n\n\n\n\n\nFiles already exist in destination\nSet OVERWRITE = True to reprocess\n\n\n\n\n\nModify filename creator functions\nRe-run from discovery step to preview\n\n\n\n\n\nLarge files take time (normal)\nSystem automatically uses GDAL optimization\nFiles &gt;1.5GB use optimized chunking\n\n\n\n\n\n\nFile Size Optimization\n\nFiles &lt;1.5GB: Processed whole (fastest)\nFiles &gt;1.5GB: Smart chunking\nFiles &gt;7GB: Ultra-large file handling\n\nCompression\n\nUses ZSTD level 22 (maximum compression)\nAutomatic predictor selection\nIntelligent resampling based on data type\n\nParallel Processing\n\nFor batch processing multiple events, use:\n\nfrom batch_processor_parallel import process_files_parallel\n\n\n\n\n\n\nfrom notebooks.notebook_helpers import quick_process\n\nresults = quick_process({\n    'event_name': '202408_TropicalStorm_Debby',\n    'bucket': 'nasa-disasters',\n    'source_path': 'drcs_activations/202408_TropicalStorm_Debby/landsat8',\n    'destination_base': 'drcs_activations_new',\n    'overwrite': False,\n    'filename_creators': FILENAME_CREATORS\n})\n\n\n\nevents = [\n    '202408_TropicalStorm_Debby',\n    '202409_Hurricane_Example',\n    '202410_Wildfire_Sample'\n]\n\nfor event in events:\n    config['event_name'] = event\n    config['source_path'] = f'drcs_activations/{event}/landsat8'\n    processor = SimpleProcessor(config)\n    processor.connect_to_s3()\n    processor.discover_files()\n    processor.process_all()\n\n\n\n\n\nStart with the simple template\nRun a small test batch\nVerify output filenames are correct\nProcess full dataset\nCheck results in S3\n\nFor more details, see the main README.md or review the RESAMPLING_GUIDE.md for data type handling.",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#quick-start",
+    "href": "Jupyterhub/convert_to_geotiff.html#quick-start",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "Use templates/simple_disaster_template.ipynb for a streamlined experience with just 5 cells:\n\nOpen the notebook\njupyter notebook templates/simple_disaster_template.ipynb\nConfigure your event (Cell 1)\n\nSet EVENT_NAME (e.g., ‘202408_TropicalStorm_Debby’)\nSet PRODUCT_NAME (e.g., ‘landsat8’)\nModify filename functions to control output names\n\nRun the cells in order\n\nCell 2: Imports and initializes\nCell 3: Discovers files and shows preview\nCell 4: Processes all files\nCell 5: Reviews results\n\n\n\n\n\nUse templates/disaster_processing_template.ipynb for full control over: - Memory management - Chunk configurations - Processing parameters - Verification options - Detailed error handling",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#configuration-examples",
+    "href": "Jupyterhub/convert_to_geotiff.html#configuration-examples",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "EVENT_NAME = '202408_TropicalStorm_Debby'\nPRODUCT_NAME = 'landsat8'\nBUCKET = 'nasa-disasters'\nSOURCE_PATH = f'drcs_activations/{EVENT_NAME}/{PRODUCT_NAME}'\nDESTINATION_BASE = 'drcs_activations_new'\nOVERWRITE = False  # Set True to replace existing files\n\n\n\nDefine how your files are renamed:\ndef create_truecolor_filename(original_path, event_name):\n    \"\"\"Create filename for trueColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n\n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\n\n\nFILENAME_CREATORS = {\n    'trueColor': create_truecolor_filename,\n    'colorInfrared': create_colorinfrared_filename,\n    'naturalColor': create_naturalcolor_filename,\n}",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#file-organization",
+    "href": "Jupyterhub/convert_to_geotiff.html#file-organization",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "The system automatically: - Discovers files in your S3 source path - Categorizes them by product type (trueColor, NDVI, etc.) - Applies the appropriate filename function - Saves to organized output directories\n\n\ndrcs_activations_new/\n├── imagery/\n│   ├── trueColor/\n│   ├── colorIR/\n│   └── naturalColor/\n├── indices/\n│   ├── NDVI/\n│   └── MNDWI/\n└── SAR/\n    └── processed/",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#common-patterns",
+    "href": "Jupyterhub/convert_to_geotiff.html#common-patterns",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "The system automatically detects and processes different product types:\n# Files are auto-categorized by these patterns:\n- 'trueColor' → imagery/trueColor/\n- 'colorInfrared' → imagery/colorIR/\n- 'NDVI' → indices/NDVI/\n- 'MNDWI' → indices/MNDWI/\n- 'SAR' → SAR/processed/\n\n\n\nNODATA_VALUES = {\n    'NDVI': -9999,      # Specific value for NDVI\n    'MNDWI': -9999,     # Specific value for MNDWI\n    'trueColor': None,  # Auto-detect for imagery\n}\n\n\n\nOUTPUT_DIRS = {\n    'trueColor': 'Landsat/trueColor',\n    'colorInfrared': 'Landsat/colorIR',\n    'naturalColor': 'Landsat/naturalColor',\n}",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#troubleshooting",
+    "href": "Jupyterhub/convert_to_geotiff.html#troubleshooting",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "Check SOURCE_PATH is correct\nVerify files exist: aws s3 ls s3://bucket/path/\n\n\n\n\n\nCheck AWS credentials: aws configure list\nEnsure bucket access permissions\n\n\n\n\n\nFiles already exist in destination\nSet OVERWRITE = True to reprocess\n\n\n\n\n\nModify filename creator functions\nRe-run from discovery step to preview\n\n\n\n\n\nLarge files take time (normal)\nSystem automatically uses GDAL optimization\nFiles &gt;1.5GB use optimized chunking",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#performance-tips",
+    "href": "Jupyterhub/convert_to_geotiff.html#performance-tips",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "File Size Optimization\n\nFiles &lt;1.5GB: Processed whole (fastest)\nFiles &gt;1.5GB: Smart chunking\nFiles &gt;7GB: Ultra-large file handling\n\nCompression\n\nUses ZSTD level 22 (maximum compression)\nAutomatic predictor selection\nIntelligent resampling based on data type\n\nParallel Processing\n\nFor batch processing multiple events, use:\n\nfrom batch_processor_parallel import process_files_parallel",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#advanced-features",
+    "href": "Jupyterhub/convert_to_geotiff.html#advanced-features",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "from notebooks.notebook_helpers import quick_process\n\nresults = quick_process({\n    'event_name': '202408_TropicalStorm_Debby',\n    'bucket': 'nasa-disasters',\n    'source_path': 'drcs_activations/202408_TropicalStorm_Debby/landsat8',\n    'destination_base': 'drcs_activations_new',\n    'overwrite': False,\n    'filename_creators': FILENAME_CREATORS\n})\n\n\n\nevents = [\n    '202408_TropicalStorm_Debby',\n    '202409_Hurricane_Example',\n    '202410_Wildfire_Sample'\n]\n\nfor event in events:\n    config['event_name'] = event\n    config['source_path'] = f'drcs_activations/{event}/landsat8'\n    processor = SimpleProcessor(config)\n    processor.connect_to_s3()\n    processor.discover_files()\n    processor.process_all()",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
+  },
+  {
+    "objectID": "Jupyterhub/convert_to_geotiff.html#next-steps",
+    "href": "Jupyterhub/convert_to_geotiff.html#next-steps",
+    "title": "Jupyter Notebook Guide for Disaster COG Processing",
+    "section": "",
+    "text": "Start with the simple template\nRun a small test batch\nVerify output filenames are correct\nProcess full dataset\nCheck results in S3\n\nFor more details, see the main README.md or review the RESAMPLING_GUIDE.md for data type handling.",
+    "crumbs": [
+      "jupyterhub.qmd",
+      "Jupyter Notebook Guide for Disaster COG Processing"
+    ]
   }
 ]

@@ -53,6 +53,8 @@ website:
         contents:
           - Jupyterhub/jupyterhub-training-guide.qmd
           - Jupyterhub/setup-disaster-repo.qmd
+          - Jupyterhub/convert_to_geotiff.qmd
+          - Jupyterhub/simple_disaster_template.ipynb
       - href: index.qmd
         text: Welcome
       - section: User Services
