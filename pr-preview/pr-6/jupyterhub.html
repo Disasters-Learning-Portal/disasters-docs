@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>U.S. Greenhouse Gas Center: Documentation – NASA Disasters Documentation</title>
+<title>jupyterhub – NASA Disasters Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./quarto-guide.html" rel="next">
-<link href="./data_workflow2/NRT_directory_structure.html" rel="prev">
+<link href="./Jupyterhub/jupyterhub-training-guide.html" rel="next">
+<link href="./GitHub/resources.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -249,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./jupyterhub.html">JupyterHub</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -352,13 +352,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./jupyterhub.html" class="sidebar-item-text sidebar-link">
+            <a href="./jupyterhub.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">JupyterHub</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Jupyterhub/jupyterhub-training-guide.html" class="sidebar-item-text sidebar-link">
@@ -410,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -995,56 +995,63 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
-  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents">Contents</a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  <li><a href="#jupyterhub-training-guide---disasters-hub" id="toc-jupyterhub-training-guide---disasters-hub" class="nav-link active" data-scroll-target="#jupyterhub-training-guide---disasters-hub">JupyterHub Training Guide - Disasters Hub</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#what-is-jupyterhub" id="toc-what-is-jupyterhub" class="nav-link" data-scroll-target="#what-is-jupyterhub">What is JupyterHub?</a></li>
+  <li><a href="#the-disasters-hub" id="toc-the-disasters-hub" class="nav-link" data-scroll-target="#the-disasters-hub">The Disasters Hub</a></li>
+  <li><a href="#key-benefits" id="toc-key-benefits" class="nav-link" data-scroll-target="#key-benefits">Key Benefits</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/jupyterhub.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">U.S. Greenhouse Gas Center: Documentation</h1>
-<p class="subtitle lead">Resources for the US GHG Center</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
-<p>The <a href="https://earth.gov/ghgcenter">U.S. Greenhouse Gas (GHG) Center</a> provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.</p>
-<p>On this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.</p>
+<section id="jupyterhub-training-guide---disasters-hub" class="level1">
+<h1>JupyterHub Training Guide - Disasters Hub</h1>
+<hr>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="what-is-jupyterhub" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-jupyterhub">What is JupyterHub?</h3>
+<p>JupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:</p>
+<ul>
+<li><strong>Access powerful computing resources</strong> through your web browser</li>
+<li><strong>Write and execute code</strong> in Python, R, Julia, and other languages</li>
+<li><strong>Visualize data</strong> with interactive plots and charts</li>
+<li><strong>Collaborate</strong> with team members on shared projects</li>
+<li><strong>Work from anywhere</strong> without local setup requirements</li>
+</ul>
 </section>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<ol type="1">
-<li><strong>Services</strong> provided for accessing and analyzing the US GHG Center datasets, such as the <a href="./services/jupyterhub.html">JupyterHub</a> environment for interactive computing.</li>
-<li>Dataset <strong>usage</strong> examples, e.g.&nbsp;for the <a href="./user_data_notebooks/lpjeosim-wetlandch4-grid-v1_User_Notebook.html">Wetland Methane Emissions from the LPJ-EOSIM model</a> dataset, that shows how to load the dataset in Python in <a href="./services/jupyterhub.html">JupyterHub</a>.</li>
-<li>Dataset <strong>transformation</strong> scripts, which document the code used to transform datasets for display in the US GHG Center. An example is the <a href="./cog_transformation/odiac-ffco2-monthgrid-v2024.html">ODIAC Fossil Fuel CO₂ Emissions</a> dataset transformation code.</li>
-<li>Data <strong>processing and verification reports</strong> that openly present the process we used to check and verify that any transformation did not alter the original source data. An example is the <a href="./processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.html">GOSAT-based Top-down Total and Natural Methane Emissions</a> dataset.</li>
-<li>Data <strong>Flow Diagrams</strong>, which provide a high level summary of how each dataset was integrated into the US GHG Center. See the <a href="./data_workflow/micasa-carbonflux-daygrid-v1_Data_Flow.html">MiCASA Land Carbon Flux Flow Diagram</a> as an example.</li>
-</ol>
+<section id="the-disasters-hub" class="level3">
+<h3 class="anchored" data-anchor-id="the-disasters-hub">The Disasters Hub</h3>
+<p>The <a href="https://hub.disasters.2i2c.cloud/">Disasters Hub</a> is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:</p>
+<ul>
+<li>Pre-configured environments for geospatial analysis</li>
+<li>Access to disaster-related datasets</li>
+<li>Collaboration tools for response teams</li>
+<li>Integration with cloud storage services</li>
+<li>Scalable computing resources</li>
+</ul>
 </section>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>For technical help or general questions, please contact the support team using the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVWCrnca08Gt_qoWYjTo6gnj1BEGL4NCUC9VEiQnXA02gzVQ/viewform">feedback form</a>.</p>
+<section id="key-benefits" class="level3">
+<h3 class="anchored" data-anchor-id="key-benefits">Key Benefits</h3>
+<p>✅ <strong>No Installation Required</strong> - Everything runs in your browser<br>
+✅ <strong>Pre-configured Environments</strong> - Common packages already installed<br>
+✅ <strong>Persistent Storage</strong> - Your work is saved between sessions<br>
+✅ <strong>Collaboration Ready</strong> - Share notebooks with team members<br>
+✅ <strong>Scalable Resources</strong> - Access to GPU and high-memory instances when needed</p>
 
 
+</section>
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1463,13 +1470,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data_workflow2/NRT_directory_structure.html" class="pagination-link" aria-label="NRT Directory Structure">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">NRT Directory Structure</span>
+      <a href="./GitHub/resources.html" class="pagination-link" aria-label="Resources &amp; Links">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Resources &amp; Links</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./quarto-guide.html" class="pagination-link" aria-label="Quarto Guide for Beginners">
-        <span class="nav-page-text">Quarto Guide for Beginners</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Jupyterhub/jupyterhub-training-guide.html" class="pagination-link" aria-label="JupyterHub Training Guide - Disasters Hub">
+        <span class="nav-page-text">JupyterHub Training Guide - Disasters Hub</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1481,7 +1488,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/jupyterhub.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

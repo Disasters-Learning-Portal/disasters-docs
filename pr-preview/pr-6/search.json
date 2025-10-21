@@ -1365,7 +1365,7 @@
     "href": "quarto-guide.html#file-types-and-formats",
     "title": "Quarto Guide for Beginners",
     "section": "File Types and Formats",
-    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#782fcb5b .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
+    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#c2792702 .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -1398,7 +1398,7 @@
     "href": "quarto-guide.html#working-with-code",
     "title": "Quarto Guide for Beginners",
     "section": "Working with Code",
-    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#6e1c8a64 .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
+    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#85a68145 .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -1464,7 +1464,7 @@
     "href": "quarto-guide.html#common-issues-and-solutions",
     "title": "Quarto Guide for Beginners",
     "section": "Common Issues and Solutions",
-    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#537ce5c2 .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
+    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#c6f27d8e .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -1510,7 +1510,7 @@
     "section": "",
     "text": "This guide helps you get started with converting disaster satellite imagery to Cloud Optimized GeoTIFFs (COGs).\n\n\n\n\nUse templates/simple_disaster_template.ipynb for a streamlined experience with just 5 cells:\n\nOpen the notebook\njupyter notebook templates/simple_disaster_template.ipynb\nConfigure your event (Cell 1)\n\nSet EVENT_NAME (e.g., ‘202408_TropicalStorm_Debby’)\nSet PRODUCT_NAME (e.g., ‘landsat8’)\nModify filename functions to control output names\n\nRun the cells in order\n\nCell 2: Imports and initializes\nCell 3: Discovers files and shows preview\nCell 4: Processes all files\nCell 5: Reviews results\n\n\n\n\n\nUse templates/disaster_processing_template.ipynb for full control over: - Memory management - Chunk configurations - Processing parameters - Verification options - Detailed error handling\n\n\n\n\n\n\nEVENT_NAME = '202408_TropicalStorm_Debby'\nPRODUCT_NAME = 'landsat8'\nBUCKET = 'nasa-disasters'\nSOURCE_PATH = f'drcs_activations/{EVENT_NAME}/{PRODUCT_NAME}'\nDESTINATION_BASE = 'drcs_activations_new'\nOVERWRITE = False  # Set True to replace existing files\n\n\n\nDefine how your files are renamed:\ndef create_truecolor_filename(original_path, event_name):\n    \"\"\"Create filename for trueColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n\n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\n\n\nFILENAME_CREATORS = {\n    'trueColor': create_truecolor_filename,\n    'colorInfrared': create_colorinfrared_filename,\n    'naturalColor': create_naturalcolor_filename,\n}\n\n\n\n\nThe system automatically: - Discovers files in your S3 source path - Categorizes them by product type (trueColor, NDVI, etc.) - Applies the appropriate filename function - Saves to organized output directories\n\n\ndrcs_activations_new/\n├── imagery/\n│   ├── trueColor/\n│   ├── colorIR/\n│   └── naturalColor/\n├── indices/\n│   ├── NDVI/\n│   └── MNDWI/\n└── SAR/\n    └── processed/\n\n\n\n\n\n\nThe system automatically detects and processes different product types:\n# Files are auto-categorized by these patterns:\n- 'trueColor' → imagery/trueColor/\n- 'colorInfrared' → imagery/colorIR/\n- 'NDVI' → indices/NDVI/\n- 'MNDWI' → indices/MNDWI/\n- 'SAR' → SAR/processed/\n\n\n\nNODATA_VALUES = {\n    'NDVI': -9999,      # Specific value for NDVI\n    'MNDWI': -9999,     # Specific value for MNDWI\n    'trueColor': None,  # Auto-detect for imagery\n}\n\n\n\nOUTPUT_DIRS = {\n    'trueColor': 'Landsat/trueColor',\n    'colorInfrared': 'Landsat/colorIR',\n    'naturalColor': 'Landsat/naturalColor',\n}\n\n\n\n\n\n\n\nCheck SOURCE_PATH is correct\nVerify files exist: aws s3 ls s3://bucket/path/\n\n\n\n\n\nCheck AWS credentials: aws configure list\nEnsure bucket access permissions\n\n\n\n\n\nFiles already exist in destination\nSet OVERWRITE = True to reprocess\n\n\n\n\n\nModify filename creator functions\nRe-run from discovery step to preview\n\n\n\n\n\nLarge files take time (normal)\nSystem automatically uses GDAL optimization\nFiles &gt;1.5GB use optimized chunking\n\n\n\n\n\n\nFile Size Optimization\n\nFiles &lt;1.5GB: Processed whole (fastest)\nFiles &gt;1.5GB: Smart chunking\nFiles &gt;7GB: Ultra-large file handling\n\nCompression\n\nUses ZSTD level 22 (maximum compression)\nAutomatic predictor selection\nIntelligent resampling based on data type\n\nParallel Processing\n\nFor batch processing multiple events, use:\n\nfrom batch_processor_parallel import process_files_parallel\n\n\n\n\n\n\nfrom notebooks.notebook_helpers import quick_process\n\nresults = quick_process({\n    'event_name': '202408_TropicalStorm_Debby',\n    'bucket': 'nasa-disasters',\n    'source_path': 'drcs_activations/202408_TropicalStorm_Debby/landsat8',\n    'destination_base': 'drcs_activations_new',\n    'overwrite': False,\n    'filename_creators': FILENAME_CREATORS\n})\n\n\n\nevents = [\n    '202408_TropicalStorm_Debby',\n    '202409_Hurricane_Example',\n    '202410_Wildfire_Sample'\n]\n\nfor event in events:\n    config['event_name'] = event\n    config['source_path'] = f'drcs_activations/{event}/landsat8'\n    processor = SimpleProcessor(config)\n    processor.connect_to_s3()\n    processor.discover_files()\n    processor.process_all()\n\n\n\n\n\nStart with the simple template\nRun a small test batch\nVerify output filenames are correct\nProcess full dataset\nCheck results in S3\n\nFor more details, see the main README.md or review the RESAMPLING_GUIDE.md for data type handling.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1521,7 +1521,7 @@
     "section": "",
     "text": "Use templates/simple_disaster_template.ipynb for a streamlined experience with just 5 cells:\n\nOpen the notebook\njupyter notebook templates/simple_disaster_template.ipynb\nConfigure your event (Cell 1)\n\nSet EVENT_NAME (e.g., ‘202408_TropicalStorm_Debby’)\nSet PRODUCT_NAME (e.g., ‘landsat8’)\nModify filename functions to control output names\n\nRun the cells in order\n\nCell 2: Imports and initializes\nCell 3: Discovers files and shows preview\nCell 4: Processes all files\nCell 5: Reviews results\n\n\n\n\n\nUse templates/disaster_processing_template.ipynb for full control over: - Memory management - Chunk configurations - Processing parameters - Verification options - Detailed error handling",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1532,7 +1532,7 @@
     "section": "",
     "text": "EVENT_NAME = '202408_TropicalStorm_Debby'\nPRODUCT_NAME = 'landsat8'\nBUCKET = 'nasa-disasters'\nSOURCE_PATH = f'drcs_activations/{EVENT_NAME}/{PRODUCT_NAME}'\nDESTINATION_BASE = 'drcs_activations_new'\nOVERWRITE = False  # Set True to replace existing files\n\n\n\nDefine how your files are renamed:\ndef create_truecolor_filename(original_path, event_name):\n    \"\"\"Create filename for trueColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n\n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\n\n\nFILENAME_CREATORS = {\n    'trueColor': create_truecolor_filename,\n    'colorInfrared': create_colorinfrared_filename,\n    'naturalColor': create_naturalcolor_filename,\n}",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1543,7 +1543,7 @@
     "section": "",
     "text": "The system automatically: - Discovers files in your S3 source path - Categorizes them by product type (trueColor, NDVI, etc.) - Applies the appropriate filename function - Saves to organized output directories\n\n\ndrcs_activations_new/\n├── imagery/\n│   ├── trueColor/\n│   ├── colorIR/\n│   └── naturalColor/\n├── indices/\n│   ├── NDVI/\n│   └── MNDWI/\n└── SAR/\n    └── processed/",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1554,7 +1554,7 @@
     "section": "",
     "text": "The system automatically detects and processes different product types:\n# Files are auto-categorized by these patterns:\n- 'trueColor' → imagery/trueColor/\n- 'colorInfrared' → imagery/colorIR/\n- 'NDVI' → indices/NDVI/\n- 'MNDWI' → indices/MNDWI/\n- 'SAR' → SAR/processed/\n\n\n\nNODATA_VALUES = {\n    'NDVI': -9999,      # Specific value for NDVI\n    'MNDWI': -9999,     # Specific value for MNDWI\n    'trueColor': None,  # Auto-detect for imagery\n}\n\n\n\nOUTPUT_DIRS = {\n    'trueColor': 'Landsat/trueColor',\n    'colorInfrared': 'Landsat/colorIR',\n    'naturalColor': 'Landsat/naturalColor',\n}",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1565,7 +1565,7 @@
     "section": "",
     "text": "Check SOURCE_PATH is correct\nVerify files exist: aws s3 ls s3://bucket/path/\n\n\n\n\n\nCheck AWS credentials: aws configure list\nEnsure bucket access permissions\n\n\n\n\n\nFiles already exist in destination\nSet OVERWRITE = True to reprocess\n\n\n\n\n\nModify filename creator functions\nRe-run from discovery step to preview\n\n\n\n\n\nLarge files take time (normal)\nSystem automatically uses GDAL optimization\nFiles &gt;1.5GB use optimized chunking",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1576,7 +1576,7 @@
     "section": "",
     "text": "File Size Optimization\n\nFiles &lt;1.5GB: Processed whole (fastest)\nFiles &gt;1.5GB: Smart chunking\nFiles &gt;7GB: Ultra-large file handling\n\nCompression\n\nUses ZSTD level 22 (maximum compression)\nAutomatic predictor selection\nIntelligent resampling based on data type\n\nParallel Processing\n\nFor batch processing multiple events, use:\n\nfrom batch_processor_parallel import process_files_parallel",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1587,7 +1587,7 @@
     "section": "",
     "text": "from notebooks.notebook_helpers import quick_process\n\nresults = quick_process({\n    'event_name': '202408_TropicalStorm_Debby',\n    'bucket': 'nasa-disasters',\n    'source_path': 'drcs_activations/202408_TropicalStorm_Debby/landsat8',\n    'destination_base': 'drcs_activations_new',\n    'overwrite': False,\n    'filename_creators': FILENAME_CREATORS\n})\n\n\n\nevents = [\n    '202408_TropicalStorm_Debby',\n    '202409_Hurricane_Example',\n    '202410_Wildfire_Sample'\n]\n\nfor event in events:\n    config['event_name'] = event\n    config['source_path'] = f'drcs_activations/{event}/landsat8'\n    processor = SimpleProcessor(config)\n    processor.connect_to_s3()\n    processor.discover_files()\n    processor.process_all()",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1598,7 +1598,7 @@
     "section": "",
     "text": "Start with the simple template\nRun a small test batch\nVerify output filenames are correct\nProcess full dataset\nCheck results in S3\n\nFor more details, see the main README.md or review the RESAMPLING_GUIDE.md for data type handling.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Jupyter Notebook Guide for Disaster COG Processing"
     ]
   },
@@ -1609,7 +1609,7 @@
     "section": "",
     "text": "Introduction\nGetting Started\nJupyterHub Interface Overview\nWorking with Jupyter Notebooks\nData Management\nEnvironment and Package Management\nTerminal and Command Line Access\nCollaboration and Sharing\nResource Management\nBest Practices\nTroubleshooting\nKeyboard Shortcuts\nResources and Links\n\n\n\n\n\n\n\nJupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:\n\nAccess powerful computing resources through your web browser\nWrite and execute code in Python, R, Julia, and other languages\nVisualize data with interactive plots and charts\nCollaborate with team members on shared projects\nWork from anywhere without local setup requirements\n\n\n\n\nThe Disasters Hub (https://hub.disasters.2i2c.cloud/) is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:\n\nPre-configured environments for geospatial analysis\nAccess to disaster-related datasets\nCollaboration tools for response teams\nIntegration with cloud storage services\nScalable computing resources\n\n\n\n\n✅ No Installation Required - Everything runs in your browser\n✅ Pre-configured Environments - Common packages already installed\n✅ Persistent Storage - Your work is saved between sessions\n✅ Collaboration Ready - Share notebooks with team members\n✅ Scalable Resources - Access to GPU and high-memory instances when needed\n\n\n\n\n\n\n\n\nNavigate to the Hub\n\nOpen your web browser (Chrome, Firefox, Safari, or Edge recommended)\nGo to: https://hub.disasters.2i2c.cloud/\nBookmark this URL for easy access\n\nAuthentication\n\nYou’ll see a login screen with authentication options\nCommon authentication methods:\n\nGitHub: Use your GitHub credentials\nGoogle: Use your Google account\nInstitutional Login: Use your organization’s credentials\n\nSelect your authentication method and follow the prompts\n\nFirst-Time Login\n\nAccept terms of service if prompted\nYour home directory will be created automatically\nInitial setup may take 30-60 seconds\n\n\n\n\n\nAfter login, you may be presented with server options:\nServer Options:\n┌─────────────────────────────────────┐\n│ • Small (2 CPU, 4GB RAM)            │\n│ • Medium (4 CPU, 8GB RAM)           │\n│ • Large (8 CPU, 16GB RAM)           │\n│ • GPU Instance (if available)       │\n└─────────────────────────────────────┘\nTips for Server Selection: - Start with Small for basic notebook work - Use Medium for data processing tasks - Choose Large for machine learning or big data - Select GPU only when needed (limited availability)\n\n\n\n\n\n\n\nOnce logged in, you’ll see the JupyterLab interface:\n┌──────────────────────────────────────────────────────────┐\n│ [File] [Edit] [View] [Run] [Kernel] [Tabs] [Settings]    │\n├──────────────────────────────────────────────────────────┤\n│ 📁 File Browser │          Main Work Area                | \n│ ├── 📂 data     │                                        │\n│ ├── 📂 notebooks│      [Launcher Tab]                    │\n│ ├── 📂 scripts  │      • Notebook (Python 3)             │\n│ └── 📄 README   │      • Console                         │\n│                 │      • Terminal                        |\n│ [+] New         │      • Text File                       │\n└──────────────────────────────────────────────────────────┘\n\n\n\n\nTop Menu Bar\n\nFile operations, editing, running code\nKernel management\nView options and settings\n\nLeft Sidebar\n\nFile Browser (📁): Navigate and manage files\nRunning Terminals and Kernels (▶): Monitor active sessions\nCommand Palette (🔧): Access all commands\nExtension Manager (🧩): Add functionality\n\nMain Work Area\n\nMultiple tabs for notebooks, terminals, and files\nDrag tabs to rearrange or create split views\nRight-click tabs for additional options\n\nStatus Bar\n\nCurrent kernel status\nLine/column position\nFile encoding and type\n\n\n\n\n\n\nClick the Python 3 icon in the Launcher\nOr: File → New → Notebook\nSelect kernel (usually Python 3)\nRename your notebook: Right-click on “Untitled.ipynb” → Rename\n\n\n\n\n\n\n\n\nA Jupyter notebook consists of cells that can contain: - Code: Executable Python (or other language) code - Markdown: Formatted text, equations, and images - Raw: Unformatted text\n\n\n\n\n\n\nRun current cell: Shift + Enter (run and move to next)\nRun current cell in place: Ctrl + Enter (stay in cell)\nRun all cells: Menu → Run → Run All Cells\n\n\n\n\n# Code Cell Example\nimport pandas as pd\nimport numpy as np\ndata = pd.read_csv('data.csv')\ndata.head()\n# Markdown Cell Example\n## Analysis Results\n- **Finding 1**: Data shows increasing trend\n- **Finding 2**: Correlation coefficient: 0.85\n\n$$E = mc^2$$  # LaTeX equation\n\n\n\n\nInsert cell above: A (in command mode)\nInsert cell below: B (in command mode)\nDelete cell: DD (press D twice in command mode)\nCopy cell: C (in command mode)\nPaste cell: V (in command mode)\nUndo deletion: Z (in command mode)\n\n\n\n\n\nThe kernel is the computational engine that executes your code.\n\n\n\nRestart kernel: Kernel → Restart\nRestart and clear output: Kernel → Restart & Clear Output\nRestart and run all: Kernel → Restart & Run All\nInterrupt execution: Kernel → Interrupt (or I,I in command mode)\nChange kernel: Kernel → Change Kernel\n\n\n\n\n\n○: Kernel idle\n●: Kernel busy\n[*]: Cell currently executing\n[1]: Cell execution number\n\n\n\n\n\n\nUse meaningful cell divisions\n\nOne concept or operation per cell\nSeparate imports, data loading, processing, visualization\n\nDocument your work\n# Good practice: Add comments and markdown cells\n# Load disaster response data\ndf = pd.read_csv('disaster_data.csv')\n\n# Data preprocessing\ndf['date'] = pd.to_datetime(df['date'])\ndf = df.dropna()\nClear output before sharing\n\nKernel → Restart & Clear Output\nReduces file size and removes sensitive output\n\n\n\n\n\n\n\n\n\n\n\n\nDrag and drop files directly into the file browser\nUpload button: Click the ⬆ button in the file browser toolbar\nTerminal upload: Use wget or curl in terminal\nwget https://example.com/data.csv\ncurl -O https://example.com/data.zip\n\n\n\n\n\nRight-click file in browser → Download\nFrom notebook:\nfrom IPython.display import FileLink\nFileLink('results.csv')  # Creates downloadable link\n\n\n\n\n\n\n\nimport boto3\nimport pandas as pd\n\n# Read from S3\ndf = pd.read_csv('s3://bucket-name/path/to/file.csv')\n\n# Write to S3\ndf.to_csv('s3://bucket-name/output/results.csv', index=False)\n\n\n\n# Read from GCS\ndf = pd.read_csv('gs://bucket-name/path/to/file.csv')\n\n# Using gsutil in terminal\n!gsutil cp gs://bucket/file.csv ./data/\n\n\n\n\nRecommended directory structure:\nhome/\n├── data/\n│   ├── raw/           # Original, immutable data\n│   ├── processed/     # Cleaned, transformed data\n│   └── external/      # Data from external sources\n├── notebooks/\n│   ├── exploratory/   # Initial explorations\n│   ├── analysis/      # Detailed analysis\n│   └── reports/       # Final reports\n├── scripts/           # Reusable Python scripts\n├── results/           # Output files, figures\n└── requirements.txt   # Package dependencies\n\n\n\n⚠️ Important: Your home directory is persistent, but understand the storage limits:\n\nHome directory: Usually 10-100 GB (persistent)\nShared data: Read-only datasets available to all users\nTemporary storage: /tmp cleared on restart\nBest practice: Store large datasets in cloud storage, not home directory\n\n\n\n\n\n\n\n\n\n\n# In a notebook cell\n!pip install package_name\n\n# Install specific version\n!pip install pandas==1.3.0\n\n# Install from requirements file\n!pip install -r requirements.txt\n\n# Install in user directory (if no write permissions)\n!pip install --user package_name\n\n\n\n# In a notebook cell\n!conda install -c conda-forge package_name -y\n\n# Install multiple packages\n!conda install numpy pandas matplotlib -y\n\n# Create new environment\n!conda create -n myenv python=3.9 -y\n!conda activate myenv  # Note: Activation in notebooks is tricky\n\n\n\n\n\n\nimport sys\nprint(sys.executable)  # Python interpreter path\nprint(sys.version)     # Python version\n\n# List installed packages\n!pip list\n!conda list\n\n\n\n# In terminal\npython -m venv myproject\nsource myproject/bin/activate  # Linux/Mac\npip install -r requirements.txt\n\n\n\n\n\nInstall IPython kernel:\npython -m ipykernel install --user --name mykernel --display-name \"My Kernel\"\nList available kernels:\njupyter kernelspec list\nRemove a kernel:\njupyter kernelspec uninstall mykernel\n\n\n\n\n\n\n\n\n\nFrom Launcher: Click “Terminal” icon\nFrom menu: File → New → Terminal\nKeyboard shortcut: (varies by setup)\n\n\n\n\n# Navigation\npwd                     # Print working directory\nls -la                  # List files with details\ncd ~/notebooks         # Change directory\n\n# File operations\nmkdir project          # Create directory\ncp file1.txt file2.txt # Copy file\nmv oldname newname     # Move/rename\nrm file.txt           # Delete file (careful!)\n\n# File viewing\ncat file.txt          # Display file contents\nhead -n 10 data.csv   # First 10 lines\ntail -n 10 log.txt    # Last 10 lines\nless large_file.txt   # Page through file\n\n# Process management\nps aux                # List processes\ntop                   # Monitor resources\nkill -9 PID          # Kill process\n\n# Git operations\ngit status\ngit add .\ngit commit -m \"message\"\ngit push\n\n\n\n# Count lines in file\nwc -l data.csv\n\n# View CSV structure\nhead -1 data.csv | tr ',' '\\n' | nl\n\n# Search in files\ngrep \"pattern\" file.txt\ngrep -r \"pattern\" ./directory\n\n# Compress/decompress\nzip archive.zip file1 file2\nunzip archive.zip\ntar -czf archive.tar.gz directory/\ntar -xzf archive.tar.gz\n\n\n\n\n\n\n\n\n\n\nDownload notebook: File → Download as → Notebook (.ipynb)\nShare via email, Slack, or file sharing service\nRecipient uploads to their JupyterHub\n\n\n\n\n# Initialize repository\ngit init\ngit add notebook.ipynb\ngit commit -m \"Add analysis notebook\"\ngit remote add origin https://github.com/user/repo.git\ngit push -u origin main\n\n\n\n\nHTML: File → Export Notebook As → HTML\nPDF: File → Export Notebook As → PDF (requires LaTeX)\nPython script: File → Export Notebook As → Python\nMarkdown: File → Export Notebook As → Markdown\n\n\n\n\n\nSome JupyterHub deployments support real-time collaboration:\n\nShare workspace link: Get shareable link from hub admin\nCollaborative editing: Multiple users can edit simultaneously\nSee collaborator cursors: Real-time cursor positions\nChat integration: Built-in chat for discussion\n\n\n\n\n\nClear outputs before committing:\njupyter nbconvert --clear-output notebook.ipynb\nUse .gitignore:\n.ipynb_checkpoints/\n__pycache__/\n*.pyc\n.DS_Store\ndata/  # Don't commit large data files\nNotebook diff tools:\n# Install nbdime for better notebook diffs\npip install nbdime\nnbdime config-git --enable\n\n\n\n\n\n\n\n\nYour JupyterHub instance has resource limits:\n# Check available resources\nimport psutil\n\n# Memory\nmemory = psutil.virtual_memory()\nprint(f\"Total RAM: {memory.total / 1e9:.2f} GB\")\nprint(f\"Available: {memory.available / 1e9:.2f} GB\")\nprint(f\"Used: {memory.percent}%\")\n\n# CPU\nprint(f\"CPU cores: {psutil.cpu_count()}\")\nprint(f\"CPU usage: {psutil.cpu_percent()}%\")\n\n# Disk\ndisk = psutil.disk_usage('/')\nprint(f\"Disk space: {disk.total / 1e9:.2f} GB\")\nprint(f\"Disk used: {disk.percent}%\")\n\n\n\n\n\n\nInstall Resource Usage extension\nShows real-time memory and CPU usage in status bar\n\n\n\n\n# Real-time resource monitoring\ntop\nhtop  # If installed\n\n# Memory usage\nfree -h\n\n# Disk usage\ndf -h\ndu -sh *  # Directory sizes\n\n\n\n\n\nClear variables when done:\n# Clear specific variable\ndel large_dataframe\n\n# Clear all variables\n%reset -f\n\n# Garbage collection\nimport gc\ngc.collect()\nUse efficient data types:\n# Use categories for strings with few unique values\ndf['category'] = df['category'].astype('category')\n\n# Use smaller numeric types when possible\ndf['count'] = df['count'].astype('int32')  # Instead of int64\nProcess data in chunks:\n# Read large CSV in chunks\nchunk_size = 10000\nfor chunk in pd.read_csv('large_file.csv', chunksize=chunk_size):\n    process_chunk(chunk)\n\n\n\n\nAlways shut down kernels and terminals when done:\n\nShutdown kernel: Kernel → Shutdown\nClose terminals: Exit or Ctrl+D\nHub Control Panel: File → Hub Control Panel → Stop My Server\nLogout: File → Log Out\n\n⚠️ Important: Idle servers may be automatically culled after a period of inactivity (usually 1-2 hours).\n\n\n\n\n\n\n\n\nUse consistent naming:\n2024-01-15_earthquake_analysis.ipynb  # Good\nuntitled1.ipynb                       # Bad\nCreate project templates:\n# notebook_template.ipynb\n\n# 1. Imports\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# 2. Configuration\npd.set_option('display.max_columns', None)\nplt.style.use('seaborn')\n\n# 3. Data Loading\n\n# 4. Data Exploration\n\n# 5. Analysis\n\n# 6. Results\nDocument dependencies:\n# Generate requirements.txt\n!pip freeze &gt; requirements.txt\n\n\n\n\n\nNever commit credentials:\n# Bad\napi_key = \"sk-abc123def456\"\n\n# Good - Use environment variables\nimport os\napi_key = os.environ.get('API_KEY')\nUse secrets management:\n# Store secrets in .env file\nfrom dotenv import load_dotenv\nload_dotenv()\n\n# Access secrets\nsecret = os.getenv('SECRET_KEY')\nBe careful with outputs:\n\nClear cells containing sensitive information\nReview notebooks before sharing\n\n\n\n\n\n\nVectorize operations:\n# Slow\nresults = []\nfor i in range(len(df)):\n    results.append(df.iloc[i]['column'] * 2)\n\n# Fast\nresults = df['column'] * 2\nUse built-in functions:\n# Use pandas/numpy operations instead of loops\ndf['new_col'] = df['col1'] + df['col2']  # Vectorized\nProfile your code:\n%%time  # Time entire cell\n\n%timeit function()  # Time single line\n\n# Detailed profiling\n%load_ext line_profiler\n%lprun -f function_to_profile function_to_profile()\n\n\n\n\n\n\n\n\n\n\n\nCheck resources: Server might be full\nTry different kernel: Some kernels may be broken\nRestart server: Hub Control Panel → Stop → Start\n\n\n\n\n# Check if package is installed\nimport importlib\nif importlib.util.find_spec(\"package_name\") is None:\n    !pip install package_name\n    \n# Restart kernel after installation\nfrom IPython import get_ipython\nget_ipython().kernel.do_shutdown(True)\n\n\n\n\nClear unnecessary variables: del variable_name\nUse smaller data samples for testing\nRequest larger server instance\nProcess data in chunks\n\n\n\n\n\nCheck disk space: df -h in terminal\nCheck file permissions: ls -la notebook.ipynb\nSave with new name: File → Save As\nDownload backup: File → Download\n\n\n\n\n\nCheck internet connection\nTry different browser\nClear browser cache\nCheck if hub is under maintenance\n\n\n\n\n\n\nBuilt-in help:\nhelp(function_name)\nfunction_name?  # Quick help\nfunction_name??  # Source code\nDocumentation:\n\nJupyterHub docs: https://jupyterhub.readthedocs.io\nJupyterLab docs: https://jupyterlab.readthedocs.io\n2i2c docs: https://docs.2i2c.org\n\nCommunity support:\n\nDiscourse forum\nGitHub issues\nStack Overflow with tags: jupyter, jupyterhub\n\n\n\n\n\n\n\n\n\nPress Esc to enter command mode\n\n\n\nShortcut\nAction\n\n\n\n\nEnter\nEnter edit mode\n\n\nA\nInsert cell above\n\n\nB\nInsert cell below\n\n\nD,D\nDelete cell\n\n\nY\nChange to code cell\n\n\nM\nChange to markdown cell\n\n\nShift+Up/Down\nSelect multiple cells\n\n\nShift+M\nMerge selected cells\n\n\nC\nCopy cell\n\n\nX\nCut cell\n\n\nV\nPaste cell below\n\n\nShift+V\nPaste cell above\n\n\nZ\nUndo cell deletion\n\n\n0,0\nRestart kernel\n\n\nI,I\nInterrupt kernel\n\n\n\n\n\n\nPress Enter to enter edit mode\n\n\n\nShortcut\nAction\n\n\n\n\nEsc\nEnter command mode\n\n\nCtrl+Enter\nRun cell\n\n\nShift+Enter\nRun cell, select below\n\n\nAlt+Enter\nRun cell, insert below\n\n\nCtrl+S\nSave notebook\n\n\nTab\nCode completion\n\n\nShift+Tab\nTooltip\n\n\nCtrl+]\nIndent\n\n\nCtrl+[\nDedent\n\n\nCtrl+A\nSelect all\n\n\nCtrl+Z\nUndo\n\n\nCtrl+Y\nRedo\n\n\n\n\n\n\n\n\n\nShortcut\nAction\n\n\n\n\nCtrl+Shift+C\nCommand palette\n\n\nCtrl+B\nToggle left sidebar\n\n\nCtrl+Shift+D\nToggle file browser\n\n\nCtrl+Shift+F\nFind and replace\n\n\nCtrl+Shift+[\nPrevious tab\n\n\nCtrl+Shift+]\nNext tab\n\n\nAlt+W\nClose tab\n\n\n\n\n\n\n\n\n\n\n\nJupyterHub Documentation: https://jupyterhub.readthedocs.io\nJupyterLab Documentation: https://jupyterlab.readthedocs.io\nJupyter Notebook Documentation: https://jupyter-notebook.readthedocs.io\n2i2c Infrastructure Guide: https://docs.2i2c.org\n\n\n\n\n\nJupyter Tutorial: https://jupyter.org/try\nReal Python Jupyter Guide: https://realpython.com/jupyter-notebook-introduction/\nDataCamp Jupyter Tutorial: https://www.datacamp.com/tutorial/tutorial-jupyter-notebook\nOfficial Jupyter Examples: https://github.com/jupyter/jupyter/wiki/Gallery-of-Jupyter-Notebooks\n\n\n\n\n\nNASA Disasters Program: https://disasters.nasa.gov\nUSGS Hazards Data: https://www.usgs.gov/natural-hazards\nNOAA Disaster Data: https://www.ncdc.noaa.gov/billions/\nCopernicus Emergency Management: https://emergency.copernicus.eu\n\n\n\n\n# Geospatial analysis\nimport geopandas as gpd\nimport rasterio\nimport xarray as xr\nimport folium\n\n# Data processing\nimport pandas as pd\nimport numpy as np\nimport dask.dataframe as dd\n\n# Visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport plotly.express as px\n\n# Machine learning\nfrom sklearn import *\nimport tensorflow as tf\nimport torch\n\n# Earth observation\nimport ee  # Google Earth Engine\nimport planetary_computer as pc\nimport pystac_client\n\n\n\nInstall JupyterLab extensions for enhanced functionality:\n# Variable inspector\njupyter labextension install @lckr/jupyterlab_variableinspector\n\n# Table of contents\njupyter labextension install @jupyterlab/toc\n\n# Git integration\npip install jupyterlab-git\n\n# Code formatter\npip install jupyterlab-code-formatter\n\n\n\n\nJupyter Discourse Forum: https://discourse.jupyter.org\nStack Overflow: https://stackoverflow.com/questions/tagged/jupyter\nGitHub Issues: https://github.com/jupyterhub/jupyterhub/issues\n2i2c Support: https://2i2c.org/support\nGitter Chat: https://gitter.im/jupyterhub/jupyterhub\n\n\n\n\n\nJupyterLab Cheat Sheet: https://www.datacamp.com/cheat-sheet/jupyterlab-cheat-sheet\nJupyter Shortcuts PDF: https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/\nMarkdown Guide: https://www.markdownguide.org/cheat-sheet/\n\n\n\n\n\n\nHere’s a complete example workflow for disaster analysis:\n# 1. Setup and Imports\nimport pandas as pd\nimport geopandas as gpd\nimport matplotlib.pyplot as plt\nimport folium\nfrom datetime import datetime, timedelta\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# 2. Load Data\n# Earthquake data\nearthquakes = pd.read_csv('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.csv')\nearthquakes['time'] = pd.to_datetime(earthquakes['time'])\n\n# 3. Data Processing\n# Filter recent events\nrecent = earthquakes[earthquakes['time'] &gt; datetime.now() - timedelta(days=7)]\n\n# Convert to GeoDataFrame\ngeometry = gpd.points_from_xy(recent.longitude, recent.latitude)\ngeo_df = gpd.GeoDataFrame(recent, geometry=geometry, crs='EPSG:4326')\n\n# 4. Analysis\nprint(f\"Total earthquakes in last 7 days: {len(recent)}\")\nprint(f\"Average magnitude: {recent['mag'].mean():.2f}\")\nprint(f\"Largest earthquake: {recent['mag'].max():.2f}\")\n\n# 5. Visualization\n# Static plot\nfig, ax = plt.subplots(figsize=(12, 8))\nworld = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))\nworld.plot(ax=ax, color='lightgray', edgecolor='black')\ngeo_df.plot(ax=ax, color='red', markersize=geo_df['mag']**2, alpha=0.6)\nplt.title('Recent Earthquakes (M4.5+)')\nplt.show()\n\n# Interactive map\nm = folium.Map(location=[0, 0], zoom_start=2)\nfor idx, row in geo_df.iterrows():\n    folium.CircleMarker(\n        location=[row['latitude'], row['longitude']],\n        radius=row['mag']*2,\n        popup=f\"M{row['mag']} - {row['place']}\",\n        color='red',\n        fill=True\n    ).add_to(m)\nm.save('earthquake_map.html')\n\n# 6. Export Results\ngeo_df.to_csv('processed_earthquakes.csv', index=False)\nprint(\"Analysis complete! Results saved.\")\n\nLast Updated: 2024\nVersion: 1.0\nDisasters Hub Training Guide\nFor additional assistance, contact your hub administrator or visit the 2i2c support portal.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1620,7 +1620,7 @@
     "section": "",
     "text": "Introduction\nGetting Started\nJupyterHub Interface Overview\nWorking with Jupyter Notebooks\nData Management\nEnvironment and Package Management\nTerminal and Command Line Access\nCollaboration and Sharing\nResource Management\nBest Practices\nTroubleshooting\nKeyboard Shortcuts\nResources and Links",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1631,7 +1631,7 @@
     "section": "",
     "text": "JupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:\n\nAccess powerful computing resources through your web browser\nWrite and execute code in Python, R, Julia, and other languages\nVisualize data with interactive plots and charts\nCollaborate with team members on shared projects\nWork from anywhere without local setup requirements\n\n\n\n\nThe Disasters Hub (https://hub.disasters.2i2c.cloud/) is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:\n\nPre-configured environments for geospatial analysis\nAccess to disaster-related datasets\nCollaboration tools for response teams\nIntegration with cloud storage services\nScalable computing resources\n\n\n\n\n✅ No Installation Required - Everything runs in your browser\n✅ Pre-configured Environments - Common packages already installed\n✅ Persistent Storage - Your work is saved between sessions\n✅ Collaboration Ready - Share notebooks with team members\n✅ Scalable Resources - Access to GPU and high-memory instances when needed",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1642,7 +1642,7 @@
     "section": "",
     "text": "Navigate to the Hub\n\nOpen your web browser (Chrome, Firefox, Safari, or Edge recommended)\nGo to: https://hub.disasters.2i2c.cloud/\nBookmark this URL for easy access\n\nAuthentication\n\nYou’ll see a login screen with authentication options\nCommon authentication methods:\n\nGitHub: Use your GitHub credentials\nGoogle: Use your Google account\nInstitutional Login: Use your organization’s credentials\n\nSelect your authentication method and follow the prompts\n\nFirst-Time Login\n\nAccept terms of service if prompted\nYour home directory will be created automatically\nInitial setup may take 30-60 seconds\n\n\n\n\n\nAfter login, you may be presented with server options:\nServer Options:\n┌─────────────────────────────────────┐\n│ • Small (2 CPU, 4GB RAM)            │\n│ • Medium (4 CPU, 8GB RAM)           │\n│ • Large (8 CPU, 16GB RAM)           │\n│ • GPU Instance (if available)       │\n└─────────────────────────────────────┘\nTips for Server Selection: - Start with Small for basic notebook work - Use Medium for data processing tasks - Choose Large for machine learning or big data - Select GPU only when needed (limited availability)",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1653,7 +1653,7 @@
     "section": "",
     "text": "Once logged in, you’ll see the JupyterLab interface:\n┌──────────────────────────────────────────────────────────┐\n│ [File] [Edit] [View] [Run] [Kernel] [Tabs] [Settings]    │\n├──────────────────────────────────────────────────────────┤\n│ 📁 File Browser │          Main Work Area                | \n│ ├── 📂 data     │                                        │\n│ ├── 📂 notebooks│      [Launcher Tab]                    │\n│ ├── 📂 scripts  │      • Notebook (Python 3)             │\n│ └── 📄 README   │      • Console                         │\n│                 │      • Terminal                        |\n│ [+] New         │      • Text File                       │\n└──────────────────────────────────────────────────────────┘\n\n\n\n\nTop Menu Bar\n\nFile operations, editing, running code\nKernel management\nView options and settings\n\nLeft Sidebar\n\nFile Browser (📁): Navigate and manage files\nRunning Terminals and Kernels (▶): Monitor active sessions\nCommand Palette (🔧): Access all commands\nExtension Manager (🧩): Add functionality\n\nMain Work Area\n\nMultiple tabs for notebooks, terminals, and files\nDrag tabs to rearrange or create split views\nRight-click tabs for additional options\n\nStatus Bar\n\nCurrent kernel status\nLine/column position\nFile encoding and type\n\n\n\n\n\n\nClick the Python 3 icon in the Launcher\nOr: File → New → Notebook\nSelect kernel (usually Python 3)\nRename your notebook: Right-click on “Untitled.ipynb” → Rename",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1664,7 +1664,7 @@
     "section": "",
     "text": "A Jupyter notebook consists of cells that can contain: - Code: Executable Python (or other language) code - Markdown: Formatted text, equations, and images - Raw: Unformatted text\n\n\n\n\n\n\nRun current cell: Shift + Enter (run and move to next)\nRun current cell in place: Ctrl + Enter (stay in cell)\nRun all cells: Menu → Run → Run All Cells\n\n\n\n\n# Code Cell Example\nimport pandas as pd\nimport numpy as np\ndata = pd.read_csv('data.csv')\ndata.head()\n# Markdown Cell Example\n## Analysis Results\n- **Finding 1**: Data shows increasing trend\n- **Finding 2**: Correlation coefficient: 0.85\n\n$$E = mc^2$$  # LaTeX equation\n\n\n\n\nInsert cell above: A (in command mode)\nInsert cell below: B (in command mode)\nDelete cell: DD (press D twice in command mode)\nCopy cell: C (in command mode)\nPaste cell: V (in command mode)\nUndo deletion: Z (in command mode)\n\n\n\n\n\nThe kernel is the computational engine that executes your code.\n\n\n\nRestart kernel: Kernel → Restart\nRestart and clear output: Kernel → Restart & Clear Output\nRestart and run all: Kernel → Restart & Run All\nInterrupt execution: Kernel → Interrupt (or I,I in command mode)\nChange kernel: Kernel → Change Kernel\n\n\n\n\n\n○: Kernel idle\n●: Kernel busy\n[*]: Cell currently executing\n[1]: Cell execution number\n\n\n\n\n\n\nUse meaningful cell divisions\n\nOne concept or operation per cell\nSeparate imports, data loading, processing, visualization\n\nDocument your work\n# Good practice: Add comments and markdown cells\n# Load disaster response data\ndf = pd.read_csv('disaster_data.csv')\n\n# Data preprocessing\ndf['date'] = pd.to_datetime(df['date'])\ndf = df.dropna()\nClear output before sharing\n\nKernel → Restart & Clear Output\nReduces file size and removes sensitive output",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1675,7 +1675,7 @@
     "section": "",
     "text": "Drag and drop files directly into the file browser\nUpload button: Click the ⬆ button in the file browser toolbar\nTerminal upload: Use wget or curl in terminal\nwget https://example.com/data.csv\ncurl -O https://example.com/data.zip\n\n\n\n\n\nRight-click file in browser → Download\nFrom notebook:\nfrom IPython.display import FileLink\nFileLink('results.csv')  # Creates downloadable link\n\n\n\n\n\n\n\nimport boto3\nimport pandas as pd\n\n# Read from S3\ndf = pd.read_csv('s3://bucket-name/path/to/file.csv')\n\n# Write to S3\ndf.to_csv('s3://bucket-name/output/results.csv', index=False)\n\n\n\n# Read from GCS\ndf = pd.read_csv('gs://bucket-name/path/to/file.csv')\n\n# Using gsutil in terminal\n!gsutil cp gs://bucket/file.csv ./data/\n\n\n\n\nRecommended directory structure:\nhome/\n├── data/\n│   ├── raw/           # Original, immutable data\n│   ├── processed/     # Cleaned, transformed data\n│   └── external/      # Data from external sources\n├── notebooks/\n│   ├── exploratory/   # Initial explorations\n│   ├── analysis/      # Detailed analysis\n│   └── reports/       # Final reports\n├── scripts/           # Reusable Python scripts\n├── results/           # Output files, figures\n└── requirements.txt   # Package dependencies\n\n\n\n⚠️ Important: Your home directory is persistent, but understand the storage limits:\n\nHome directory: Usually 10-100 GB (persistent)\nShared data: Read-only datasets available to all users\nTemporary storage: /tmp cleared on restart\nBest practice: Store large datasets in cloud storage, not home directory",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1686,7 +1686,7 @@
     "section": "",
     "text": "# In a notebook cell\n!pip install package_name\n\n# Install specific version\n!pip install pandas==1.3.0\n\n# Install from requirements file\n!pip install -r requirements.txt\n\n# Install in user directory (if no write permissions)\n!pip install --user package_name\n\n\n\n# In a notebook cell\n!conda install -c conda-forge package_name -y\n\n# Install multiple packages\n!conda install numpy pandas matplotlib -y\n\n# Create new environment\n!conda create -n myenv python=3.9 -y\n!conda activate myenv  # Note: Activation in notebooks is tricky\n\n\n\n\n\n\nimport sys\nprint(sys.executable)  # Python interpreter path\nprint(sys.version)     # Python version\n\n# List installed packages\n!pip list\n!conda list\n\n\n\n# In terminal\npython -m venv myproject\nsource myproject/bin/activate  # Linux/Mac\npip install -r requirements.txt\n\n\n\n\n\nInstall IPython kernel:\npython -m ipykernel install --user --name mykernel --display-name \"My Kernel\"\nList available kernels:\njupyter kernelspec list\nRemove a kernel:\njupyter kernelspec uninstall mykernel",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1697,7 +1697,7 @@
     "section": "",
     "text": "From Launcher: Click “Terminal” icon\nFrom menu: File → New → Terminal\nKeyboard shortcut: (varies by setup)\n\n\n\n\n# Navigation\npwd                     # Print working directory\nls -la                  # List files with details\ncd ~/notebooks         # Change directory\n\n# File operations\nmkdir project          # Create directory\ncp file1.txt file2.txt # Copy file\nmv oldname newname     # Move/rename\nrm file.txt           # Delete file (careful!)\n\n# File viewing\ncat file.txt          # Display file contents\nhead -n 10 data.csv   # First 10 lines\ntail -n 10 log.txt    # Last 10 lines\nless large_file.txt   # Page through file\n\n# Process management\nps aux                # List processes\ntop                   # Monitor resources\nkill -9 PID          # Kill process\n\n# Git operations\ngit status\ngit add .\ngit commit -m \"message\"\ngit push\n\n\n\n# Count lines in file\nwc -l data.csv\n\n# View CSV structure\nhead -1 data.csv | tr ',' '\\n' | nl\n\n# Search in files\ngrep \"pattern\" file.txt\ngrep -r \"pattern\" ./directory\n\n# Compress/decompress\nzip archive.zip file1 file2\nunzip archive.zip\ntar -czf archive.tar.gz directory/\ntar -xzf archive.tar.gz",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1708,7 +1708,7 @@
     "section": "",
     "text": "Download notebook: File → Download as → Notebook (.ipynb)\nShare via email, Slack, or file sharing service\nRecipient uploads to their JupyterHub\n\n\n\n\n# Initialize repository\ngit init\ngit add notebook.ipynb\ngit commit -m \"Add analysis notebook\"\ngit remote add origin https://github.com/user/repo.git\ngit push -u origin main\n\n\n\n\nHTML: File → Export Notebook As → HTML\nPDF: File → Export Notebook As → PDF (requires LaTeX)\nPython script: File → Export Notebook As → Python\nMarkdown: File → Export Notebook As → Markdown\n\n\n\n\n\nSome JupyterHub deployments support real-time collaboration:\n\nShare workspace link: Get shareable link from hub admin\nCollaborative editing: Multiple users can edit simultaneously\nSee collaborator cursors: Real-time cursor positions\nChat integration: Built-in chat for discussion\n\n\n\n\n\nClear outputs before committing:\njupyter nbconvert --clear-output notebook.ipynb\nUse .gitignore:\n.ipynb_checkpoints/\n__pycache__/\n*.pyc\n.DS_Store\ndata/  # Don't commit large data files\nNotebook diff tools:\n# Install nbdime for better notebook diffs\npip install nbdime\nnbdime config-git --enable",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1719,7 +1719,7 @@
     "section": "",
     "text": "Your JupyterHub instance has resource limits:\n# Check available resources\nimport psutil\n\n# Memory\nmemory = psutil.virtual_memory()\nprint(f\"Total RAM: {memory.total / 1e9:.2f} GB\")\nprint(f\"Available: {memory.available / 1e9:.2f} GB\")\nprint(f\"Used: {memory.percent}%\")\n\n# CPU\nprint(f\"CPU cores: {psutil.cpu_count()}\")\nprint(f\"CPU usage: {psutil.cpu_percent()}%\")\n\n# Disk\ndisk = psutil.disk_usage('/')\nprint(f\"Disk space: {disk.total / 1e9:.2f} GB\")\nprint(f\"Disk used: {disk.percent}%\")\n\n\n\n\n\n\nInstall Resource Usage extension\nShows real-time memory and CPU usage in status bar\n\n\n\n\n# Real-time resource monitoring\ntop\nhtop  # If installed\n\n# Memory usage\nfree -h\n\n# Disk usage\ndf -h\ndu -sh *  # Directory sizes\n\n\n\n\n\nClear variables when done:\n# Clear specific variable\ndel large_dataframe\n\n# Clear all variables\n%reset -f\n\n# Garbage collection\nimport gc\ngc.collect()\nUse efficient data types:\n# Use categories for strings with few unique values\ndf['category'] = df['category'].astype('category')\n\n# Use smaller numeric types when possible\ndf['count'] = df['count'].astype('int32')  # Instead of int64\nProcess data in chunks:\n# Read large CSV in chunks\nchunk_size = 10000\nfor chunk in pd.read_csv('large_file.csv', chunksize=chunk_size):\n    process_chunk(chunk)\n\n\n\n\nAlways shut down kernels and terminals when done:\n\nShutdown kernel: Kernel → Shutdown\nClose terminals: Exit or Ctrl+D\nHub Control Panel: File → Hub Control Panel → Stop My Server\nLogout: File → Log Out\n\n⚠️ Important: Idle servers may be automatically culled after a period of inactivity (usually 1-2 hours).",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1730,7 +1730,7 @@
     "section": "",
     "text": "Use consistent naming:\n2024-01-15_earthquake_analysis.ipynb  # Good\nuntitled1.ipynb                       # Bad\nCreate project templates:\n# notebook_template.ipynb\n\n# 1. Imports\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# 2. Configuration\npd.set_option('display.max_columns', None)\nplt.style.use('seaborn')\n\n# 3. Data Loading\n\n# 4. Data Exploration\n\n# 5. Analysis\n\n# 6. Results\nDocument dependencies:\n# Generate requirements.txt\n!pip freeze &gt; requirements.txt\n\n\n\n\n\nNever commit credentials:\n# Bad\napi_key = \"sk-abc123def456\"\n\n# Good - Use environment variables\nimport os\napi_key = os.environ.get('API_KEY')\nUse secrets management:\n# Store secrets in .env file\nfrom dotenv import load_dotenv\nload_dotenv()\n\n# Access secrets\nsecret = os.getenv('SECRET_KEY')\nBe careful with outputs:\n\nClear cells containing sensitive information\nReview notebooks before sharing\n\n\n\n\n\n\nVectorize operations:\n# Slow\nresults = []\nfor i in range(len(df)):\n    results.append(df.iloc[i]['column'] * 2)\n\n# Fast\nresults = df['column'] * 2\nUse built-in functions:\n# Use pandas/numpy operations instead of loops\ndf['new_col'] = df['col1'] + df['col2']  # Vectorized\nProfile your code:\n%%time  # Time entire cell\n\n%timeit function()  # Time single line\n\n# Detailed profiling\n%load_ext line_profiler\n%lprun -f function_to_profile function_to_profile()",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1741,7 +1741,7 @@
     "section": "",
     "text": "Check resources: Server might be full\nTry different kernel: Some kernels may be broken\nRestart server: Hub Control Panel → Stop → Start\n\n\n\n\n# Check if package is installed\nimport importlib\nif importlib.util.find_spec(\"package_name\") is None:\n    !pip install package_name\n    \n# Restart kernel after installation\nfrom IPython import get_ipython\nget_ipython().kernel.do_shutdown(True)\n\n\n\n\nClear unnecessary variables: del variable_name\nUse smaller data samples for testing\nRequest larger server instance\nProcess data in chunks\n\n\n\n\n\nCheck disk space: df -h in terminal\nCheck file permissions: ls -la notebook.ipynb\nSave with new name: File → Save As\nDownload backup: File → Download\n\n\n\n\n\nCheck internet connection\nTry different browser\nClear browser cache\nCheck if hub is under maintenance\n\n\n\n\n\n\nBuilt-in help:\nhelp(function_name)\nfunction_name?  # Quick help\nfunction_name??  # Source code\nDocumentation:\n\nJupyterHub docs: https://jupyterhub.readthedocs.io\nJupyterLab docs: https://jupyterlab.readthedocs.io\n2i2c docs: https://docs.2i2c.org\n\nCommunity support:\n\nDiscourse forum\nGitHub issues\nStack Overflow with tags: jupyter, jupyterhub",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1752,7 +1752,7 @@
     "section": "",
     "text": "Press Esc to enter command mode\n\n\n\nShortcut\nAction\n\n\n\n\nEnter\nEnter edit mode\n\n\nA\nInsert cell above\n\n\nB\nInsert cell below\n\n\nD,D\nDelete cell\n\n\nY\nChange to code cell\n\n\nM\nChange to markdown cell\n\n\nShift+Up/Down\nSelect multiple cells\n\n\nShift+M\nMerge selected cells\n\n\nC\nCopy cell\n\n\nX\nCut cell\n\n\nV\nPaste cell below\n\n\nShift+V\nPaste cell above\n\n\nZ\nUndo cell deletion\n\n\n0,0\nRestart kernel\n\n\nI,I\nInterrupt kernel\n\n\n\n\n\n\nPress Enter to enter edit mode\n\n\n\nShortcut\nAction\n\n\n\n\nEsc\nEnter command mode\n\n\nCtrl+Enter\nRun cell\n\n\nShift+Enter\nRun cell, select below\n\n\nAlt+Enter\nRun cell, insert below\n\n\nCtrl+S\nSave notebook\n\n\nTab\nCode completion\n\n\nShift+Tab\nTooltip\n\n\nCtrl+]\nIndent\n\n\nCtrl+[\nDedent\n\n\nCtrl+A\nSelect all\n\n\nCtrl+Z\nUndo\n\n\nCtrl+Y\nRedo\n\n\n\n\n\n\n\n\n\nShortcut\nAction\n\n\n\n\nCtrl+Shift+C\nCommand palette\n\n\nCtrl+B\nToggle left sidebar\n\n\nCtrl+Shift+D\nToggle file browser\n\n\nCtrl+Shift+F\nFind and replace\n\n\nCtrl+Shift+[\nPrevious tab\n\n\nCtrl+Shift+]\nNext tab\n\n\nAlt+W\nClose tab",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1763,7 +1763,7 @@
     "section": "",
     "text": "JupyterHub Documentation: https://jupyterhub.readthedocs.io\nJupyterLab Documentation: https://jupyterlab.readthedocs.io\nJupyter Notebook Documentation: https://jupyter-notebook.readthedocs.io\n2i2c Infrastructure Guide: https://docs.2i2c.org\n\n\n\n\n\nJupyter Tutorial: https://jupyter.org/try\nReal Python Jupyter Guide: https://realpython.com/jupyter-notebook-introduction/\nDataCamp Jupyter Tutorial: https://www.datacamp.com/tutorial/tutorial-jupyter-notebook\nOfficial Jupyter Examples: https://github.com/jupyter/jupyter/wiki/Gallery-of-Jupyter-Notebooks\n\n\n\n\n\nNASA Disasters Program: https://disasters.nasa.gov\nUSGS Hazards Data: https://www.usgs.gov/natural-hazards\nNOAA Disaster Data: https://www.ncdc.noaa.gov/billions/\nCopernicus Emergency Management: https://emergency.copernicus.eu\n\n\n\n\n# Geospatial analysis\nimport geopandas as gpd\nimport rasterio\nimport xarray as xr\nimport folium\n\n# Data processing\nimport pandas as pd\nimport numpy as np\nimport dask.dataframe as dd\n\n# Visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport plotly.express as px\n\n# Machine learning\nfrom sklearn import *\nimport tensorflow as tf\nimport torch\n\n# Earth observation\nimport ee  # Google Earth Engine\nimport planetary_computer as pc\nimport pystac_client\n\n\n\nInstall JupyterLab extensions for enhanced functionality:\n# Variable inspector\njupyter labextension install @lckr/jupyterlab_variableinspector\n\n# Table of contents\njupyter labextension install @jupyterlab/toc\n\n# Git integration\npip install jupyterlab-git\n\n# Code formatter\npip install jupyterlab-code-formatter\n\n\n\n\nJupyter Discourse Forum: https://discourse.jupyter.org\nStack Overflow: https://stackoverflow.com/questions/tagged/jupyter\nGitHub Issues: https://github.com/jupyterhub/jupyterhub/issues\n2i2c Support: https://2i2c.org/support\nGitter Chat: https://gitter.im/jupyterhub/jupyterhub\n\n\n\n\n\nJupyterLab Cheat Sheet: https://www.datacamp.com/cheat-sheet/jupyterlab-cheat-sheet\nJupyter Shortcuts PDF: https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/\nMarkdown Guide: https://www.markdownguide.org/cheat-sheet/",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
     ]
   },
@@ -1774,8 +1774,19 @@
     "section": "",
     "text": "Here’s a complete example workflow for disaster analysis:\n# 1. Setup and Imports\nimport pandas as pd\nimport geopandas as gpd\nimport matplotlib.pyplot as plt\nimport folium\nfrom datetime import datetime, timedelta\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# 2. Load Data\n# Earthquake data\nearthquakes = pd.read_csv('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.csv')\nearthquakes['time'] = pd.to_datetime(earthquakes['time'])\n\n# 3. Data Processing\n# Filter recent events\nrecent = earthquakes[earthquakes['time'] &gt; datetime.now() - timedelta(days=7)]\n\n# Convert to GeoDataFrame\ngeometry = gpd.points_from_xy(recent.longitude, recent.latitude)\ngeo_df = gpd.GeoDataFrame(recent, geometry=geometry, crs='EPSG:4326')\n\n# 4. Analysis\nprint(f\"Total earthquakes in last 7 days: {len(recent)}\")\nprint(f\"Average magnitude: {recent['mag'].mean():.2f}\")\nprint(f\"Largest earthquake: {recent['mag'].max():.2f}\")\n\n# 5. Visualization\n# Static plot\nfig, ax = plt.subplots(figsize=(12, 8))\nworld = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))\nworld.plot(ax=ax, color='lightgray', edgecolor='black')\ngeo_df.plot(ax=ax, color='red', markersize=geo_df['mag']**2, alpha=0.6)\nplt.title('Recent Earthquakes (M4.5+)')\nplt.show()\n\n# Interactive map\nm = folium.Map(location=[0, 0], zoom_start=2)\nfor idx, row in geo_df.iterrows():\n    folium.CircleMarker(\n        location=[row['latitude'], row['longitude']],\n        radius=row['mag']*2,\n        popup=f\"M{row['mag']} - {row['place']}\",\n        color='red',\n        fill=True\n    ).add_to(m)\nm.save('earthquake_map.html')\n\n# 6. Export Results\ngeo_df.to_csv('processed_earthquakes.csv', index=False)\nprint(\"Analysis complete! Results saved.\")\n\nLast Updated: 2024\nVersion: 1.0\nDisasters Hub Training Guide\nFor additional assistance, contact your hub administrator or visit the 2i2c support portal.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "JupyterHub Training Guide - Disasters Hub"
+    ]
+  },
+  {
+    "objectID": "data_workflow2/NRT_directory_structure.html",
+    "href": "data_workflow2/NRT_directory_structure.html",
+    "title": "NRT Directory Structure",
+    "section": "",
+    "text": "NRT Directory Structure\n\n\n\nData Flow Diagram Extending From Acquisition/Creation to User Delivery\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Workflow Diagrams",
+      "NRT Directory Structure"
     ]
   },
   {
@@ -2226,133 +2237,152 @@
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/noaa-gggrn-ch4-concentrations_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/noaa-gggrn-ch4-concentrations_Processing and Verification Report.html",
-    "title": "Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory",
+    "objectID": "workflow2.html",
+    "href": "workflow2.html",
+    "title": "NASA Disasters: Data Flow Diagrams",
+    "section": "",
+    "text": "Welcome to the homepage for NASA Disasters data flow diagrams. These diagrams summarize the process of how to find, download, and process data for NASA Disasters.\nClick on a dataset name to view the data flow diagram for that dataset.\nView the NASA Disasters Resources\n\nNRT Data Download\nNRT Directory Structure\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Workflow Diagrams"
+    ]
+  },
+  {
+    "objectID": "processing_and_verification_reports/lpjeosim-wetlandch4-grid-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/lpjeosim-wetlandch4-grid-v1_Processing and Verification Report.html",
+    "title": "Wetland Methane Emissions, LPJ-EOSIM Model",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory"
+      "Wetland Methane Emissions, LPJ-EOSIM Model"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/influx-testbed-ghg-concentrations_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/influx-testbed-ghg-concentrations_Processing and Verification Report.html",
-    "title": "Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)",
+    "objectID": "processing_and_verification_reports/odiac-ffco2-monthgrid-v2024_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/odiac-ffco2-monthgrid-v2024_Processing and Verification Report.html",
+    "title": "ODIAC Fossil Fuel CO₂ Emissions",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)"
+      "ODIAC Fossil Fuel CO₂ Emissions"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/lam-testbed-ghg-concentrations_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/lam-testbed-ghg-concentrations_Processing and Verification Report.html",
-    "title": "Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project",
+    "objectID": "processing_and_verification_reports/micasa-carbonflux-daygrid-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/micasa-carbonflux-daygrid-v1_Processing and Verification Report.html",
+    "title": "MiCASA Land Carbon Flux",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project"
+      "MiCASA Land Carbon Flux"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/goes-ch4plume-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/goes-ch4plume-v1_Processing and Verification Report.html",
-    "title": "Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure",
+    "objectID": "processing_and_verification_reports/gra2pes-ghg-monthgrid-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/gra2pes-ghg-monthgrid-v1_Processing and Verification Report.html",
+    "title": "GRA²PES Greenhouse Gas and Air Quality Species",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure"
+      "GRA²PES Greenhouse Gas and Air Quality Species"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/oco2-mip-co2budget-yeargrid-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/oco2-mip-co2budget-yeargrid-v1_Processing and Verification Report.html",
-    "title": "OCO-2 MIP Top-Down CO₂ Budgets",
+    "objectID": "processing_and_verification_reports/vulcan-ffco2-yeargrid-v4_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/vulcan-ffco2-yeargrid-v4_Processing and Verification Report.html",
+    "title": "Vulcan Fossil Fuel CO₂ Emissions",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "OCO-2 MIP Top-Down CO₂ Budgets"
+      "Vulcan Fossil Fuel CO₂ Emissions"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/noaa-gggrn-co2-concentrations_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/noaa-gggrn-co2-concentrations_Processing and Verification Report.html",
-    "title": "Atmospheric Carbon Dioxide Concentrations from NOAA Global Monitoring Laboratory",
+    "objectID": "processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.html",
+    "title": "GOSAT-based Top-down Total and Natural Methane Emissions",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Atmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory"
+      "GOSAT-based Top-down Total and Natural Methane Emissions"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/oco2geos-co2-daygrid-v10r_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/oco2geos-co2-daygrid-v10r_Processing and Verification Report.html",
-    "title": "OCO-2 GEOS Column CO₂ Concentrations",
+    "objectID": "processing_and_verification_reports/epa-ch4emission-grid-v2express_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/epa-ch4emission-grid-v2express_Processing and Verification Report.html",
+    "title": "Gridded Anthropogenic Methane Emissions Inventory",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "OCO-2 GEOS Column CO₂ Concentrations"
+      "Gridded Anthropogenic Methane Emissions Inventory"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/nec-testbed-ghg-concentrations_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/nec-testbed-ghg-concentrations_Processing and Verification Report.html",
-    "title": "Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed",
+    "objectID": "processing_and_verification_reports/emit-ch4plume-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/emit-ch4plume-v1_Processing and Verification Report.html",
+    "title": "EMIT Methane Point Source Plume Complexes",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed"
+      "EMIT Methane Point Source Plume Complexes"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/ct-ch4-monthgrid-v2023_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/ct-ch4-monthgrid-v2023_Processing and Verification Report.html",
-    "title": "CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes",
+    "objectID": "processing_and_verification_reports/sedac-popdensity-yeargrid5yr-v4.11_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/sedac-popdensity-yeargrid5yr-v4.11_Processing and Verification Report.html",
+    "title": "SEDAC Gridded World Population Density",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes"
+      "SEDAC Gridded World Population Density"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.html",
-    "title": "Air-Sea CO₂ Flux, ECCO-Darwin Model v5",
+    "objectID": "workflow.html",
+    "href": "workflow.html",
+    "title": "U.S. Greenhouse Gas Center: Data Flow Diagrams",
     "section": "",
-    "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
+    "text": "Welcome to the homepage for U.S. Greenhouse Gas (GHG) Center data flow diagrams. These diagrams summarize the process a dataset goes through from acquisition to integration in the U.S. GHG Center.\nClick on a dataset name to view the data flow diagram for that dataset.\nView the US GHG Center Data Catalog",
     "crumbs": [
-      "Processing and Verification Reports",
-      "Air-Sea CO₂ Flux, ECCO-Darwin Model v5"
+      "Data Flow Diagrams"
     ]
   },
   {
-    "objectID": "git-github-comprehensive-guide.html",
-    "href": "git-github-comprehensive-guide.html",
-    "title": "Git and GitHub Comprehensive Training Guide",
-    "section": "",
-    "text": "Git is a distributed version control system that tracks changes in your code over time. GitHub is a cloud-based hosting service that lets you manage Git repositories with additional collaboration features. This guide will walk you through everything you need to know to get started with Git and GitHub on macOS.\n\n\n\nVersion Control: Track every change made to your code\nCollaboration: Work with others without conflicts\nBackup: Your code is safely stored in the cloud\nDocumentation: Built-in wiki and issue tracking\nPortfolio: Showcase your work to potential employers",
+    "objectID": "workflow.html#contact",
+    "href": "workflow.html#contact",
+    "title": "U.S. Greenhouse Gas Center: Data Flow Diagrams",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
     "crumbs": [
-      "GitHub"
+      "Data Flow Diagrams"
     ]
   },
   {
-    "objectID": "git-github-comprehensive-guide.html#introduction",
-    "href": "git-github-comprehensive-guide.html#introduction",
-    "title": "Git and GitHub Comprehensive Training Guide",
+    "objectID": "jupyterhub.html",
+    "href": "jupyterhub.html",
+    "title": "JupyterHub Training Guide - Disasters Hub",
     "section": "",
-    "text": "Git is a distributed version control system that tracks changes in your code over time. GitHub is a cloud-based hosting service that lets you manage Git repositories with additional collaboration features. This guide will walk you through everything you need to know to get started with Git and GitHub on macOS.\n\n\n\nVersion Control: Track every change made to your code\nCollaboration: Work with others without conflicts\nBackup: Your code is safely stored in the cloud\nDocumentation: Built-in wiki and issue tracking\nPortfolio: Showcase your work to potential employers",
+    "text": "JupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:\n\nAccess powerful computing resources through your web browser\nWrite and execute code in Python, R, Julia, and other languages\nVisualize data with interactive plots and charts\nCollaborate with team members on shared projects\nWork from anywhere without local setup requirements\n\n\n\n\nThe Disasters Hub is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:\n\nPre-configured environments for geospatial analysis\nAccess to disaster-related datasets\nCollaboration tools for response teams\nIntegration with cloud storage services\nScalable computing resources\n\n\n\n\n✅ No Installation Required - Everything runs in your browser\n✅ Pre-configured Environments - Common packages already installed\n✅ Persistent Storage - Your work is saved between sessions\n✅ Collaboration Ready - Share notebooks with team members\n✅ Scalable Resources - Access to GPU and high-memory instances when needed",
     "crumbs": [
-      "GitHub"
+      "JupyterHub"
+    ]
+  },
+  {
+    "objectID": "jupyterhub.html#introduction",
+    "href": "jupyterhub.html#introduction",
+    "title": "JupyterHub Training Guide - Disasters Hub",
+    "section": "",
+    "text": "JupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:\n\nAccess powerful computing resources through your web browser\nWrite and execute code in Python, R, Julia, and other languages\nVisualize data with interactive plots and charts\nCollaborate with team members on shared projects\nWork from anywhere without local setup requirements\n\n\n\n\nThe Disasters Hub is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:\n\nPre-configured environments for geospatial analysis\nAccess to disaster-related datasets\nCollaboration tools for response teams\nIntegration with cloud storage services\nScalable computing resources\n\n\n\n\n✅ No Installation Required - Everything runs in your browser\n✅ Pre-configured Environments - Common packages already installed\n✅ Persistent Storage - Your work is saved between sessions\n✅ Collaboration Ready - Share notebooks with team members\n✅ Scalable Resources - Access to GPU and high-memory instances when needed",
+    "crumbs": [
+      "JupyterHub"
     ]
   },
   {
@@ -3019,122 +3049,133 @@
     ]
   },
   {
-    "objectID": "workflow.html",
-    "href": "workflow.html",
-    "title": "U.S. Greenhouse Gas Center: Data Flow Diagrams",
+    "objectID": "git-github-comprehensive-guide.html",
+    "href": "git-github-comprehensive-guide.html",
+    "title": "Git and GitHub Comprehensive Training Guide",
     "section": "",
-    "text": "Welcome to the homepage for U.S. Greenhouse Gas (GHG) Center data flow diagrams. These diagrams summarize the process a dataset goes through from acquisition to integration in the U.S. GHG Center.\nClick on a dataset name to view the data flow diagram for that dataset.\nView the US GHG Center Data Catalog",
+    "text": "Git is a distributed version control system that tracks changes in your code over time. GitHub is a cloud-based hosting service that lets you manage Git repositories with additional collaboration features. This guide will walk you through everything you need to know to get started with Git and GitHub on macOS.\n\n\n\nVersion Control: Track every change made to your code\nCollaboration: Work with others without conflicts\nBackup: Your code is safely stored in the cloud\nDocumentation: Built-in wiki and issue tracking\nPortfolio: Showcase your work to potential employers",
     "crumbs": [
-      "Data Flow Diagrams"
+      "GitHub"
     ]
   },
   {
-    "objectID": "workflow.html#contact",
-    "href": "workflow.html#contact",
-    "title": "U.S. Greenhouse Gas Center: Data Flow Diagrams",
-    "section": "Contact",
-    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
-    "crumbs": [
-      "Data Flow Diagrams"
-    ]
-  },
-  {
-    "objectID": "processing_and_verification_reports/sedac-popdensity-yeargrid5yr-v4.11_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/sedac-popdensity-yeargrid5yr-v4.11_Processing and Verification Report.html",
-    "title": "SEDAC Gridded World Population Density",
+    "objectID": "git-github-comprehensive-guide.html#introduction",
+    "href": "git-github-comprehensive-guide.html#introduction",
+    "title": "Git and GitHub Comprehensive Training Guide",
     "section": "",
-    "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
+    "text": "Git is a distributed version control system that tracks changes in your code over time. GitHub is a cloud-based hosting service that lets you manage Git repositories with additional collaboration features. This guide will walk you through everything you need to know to get started with Git and GitHub on macOS.\n\n\n\nVersion Control: Track every change made to your code\nCollaboration: Work with others without conflicts\nBackup: Your code is safely stored in the cloud\nDocumentation: Built-in wiki and issue tracking\nPortfolio: Showcase your work to potential employers",
     "crumbs": [
-      "Processing and Verification Reports",
-      "SEDAC Gridded World Population Density"
+      "GitHub"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/emit-ch4plume-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/emit-ch4plume-v1_Processing and Verification Report.html",
-    "title": "EMIT Methane Point Source Plume Complexes",
+    "objectID": "processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.html",
+    "title": "Air-Sea CO₂ Flux, ECCO-Darwin Model v5",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "EMIT Methane Point Source Plume Complexes"
+      "Air-Sea CO₂ Flux, ECCO-Darwin Model v5"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/epa-ch4emission-grid-v2express_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/epa-ch4emission-grid-v2express_Processing and Verification Report.html",
-    "title": "Gridded Anthropogenic Methane Emissions Inventory",
+    "objectID": "processing_and_verification_reports/ct-ch4-monthgrid-v2023_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/ct-ch4-monthgrid-v2023_Processing and Verification Report.html",
+    "title": "CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Gridded Anthropogenic Methane Emissions Inventory"
+      "CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.html",
-    "title": "GOSAT-based Top-down Total and Natural Methane Emissions",
+    "objectID": "processing_and_verification_reports/nec-testbed-ghg-concentrations_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/nec-testbed-ghg-concentrations_Processing and Verification Report.html",
+    "title": "Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "GOSAT-based Top-down Total and Natural Methane Emissions"
+      "Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/vulcan-ffco2-yeargrid-v4_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/vulcan-ffco2-yeargrid-v4_Processing and Verification Report.html",
-    "title": "Vulcan Fossil Fuel CO₂ Emissions",
+    "objectID": "processing_and_verification_reports/oco2geos-co2-daygrid-v10r_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/oco2geos-co2-daygrid-v10r_Processing and Verification Report.html",
+    "title": "OCO-2 GEOS Column CO₂ Concentrations",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Vulcan Fossil Fuel CO₂ Emissions"
+      "OCO-2 GEOS Column CO₂ Concentrations"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/gra2pes-ghg-monthgrid-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/gra2pes-ghg-monthgrid-v1_Processing and Verification Report.html",
-    "title": "GRA²PES Greenhouse Gas and Air Quality Species",
+    "objectID": "processing_and_verification_reports/noaa-gggrn-co2-concentrations_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/noaa-gggrn-co2-concentrations_Processing and Verification Report.html",
+    "title": "Atmospheric Carbon Dioxide Concentrations from NOAA Global Monitoring Laboratory",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "GRA²PES Greenhouse Gas and Air Quality Species"
+      "Atmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/micasa-carbonflux-daygrid-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/micasa-carbonflux-daygrid-v1_Processing and Verification Report.html",
-    "title": "MiCASA Land Carbon Flux",
+    "objectID": "processing_and_verification_reports/oco2-mip-co2budget-yeargrid-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/oco2-mip-co2budget-yeargrid-v1_Processing and Verification Report.html",
+    "title": "OCO-2 MIP Top-Down CO₂ Budgets",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "MiCASA Land Carbon Flux"
+      "OCO-2 MIP Top-Down CO₂ Budgets"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/odiac-ffco2-monthgrid-v2024_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/odiac-ffco2-monthgrid-v2024_Processing and Verification Report.html",
-    "title": "ODIAC Fossil Fuel CO₂ Emissions",
+    "objectID": "processing_and_verification_reports/goes-ch4plume-v1_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/goes-ch4plume-v1_Processing and Verification Report.html",
+    "title": "Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "ODIAC Fossil Fuel CO₂ Emissions"
+      "Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure"
     ]
   },
   {
-    "objectID": "processing_and_verification_reports/lpjeosim-wetlandch4-grid-v1_Processing and Verification Report.html",
-    "href": "processing_and_verification_reports/lpjeosim-wetlandch4-grid-v1_Processing and Verification Report.html",
-    "title": "Wetland Methane Emissions, LPJ-EOSIM Model",
+    "objectID": "processing_and_verification_reports/lam-testbed-ghg-concentrations_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/lam-testbed-ghg-concentrations_Processing and Verification Report.html",
+    "title": "Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project",
     "section": "",
     "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Processing and Verification Reports",
-      "Wetland Methane Emissions, LPJ-EOSIM Model"
+      "Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project"
+    ]
+  },
+  {
+    "objectID": "processing_and_verification_reports/influx-testbed-ghg-concentrations_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/influx-testbed-ghg-concentrations_Processing and Verification Report.html",
+    "title": "Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)",
+    "section": "",
+    "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Processing and Verification Reports",
+      "Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)"
+    ]
+  },
+  {
+    "objectID": "processing_and_verification_reports/noaa-gggrn-ch4-concentrations_Processing and Verification Report.html",
+    "href": "processing_and_verification_reports/noaa-gggrn-ch4-concentrations_Processing and Verification Report.html",
+    "title": "Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory",
+    "section": "",
+    "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF.\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Processing and Verification Reports",
+      "Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory"
     ]
   },
   {
@@ -3611,13 +3652,24 @@
     ]
   },
   {
+    "objectID": "data_workflow2/NRT_data_download.html",
+    "href": "data_workflow2/NRT_data_download.html",
+    "title": "NRT Data Download",
+    "section": "",
+    "text": "NRT Data Download\n\n\n\nData Flow Diagram Extending From Acquisition/Creation to User Delivery\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Workflow Diagrams",
+      "NRT Data Download"
+    ]
+  },
+  {
     "objectID": "Jupyterhub/setup-disaster-repo.html",
     "href": "Jupyterhub/setup-disaster-repo.html",
     "title": "Setting Up Disaster Repository - Step-by-Step Guide",
     "section": "",
     "text": "Prerequisites\nGitHub Account Setup\nConfigure Git Identity\nGitHub Authentication Setup\nClone the Repository\nWorking with Branches\nMaking Changes and Pushing\nTroubleshooting Common Issues\n\n\n\n\n\nBefore starting, ensure you have: - Git installed in your JupyterHub environment - Access to terminal in JupyterHub - Internet connection - GitHub account (we’ll create one if needed)\nCheck if Git is installed:\ngit --version\nIf not installed, contact your JupyterHub administrator.\n\n\n\n\n\n\n\nVisit https://github.com\nClick Sign up\nEnter your details:\n\nUsername: Choose carefully (this is permanent and public)\nEmail: Use your professional/institutional email\nPassword: Create a strong password\n\nVerify your email address\nComplete profile setup\n\n\n\n\n\nGo to Settings → Password and authentication\nClick Enable two-factor authentication\nUse an authenticator app (Google Authenticator, Authy, or Microsoft Authenticator)\nSave backup codes securely\n\n\n\n\n\n\nConfigure Git with your GitHub account information:\n# Set your name (visible in commits)\ngit config --global user.name \"Your Full Name\"\n\n# Set your email (MUST match your GitHub account email)\ngit config --global user.email \"your.email@example.com\"\n\n# Set default branch name to main\ngit config --global init.defaultBranch main\n\n# Enable colored output for better readability\ngit config --global color.ui auto\n\n# Verify your configuration\ngit config --list\nExample:\ngit config --global user.name \"Kyle Lesinger\"\ngit config --global user.email \"kyle.lesinger@example.com\"\n\n\n\n\nSince GitHub no longer supports password authentication, you need to use either: 1. Personal Access Token (Easier for JupyterHub) 2. SSH Keys (More secure, one-time setup) 3. GitHub CLI (Recommended - handles auth automatically)\n\n\n# Authenticate with GitHub CLI\ngh auth login\n\n# Follow the prompts:\n# 1. Choose: GitHub.com\n# 2. Choose: HTTPS (recommended for JupyterHub)\n# 3. Choose: Login with a web browser\n# 4. Copy the one-time code shown\n# 5. Press Enter to open browser (or manually visit https://github.com/login/device)\n# 6. Enter the code and authorize\n\n# Verify authentication\ngh auth status\n\n\n\n\nGo to GitHub.com → Settings → Developer settings\nClick Personal access tokens → Tokens (classic)\nClick Generate new token → Generate new token (classic)\nName it: “JupyterHub Access”\nSet expiration (90 days recommended)\nSelect scopes:\n\n✅ repo (Full control of private repositories)\n✅ workflow (Update GitHub Action workflows)\n\nClick Generate token\nCOPY THE TOKEN IMMEDIATELY (you won’t see it again!)\n\nStore the token securely for use when pushing:\n# Store credentials (will be saved after first use)\ngit config --global credential.helper store\n\n\n\n# Generate SSH key\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n# Press Enter for default location\n# Optionally set a passphrase\n\n# Display your public key\ncat ~/.ssh/id_ed25519.pub\n\n# Copy the entire output, then:\n# 1. Go to GitHub.com → Settings → SSH and GPG keys\n# 2. Click \"New SSH key\"\n# 3. Paste your key and save\n\n# Test SSH connection\nssh -T git@github.com\n\n\n\n\n\n\n\n# Navigate to your workspace\ncd ~/\n\n# Clone the repository (creates a new folder called 'conversion_scripts')\ngit clone https://github.com/kyle-lesinger/conversion_scripts.git\n\n# Navigate into the repository\ncd conversion_scripts\n\n# Verify the clone\nls -la\ngit status\n\n\n\n# Check current remotes\ngit remote -v\n\n# You should see:\n# origin  https://github.com/kyle-lesinger/conversion_scripts.git (fetch)\n# origin  https://github.com/kyle-lesinger/conversion_scripts.git (push)\n\n\n\nIf you set up SSH keys and prefer using SSH:\n# Remove HTTPS remote\ngit remote remove origin\n\n# Add SSH remote\ngit remote add origin git@github.com:kyle-lesinger/conversion_scripts.git\n\n# Verify the change\ngit remote -v\n\n\n\n\n\n\n\nAlways create a new branch for your work instead of committing directly to main:\n# Make sure you're on the main branch\ngit checkout main\n\n# Pull latest changes\ngit pull origin main\n\n# Create and switch to a new branch\ngit checkout -b feature/your-feature-name\n\n# Example branch names:\n# git checkout -b feature/add-preprocessing\n# git checkout -b bugfix/fix-data-pipeline\n# git checkout -b docs/update-readme\n\n\n\n# Check which branch you're on\ngit branch\n\n# List all branches (local and remote)\ngit branch -a\n\n\n\n\n\n\n\n# Create or edit files\necho \"# Conversion Scripts\" &gt; README.md\necho \"This repository contains data conversion scripts.\" &gt;&gt; README.md\n\n# Check what files have changed\ngit status\n\n\n\n# Add specific files\ngit add README.md\n\n# Or add all changes\ngit add .\n\n# Commit with descriptive message\ngit commit -m \"Add README with project description\"\n\n# View commit history\ngit log --oneline\n\n\n\n\n\n# Push and set upstream branch\ngit push -u origin feature/your-feature-name\n\n# If using Personal Access Token, enter:\n# Username: your-github-username\n# Password: your-personal-access-token (NOT your GitHub password!)\n\n\n\n# After upstream is set, simply:\ngit push\n\n\n\n\n# Using GitHub CLI (if authenticated)\ngh pr create --title \"Add README documentation\" --body \"Added project description\"\n\n# Or manually:\n# 1. Visit https://github.com/kyle-lesinger/conversion_scripts\n# 2. Click \"Compare & pull request\" button\n# 3. Add title and description\n# 4. Click \"Create pull request\"\n\n\n\n\n\nHere’s a complete example workflow from start to finish:\n# 1. Configure Git (one-time setup)\ngit config --global user.name \"Kyle Lesinger\"\ngit config --global user.email \"kyle.lesinger@example.com\"\n\n# 2. Authenticate with GitHub CLI\ngh auth login\n# Follow the interactive prompts\n\n# 3. Clone the repository\ncd ~/\ngit clone https://github.com/kyle-lesinger/conversion_scripts.git\ncd conversion_scripts\n\n# 4. Create a new branch\ngit checkout -b feature/add-conversion-script\n\n# 5. Create a new file\ncat &gt; convert_data.py &lt;&lt; 'EOF'\n#!/usr/bin/env python3\n\"\"\"\nData conversion utility script\n\"\"\"\n\ndef convert_format(input_file, output_file):\n    \"\"\"Convert data from one format to another\"\"\"\n    print(f\"Converting {input_file} to {output_file}\")\n    # Add conversion logic here\n\nif __name__ == \"__main__\":\n    convert_format(\"input.txt\", \"output.json\")\nEOF\n\n# 6. Stage and commit\ngit add convert_data.py\ngit commit -m \"Add data conversion utility script\"\n\n# 7. Push to GitHub\ngit push -u origin feature/add-conversion-script\n\n# 8. Create pull request\ngh pr create --title \"Add data conversion script\" --body \"Initial conversion utility\"\n\n\n\n\n\n\nError: remote: Invalid username or password\nSolution:\n# Use Personal Access Token instead of password\n# When prompted for password, paste your token\n\n# Or use GitHub CLI\ngh auth login\n\n\n\nError: git@github.com: Permission denied (publickey)\nSolution:\n# Check if SSH key exists\nls -la ~/.ssh/\n\n# Generate new key if needed\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n\n# Add to SSH agent\neval \"$(ssh-agent -s)\"\nssh-add ~/.ssh/id_ed25519\n\n# Add public key to GitHub account\ncat ~/.ssh/id_ed25519.pub\n# Copy output and add to GitHub.com → Settings → SSH Keys\n\n\n\nError: error: remote origin already exists\nSolution:\n# Remove existing remote\ngit remote remove origin\n\n# Add new remote\ngit remote add origin https://github.com/kyle-lesinger/conversion_scripts.git\n\n\n\nError: ! [rejected] main -&gt; main (non-fast-forward)\nSolution:\n# Pull latest changes first\ngit pull origin main --rebase\n\n# Then push\ngit push origin main\n\n\n\nError: Working on main branch instead of feature branch\nSolution:\n# Create new branch with current changes\ngit checkout -b feature/my-changes\n\n# Push to new branch\ngit push -u origin feature/my-changes\n\n\n\n\n\n\nAlways work in branches - Never commit directly to main\nPull before pushing - Always sync with remote before pushing\nUse descriptive commit messages - Explain what and why\nCommit frequently - Small, logical commits are better\nKeep tokens secure - Never commit tokens or passwords\nTest locally - Run your code before committing\n\n\n\n\n\n# Clone repository\ngit clone https://github.com/kyle-lesinger/conversion_scripts.git\n\n# Create branch\ngit checkout -b feature/new-feature\n\n# Check status\ngit status\n\n# Add files\ngit add .\n\n# Commit\ngit commit -m \"Description of changes\"\n\n# Push new branch\ngit push -u origin feature/new-feature\n\n# Push existing branch\ngit push\n\n# Pull latest changes\ngit pull origin main\n\n# Switch branches\ngit checkout branch-name\n\n# List branches\ngit branch -a\n\n# Delete local branch\ngit branch -d branch-name\n\n# View commit history\ngit log --oneline --graph\n\n\n\n\n\nGitHub Docs\nGit Documentation\nGitHub CLI Manual\nPro Git Book (Free)\n\n\n\n\n\nIf you encounter issues not covered here:\n\nCheck the repository issues: https://github.com/kyle-lesinger/conversion_scripts/issues\nAsk in the JupyterHub support channel\nConsult the comprehensive Git/GitHub guide\n\n\nLast Updated: 2024 Version: 1.0",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3628,7 +3680,7 @@
     "section": "",
     "text": "Prerequisites\nGitHub Account Setup\nConfigure Git Identity\nGitHub Authentication Setup\nClone the Repository\nWorking with Branches\nMaking Changes and Pushing\nTroubleshooting Common Issues",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3639,7 +3691,7 @@
     "section": "",
     "text": "Before starting, ensure you have: - Git installed in your JupyterHub environment - Access to terminal in JupyterHub - Internet connection - GitHub account (we’ll create one if needed)\nCheck if Git is installed:\ngit --version\nIf not installed, contact your JupyterHub administrator.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3650,7 +3702,7 @@
     "section": "",
     "text": "Visit https://github.com\nClick Sign up\nEnter your details:\n\nUsername: Choose carefully (this is permanent and public)\nEmail: Use your professional/institutional email\nPassword: Create a strong password\n\nVerify your email address\nComplete profile setup\n\n\n\n\n\nGo to Settings → Password and authentication\nClick Enable two-factor authentication\nUse an authenticator app (Google Authenticator, Authy, or Microsoft Authenticator)\nSave backup codes securely",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3661,7 +3713,7 @@
     "section": "",
     "text": "Configure Git with your GitHub account information:\n# Set your name (visible in commits)\ngit config --global user.name \"Your Full Name\"\n\n# Set your email (MUST match your GitHub account email)\ngit config --global user.email \"your.email@example.com\"\n\n# Set default branch name to main\ngit config --global init.defaultBranch main\n\n# Enable colored output for better readability\ngit config --global color.ui auto\n\n# Verify your configuration\ngit config --list\nExample:\ngit config --global user.name \"Kyle Lesinger\"\ngit config --global user.email \"kyle.lesinger@example.com\"",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3672,7 +3724,7 @@
     "section": "",
     "text": "Since GitHub no longer supports password authentication, you need to use either: 1. Personal Access Token (Easier for JupyterHub) 2. SSH Keys (More secure, one-time setup) 3. GitHub CLI (Recommended - handles auth automatically)\n\n\n# Authenticate with GitHub CLI\ngh auth login\n\n# Follow the prompts:\n# 1. Choose: GitHub.com\n# 2. Choose: HTTPS (recommended for JupyterHub)\n# 3. Choose: Login with a web browser\n# 4. Copy the one-time code shown\n# 5. Press Enter to open browser (or manually visit https://github.com/login/device)\n# 6. Enter the code and authorize\n\n# Verify authentication\ngh auth status\n\n\n\n\nGo to GitHub.com → Settings → Developer settings\nClick Personal access tokens → Tokens (classic)\nClick Generate new token → Generate new token (classic)\nName it: “JupyterHub Access”\nSet expiration (90 days recommended)\nSelect scopes:\n\n✅ repo (Full control of private repositories)\n✅ workflow (Update GitHub Action workflows)\n\nClick Generate token\nCOPY THE TOKEN IMMEDIATELY (you won’t see it again!)\n\nStore the token securely for use when pushing:\n# Store credentials (will be saved after first use)\ngit config --global credential.helper store\n\n\n\n# Generate SSH key\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n# Press Enter for default location\n# Optionally set a passphrase\n\n# Display your public key\ncat ~/.ssh/id_ed25519.pub\n\n# Copy the entire output, then:\n# 1. Go to GitHub.com → Settings → SSH and GPG keys\n# 2. Click \"New SSH key\"\n# 3. Paste your key and save\n\n# Test SSH connection\nssh -T git@github.com",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3683,7 +3735,7 @@
     "section": "",
     "text": "# Navigate to your workspace\ncd ~/\n\n# Clone the repository (creates a new folder called 'conversion_scripts')\ngit clone https://github.com/kyle-lesinger/conversion_scripts.git\n\n# Navigate into the repository\ncd conversion_scripts\n\n# Verify the clone\nls -la\ngit status\n\n\n\n# Check current remotes\ngit remote -v\n\n# You should see:\n# origin  https://github.com/kyle-lesinger/conversion_scripts.git (fetch)\n# origin  https://github.com/kyle-lesinger/conversion_scripts.git (push)\n\n\n\nIf you set up SSH keys and prefer using SSH:\n# Remove HTTPS remote\ngit remote remove origin\n\n# Add SSH remote\ngit remote add origin git@github.com:kyle-lesinger/conversion_scripts.git\n\n# Verify the change\ngit remote -v",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3694,7 +3746,7 @@
     "section": "",
     "text": "Always create a new branch for your work instead of committing directly to main:\n# Make sure you're on the main branch\ngit checkout main\n\n# Pull latest changes\ngit pull origin main\n\n# Create and switch to a new branch\ngit checkout -b feature/your-feature-name\n\n# Example branch names:\n# git checkout -b feature/add-preprocessing\n# git checkout -b bugfix/fix-data-pipeline\n# git checkout -b docs/update-readme\n\n\n\n# Check which branch you're on\ngit branch\n\n# List all branches (local and remote)\ngit branch -a",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3705,7 +3757,7 @@
     "section": "",
     "text": "# Create or edit files\necho \"# Conversion Scripts\" &gt; README.md\necho \"This repository contains data conversion scripts.\" &gt;&gt; README.md\n\n# Check what files have changed\ngit status\n\n\n\n# Add specific files\ngit add README.md\n\n# Or add all changes\ngit add .\n\n# Commit with descriptive message\ngit commit -m \"Add README with project description\"\n\n# View commit history\ngit log --oneline\n\n\n\n\n\n# Push and set upstream branch\ngit push -u origin feature/your-feature-name\n\n# If using Personal Access Token, enter:\n# Username: your-github-username\n# Password: your-personal-access-token (NOT your GitHub password!)\n\n\n\n# After upstream is set, simply:\ngit push\n\n\n\n\n# Using GitHub CLI (if authenticated)\ngh pr create --title \"Add README documentation\" --body \"Added project description\"\n\n# Or manually:\n# 1. Visit https://github.com/kyle-lesinger/conversion_scripts\n# 2. Click \"Compare & pull request\" button\n# 3. Add title and description\n# 4. Click \"Create pull request\"",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3716,7 +3768,7 @@
     "section": "",
     "text": "Here’s a complete example workflow from start to finish:\n# 1. Configure Git (one-time setup)\ngit config --global user.name \"Kyle Lesinger\"\ngit config --global user.email \"kyle.lesinger@example.com\"\n\n# 2. Authenticate with GitHub CLI\ngh auth login\n# Follow the interactive prompts\n\n# 3. Clone the repository\ncd ~/\ngit clone https://github.com/kyle-lesinger/conversion_scripts.git\ncd conversion_scripts\n\n# 4. Create a new branch\ngit checkout -b feature/add-conversion-script\n\n# 5. Create a new file\ncat &gt; convert_data.py &lt;&lt; 'EOF'\n#!/usr/bin/env python3\n\"\"\"\nData conversion utility script\n\"\"\"\n\ndef convert_format(input_file, output_file):\n    \"\"\"Convert data from one format to another\"\"\"\n    print(f\"Converting {input_file} to {output_file}\")\n    # Add conversion logic here\n\nif __name__ == \"__main__\":\n    convert_format(\"input.txt\", \"output.json\")\nEOF\n\n# 6. Stage and commit\ngit add convert_data.py\ngit commit -m \"Add data conversion utility script\"\n\n# 7. Push to GitHub\ngit push -u origin feature/add-conversion-script\n\n# 8. Create pull request\ngh pr create --title \"Add data conversion script\" --body \"Initial conversion utility\"",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3727,7 +3779,7 @@
     "section": "",
     "text": "Error: remote: Invalid username or password\nSolution:\n# Use Personal Access Token instead of password\n# When prompted for password, paste your token\n\n# Or use GitHub CLI\ngh auth login\n\n\n\nError: git@github.com: Permission denied (publickey)\nSolution:\n# Check if SSH key exists\nls -la ~/.ssh/\n\n# Generate new key if needed\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n\n# Add to SSH agent\neval \"$(ssh-agent -s)\"\nssh-add ~/.ssh/id_ed25519\n\n# Add public key to GitHub account\ncat ~/.ssh/id_ed25519.pub\n# Copy output and add to GitHub.com → Settings → SSH Keys\n\n\n\nError: error: remote origin already exists\nSolution:\n# Remove existing remote\ngit remote remove origin\n\n# Add new remote\ngit remote add origin https://github.com/kyle-lesinger/conversion_scripts.git\n\n\n\nError: ! [rejected] main -&gt; main (non-fast-forward)\nSolution:\n# Pull latest changes first\ngit pull origin main --rebase\n\n# Then push\ngit push origin main\n\n\n\nError: Working on main branch instead of feature branch\nSolution:\n# Create new branch with current changes\ngit checkout -b feature/my-changes\n\n# Push to new branch\ngit push -u origin feature/my-changes",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3738,7 +3790,7 @@
     "section": "",
     "text": "Always work in branches - Never commit directly to main\nPull before pushing - Always sync with remote before pushing\nUse descriptive commit messages - Explain what and why\nCommit frequently - Small, logical commits are better\nKeep tokens secure - Never commit tokens or passwords\nTest locally - Run your code before committing",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3749,7 +3801,7 @@
     "section": "",
     "text": "# Clone repository\ngit clone https://github.com/kyle-lesinger/conversion_scripts.git\n\n# Create branch\ngit checkout -b feature/new-feature\n\n# Check status\ngit status\n\n# Add files\ngit add .\n\n# Commit\ngit commit -m \"Description of changes\"\n\n# Push new branch\ngit push -u origin feature/new-feature\n\n# Push existing branch\ngit push\n\n# Pull latest changes\ngit pull origin main\n\n# Switch branches\ngit checkout branch-name\n\n# List branches\ngit branch -a\n\n# Delete local branch\ngit branch -d branch-name\n\n# View commit history\ngit log --oneline --graph",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3760,7 +3812,7 @@
     "section": "",
     "text": "GitHub Docs\nGit Documentation\nGitHub CLI Manual\nPro Git Book (Free)",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3771,7 +3823,7 @@
     "section": "",
     "text": "If you encounter issues not covered here:\n\nCheck the repository issues: https://github.com/kyle-lesinger/conversion_scripts/issues\nAsk in the JupyterHub support channel\nConsult the comprehensive Git/GitHub guide\n\n\nLast Updated: 2024 Version: 1.0",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "Setting Up Disaster Repository - Step-by-Step Guide"
     ]
   },
@@ -3782,7 +3834,7 @@
     "section": "",
     "text": "This simplified notebook converts disaster satellite imagery to Cloud Optimized GeoTIFFs (COGs) with just a few cells.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3793,7 +3845,7 @@
     "section": "✨ Features",
     "text": "✨ Features\n\nSee files first - List S3 files before configuring\nSmart configuration - Define filename functions after seeing actual files\nAuto-discovery - Automatically categorizes your files\nSimple processing - Just run the cells in order\n\n\n\n🚀 Launch in VEDA JupyterHub (requires access)\n\n\nTo obtain credentials to VEDA Hub,  follow this link for more information.\n\n\nDisclaimer: it is highly recommended to run a tutorial within NASA VEDA JupyterHub, which already includes functions for processing and visualizing data specific to VEDA stories. Running the tutorial outside of the VEDA JupyterHub may lead to errors, specifically related to EarthData authentication. Additionally, it is recommended to use the Pangeo workspace within the VEDA JupyterHub, since certain packages relevant to this tutorial are already installed.\n\n\nIf you do not have a VEDA Jupyterhub Account you can launch this notebook on your local environment using MyBinder by clicking the icon below.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3804,7 +3856,7 @@
     "section": "📋 Step 1: Basic Configuration",
     "text": "📋 Step 1: Basic Configuration\nSet your event details and S3 paths:\n\n# ========================================\n# INPUTS\n# ========================================\n\n# S3 Paths\nBUCKET = 'nasa-disasters'    # S3 bucket (DO NOT CHANGE)\nDESTINATION_BASE = 'drcs_activations_new'  # Where to save COGs in S3 bucket (DO NOT CHANGE)\nGEOTIFF_DIR = 'geotiffs_to_convert' # This is where all non-converted files should be placed\n\n\n# Event Details\nSATELLITE_NAME = '202408_TropicalStorm_Debby'  # Your sensor or product name (e.g, Sentinel-1, Planet, Landsat)\nSUB_PRODUCT_NAME = 'landsat8'         # Sub-directories within PRODUCT_NAME (RGB, trueColor, SWIR, etc.). Can leave blank and it will read from PRODUCT_NAME.\nSOURCE_PATH = f'{GEOTIFF_DIR}/{SATELLITE_NAME}/{SUB_PRODUCT_NAME}'      # Where your files are\n\n\n# Processing Options\nOVERWRITE = False      # Set to True to replace existing files\nVERIFY = True          # Set to True to verify results after processing\nSAVE_RESULTS = True    # Set to False to skip saving results CSV to /output directory\n\nprint(f\"Event: {EVENT_NAME}\")\nprint(f\"Source: s3://{BUCKET}/{SOURCE_PATH}\")\nprint(f\"Destination: s3://{BUCKET}/{DESTINATION_BASE}/\")\n\nEvent: 202408_TropicalStorm_Debby\nSource: s3://nasa-disasters/geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8\nDestination: s3://nasa-disasters/drcs_activations_new/",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3815,7 +3867,7 @@
     "section": "🔍 Step 2: Connect to S3 and List Files",
     "text": "🔍 Step 2: Connect to S3 and List Files\nLet’s see what files are available before configuring filename transformations:\n\n# Import necessary modules\nimport sys\nimport os\nfrom pathlib import Path\n\n# Add parent directory to path\nsys.path.insert(0, str(Path('..').resolve()))\n\n# Import S3 operations\nfrom core.s3_operations import (\n    initialize_s3_client,\n    list_s3_files,\n    get_file_size_from_s3\n)\n\n# Initialize S3 client\nprint(\"🌐 Connecting to S3...\")\ns3_client, _ = initialize_s3_client(bucket_name=BUCKET, verbose=False)\n\nif s3_client:\n    print(\"✅ Connected to S3\\n\")\n    \n    # List all TIF files\n    print(f\"📂 Files in s3://{BUCKET}/{SOURCE_PATH}:\")\n    print(\"=\"*60)\n    \n    files = list_s3_files(s3_client, BUCKET, SOURCE_PATH, suffix='.tif')\n    \n    if files:\n        print(f\"Found {len(files)} .tif files:\\n\")\n        for i, file_path in enumerate(files[:10], 1):  # Show first 10\n            filename = os.path.basename(file_path)\n            try:\n                size_gb = get_file_size_from_s3(s3_client, BUCKET, file_path)\n                print(f\"{i:2}. {filename:&lt;60} ({size_gb:.2f} GB)\")\n            except:\n                print(f\"{i:2}. {filename}\")\n        \n        if len(files) &gt; 10:\n            print(f\"\\n... and {len(files) - 10} more files\")\n        \n        print(\"\\n\" + \"=\"*60)\n        print(\"\\n💡 Use this information to create filename functions in Step 3\")\n    else:\n        print(\"⚠️ No .tif files found in the specified path.\")\n        print(\"   Check your SOURCE_PATH configuration.\")\nelse:\n    print(\"❌ Could not connect to S3. Check your AWS credentials.\")\n    files = []\n\n🌐 Connecting to S3...\n✅ Connected to S3\n\n📂 Files in s3://nasa-disasters/geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8:\n============================================================\n⚠️ No .tif files found in the specified path.\n   Check your SOURCE_PATH configuration.",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3826,7 +3878,7 @@
     "section": "🏷️ Step 3a: Define Categorization and Filename Transformations",
     "text": "🏷️ Step 3a: Define Categorization and Filename Transformations\nBased on the files you see above, configure: 1. Categorization patterns - Regex patterns to identify file types 2. Filename functions - How to transform filenames 3. Output directories - Where each category should be saved\n\n# ========================================\n# CATEGORIZATION AND OUTPUT CONFIGURATION\n# ========================================\n\nimport re\n\n# STEP 1: Define how to extract dates from filenames\ndef extract_date_from_filename(filename):\n    \"\"\"Extract date from filename in YYYYMMDD format.\"\"\"\n    dates = re.findall(r'\\d{8}', filename)\n    if dates:\n        date_str = dates[0]\n        return f\"{date_str[0:4]}-{date_str[4:6]}-{date_str[6:8]}\"\n    return None\n\n# STEP 2: Define filename transformation functions for each category\ndef create_truecolor_filename(original_path, event_name):\n    \"\"\"Create filename for trueColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n    \n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\ndef create_colorinfrared_filename(original_path, event_name):\n    \"\"\"Create filename for colorInfrared products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n    \n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\ndef create_naturalcolor_filename(original_path, event_name):\n    \"\"\"Create filename for naturalColor products.\"\"\"\n    filename = os.path.basename(original_path)\n    stem = os.path.splitext(filename)[0]\n    date = extract_date_from_filename(stem)\n    \n    if date:\n        stem_clean = re.sub(r'_\\d{8}', '', stem)\n        return f\"{event_name}_{stem_clean}_{date}_day.tif\"\n    return f\"{event_name}_{stem}_day.tif\"\n\n# STEP 3: Configure categorization patterns (REQUIRED)\n# These regex patterns determine which files belong to which category\nCATEGORIZATION_PATTERNS = {\n    'trueColor': r'trueColor|truecolor|true_color',\n    'colorInfrared': r'colorInfrared|colorIR|color_infrared',\n    'naturalColor': r'naturalColor|natural_color',\n    # Add patterns for ALL file types you want to process\n    # Files not matching any pattern will be skipped with a warning\n}\n\n# STEP 4: Map categories to filename transformation functions\nFILENAME_CREATORS = {\n    'trueColor': create_truecolor_filename,\n    'colorInfrared': create_colorinfrared_filename,\n    'naturalColor': create_naturalcolor_filename,\n    # Must have an entry for each category in CATEGORIZATION_PATTERNS\n}\n\n# STEP 5: Specify output directories for each category\nOUTPUT_DIRS = {\n    'trueColor': 'Landsat/trueColor',\n    'colorInfrared': 'Landsat/colorIR',\n    'naturalColor': 'Landsat/naturalColor',\n    # Must have an entry for each category in CATEGORIZATION_PATTERNS\n}\n\n# OPTIONAL: Specify no-data values (None = auto-detect)\nNODATA_VALUES = {\n    'trueColor': 0,\n    'colorInfrared': 0,\n    'naturalColor': 0\n    # Leave empty or set to None for auto-detection\n}",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3837,7 +3889,7 @@
     "section": "🏷️ Step 3b: Test the new functions to verify what the inputs and outputs will be.",
     "text": "🏷️ Step 3b: Test the new functions to verify what the inputs and outputs will be.\n\nprint(\"✅ Configuration defined\")\nprint(f\"\\n📂 Categories and output paths:\")\nfor category, path in OUTPUT_DIRS.items():\n    pattern = CATEGORIZATION_PATTERNS.get(category, 'No pattern defined')\n    print(f\"   • {category}:\")\n    print(f\"     Pattern: {pattern}\")\n    print(f\"     Output:  {DESTINATION_BASE}/{path}\")\n\n# Test with sample filename if files exist\nif files:\n    sample_file = files[0]\n    sample_name = os.path.basename(sample_file)\n    \n    # Check which category it would match\n    matched_category = None\n    for cat, pattern in CATEGORIZATION_PATTERNS.items():\n        if re.search(pattern, sample_name, re.IGNORECASE):\n            matched_category = cat\n            break\n    \n    if matched_category:\n        new_name = FILENAME_CREATORS[matched_category](sample_file, EVENT_NAME)\n        print(f\"\\n📝 Example transformation:\")\n        print(f\"   Original: {sample_name}\")\n        print(f\"   Category: {matched_category}\")\n        print(f\"   → New:    {new_name}\")\n        print(f\"   → Output: {DESTINATION_BASE}/{OUTPUT_DIRS[matched_category]}/{new_name}\")\n    else:\n        print(f\"\\n⚠️ Warning: Sample file doesn't match any category pattern:\")\n        print(f\"   File: {sample_name}\")\n        print(f\"   Add a pattern to CATEGORIZATION_PATTERNS to process this file type\")\n\n✅ Configuration defined\n\n📂 Categories and output paths:\n   • trueColor:\n     Pattern: trueColor|truecolor|true_color\n     Output:  drcs_activations_new/Landsat/trueColor\n   • colorInfrared:\n     Pattern: colorInfrared|colorIR|color_infrared\n     Output:  drcs_activations_new/Landsat/colorIR\n   • naturalColor:\n     Pattern: naturalColor|natural_color\n     Output:  drcs_activations_new/Landsat/naturalColor",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3848,7 +3900,7 @@
     "section": "🚀 Step 4: Initialize Processor and Preview",
     "text": "🚀 Step 4: Initialize Processor and Preview\nNow let’s set up the processor and preview all transformations:",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3859,7 +3911,7 @@
     "section": "⚙️ Step 5: Process Files",
     "text": "⚙️ Step 5: Process Files\nRun this cell to start processing all files:\n\n# Import our simplified helper\nfrom notebooks.notebook_helpers import SimpleProcessor\n\n# Create full configuration with categorization patterns\nconfig = {\n    'event_name': EVENT_NAME,\n    'bucket': BUCKET,\n    'source_path': SOURCE_PATH,\n    'destination_base': DESTINATION_BASE,\n    'overwrite': OVERWRITE,\n    'verify': VERIFY,\n    'save_results': SAVE_RESULTS,  # Add save results flag\n    'categorization_patterns': CATEGORIZATION_PATTERNS,  # IMPORTANT: Include patterns\n    'filename_creators': FILENAME_CREATORS,\n    'output_dirs': OUTPUT_DIRS,\n    'nodata_values': NODATA_VALUES\n}\n\n# Initialize processor\nprocessor = SimpleProcessor(config)\n\n# Connect to S3 (already connected, but needed for processor)\nif processor.connect_to_s3():\n    print(\"✅ Processor ready\\n\")\n    \n    # Discover and categorize files\n    num_files = processor.discover_files()\n    \n    if num_files &gt; 0:\n        # Show preview of transformations\n        processor.preview_processing()\n        \n        print(\"\\n📌 Review the transformations above.\")\n        print(\"   • Files will be saved to the directories specified in OUTPUT_DIRS\")\n        print(\"   • If files appear as 'uncategorized', add patterns to CATEGORIZATION_PATTERNS\")\n        print(\"   • When ready, proceed to Step 5 to process the files.\")\n    else:\n        print(\"⚠️ No files found to process.\")\nelse:\n    print(\"❌ Could not initialize processor.\")\n\n✅ All modules loaded successfully\n\n🌐 Connecting to S3...\n✅ Connected to S3 successfully\n✅ Processor ready\n\n\n🔍 Searching for files in: geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8\n⚠️ No .tif files found\n⚠️ No files found to process.\n\n\n\n# Process all files\nif 'num_files' in locals() and num_files &gt; 0:\n    print(\"🚀 Starting processing...\")\n    print(\"This may take several minutes depending on file sizes.\\n\")\n    \n    # Process everything\n    results = processor.process_all()\n    \n    # Display results\n    if not results.empty:\n        print(\"\\n📊 Processing Complete!\")\n        display(results) if 'display' in dir() else print(results)\nelse:\n    print(\"⚠️ No files to process. Complete Steps 1-4 first.\")\n\n🚀 Starting processing...\nThis may take several minutes depending on file sizes.\n\n\n🚀 Starting processing...\n\n📦 Processing colorInfrared (3 files)\n  ⏭️ Skipped: LC08_colorInfrared_20240715_155319_016036.tif (exists)\n  ⏭️ Skipped: LC08_colorInfrared_20240715_155343_016037.tif (exists)\n  ⏭️ Skipped: LC08_colorInfrared_20240715_15547_016038.tif (exists)\n\n📦 Processing naturalColor (3 files)\n  ⏭️ Skipped: LC08_naturalColor_20240715_155319_016036.tif (exists)\n  ⏭️ Skipped: LC08_naturalColor_20240715_155343_016037.tif (exists)\n  ⏭️ Skipped: LC08_naturalColor_20240715_15547_016038.tif (exists)\n\n📦 Processing trueColor (3 files)\n  ⏭️ Skipped: LC08_trueColor_20240715_155319_016036.tif (exists)\n  ⏭️ Skipped: LC08_trueColor_20240715_155343_016037.tif (exists)\n  ⏭️ Skipped: LC08_trueColor_20240715_15547_016038.tif (exists)\n\n============================================================\n✅ PROCESSING COMPLETE\n============================================================\n\nResults:\n  ⏭️ Skipped: 9\n\nProcessing time: 0.0 minutes\n\n📁 Results saved to: output/202408_TropicalStorm_Debby/results_20250929_191143.csv\n============================================================\n\n📊 Processing Complete!\n                                     source_file       category   status  \\\n0  LC08_colorInfrared_20240715_155319_016036.tif  colorInfrared  skipped   \n1  LC08_colorInfrared_20240715_155343_016037.tif  colorInfrared  skipped   \n2   LC08_colorInfrared_20240715_15547_016038.tif  colorInfrared  skipped   \n3   LC08_naturalColor_20240715_155319_016036.tif   naturalColor  skipped   \n4   LC08_naturalColor_20240715_155343_016037.tif   naturalColor  skipped   \n5    LC08_naturalColor_20240715_15547_016038.tif   naturalColor  skipped   \n6      LC08_trueColor_20240715_155319_016036.tif      trueColor  skipped   \n7      LC08_trueColor_20240715_155343_016037.tif      trueColor  skipped   \n8       LC08_trueColor_20240715_15547_016038.tif      trueColor  skipped   \n\n           reason                                        output_path  \\\n0  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n1  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n2  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n3  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n4  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n5  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n6  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n7  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n8  already exists  s3://nasa-disasters/drcs_activations_new/Lands...   \n\n   time_seconds  \n0             0  \n1             0  \n2             0  \n3             0  \n4             0  \n5             0  \n6             0  \n7             0  \n8             0  \n\n\n\n# Analyze results\nif 'results' in locals() and not results.empty:\n    print(\"📊 PROCESSING STATISTICS\")\n    print(\"=\"*40)\n    \n    # Success rate\n    total = len(results)\n    success = len(results[results['status'] == 'success'])\n    failed = len(results[results['status'] == 'failed'])\n    skipped = len(results[results['status'] == 'skipped'])\n    \n    print(f\"Total files: {total}\")\n    print(f\"✅ Success: {success}\")\n    print(f\"❌ Failed: {failed}\")\n    print(f\"⏭️ Skipped: {skipped}\")\n    print(f\"\\nSuccess rate: {(success/total*100):.1f}%\")\n    \n    # Failed files\n    if failed &gt; 0:\n        print(\"\\n❌ Failed files:\")\n        failed_df = results[results['status'] == 'failed']\n        for idx, row in failed_df.iterrows():\n            print(f\"  - {row['source_file']}: {row.get('error', 'Unknown error')}\")\n    \n    # Processing times\n    if 'time_seconds' in results.columns:\n        success_df = results[results['status'] == 'success']\n        if not success_df.empty:\n            avg_time = success_df['time_seconds'].mean()\n            max_time = success_df['time_seconds'].max()\n            print(f\"\\n⏱️ Timing:\")\n            print(f\"Average: {avg_time:.1f} seconds per file\")\n            print(f\"Slowest: {max_time:.1f} seconds\")\nelse:\n    print(\"No results to analyze. Run Step 5 first.\")",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
@@ -3870,7 +3922,7 @@
     "section": "💡 Tips & Troubleshooting",
     "text": "💡 Tips & Troubleshooting\n\nWorkflow Summary:\n\nConfigure basic settings (Step 1)\nList files from S3 to see naming patterns (Step 2)\nDefine functions to transform filenames (Step 3)\nPreview transformations (Step 4)\nProcess all files (Step 5)\nReview results (Step 6)\n\n\n\nCommon Issues:\n\n“No files found”\n\nCheck SOURCE_PATH in Step 1\nVerify bucket permissions\nEnsure files have .tif extension\n\nWrong filename transformations\n\nReview actual filenames in Step 2\nAdjust functions in Step 3\nRe-run Step 4 to preview\n\nFiles being skipped\n\nFiles already exist in destination\nSet OVERWRITE = True in Step 1\n\nProcessing errors\n\nCheck AWS credentials\nVerify S3 write permissions\nCheck available disk space for temp files\n\n\n\n\nNeed More Control?\nUse the full template at disaster_processing_template.ipynb for: - Manual chunk configuration - Custom compression settings - Detailed memory management - Advanced processing options",
     "crumbs": [
-      "jupyterhub.qmd",
+      "JupyterHub",
       "🌍 Simple Disaster COG Processing"
     ]
   },
