@@ -1,0 +1,3 @@
+# NRT Data Download
+
+![Data Flow Diagram Extending From Acquisition/Creation to User Delivery](./media/NRT_data.png)

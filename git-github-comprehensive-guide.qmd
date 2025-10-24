@@ -1,0 +1,15 @@
+# Git and GitHub Comprehensive Training Guide
+
+---
+
+## Introduction
+
+Git is a distributed version control system that tracks changes in your code over time. GitHub is a cloud-based hosting service that lets you manage Git repositories with additional collaboration features. This guide will walk you through everything you need to know to get started with Git and GitHub on macOS.
+
+### Why Use Git and GitHub?
+
+- **Version Control**: Track every change made to your code
+- **Collaboration**: Work with others without conflicts
+- **Backup**: Your code is safely stored in the cloud
+- **Documentation**: Built-in wiki and issue tracking
+- **Portfolio**: Showcase your work to potential employers
