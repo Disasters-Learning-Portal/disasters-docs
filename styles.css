@@ -12,6 +12,27 @@
 }
  
 
+/* Make sure logo sits above tools */
+.sidebar-logo-link {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px; /* space between logo and tools */
+}
+
+/* Make tools stack below logo */
+.sidebar-tools-main {
+  display: block;
+  margin-top: 10px; /* optional extra spacing */
+  text-align: center; /* center the icons under the logo */
+}
+
+/* Adjust logo size & centering */
+.sidebar-logo {
+  max-height: 200px !important;
+  width: auto !important;
+  display: block;
+  margin: 0 auto;
+}
 
 
 
