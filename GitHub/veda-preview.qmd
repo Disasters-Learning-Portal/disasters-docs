@@ -1,0 +1,11 @@
+---
+title: "The VEDA Project"
+---
+
+<iframe 
+  src="https://docs.openveda.cloud/veda-project/" 
+  width="100%" 
+  height="800px" 
+  style="border:none;"
+  loading="lazy">
+</iframe>

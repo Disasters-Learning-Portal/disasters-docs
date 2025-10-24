@@ -1,0 +1,184 @@
+# GitHub Setup and Installation
+
+## Table of Contents
+1. [Prerequisites & System Setup](#prerequisites--system-setup)
+2. [Git Installation](#git-installation)
+3. [GitHub Account Setup](#github-account-setup)
+4. [GitHub CLI Installation & Authentication](#github-cli-installation--authentication)
+
+---
+
+## Prerequisites & System Setup
+
+### System Requirements
+- macOS 10.15 (Catalina) or later
+- Administrator access to install software
+- Internet connection
+- Terminal application (built into macOS)
+
+### Recommended Tools
+- **Text Editor**: VS Code, Sublime Text, or vim
+- **Terminal**: iTerm2 or built-in Terminal app
+- **Git GUI** (optional): SourceTree, GitHub Desktop, or GitKraken
+
+---
+
+## Git Installation
+
+### Method 1: Install via Homebrew (Recommended)
+
+```bash
+# Install Homebrew if not already installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Git
+brew install git
+
+# Verify installation
+git --version
+```
+
+### Method 2: Install via Xcode Command Line Tools
+
+```bash
+# This will prompt to install Xcode Command Line Tools
+git --version
+
+# Follow the prompts to complete installation
+```
+
+### Method 3: Download from Git Website
+
+1. Visit [https://git-scm.com/download/mac](https://git-scm.com/download/mac)
+2. Download the installer
+3. Run the installer package
+4. Verify: `git --version`
+
+### Initial Git Configuration
+
+```bash
+# Set your name (visible in commits)
+git config --global user.name "Your Name"
+
+# Set your email (should match GitHub account)
+git config --global user.email "your.email@example.com"
+
+# Set default branch name to 'main'
+git config --global init.defaultBranch main
+
+# Set default editor (optional)
+git config --global core.editor "code --wait"  # For VS Code
+# git config --global core.editor "vim"        # For vim
+# git config --global core.editor "nano"       # For nano
+
+# Enable color output
+git config --global color.ui auto
+
+# View all settings
+git config --list
+```
+
+---
+
+## GitHub Account Setup
+
+### Step 1: Create a GitHub Account
+
+1. Visit [https://github.com](https://github.com)
+2. Click "Sign up" in the top right
+3. Enter your details:
+   - **Username**: Choose wisely - this is permanent and public
+   - **Email**: Use a professional email address
+   - **Password**: Use a strong, unique password
+4. Verify your email address
+5. Complete the profile setup
+
+### Step 2: Configure Account Security
+
+1. **Enable Two-Factor Authentication (2FA)**:
+   - Go to Settings → Security
+   - Click "Enable two-factor authentication"
+   - Use an authenticator app (Google Authenticator, Authy)
+   - Save backup codes securely
+
+2. **Add SSH Key** (recommended for secure authentication):
+
+```bash
+# Generate SSH key
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# Press Enter for default location
+# Set a passphrase (recommended)
+
+# Start SSH agent
+eval "$(ssh-agent -s)"
+
+# Add SSH key to agent
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key to clipboard
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+3. **Add SSH Key to GitHub**:
+   - Go to Settings → SSH and GPG keys
+   - Click "New SSH key"
+   - Paste your key and give it a descriptive title
+   - Click "Add SSH key"
+
+4. **Test SSH connection**:
+```bash
+ssh -T git@github.com
+# You should see: "Hi username! You've successfully authenticated..."
+```
+
+### Step 3: Set Up Personal Access Token (Alternative to SSH)
+
+1. Go to Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Click "Generate new token"
+3. Set expiration and select scopes (at minimum: repo, workflow)
+4. Copy the token immediately (you won't see it again)
+5. Use this token as your password when prompted by Git
+
+---
+
+## GitHub CLI Installation & Authentication
+
+### Installing GitHub CLI (gh)
+
+```bash
+# Install via Homebrew
+brew install gh
+
+# Verify installation
+gh --version
+```
+
+### Authenticating with GitHub CLI
+
+```bash
+# Start authentication process
+gh auth login
+
+# Follow the prompts:
+# 1. Choose GitHub.com
+# 2. Choose HTTPS or SSH (SSH recommended if you've set it up)
+# 3. Authenticate via web browser or paste authentication token
+# 4. Choose default git protocol (ssh recommended)
+
+# Verify authentication
+gh auth status
+```
+
+### Configure GitHub CLI
+
+```bash
+# Set default editor
+gh config set editor "code --wait"  # For VS Code
+
+# Set default browser
+gh config set browser safari
+
+# View current configuration
+gh config list
+```

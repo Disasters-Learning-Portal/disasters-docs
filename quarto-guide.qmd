@@ -1,0 +1,755 @@
+---
+title: "Quarto Guide for Beginners"
+subtitle: "Everything you need to know to get started with Quarto"
+author: "Documentation Team"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    code-tools: true
+---
+
+## What is Quarto?
+
+**Quarto** is an open-source scientific and technical publishing system built on Pandoc. It allows you to create dynamic documents that combine:
+
+- **Narrative text** (written in Markdown)
+- **Code** (Python, R, Julia, Observable JS)
+- **Code outputs** (plots, tables, results)
+- **Equations, citations, cross-references**
+
+Think of Quarto as a powerful tool to create everything from simple documents to complex websites, presentations, and books.
+
+### Key Benefits
+
+- **Multiple outputs from one source** - Write once, publish to HTML, PDF, Word, PowerPoint
+- **Language agnostic** - Works with Python, R, Julia, and more
+- **Reproducible** - Code and narrative in the same document
+- **Professional** - Publication-quality output
+
+## File Types and Formats
+
+### Source Files
+
+#### .qmd Files (Quarto Markdown)
+
+The primary file type for Quarto documents:
+
+```markdown
+---
+title: "My Document"
+format: html
+---
+
+## Introduction
+
+This is a Quarto document with **markdown** formatting.
+
+```{python}
+# You can include code
+print("Hello from Python!")
+```
+```
+
+#### .ipynb Files (Jupyter Notebooks)
+
+Quarto can directly render Jupyter notebooks:
+
+- Keep your existing notebook workflow
+- Add Quarto features through cell metadata
+- Render notebooks to any format
+
+#### .md Files (Plain Markdown)
+
+Standard Markdown files can be rendered by Quarto, though they lack code execution capabilities.
+
+### Output Formats
+
+Quarto can generate:
+
+| Format | Extension | Use Case |
+|--------|-----------|----------|
+| HTML | .html | Websites, interactive documents |
+| PDF | .pdf | Print publications, reports |
+| Word | .docx | Microsoft Word documents |
+| PowerPoint | .pptx | Presentations |
+| Reveal.js | .html | Interactive HTML presentations |
+| EPUB | .epub | E-books |
+| Markdown | .md | GitHub, other platforms |
+
+## Creating Different Types of Documents
+
+### Basic Document
+
+Simplest Quarto document:
+
+```yaml
+---
+title: "My First Document"
+author: "Your Name"
+date: today
+format: html
+---
+
+## Section 1
+
+Content goes here.
+```
+
+### Multi-Format Document
+
+Output to multiple formats:
+
+```yaml
+---
+title: "Multi-Format Document"
+format:
+  html:
+    toc: true
+    code-fold: true
+  pdf:
+    documentclass: article
+  docx:
+    reference-doc: template.docx
+---
+```
+
+### Presentation (PowerPoint)
+
+```yaml
+---
+title: "My Presentation"
+format:
+  pptx:
+    slide-level: 2
+---
+
+# Section Title
+
+## Slide 1
+
+- First point
+- Second point
+
+## Slide 2
+
+More content here.
+```
+
+**Important:** Level 1 headers (`#`) create section dividers, Level 2 headers (`##`) create new slides.
+
+### Presentation (Reveal.js)
+
+```yaml
+---
+title: "Interactive Presentation"
+format:
+  revealjs:
+    theme: dark
+    transition: slide
+---
+```
+
+### Website/Book
+
+Requires a `_quarto.yml` configuration file (covered below).
+
+## YAML Front Matter
+
+Every `.qmd` file starts with YAML front matter between `---` markers. This controls document behavior.
+
+### Essential YAML Options
+
+```yaml
+---
+title: "Document Title"           # Required
+subtitle: "Optional subtitle"     # Optional
+author: "Author Name"             # Optional
+date: today                       # or "2024-01-15"
+format: html                      # Output format
+---
+```
+
+### Format-Specific Options
+
+#### HTML Options
+
+```yaml
+format:
+  html:
+    toc: true                    # Table of contents
+    toc-depth: 3                 # How many header levels
+    code-fold: false             # Collapsible code
+    code-tools: true             # Code display options
+    theme: cosmo                 # Visual theme
+    css: styles.css              # Custom CSS
+```
+
+#### PDF Options
+
+```yaml
+format:
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=1in
+    toc: true
+    number-sections: true
+```
+
+#### PowerPoint Options
+
+```yaml
+format:
+  pptx:
+    reference-doc: template.pptx  # Custom template
+    slide-level: 2                # Which heading creates slides
+    incremental: true             # Bullets appear one by one
+```
+
+## The _quarto.yml Configuration File
+
+The `_quarto.yml` file controls **project-level settings** for websites and books.
+
+### Basic Website Configuration
+
+```yaml
+project:
+  type: website
+
+website:
+  title: "My Website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+```
+
+### Sidebar Navigation
+
+For documentation sites with a sidebar:
+
+```yaml
+website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Welcome
+      - section: "Getting Started"
+        contents:
+          - guide1.qmd
+          - guide2.qmd
+      - section: "Advanced"
+        contents:
+          - advanced1.qmd
+```
+
+### Adding Files to Navigation
+
+#### Adding a Single Document
+
+```yaml
+website:
+  sidebar:
+    contents:
+      - href: new-document.qmd
+        text: "Display Name"
+```
+
+#### Adding a Section with Multiple Documents
+
+```yaml
+website:
+  sidebar:
+    contents:
+      - section: "Section Name"
+        contents:
+          - doc1.qmd
+          - doc2.qmd
+          - text: "Custom Name"
+            href: doc3.qmd
+```
+
+#### Adding External Links
+
+```yaml
+website:
+  sidebar:
+    tools:
+      - icon: github
+        href: https://github.com/your/repo
+        text: "GitHub"
+```
+
+### Global Format Settings
+
+Apply settings to all documents:
+
+```yaml
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-copy: true
+```
+
+## Working with Code
+
+### Code Blocks
+
+````markdown
+```python
+# Python code
+import pandas as pd
+data = pd.read_csv('file.csv')
+print(data.head())
+```
+````
+
+### Executable vs. Non-Executable Code
+
+By default, code blocks in `.qmd` files are **executable**. To display code without running:
+
+````markdown
+```{python}
+#| eval: false
+# This code is shown but not executed
+```
+````
+
+### Inline Code
+
+Execute code inline: `` `{python} 2 + 2` ``
+
+Output: 4
+
+### Code Options
+
+```python
+#| echo: false        # Hide code, show output
+#| eval: false        # Show code, don't run
+#| warning: false     # Hide warnings
+#| message: false     # Hide messages
+#| label: fig-plot    # For cross-references
+#| fig-cap: "Caption" # Figure caption
+```
+
+## Markdown Essentials
+
+### Headers
+
+```markdown
+# Level 1
+## Level 2
+### Level 3
+```
+
+### Text Formatting
+
+```markdown
+**bold**
+*italic*
+***bold italic***
+`code`
+~~strikethrough~~
+```
+
+### Lists
+
+```markdown
+- Unordered list
+- Second item
+  - Nested item
+
+1. Ordered list
+2. Second item
+   1. Nested item
+```
+
+### Links and Images
+
+```markdown
+[Link text](https://url.com)
+
+![Image caption](path/to/image.png)
+
+![Figure with options](image.png){#fig-id width=50%}
+```
+
+### Tables
+
+```markdown
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Data 1   | Data 2   | Data 3   |
+| Data 4   | Data 5   | Data 6   |
+```
+
+### Cross-References
+
+```markdown
+See @fig-plot for details.
+
+![My plot](plot.png){#fig-plot}
+
+See @tbl-results for the data.
+
+| Col 1 | Col 2 |
+|-------|-------|
+| A     | B     |
+
+: Results {#tbl-results}
+```
+
+## Rendering Documents
+
+### Command Line
+
+```bash
+# Render a single document
+quarto render document.qmd
+
+# Render to specific format
+quarto render document.qmd --to pdf
+
+# Render entire project
+quarto render
+
+# Preview with live reload
+quarto preview
+
+# Publish
+quarto publish gh-pages
+```
+
+### From RStudio or VS Code
+
+- **RStudio**: Click the "Render" button
+- **VS Code**: Click "Preview" or use the Quarto extension
+
+### Render Options
+
+Control rendering in YAML:
+
+```yaml
+execute:
+  echo: true      # Show code
+  warning: false  # Hide warnings
+  error: true     # Show errors
+  cache: true     # Cache results
+```
+
+## Special Features
+
+### Callout Blocks
+
+```markdown
+::: {.callout-note}
+This is a note callout.
+:::
+
+::: {.callout-warning}
+This is a warning!
+:::
+
+::: {.callout-important}
+This is important information.
+:::
+```
+
+### Tabsets
+
+```markdown
+::: {.panel-tabset}
+
+## Tab 1
+Content for tab 1
+
+## Tab 2
+Content for tab 2
+
+:::
+```
+
+### Columns Layout
+
+```markdown
+::: {.columns}
+
+::: {.column width="50%"}
+Left column content
+:::
+
+::: {.column width="50%"}
+Right column content
+:::
+
+:::
+```
+
+### Diagrams (Mermaid)
+
+````markdown
+```{mermaid}
+graph LR
+  A[Start] --> B[Process]
+  B --> C[End]
+```
+````
+
+## What Quarto Cannot Do
+
+### Limitations
+
+1. **No Real-Time Collaboration**
+   - Not like Google Docs
+   - Use Git for version control instead
+
+2. **Limited WYSIWYG**
+   - Must render to see final output
+   - Not a visual editor (though RStudio has visual mode)
+
+3. **LaTeX Required for PDF**
+   - Must install LaTeX distribution for PDF output
+   - Can be large download (several GB)
+
+4. **Code Must Be Installed**
+   - Python/R/Julia must be installed separately
+   - Need required packages installed
+
+5. **No Dynamic Forms**
+   - Cannot create user input forms in HTML output
+   - Use Shiny for interactive applications
+
+6. **Processing Speed**
+   - Large projects can be slow to render
+   - Use caching to speed up
+
+7. **Not a Database**
+   - Cannot query data directly in document
+   - Must load data first with code
+
+8. **Limited Styling Control**
+   - HTML/CSS knowledge needed for custom designs
+   - PDF styling requires LaTeX knowledge
+
+## Best Practices
+
+### Project Organization
+
+```
+my-project/
+├── _quarto.yml           # Project config
+├── index.qmd             # Homepage
+├── guide1.qmd            # Content files
+├── guide2.qmd
+├── images/               # Images folder
+│   ├── logo.png
+│   └── diagram.svg
+├── data/                 # Data folder
+│   └── dataset.csv
+├── scripts/              # Helper scripts
+│   └── utils.py
+└── _site/               # Generated output (don't edit)
+```
+
+### File Naming
+
+- Use lowercase, hyphens for spaces: `my-document.qmd`
+- Be descriptive: `serverless-monitoring.qmd` not `doc1.qmd`
+- Group related files: `tutorial-1.qmd`, `tutorial-2.qmd`
+
+### YAML Best Practices
+
+```yaml
+---
+# Put most important info first
+title: "Clear, Descriptive Title"
+subtitle: "Helpful subtitle"
+author: "Author Name"
+date: today
+
+# Group related options
+format:
+  html:
+    toc: true
+    theme: cosmo
+
+# Use comments
+execute:
+  echo: true  # Show code by default
+---
+```
+
+### Code Best Practices
+
+1. **Use meaningful labels**: `{#fig-scatter}` not `{#fig-1}`
+2. **Set global options** in YAML instead of repeating
+3. **Cache expensive computations**: `cache: true`
+4. **Organize code** into separate scripts if complex
+5. **Test frequently** - render often to catch errors early
+
+## Common Issues and Solutions
+
+### Issue: "File not found"
+
+**Problem:** Referenced image or data file not found
+
+**Solution:** Use relative paths from the `.qmd` file location
+
+```markdown
+# Good
+![Logo](images/logo.png)
+
+# Bad (absolute paths break portability)
+![Logo](/Users/name/project/images/logo.png)
+```
+
+### Issue: Code not executing
+
+**Problem:** Code block shown but not running
+
+**Solution:** Check code block syntax
+
+````markdown
+# Correct (with braces)
+```{python}
+print("Hello")
+```
+
+# Wrong (no braces - just displays)
+```python
+print("Hello")
+```
+````
+
+### Issue: Links not working in rendered site
+
+**Problem:** Cross-references broken after rendering
+
+**Solution:** Use `.qmd` extension in links - Quarto converts automatically
+
+```markdown
+# Correct
+[See guide](guide.qmd)
+
+# Incorrect
+[See guide](guide.html)
+```
+
+### Issue: Changes not showing
+
+**Problem:** Made changes but don't see them in preview
+
+**Solution:**
+- Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R)
+- Stop and restart `quarto preview`
+- Check if file is saved
+
+### Issue: Table of contents not showing
+
+**Problem:** TOC enabled but not visible
+
+**Solution:** Need at least 2 headers for TOC to appear
+
+```markdown
+---
+format:
+  html:
+    toc: true
+---
+
+## First Section
+Content
+
+## Second Section
+More content
+```
+
+## Quick Reference
+
+### Common Quarto Commands
+
+```bash
+quarto render               # Render project
+quarto render file.qmd      # Render single file
+quarto preview              # Live preview
+quarto create project       # New project wizard
+quarto check                # Check installation
+quarto --help               # Help
+```
+
+### Common YAML Settings
+
+```yaml
+title: "Title"
+author: "Name"
+date: today
+format: html
+toc: true
+number-sections: true
+code-fold: true
+theme: cosmo
+```
+
+### Format Options Quick Reference
+
+```yaml
+# Multiple formats
+format:
+  html: default
+  pdf: default
+  docx: default
+
+# Or with options
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: article
+```
+
+## Next Steps
+
+### Learning Resources
+
+- **Official Docs**: [https://quarto.org/docs/guide/](https://quarto.org/docs/guide/)
+- **Gallery**: [https://quarto.org/docs/gallery/](https://quarto.org/docs/gallery/)
+- **Examples**: Browse `_site/` in this project for rendered examples
+
+### Practice Exercises
+
+1. Create a simple `.qmd` document with text and headers
+2. Add a code block that creates a simple plot
+3. Render to HTML, PDF, and Word
+4. Create a presentation with 5 slides
+5. Add your document to the website navigation
+
+### Getting Help
+
+- Check the [Quarto documentation](https://quarto.org)
+- Search [GitHub Issues](https://github.com/quarto-dev/quarto-cli/issues)
+- Ask on [Quarto Discussions](https://github.com/quarto-dev/quarto-cli/discussions)
+
+---
+
+## Summary
+
+**Quarto is powerful** for creating reproducible, multi-format documents. Key takeaways:
+
+✅ **Files**: Create `.qmd` files with YAML + Markdown + Code
+✅ **Formats**: Output to HTML, PDF, Word, PowerPoint, and more
+✅ **Configuration**: Use `_quarto.yml` for project-level settings
+✅ **Navigation**: Add files to sidebar in `_quarto.yml`
+✅ **Rendering**: Use `quarto render` or IDE buttons
+✅ **Limitations**: Know what Quarto can't do (real-time collab, dynamic forms)
+✅ **Best Practices**: Organize files, use clear names, test often
+
+**Ready to create?** Start with a simple document and experiment!

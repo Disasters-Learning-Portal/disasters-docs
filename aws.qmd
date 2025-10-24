@@ -1,0 +1,71 @@
+---
+title: "AWS Authentication and S3 Operations Guides"
+---
+
+Welcome to the homepage for AWS access configuration and data management resources.  
+This collection of guides provides step-by-step instructions for securely managing AWS authentication (using MFA or SSO) and for operating with Amazon S3 using the AWS Command Line Interface (CLI).  
+
+Each guide is designed to help users configure secure AWS environments, automate access through scripts or profiles, and perform efficient data operations across AWS services.  
+
+## AWS Access and Security Configuration Guides
+
+Tutorial-style guides demonstrating secure authentication methods and credential management for AWS users.
+
+- **AWS Multi-Factor Authentication (MFA) Setup and Usage**
+   - [Guide](aws-mfa-setup.md)  
+   Learn how to enable and use AWS MFA for secure, temporary session credentials.  
+   This guide explains how to:
+   - Configure MFA devices (virtual or hardware)  
+   - Create and use the `aws_mfa.sh` script for automatic token-based authentication  
+   - Integrate temporary credentials into your shell or Jupyter notebooks  
+   - Implement best practices for session management and credential security  
+   <br>
+
+- **AWS Single Sign-On (SSO) Configuration with AWS Identity Center**
+   - [Guide](AWS_SSO_Setup_Guide.md)  
+   Step-by-step instructions for setting up and using AWS Identity Center (formerly AWS SSO) for passwordless, secure access.  
+   This guide includes:
+   - AWS CLI SSO configuration walkthrough  
+   - Using browser-based authentication  
+   - Managing multiple AWS accounts and IAM roles  
+   - Daily login and logout workflow for SSO sessions  
+   - Best practices for avoiding plain-text credentials and ensuring secure session management  
+   <br>
+
+## AWS Data Operations and Management
+
+Practical reference for working with Amazon S3 using the AWS CLI, including data upload, access control, and cost optimization.
+
+- **AWS S3 Commands and Operations Guide**
+   - [Guide](aws-s3-commands-guide.md)  
+   A complete reference of commonly used AWS S3 CLI commands for bucket and object management.  
+   Key sections include:
+   - CLI installation and configuration  
+   - File operations (`cp`, `mv`, `rm`, `sync`)  
+   - Recursive uploads and downloads  
+   - Access control, encryption, and bucket policies  
+   - Performance and cost management techniques  
+   - Security best practices and troubleshooting methods  
+   <br>
+
+## Best Practices Summary
+
+When working with AWS authentication and S3:
+- Use **temporary credentials** through MFA or SSO — avoid storing permanent keys.  
+- Enable **encryption and versioning** for critical S3 data.  
+- Regularly **rotate access keys** and restrict IAM permissions by least privilege.  
+- Test access with `aws sts get-caller-identity` and validate your session before running commands.  
+- Review **CloudTrail** and **CloudWatch** logs to monitor activity.  
+
+## Community-Contributed Scripts and Tools
+
+Community utilities and automation scripts for enhanced AWS usability may be added here in the future.  
+These will include:
+- MFA and SSO integration helpers  
+- Automated credential refreshers  
+- Advanced S3 sync and cost-analysis scripts  
+
+## Contact
+
+For questions, feedback, or contribution inquiries, please contact your AWS system administrator or submit requests through your organization’s AWS support channel.  
+Always follow internal security policies and AWS best practices when managing credentials or data access.
