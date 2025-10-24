@@ -1,0 +1,10 @@
+---
+title: "AWS and Grafana Monitoring Tutorial"
+subtitle: "Bi-weekely Disasters/VEDA Training"
+author: "Infrastructure Team"
+date: 10/24/2025
+format:
+  html:
+    toc: false
+    page-layout: full
+---

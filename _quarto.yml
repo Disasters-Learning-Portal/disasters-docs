@@ -32,7 +32,7 @@ website:
     search: true
     collapse-level: 1
     contents:
-      - href: index2.qmd
+      - href: index.qmd
         text: Welcome
       - section: aws.qmd
         text: AWS
@@ -60,8 +60,6 @@ website:
          contents:
           - data_workflow2/NRT_data_download.qmd
           - data_workflow2/NRT_directory_structure.qmd
-      - href: index.qmd
-        text: Welcome
       - section: Documentation
         contents:
           - text: "Quarto Guide for Beginners"
@@ -74,8 +72,14 @@ website:
         contents:
           - text: "Disasters Logo and Template Overview"
             href: Presentations/disasters-powerpoint-template.qmd
-          - text: "AWS and Grafana Monitoring Tutorial"
-            href: Presentations/aws-grafana-tutorial.qmd
+          - section: PowerPoints
+            contents:
+              - text: "AWS and Grafana Monitoring Tutorial"
+                href: Presentations/aws-grafana-tutorial.qmd
+          - section: Videos
+            contents:
+              - text: "AWS and Grafana Monitoring Tutorial"
+                href: Presentations/disasters-training-1.qmd
       # - href: datausage.qmd
       #   text: Data Usage Notebooks   
       # - href: datatransformation.qmd
