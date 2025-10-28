@@ -1,0 +1,141 @@
+---
+title: "JupyterHub and Data Conversions Tutorial"
+subtitle: "Instructions & Guidance for JupyterHub and Data Transformation"
+author: "Data Team"
+date: today
+format:
+  html:
+    toc: false
+    page-layout: full
+---
+
+## JupyterHub and Data Conversions Tutorial
+
+This page provides comprehensive instructions and guidance for using JupyterHub and performing data conversions for the Disasters project.
+
+::: {.callout-note}
+## About This Tutorial
+
+This presentation covers JupyterHub setup, data transformation workflows, and conversion best practices.
+
+**Controls:**
+<ul>
+<li>Click the "︙" menu for additional options such as Full Screen mode</li>
+<li>Advance slides using your mouse cursor</li>
+</ul>
+:::
+
+### Tutorial Video Recording
+
+Watch the complete walkthrough of this tutorial with live demonstrations and explanations:
+
+::: {.callout-warning}
+## Large Video File Notice
+
+Due to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.
+
+<div style="text-align: center; margin: 1.5rem 0;">
+<a href="YOUR_VIDEO_LINK_HERE"
+   target="_blank"
+   style="display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+   ▶ Watch Tutorial Video
+</a>
+</div>
+
+
+:::
+
+::: {.callout-note collapse="true"}
+## Video Details
+
+This recorded tutorial includes:
+- Live demonstrations of JupyterHub setup and navigation
+- Step-by-step data conversion walkthroughs
+- Real-world examples of geospatial data processing
+- Troubleshooting common issues and best practices
+
+**Duration:** [Add duration here]
+:::
+
+---
+
+### Powerpoint Presentation (no audio)
+
+<div style="text-align: center; margin: 2rem 0;">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ9fdhrG6PEK1294UikYIXlLtx-RPFaGlk92twtNctOrBF5GzUbIXAArg10armTTw/pubembed?start=false&loop=false&delayms=3000"
+        frameborder="0"
+        width="1280"
+        height="749"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        style="border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 100%;">
+</iframe>
+</div>
+
+::: {.callout-tip collapse="true"}
+## Alternative Viewing Options
+
+If the embedded presentation doesn't load properly, you can:
+
+1. **Open in new tab**: [View presentation in Google Slides →](YOUR_FULL_LINK_HERE)
+
+2. **Fullscreen mode**: Click the fullscreen button in the embedded player above
+
+3. **Download**: Open the link above and look for download options if available
+:::
+
+---
+
+## What You'll Learn
+
+This tutorial covers the following topics:
+
+### 🚀 JupyterHub Basics
+- JupyterHub environment overview
+- Navigating the JupyterHub interface
+- Creating and managing notebooks
+
+### 🔄 Data Conversion Workflows
+- Connecting to AWS S3 buckets
+- Retrieving data
+- Filename transformations
+- GeoTIFF generation and optimization
+- Working with COG (Cloud Optimized GeoTIFF)
+
+---
+
+## Related Resources
+
+### JupyterHub Documentation
+- [JupyterHub Documentation](https://jupyterhub.readthedocs.io/)
+- [Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/)
+- [JupyterLab Documentation](https://jupyterlab.readthedocs.io/)
+
+### Geospatial Data Resources
+- [GDAL Documentation](https://gdal.org/)
+- [Rasterio Documentation](https://rasterio.readthedocs.io/)
+- [COG Specification](https://www.cogeo.org/)
+
+### Python Libraries
+- [NumPy Documentation](https://numpy.org/doc/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [Xarray Documentation](https://xarray.pydata.org/)
+
+### Additional Guides
+- [JupyterHub Training Guide](../Jupyterhub/jupyterhub-training-guide.qmd) - Detailed JupyterHub setup
+- [Convert to GeoTIFF Guide](../Jupyterhub/convert_to_geotiff.qmd) - Step-by-step conversion instructions
+
+---
+
+### Feedback
+
+We welcome feedback on this tutorial! If you have suggestions for improvements or find any issues, please reach out to the data team.
+
+---
+
+## Conclusion
+
+This embedded tutorial provides comprehensive guidance for using JupyterHub and performing data conversions for the Disasters project. Mastering these tools and workflows will enable efficient data processing and analysis.
+
+

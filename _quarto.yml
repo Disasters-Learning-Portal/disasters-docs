@@ -70,16 +70,14 @@ website:
           - services/jupyterhub.qmd
       - section: Presentations
         contents:
-          - text: "Disasters Logo and Template Overview"
-            href: Presentations/disasters-powerpoint-template.qmd
           - section: PowerPoints
             contents:
+              - text: "Disasters Logo and Template Overview"
+                href: Presentations/disasters-powerpoint-template.qmd
               - text: "AWS and Grafana Monitoring Tutorial"
                 href: Presentations/aws-grafana-tutorial.qmd
-          - section: Videos
-            contents:
-              - text: "AWS and Grafana Monitoring Tutorial"
-                href: Presentations/disasters-training-1.qmd
+              - text: "JupyterHub and Data Conversions Tutorial"
+                href: Presentations/jupyterhub-data-conversions-tutorial.qmd
       # - href: datausage.qmd
       #   text: Data Usage Notebooks   
       # - href: datatransformation.qmd
