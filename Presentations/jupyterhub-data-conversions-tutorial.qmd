@@ -1,8 +1,7 @@
 ---
 title: "JupyterHub and Data Conversions Tutorial"
 subtitle: "Instructions & Guidance for JupyterHub and Data Transformation"
-author: "Data Team"
-date: today
+author: "Kyle Lesinger"
 format:
   html:
     toc: false
