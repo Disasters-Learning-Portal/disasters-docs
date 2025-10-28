@@ -1365,7 +1365,7 @@
     "href": "quarto-guide.html#file-types-and-formats",
     "title": "Quarto Guide for Beginners",
     "section": "File Types and Formats",
-    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#70171486 .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
+    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#ab43baee .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -1398,7 +1398,7 @@
     "href": "quarto-guide.html#working-with-code",
     "title": "Quarto Guide for Beginners",
     "section": "Working with Code",
-    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#6670260f .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
+    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#1818386f .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -1464,7 +1464,7 @@
     "href": "quarto-guide.html#common-issues-and-solutions",
     "title": "Quarto Guide for Beginners",
     "section": "Common Issues and Solutions",
-    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#e994a0e5 .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
+    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#2b3420fc .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -2578,15 +2578,63 @@
     ]
   },
   {
-    "objectID": "Presentations/disasters-training-1.html",
-    "href": "Presentations/disasters-training-1.html",
-    "title": "AWS and Grafana Monitoring Tutorial",
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html",
+    "title": "JupyterHub and Data Conversions Tutorial",
     "section": "",
-    "text": "Back to top",
+    "text": "This page provides comprehensive instructions and guidance for using JupyterHub and performing data conversions for the Disasters project.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers JupyterHub setup, data transformation workflows, and conversion best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Live demonstrations of JupyterHub setup and navigation - Step-by-step data conversion walkthroughs - Real-world examples of geospatial data processing - Troubleshooting common issues and best practices\nDuration: [Add duration here]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
     "crumbs": [
       "Presentations",
-      "Videos",
-      "AWS and Grafana Monitoring Tutorial"
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#jupyterhub-and-data-conversions-tutorial",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#jupyterhub-and-data-conversions-tutorial",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "",
+    "text": "This page provides comprehensive instructions and guidance for using JupyterHub and performing data conversions for the Disasters project.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers JupyterHub setup, data transformation workflows, and conversion best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Live demonstrations of JupyterHub setup and navigation - Step-by-step data conversion walkthroughs - Real-world examples of geospatial data processing - Troubleshooting common issues and best practices\nDuration: [Add duration here]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#what-youll-learn",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#what-youll-learn",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "What You’ll Learn",
+    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🚀 JupyterHub Basics\n\nJupyterHub environment overview\nNavigating the JupyterHub interface\nCreating and managing notebooks\n\n\n\n🔄 Data Conversion Workflows\n\nConnecting to AWS S3 buckets\nRetrieving data\nFilename transformations\nGeoTIFF generation and optimization\nWorking with COG (Cloud Optimized GeoTIFF)",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#related-resources",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#related-resources",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "Related Resources",
+    "text": "Related Resources\n\nJupyterHub Documentation\n\nJupyterHub Documentation\nJupyter Notebook Documentation\nJupyterLab Documentation\n\n\n\nGeospatial Data Resources\n\nGDAL Documentation\nRasterio Documentation\nCOG Specification\n\n\n\nPython Libraries\n\nNumPy Documentation\nPandas Documentation\nXarray Documentation\n\n\n\nAdditional Guides\n\nJupyterHub Training Guide - Detailed JupyterHub setup\nConvert to GeoTIFF Guide - Step-by-step conversion instructions\n\n\n\n\nFeedback\nWe welcome feedback on this tutorial! If you have suggestions for improvements or find any issues, please reach out to the data team.",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#conclusion",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#conclusion",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis embedded tutorial provides comprehensive guidance for using JupyterHub and performing data conversions for the Disasters project. Mastering these tools and workflows will enable efficient data processing and analysis.",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
     ]
   },
   {
@@ -2594,64 +2642,10 @@
     "href": "Presentations/disasters-powerpoint-template.html",
     "title": "NASA Disasters PowerPoint Template",
     "section": "",
-    "text": "This page demonstrates embedding an external PowerPoint presentation hosted on Google Drive.\n\n\n\n\n\n\nNoteAbout This Presentation\n\n\n\nThis presentation is hosted on Google Drive and embedded here as a proof of concept. The presentation will load directly in the page below.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode",
+    "text": "Note\n\n\n\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\nPresentation Viewer\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode\n\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Presentations",
-      "Disasters Logo and Template Overview"
-    ]
-  },
-  {
-    "objectID": "Presentations/disasters-powerpoint-template.html#embedded-aws-presentation",
-    "href": "Presentations/disasters-powerpoint-template.html#embedded-aws-presentation",
-    "title": "NASA Disasters PowerPoint Template",
-    "section": "",
-    "text": "This page demonstrates embedding an external PowerPoint presentation hosted on Google Drive.\n\n\n\n\n\n\nNoteAbout This Presentation\n\n\n\nThis presentation is hosted on Google Drive and embedded here as a proof of concept. The presentation will load directly in the page below.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode",
-    "crumbs": [
-      "Presentations",
-      "Disasters Logo and Template Overview"
-    ]
-  },
-  {
-    "objectID": "Presentations/disasters-powerpoint-template.html#technical-details",
-    "href": "Presentations/disasters-powerpoint-template.html#technical-details",
-    "title": "NASA Disasters PowerPoint Template",
-    "section": "Technical Details",
-    "text": "Technical Details\n\nEmbedding Method\nThis presentation is embedded using an HTML &lt;iframe&gt; element that points to the Google Slides embed URL:\n&lt;iframe src=\"https://docs.google.com/presentation/d/[ID]/embed?start=false&loop=false&delayms=3000\"\n        width=\"960\"\n        height=\"569\"\n        allowfullscreen=\"true\"&gt;\n&lt;/iframe&gt;\n\n\nURL Parameters\n\n\n\nParameter\nValue\nDescription\n\n\n\n\nstart\nfalse\nDon’t auto-start presentation\n\n\nloop\nfalse\nDon’t loop slides\n\n\ndelayms\n3000\nDelay between slides in auto-play (ms)\n\n\n\n\n\nEmbedding Other Presentations\nTo embed your own Google Slides presentation:\n\nGet the presentation ID from your Google Slides URL:\nhttps://docs.google.com/presentation/d/[THIS-IS-THE-ID]/edit\nCreate the embed URL:\nhttps://docs.google.com/presentation/d/[YOUR-ID]/embed?start=false&loop=false&delayms=3000\nAdd to your .qmd file:\n&lt;iframe src=\"YOUR-EMBED-URL\"\n        width=\"960\"\n        height=\"569\"\n        allowfullscreen=\"true\"&gt;\n&lt;/iframe&gt;\nEnsure sharing is enabled: The presentation must be set to “Anyone with the link can view”\n\n\n\nResponsive Sizing\nFor responsive iframe sizing, you can use CSS:\n.responsive-iframe {\n  position: relative;\n  width: 100%;\n  padding-bottom: 56.25%; /* 16:9 aspect ratio */\n  height: 0;\n}\n\n.responsive-iframe iframe {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\nThen wrap your iframe:\n&lt;div class=\"responsive-iframe\"&gt;\n  &lt;iframe src=\"...\"&gt;&lt;/iframe&gt;\n&lt;/div&gt;",
-    "crumbs": [
-      "Presentations",
-      "Disasters Logo and Template Overview"
-    ]
-  },
-  {
-    "objectID": "Presentations/disasters-powerpoint-template.html#limitations-and-considerations",
-    "href": "Presentations/disasters-powerpoint-template.html#limitations-and-considerations",
-    "title": "NASA Disasters PowerPoint Template",
-    "section": "Limitations and Considerations",
-    "text": "Limitations and Considerations\n\n\n\n\n\n\nWarningImportant Limitations\n\n\n\n\nRequires internet connection - Embedded presentations load from Google servers\nSharing permissions - Presentation must be publicly accessible or shared with viewers\nGoogle account dependency - If the presentation owner deletes their account or changes permissions, the embed will break\nLimited offline support - Unlike locally hosted files, embedded presentations won’t work offline\nThird-party dependency - Relies on Google’s infrastructure and terms of service\n\n\n\n\nBest Practices\n✅ Do: - Use for external presentations you don’t control - Test embedding before sharing widely - Provide alternative download/view links - Document the source and owner\n❌ Don’t: - Embed sensitive or proprietary information - Rely solely on embedded content for critical documentation - Assume it will work indefinitely without maintenance - Embed presentations without permission",
-    "crumbs": [
-      "Presentations",
-      "Disasters Logo and Template Overview"
-    ]
-  },
-  {
-    "objectID": "Presentations/disasters-powerpoint-template.html#alternative-embedding-methods",
-    "href": "Presentations/disasters-powerpoint-template.html#alternative-embedding-methods",
-    "title": "NASA Disasters PowerPoint Template",
-    "section": "Alternative Embedding Methods",
-    "text": "Alternative Embedding Methods\n\nOption 1: PDF Embed\nConvert PowerPoint to PDF and embed:\n&lt;iframe src=\"presentation.pdf\"\n        width=\"100%\"\n        height=\"600px\"&gt;\n&lt;/iframe&gt;\n\n\nOption 2: Quarto Native Presentation\nCreate a native Quarto presentation using .qmd files with presentation formats like PowerPoint or Reveal.js.\nAdvantages: - Full version control - Offline support - Customizable with Quarto features - No external dependencies\nSee the Quarto Guide for Beginners for more details on creating presentations.\n\n\nOption 3: Static Images\nExport slides as images and display them:\n![Slide 1](images/slide-1.png)\n\n![Slide 2](images/slide-2.png)",
-    "crumbs": [
-      "Presentations",
-      "Disasters Logo and Template Overview"
-    ]
-  },
-  {
-    "objectID": "Presentations/disasters-powerpoint-template.html#conclusion",
-    "href": "Presentations/disasters-powerpoint-template.html#conclusion",
-    "title": "NASA Disasters PowerPoint Template",
-    "section": "Conclusion",
-    "text": "Conclusion\nThis page successfully demonstrates embedding a PowerPoint presentation from Google Drive into a Quarto document. This method works well for:\n\nSharing presentations created by others\nQuick embedding without conversion\nMaintaining a single source presentation\n\nFor production use, consider the tradeoffs between embedded content and native Quarto presentations based on your needs for control, offline access, and long-term maintenance.",
-    "crumbs": [
-      "Presentations",
+      "PowerPoints",
       "Disasters Logo and Template Overview"
     ]
   },
@@ -2660,7 +2654,7 @@
     "href": "Presentations/aws-grafana-tutorial.html",
     "title": "AWS and Grafana Monitoring Tutorial",
     "section": "",
-    "text": "This page provides comprehensive instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices. The presentation is hosted on Google Slides and embedded here for easy access.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options - Press Esc to exit fullscreen mode\nVersion: V1.0, Updated Oct. 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "text": "This page provides introductory instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size (150MB), it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Walkthrough of AWS Console and AWS SSO - NASA SMCE and SMDC for Cloud Management - Common AWS S3 operators - Grafana setup and support\nDuration: [43 minutes]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
     "crumbs": [
       "Presentations",
       "PowerPoints",
@@ -2672,7 +2666,7 @@
     "href": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
     "title": "AWS and Grafana Monitoring Tutorial",
     "section": "",
-    "text": "This page provides comprehensive instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices. The presentation is hosted on Google Slides and embedded here for easy access.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options - Press Esc to exit fullscreen mode\nVersion: V1.0, Updated Oct. 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "text": "This page provides introductory instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size (150MB), it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Walkthrough of AWS Console and AWS SSO - NASA SMCE and SMDC for Cloud Management - Common AWS S3 operators - Grafana setup and support\nDuration: [43 minutes]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
     "crumbs": [
       "Presentations",
       "PowerPoints",
@@ -2684,31 +2678,7 @@
     "href": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
     "title": "AWS and Grafana Monitoring Tutorial",
     "section": "What You’ll Learn",
-    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🔧 Setup and Configuration\n\nAWS account setup and IAM configuration\nGrafana installation and initial setup\nCloudWatch data source configuration\nAuthentication and security best practices\n\n\n\n📊 Monitoring and Dashboards\n\nCreating custom Grafana dashboards\nCloudWatch metrics integration\nLog aggregation and analysis\nSetting up alerts and notifications\n\n\n\n🚀 Advanced Topics\n\nMulti-account AWS monitoring\nPerformance optimization\nCost management and optimization\nTroubleshooting common issues\n\n\n\n💡 Best Practices\n\nSecurity and compliance\nDashboard design principles\nScalability considerations\nOperational excellence",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#prerequisites",
-    "href": "Presentations/aws-grafana-tutorial.html#prerequisites",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "Prerequisites",
-    "text": "Prerequisites\nBefore starting this tutorial, ensure you have:\n\nAWS Account with appropriate IAM permissions\nBasic understanding of AWS services (EC2, CloudWatch, IAM)\nGrafana installed or access to a Grafana instance\nNetwork access to AWS APIs and Grafana",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#technical-details",
-    "href": "Presentations/aws-grafana-tutorial.html#technical-details",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "Technical Details",
-    "text": "Technical Details\n\nEmbedding Method\nThis presentation is embedded using Google Slides’ publish-to-web feature with auto-advance enabled:\n&lt;iframe src=\"https://docs.google.com/presentation/d/e/[ID]/pubembed?start=true&loop=false&delayms=3000\"\n        width=\"1280\"\n        height=\"749\"\n        allowfullscreen=\"true\"&gt;\n&lt;/iframe&gt;\n\n\nURL Parameters\n\n\n\nParameter\nValue\nDescription\n\n\n\n\nstart\ntrue\nAuto-start presentation when loaded\n\n\nloop\nfalse\nDon’t loop slides continuously\n\n\ndelayms\n3000\n3-second delay between auto-advanced slides\n\n\n\n\n\nEmbed Features\nThis embed uses: - Published URL (/pubembed) - Publicly accessible without authentication - Auto-advance - Presentation starts automatically - Large format - 1280x749 for better readability - Fullscreen support - Expandable for detailed viewing",
+    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🔧 Setup and Configuration\n\nAWS account setup and IAM configuration\nGrafana installation and initial setup\nLog aggregation and analysis\n\n\n\n🚀 Advanced Topics\n\nMulti-account AWS monitoring\nCost management and optimization\nTroubleshooting common issues",
     "crumbs": [
       "Presentations",
       "PowerPoints",
@@ -2720,31 +2690,7 @@
     "href": "Presentations/aws-grafana-tutorial.html#related-resources",
     "title": "AWS and Grafana Monitoring Tutorial",
     "section": "Related Resources",
-    "text": "Related Resources\n\nAWS Documentation\n\nAWS CloudWatch Documentation\nAWS IAM Best Practices\nAWS Well-Architected Framework\n\n\n\nGrafana Resources\n\nGrafana CloudWatch Data Source\nGrafana Dashboard Best Practices\nGrafana Alerting Guide\n\n\n\nAdditional Guides\n\nQuarto Guide for Beginners - Learn how to create and embed presentations\nNASA Disasters Logo and Template - PowerPoint template guidance",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#getting-started-checklist",
-    "href": "Presentations/aws-grafana-tutorial.html#getting-started-checklist",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "Getting Started Checklist",
-    "text": "Getting Started Checklist\n\n\n\n\n\n\nImportantBefore You Begin\n\n\n\nComplete these steps to get the most out of this tutorial:\n\nHave AWS account credentials ready\nInstall AWS CLI (optional but recommended)\nSet up Grafana instance or have access to one\nReview IAM permissions requirements\nPrepare note-taking materials\nBookmark this page for future reference",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#support-and-questions",
-    "href": "Presentations/aws-grafana-tutorial.html#support-and-questions",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "Support and Questions",
-    "text": "Support and Questions\n\nNeed Help?\nIf you encounter issues or have questions:\n\nReview the presentation - Most common questions are addressed in the slides\nCheck AWS documentation - Official docs have detailed troubleshooting\nGrafana community - Active community forums for Grafana-specific questions\nNASA Disasters team - Contact the infrastructure team for project-specific help\n\n\n\nFeedback\nWe welcome feedback on this tutorial! If you have suggestions for improvements or find any issues, please reach out to the infrastructure team.",
+    "text": "Related Resources\n\nAWS Documentation\n\nAWS CloudWatch Documentation\nAWS IAM Best Practices\nAWS Well-Architected Framework\n\n\n\nGrafana Resources\n\nGrafana CloudWatch Data Source\nGrafana Dashboard Best Practices\nGrafana Alerting Guide",
     "crumbs": [
       "Presentations",
       "PowerPoints",
@@ -2756,7 +2702,7 @@
     "href": "Presentations/aws-grafana-tutorial.html#conclusion",
     "title": "AWS and Grafana Monitoring Tutorial",
     "section": "Conclusion",
-    "text": "Conclusion\nThis embedded tutorial provides comprehensive guidance for setting up and using AWS with Grafana for monitoring and observability. The combination of AWS’s robust cloud infrastructure and Grafana’s powerful visualization capabilities creates a strong foundation for modern monitoring solutions.\nKey Takeaways: - AWS and Grafana integration enables powerful monitoring - Proper configuration is essential for security and performance - Following best practices ensures scalable, maintainable solutions - Continuous learning and improvement drive operational excellence\nGood luck with your AWS and Grafana monitoring journey!",
+    "text": "Conclusion\nThis tutorial provides comprehensive guidance for setting up and using AWS with Grafana for monitoring and observability. The combination of AWS’s robust cloud infrastructure and Grafana’s powerful visualization capabilities creates a strong foundation for modern monitoring solutions.\nKey Takeaways:\n\n\nAWS and Grafana integration enables powerful monitoring\n\n\nProper configuration is essential for security and performance\n\n\nFollowing best practices ensures scalable, maintainable solutions\n\n\nGood luck with your AWS and Grafana monitoring journey!",
     "crumbs": [
       "Presentations",
       "PowerPoints",
