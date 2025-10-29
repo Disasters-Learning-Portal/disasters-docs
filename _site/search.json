@@ -43,9 +43,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "title": "NASA Disasters: Documentation",
     "section": "",
-    "text": "The U.S. Greenhouse Gas (GHG) Center provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.\nOn this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.",
+    "text": "The NASA Disasters Program advances science and builds tools to help communities make informed decisions for disaster planning. We develop free and accessible resources that use Earth observations to reveal how natural hazards interact with vulnerability, exposure, and coping capacity in a changing climate.\nOn this site, you can find the technical documentation for the services used to visualize data, how to connect to these services, how to load datasets, how the datasets were transformed into cloud-optimized formats that enable efficient cloud data access, and how to visualize datasets.",
     "crumbs": [
       "Welcome"
     ]
@@ -53,9 +53,9 @@
   {
     "objectID": "index.html#welcome",
     "href": "index.html#welcome",
-    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "title": "NASA Disasters: Documentation",
     "section": "",
-    "text": "The U.S. Greenhouse Gas (GHG) Center provides a cloud-based system for exploring and analyzing U.S. government and other curated greenhouse gas datasets.\nOn this site, you can find the technical documentation for the services the center provides, how to load the datasets, and how the datasets were transformed from their source formats (eg. netCDF, HDF, etc.) into cloud-optimized formats that enable efficient cloud data access and visualization.",
+    "text": "The NASA Disasters Program advances science and builds tools to help communities make informed decisions for disaster planning. We develop free and accessible resources that use Earth observations to reveal how natural hazards interact with vulnerability, exposure, and coping capacity in a changing climate.\nOn this site, you can find the technical documentation for the services used to visualize data, how to connect to these services, how to load datasets, how the datasets were transformed into cloud-optimized formats that enable efficient cloud data access, and how to visualize datasets.",
     "crumbs": [
       "Welcome"
     ]
@@ -63,9 +63,9 @@
   {
     "objectID": "index.html#contents",
     "href": "index.html#contents",
-    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "title": "NASA Disasters: Documentation",
     "section": "Contents",
-    "text": "Contents\n\nServices provided for accessing and analyzing the US GHG Center datasets, such as the JupyterHub environment for interactive computing.\nDataset usage examples, e.g. for the Wetland Methane Emissions from the LPJ-EOSIM model dataset, that shows how to load the dataset in Python in JupyterHub.\nDataset transformation scripts, which document the code used to transform datasets for display in the US GHG Center. An example is the ODIAC Fossil Fuel CO₂ Emissions dataset transformation code.\nData processing and verification reports that openly present the process we used to check and verify that any transformation did not alter the original source data. An example is the GOSAT-based Top-down Total and Natural Methane Emissions dataset.\nData Flow Diagrams, which provide a high level summary of how each dataset was integrated into the US GHG Center. See the MiCASA Land Carbon Flux Flow Diagram as an example.",
+    "text": "Contents\n\nA guide to access AWS resources, with guidelines to utilize AWS commands and operations.\nDirections on how to setup GitHub, access a repository, use commands, and understand the GitHub workflow in Disasters.\nHow to use JupyterHub to work collaboratively on notebooks within a repositroy and the Disasters framework.",
     "crumbs": [
       "Welcome"
     ]
@@ -73,7 +73,7 @@
   {
     "objectID": "index.html#contact",
     "href": "index.html#contact",
-    "title": "U.S. Greenhouse Gas Center: Documentation",
+    "title": "NASA Disasters: Documentation",
     "section": "Contact",
     "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
     "crumbs": [
@@ -1658,6 +1658,357 @@
     "text": "JupyterHub is a multi-user server that manages and provides web-based Jupyter notebook environments for multiple users. It allows you to:\n\nAccess powerful computing resources through your web browser\nWrite and execute code in Python, R, Julia, and other languages\nVisualize data with interactive plots and charts\nCollaborate with team members on shared projects\nWork from anywhere without local setup requirements\n\n\n\n\nThe Disasters Hub is a specialized JupyterHub instance designed for disaster response and analysis work. It provides:\n\nPre-configured environments for geospatial analysis\nAccess to disaster-related datasets\nCollaboration tools for response teams\nIntegration with cloud storage services\nScalable computing resources\n\n\n\n\n✅ No Installation Required - Everything runs in your browser\n✅ Pre-configured Environments - Common packages already installed\n✅ Persistent Storage - Your work is saved between sessions\n✅ Collaboration Ready - Share notebooks with team members\n✅ Scalable Resources - Access to GPU and high-memory instances when needed",
     "crumbs": [
       "JupyterHub"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html",
+    "href": "quarto-guide.html",
+    "title": "Quarto Guide for Beginners",
+    "section": "",
+    "text": "Quarto is an open-source scientific and technical publishing system built on Pandoc. It allows you to create dynamic documents that combine:\n\nNarrative text (written in Markdown)\nCode (Python, R, Julia, Observable JS)\nCode outputs (plots, tables, results)\nEquations, citations, cross-references\n\nThink of Quarto as a powerful tool to create everything from simple documents to complex websites, presentations, and books.\n\n\n\nMultiple outputs from one source - Write once, publish to HTML, PDF, Word, PowerPoint\nLanguage agnostic - Works with Python, R, Julia, and more\nReproducible - Code and narrative in the same document\nProfessional - Publication-quality output",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#what-is-quarto",
+    "href": "quarto-guide.html#what-is-quarto",
+    "title": "Quarto Guide for Beginners",
+    "section": "",
+    "text": "Quarto is an open-source scientific and technical publishing system built on Pandoc. It allows you to create dynamic documents that combine:\n\nNarrative text (written in Markdown)\nCode (Python, R, Julia, Observable JS)\nCode outputs (plots, tables, results)\nEquations, citations, cross-references\n\nThink of Quarto as a powerful tool to create everything from simple documents to complex websites, presentations, and books.\n\n\n\nMultiple outputs from one source - Write once, publish to HTML, PDF, Word, PowerPoint\nLanguage agnostic - Works with Python, R, Julia, and more\nReproducible - Code and narrative in the same document\nProfessional - Publication-quality output",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#file-types-and-formats",
+    "href": "quarto-guide.html#file-types-and-formats",
+    "title": "Quarto Guide for Beginners",
+    "section": "File Types and Formats",
+    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#8c88dc2e .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#yaml-front-matter",
+    "href": "quarto-guide.html#yaml-front-matter",
+    "title": "Quarto Guide for Beginners",
+    "section": "YAML Front Matter",
+    "text": "YAML Front Matter\nEvery .qmd file starts with YAML front matter between --- markers. This controls document behavior.\n\nEssential YAML Options\n---\ntitle: \"Document Title\"           # Required\nsubtitle: \"Optional subtitle\"     # Optional\nauthor: \"Author Name\"             # Optional\ndate: today                       # or \"2024-01-15\"\nformat: html                      # Output format\n---\n\n\nFormat-Specific Options\n\nHTML Options\nformat:\n  html:\n    toc: true                    # Table of contents\n    toc-depth: 3                 # How many header levels\n    code-fold: false             # Collapsible code\n    code-tools: true             # Code display options\n    theme: cosmo                 # Visual theme\n    css: styles.css              # Custom CSS\n\n\nPDF Options\nformat:\n  pdf:\n    documentclass: article\n    geometry:\n      - margin=1in\n    toc: true\n    number-sections: true\n\n\nPowerPoint Options\nformat:\n  pptx:\n    reference-doc: template.pptx  # Custom template\n    slide-level: 2                # Which heading creates slides\n    incremental: true             # Bullets appear one by one",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#the-_quarto.yml-configuration-file",
+    "href": "quarto-guide.html#the-_quarto.yml-configuration-file",
+    "title": "Quarto Guide for Beginners",
+    "section": "The _quarto.yml Configuration File",
+    "text": "The _quarto.yml Configuration File\nThe _quarto.yml file controls project-level settings for websites and books.\n\nBasic Website Configuration\nproject:\n  type: website\n\nwebsite:\n  title: \"My Website\"\n  navbar:\n    left:\n      - href: index.qmd\n        text: Home\n      - href: about.qmd\n        text: About\n\n\nSidebar Navigation\nFor documentation sites with a sidebar:\nwebsite:\n  sidebar:\n    style: \"docked\"\n    search: true\n    contents:\n      - href: index.qmd\n        text: Welcome\n      - section: \"Getting Started\"\n        contents:\n          - guide1.qmd\n          - guide2.qmd\n      - section: \"Advanced\"\n        contents:\n          - advanced1.qmd\n\n\nAdding Files to Navigation\n\nAdding a Single Document\nwebsite:\n  sidebar:\n    contents:\n      - href: new-document.qmd\n        text: \"Display Name\"\n\n\nAdding a Section with Multiple Documents\nwebsite:\n  sidebar:\n    contents:\n      - section: \"Section Name\"\n        contents:\n          - doc1.qmd\n          - doc2.qmd\n          - text: \"Custom Name\"\n            href: doc3.qmd\n\n\nAdding External Links\nwebsite:\n  sidebar:\n    tools:\n      - icon: github\n        href: https://github.com/your/repo\n        text: \"GitHub\"\n\n\n\nGlobal Format Settings\nApply settings to all documents:\nformat:\n  html:\n    theme: cosmo\n    css: styles.css\n    toc: true\n    code-copy: true",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#working-with-code",
+    "href": "quarto-guide.html#working-with-code",
+    "title": "Quarto Guide for Beginners",
+    "section": "Working with Code",
+    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#f6819db2 .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#markdown-essentials",
+    "href": "quarto-guide.html#markdown-essentials",
+    "title": "Quarto Guide for Beginners",
+    "section": "Markdown Essentials",
+    "text": "Markdown Essentials\n\nHeaders\n# Level 1\n## Level 2\n### Level 3\n\n\nText Formatting\n**bold**\n*italic*\n***bold italic***\n`code`\n~~strikethrough~~\n\n\nLists\n- Unordered list\n- Second item\n  - Nested item\n\n1. Ordered list\n2. Second item\n   1. Nested item\n\n\nLinks and Images\n[Link text](https://url.com)\n\n![Image caption](path/to/image.png)\n\n![Figure with options](image.png){#fig-id width=50%}\n\n\nTables\n| Column 1 | Column 2 | Column 3 |\n|----------|----------|----------|\n| Data 1   | Data 2   | Data 3   |\n| Data 4   | Data 5   | Data 6   |\n\n\nCross-References\nSee @fig-plot for details.\n\n![My plot](plot.png){#fig-plot}\n\nSee @tbl-results for the data.\n\n| Col 1 | Col 2 |\n|-------|-------|\n| A     | B     |\n\n: Results {#tbl-results}",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#rendering-documents",
+    "href": "quarto-guide.html#rendering-documents",
+    "title": "Quarto Guide for Beginners",
+    "section": "Rendering Documents",
+    "text": "Rendering Documents\n\nCommand Line\n# Render a single document\nquarto render document.qmd\n\n# Render to specific format\nquarto render document.qmd --to pdf\n\n# Render entire project\nquarto render\n\n# Preview with live reload\nquarto preview\n\n# Publish\nquarto publish gh-pages\n\n\nFrom RStudio or VS Code\n\nRStudio: Click the “Render” button\nVS Code: Click “Preview” or use the Quarto extension\n\n\n\nRender Options\nControl rendering in YAML:\nexecute:\n  echo: true      # Show code\n  warning: false  # Hide warnings\n  error: true     # Show errors\n  cache: true     # Cache results",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#special-features",
+    "href": "quarto-guide.html#special-features",
+    "title": "Quarto Guide for Beginners",
+    "section": "Special Features",
+    "text": "Special Features\n\nCallout Blocks\n::: {.callout-note}\nThis is a note callout.\n:::\n\n::: {.callout-warning}\nThis is a warning!\n:::\n\n::: {.callout-important}\nThis is important information.\n:::\n\n\nTabsets\n::: {.panel-tabset}\n\n## Tab 1\nContent for tab 1\n\n## Tab 2\nContent for tab 2\n\n:::\n\n\nColumns Layout\n::: {.columns}\n\n::: {.column width=\"50%\"}\nLeft column content\n:::\n\n::: {.column width=\"50%\"}\nRight column content\n:::\n\n:::\n\n\nDiagrams (Mermaid)\n```{mermaid}\ngraph LR\n  A[Start] --&gt; B[Process]\n  B --&gt; C[End]\n```",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#what-quarto-cannot-do",
+    "href": "quarto-guide.html#what-quarto-cannot-do",
+    "title": "Quarto Guide for Beginners",
+    "section": "What Quarto Cannot Do",
+    "text": "What Quarto Cannot Do\n\nLimitations\n\nNo Real-Time Collaboration\n\nNot like Google Docs\nUse Git for version control instead\n\nLimited WYSIWYG\n\nMust render to see final output\nNot a visual editor (though RStudio has visual mode)\n\nLaTeX Required for PDF\n\nMust install LaTeX distribution for PDF output\nCan be large download (several GB)\n\nCode Must Be Installed\n\nPython/R/Julia must be installed separately\nNeed required packages installed\n\nNo Dynamic Forms\n\nCannot create user input forms in HTML output\nUse Shiny for interactive applications\n\nProcessing Speed\n\nLarge projects can be slow to render\nUse caching to speed up\n\nNot a Database\n\nCannot query data directly in document\nMust load data first with code\n\nLimited Styling Control\n\nHTML/CSS knowledge needed for custom designs\nPDF styling requires LaTeX knowledge",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#best-practices",
+    "href": "quarto-guide.html#best-practices",
+    "title": "Quarto Guide for Beginners",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nProject Organization\nmy-project/\n├── _quarto.yml           # Project config\n├── index.qmd             # Homepage\n├── guide1.qmd            # Content files\n├── guide2.qmd\n├── images/               # Images folder\n│   ├── logo.png\n│   └── diagram.svg\n├── data/                 # Data folder\n│   └── dataset.csv\n├── scripts/              # Helper scripts\n│   └── utils.py\n└── _site/               # Generated output (don't edit)\n\n\nFile Naming\n\nUse lowercase, hyphens for spaces: my-document.qmd\nBe descriptive: serverless-monitoring.qmd not doc1.qmd\nGroup related files: tutorial-1.qmd, tutorial-2.qmd\n\n\n\nYAML Best Practices\n---\n# Put most important info first\ntitle: \"Clear, Descriptive Title\"\nsubtitle: \"Helpful subtitle\"\nauthor: \"Author Name\"\ndate: today\n\n# Group related options\nformat:\n  html:\n    toc: true\n    theme: cosmo\n\n# Use comments\nexecute:\n  echo: true  # Show code by default\n---\n\n\nCode Best Practices\n\nUse meaningful labels: {#fig-scatter} not {#fig-1}\nSet global options in YAML instead of repeating\nCache expensive computations: cache: true\nOrganize code into separate scripts if complex\nTest frequently - render often to catch errors early",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#common-issues-and-solutions",
+    "href": "quarto-guide.html#common-issues-and-solutions",
+    "title": "Quarto Guide for Beginners",
+    "section": "Common Issues and Solutions",
+    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#65165942 .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#quick-reference",
+    "href": "quarto-guide.html#quick-reference",
+    "title": "Quarto Guide for Beginners",
+    "section": "Quick Reference",
+    "text": "Quick Reference\n\nCommon Quarto Commands\nquarto render               # Render project\nquarto render file.qmd      # Render single file\nquarto preview              # Live preview\nquarto create project       # New project wizard\nquarto check                # Check installation\nquarto --help               # Help\n\n\nCommon YAML Settings\ntitle: \"Title\"\nauthor: \"Name\"\ndate: today\nformat: html\ntoc: true\nnumber-sections: true\ncode-fold: true\ntheme: cosmo\n\n\nFormat Options Quick Reference\n# Multiple formats\nformat:\n  html: default\n  pdf: default\n  docx: default\n\n# Or with options\nformat:\n  html:\n    theme: cosmo\n  pdf:\n    documentclass: article",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#next-steps",
+    "href": "quarto-guide.html#next-steps",
+    "title": "Quarto Guide for Beginners",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nLearning Resources\n\nOfficial Docs: https://quarto.org/docs/guide/\nGallery: https://quarto.org/docs/gallery/\nExamples: Browse _site/ in this project for rendered examples\n\n\n\nPractice Exercises\n\nCreate a simple .qmd document with text and headers\nAdd a code block that creates a simple plot\nRender to HTML, PDF, and Word\nCreate a presentation with 5 slides\nAdd your document to the website navigation\n\n\n\nGetting Help\n\nCheck the Quarto documentation\nSearch GitHub Issues\nAsk on Quarto Discussions",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "quarto-guide.html#summary",
+    "href": "quarto-guide.html#summary",
+    "title": "Quarto Guide for Beginners",
+    "section": "Summary",
+    "text": "Summary\nQuarto is powerful for creating reproducible, multi-format documents. Key takeaways:\n✅ Files: Create .qmd files with YAML + Markdown + Code ✅ Formats: Output to HTML, PDF, Word, PowerPoint, and more ✅ Configuration: Use _quarto.yml for project-level settings ✅ Navigation: Add files to sidebar in _quarto.yml ✅ Rendering: Use quarto render or IDE buttons ✅ Limitations: Know what Quarto can’t do (real-time collab, dynamic forms) ✅ Best Practices: Organize files, use clear names, test often\nReady to create? Start with a simple document and experiment!",
+    "crumbs": [
+      "Documentation",
+      "Quarto Guide for Beginners"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html",
+    "href": "Presentations/aws-grafana-tutorial.html",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "",
+    "text": "This page provides comprehensive instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices. The presentation is hosted on Google Slides and embedded here for easy access.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options - Press Esc to exit fullscreen mode\nVersion: V1.0, Updated Oct. 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
+    "href": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "",
+    "text": "This page provides comprehensive instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices. The presentation is hosted on Google Slides and embedded here for easy access.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options - Press Esc to exit fullscreen mode\nVersion: V1.0, Updated Oct. 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
+    "href": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "What You’ll Learn",
+    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🔧 Setup and Configuration\n\nAWS account setup and IAM configuration\nGrafana installation and initial setup\nCloudWatch data source configuration\nAuthentication and security best practices\n\n\n\n📊 Monitoring and Dashboards\n\nCreating custom Grafana dashboards\nCloudWatch metrics integration\nLog aggregation and analysis\nSetting up alerts and notifications\n\n\n\n🚀 Advanced Topics\n\nMulti-account AWS monitoring\nPerformance optimization\nCost management and optimization\nTroubleshooting common issues\n\n\n\n💡 Best Practices\n\nSecurity and compliance\nDashboard design principles\nScalability considerations\nOperational excellence",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#prerequisites",
+    "href": "Presentations/aws-grafana-tutorial.html#prerequisites",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nBefore starting this tutorial, ensure you have:\n\nAWS Account with appropriate IAM permissions\nBasic understanding of AWS services (EC2, CloudWatch, IAM)\nGrafana installed or access to a Grafana instance\nNetwork access to AWS APIs and Grafana",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#technical-details",
+    "href": "Presentations/aws-grafana-tutorial.html#technical-details",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Technical Details",
+    "text": "Technical Details\n\nEmbedding Method\nThis presentation is embedded using Google Slides’ publish-to-web feature with auto-advance enabled:\n&lt;iframe src=\"https://docs.google.com/presentation/d/e/[ID]/pubembed?start=true&loop=false&delayms=3000\"\n        width=\"1280\"\n        height=\"749\"\n        allowfullscreen=\"true\"&gt;\n&lt;/iframe&gt;\n\n\nURL Parameters\n\n\n\nParameter\nValue\nDescription\n\n\n\n\nstart\ntrue\nAuto-start presentation when loaded\n\n\nloop\nfalse\nDon’t loop slides continuously\n\n\ndelayms\n3000\n3-second delay between auto-advanced slides\n\n\n\n\n\nEmbed Features\nThis embed uses: - Published URL (/pubembed) - Publicly accessible without authentication - Auto-advance - Presentation starts automatically - Large format - 1280x749 for better readability - Fullscreen support - Expandable for detailed viewing",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#related-resources",
+    "href": "Presentations/aws-grafana-tutorial.html#related-resources",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Related Resources",
+    "text": "Related Resources\n\nAWS Documentation\n\nAWS CloudWatch Documentation\nAWS IAM Best Practices\nAWS Well-Architected Framework\n\n\n\nGrafana Resources\n\nGrafana CloudWatch Data Source\nGrafana Dashboard Best Practices\nGrafana Alerting Guide\n\n\n\nAdditional Guides\n\nQuarto Guide for Beginners - Learn how to create and embed presentations\nNASA Disasters Logo and Template - PowerPoint template guidance",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#getting-started-checklist",
+    "href": "Presentations/aws-grafana-tutorial.html#getting-started-checklist",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Getting Started Checklist",
+    "text": "Getting Started Checklist\n\n\n\n\n\n\nImportantBefore You Begin\n\n\n\nComplete these steps to get the most out of this tutorial:\n\nHave AWS account credentials ready\nInstall AWS CLI (optional but recommended)\nSet up Grafana instance or have access to one\nReview IAM permissions requirements\nPrepare note-taking materials\nBookmark this page for future reference",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#support-and-questions",
+    "href": "Presentations/aws-grafana-tutorial.html#support-and-questions",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Support and Questions",
+    "text": "Support and Questions\n\nNeed Help?\nIf you encounter issues or have questions:\n\nReview the presentation - Most common questions are addressed in the slides\nCheck AWS documentation - Official docs have detailed troubleshooting\nGrafana community - Active community forums for Grafana-specific questions\nNASA Disasters team - Contact the infrastructure team for project-specific help\n\n\n\nFeedback\nWe welcome feedback on this tutorial! If you have suggestions for improvements or find any issues, please reach out to the infrastructure team.",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#conclusion",
+    "href": "Presentations/aws-grafana-tutorial.html#conclusion",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis embedded tutorial provides comprehensive guidance for setting up and using AWS with Grafana for monitoring and observability. The combination of AWS’s robust cloud infrastructure and Grafana’s powerful visualization capabilities creates a strong foundation for modern monitoring solutions.\nKey Takeaways: - AWS and Grafana integration enables powerful monitoring - Proper configuration is essential for security and performance - Following best practices ensures scalable, maintainable solutions - Continuous learning and improvement drive operational excellence\nGood luck with your AWS and Grafana monitoring journey!",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html",
+    "href": "Presentations/disasters-powerpoint-template.html",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "",
+    "text": "This page demonstrates embedding an external PowerPoint presentation hosted on Google Drive.\n\n\n\n\n\n\nNoteAbout This Presentation\n\n\n\nThis presentation is hosted on Google Drive and embedded here as a proof of concept. The presentation will load directly in the page below.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode",
+    "crumbs": [
+      "Presentations",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html#embedded-aws-presentation",
+    "href": "Presentations/disasters-powerpoint-template.html#embedded-aws-presentation",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "",
+    "text": "This page demonstrates embedding an external PowerPoint presentation hosted on Google Drive.\n\n\n\n\n\n\nNoteAbout This Presentation\n\n\n\nThis presentation is hosted on Google Drive and embedded here as a proof of concept. The presentation will load directly in the page below.\nControls: - Use arrow keys or click arrows to navigate slides - Click the “︙” menu for additional options\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode",
+    "crumbs": [
+      "Presentations",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html#technical-details",
+    "href": "Presentations/disasters-powerpoint-template.html#technical-details",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "Technical Details",
+    "text": "Technical Details\n\nEmbedding Method\nThis presentation is embedded using an HTML &lt;iframe&gt; element that points to the Google Slides embed URL:\n&lt;iframe src=\"https://docs.google.com/presentation/d/[ID]/embed?start=false&loop=false&delayms=3000\"\n        width=\"960\"\n        height=\"569\"\n        allowfullscreen=\"true\"&gt;\n&lt;/iframe&gt;\n\n\nURL Parameters\n\n\n\nParameter\nValue\nDescription\n\n\n\n\nstart\nfalse\nDon’t auto-start presentation\n\n\nloop\nfalse\nDon’t loop slides\n\n\ndelayms\n3000\nDelay between slides in auto-play (ms)\n\n\n\n\n\nEmbedding Other Presentations\nTo embed your own Google Slides presentation:\n\nGet the presentation ID from your Google Slides URL:\nhttps://docs.google.com/presentation/d/[THIS-IS-THE-ID]/edit\nCreate the embed URL:\nhttps://docs.google.com/presentation/d/[YOUR-ID]/embed?start=false&loop=false&delayms=3000\nAdd to your .qmd file:\n&lt;iframe src=\"YOUR-EMBED-URL\"\n        width=\"960\"\n        height=\"569\"\n        allowfullscreen=\"true\"&gt;\n&lt;/iframe&gt;\nEnsure sharing is enabled: The presentation must be set to “Anyone with the link can view”\n\n\n\nResponsive Sizing\nFor responsive iframe sizing, you can use CSS:\n.responsive-iframe {\n  position: relative;\n  width: 100%;\n  padding-bottom: 56.25%; /* 16:9 aspect ratio */\n  height: 0;\n}\n\n.responsive-iframe iframe {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\nThen wrap your iframe:\n&lt;div class=\"responsive-iframe\"&gt;\n  &lt;iframe src=\"...\"&gt;&lt;/iframe&gt;\n&lt;/div&gt;",
+    "crumbs": [
+      "Presentations",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html#limitations-and-considerations",
+    "href": "Presentations/disasters-powerpoint-template.html#limitations-and-considerations",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "Limitations and Considerations",
+    "text": "Limitations and Considerations\n\n\n\n\n\n\nWarningImportant Limitations\n\n\n\n\nRequires internet connection - Embedded presentations load from Google servers\nSharing permissions - Presentation must be publicly accessible or shared with viewers\nGoogle account dependency - If the presentation owner deletes their account or changes permissions, the embed will break\nLimited offline support - Unlike locally hosted files, embedded presentations won’t work offline\nThird-party dependency - Relies on Google’s infrastructure and terms of service\n\n\n\n\nBest Practices\n✅ Do: - Use for external presentations you don’t control - Test embedding before sharing widely - Provide alternative download/view links - Document the source and owner\n❌ Don’t: - Embed sensitive or proprietary information - Rely solely on embedded content for critical documentation - Assume it will work indefinitely without maintenance - Embed presentations without permission",
+    "crumbs": [
+      "Presentations",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html#alternative-embedding-methods",
+    "href": "Presentations/disasters-powerpoint-template.html#alternative-embedding-methods",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "Alternative Embedding Methods",
+    "text": "Alternative Embedding Methods\n\nOption 1: PDF Embed\nConvert PowerPoint to PDF and embed:\n&lt;iframe src=\"presentation.pdf\"\n        width=\"100%\"\n        height=\"600px\"&gt;\n&lt;/iframe&gt;\n\n\nOption 2: Quarto Native Presentation\nCreate a native Quarto presentation using .qmd files with presentation formats like PowerPoint or Reveal.js.\nAdvantages: - Full version control - Offline support - Customizable with Quarto features - No external dependencies\nSee the Quarto Guide for Beginners for more details on creating presentations.\n\n\nOption 3: Static Images\nExport slides as images and display them:\n![Slide 1](images/slide-1.png)\n\n![Slide 2](images/slide-2.png)",
+    "crumbs": [
+      "Presentations",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html#conclusion",
+    "href": "Presentations/disasters-powerpoint-template.html#conclusion",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis page successfully demonstrates embedding a PowerPoint presentation from Google Drive into a Quarto document. This method works well for:\n\nSharing presentations created by others\nQuick embedding without conversion\nMaintaining a single source presentation\n\nFor production use, consider the tradeoffs between embedded content and native Quarto presentations based on your needs for control, offline access, and long-term maintenance.",
+    "crumbs": [
+      "Presentations",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-training-1.html",
+    "href": "Presentations/disasters-training-1.html",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Presentations",
+      "Videos",
+      "AWS and Grafana Monitoring Tutorial"
     ]
   }
 ]
