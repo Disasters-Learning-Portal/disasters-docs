@@ -1,3 +1,0 @@
-[submodule "Jupyterhub/disasters-aws-conversion"]
-	path = Jupyterhub/disasters-aws-conversion
-	url = https://github.com/Disasters-Learning-Portal/disasters-aws-conversion.git
