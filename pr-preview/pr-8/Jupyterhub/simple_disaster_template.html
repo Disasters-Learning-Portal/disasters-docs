@@ -1091,7 +1091,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 <h3 class="anchored">
-<a href="https://hub.openveda.cloud/hub/user-redirect/git-pull?repo=https://github.com/NASA-IMPACT/veda-docs&amp;urlpath=lab/tree/veda-docs/user-guide/notebooks/stories/derechos.ipynb&amp;branch=main">🚀 Launch in VEDA JupyterHub (requires access)</a>
+<a href="https://hub.disasters.2i2c.cloud/hub/user-redirect/git-pull?repo=https://github.com/Disasters-Learning-Portal/disasters-docs&amp;urlpath=lab/tree/disasters-docs/Jupyterhub/simple_disaster_template.ipynb&amp;branch=main">🚀 Launch in Disasters-Hub JupyterHub (requires access)</a>
 </h3>
 <h4 class="anchored">
 To obtain credentials to VEDA Hub, <a href="https://docs.openveda.cloud/user-guide/scientific-computing/getting-access.html"> follow this link for more information.</a>
@@ -1111,7 +1111,7 @@ If you <strong>do not</strong> have a VEDA Jupyterhub Account you can launch thi
 <section id="step-1-basic-configuration" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-basic-configuration">📋 Step 1: Basic Configuration</h2>
 <p>Set your event details and S3 paths:</p>
-<div id="cell-5" class="cell" data-execution_count="8">
+<div id="cell-5" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ========================================</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># INPUTS</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ========================================</span></span>
@@ -1119,13 +1119,13 @@ If you <strong>do not</strong> have a VEDA Jupyterhub Account you can launch thi
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># S3 Paths</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>BUCKET <span class="op">=</span> <span class="st">'nasa-disasters'</span>    <span class="co"># S3 bucket (DO NOT CHANGE)</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>DESTINATION_BASE <span class="op">=</span> <span class="st">'drcs_activations_new'</span>  <span class="co"># Where to save COGs in S3 bucket (DO NOT CHANGE)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>GEOTIFF_DIR <span class="op">=</span> <span class="st">'geotiffs_to_convert'</span> <span class="co"># This is where all non-converted files should be placed</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>GEOTIFF_DIR <span class="op">=</span> <span class="st">'drcs_activations'</span> <span class="co"># This is where all non-converted files should be placed</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Event Details</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>SATELLITE_NAME <span class="op">=</span> <span class="st">'202408_TropicalStorm_Debby'</span>  <span class="co"># Your sensor or product name (e.g, Sentinel-1, Planet, Landsat)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>SUB_PRODUCT_NAME <span class="op">=</span> <span class="st">'landsat8'</span>         <span class="co"># Sub-directories within PRODUCT_NAME (RGB, trueColor, SWIR, etc.). Can leave blank and it will read from PRODUCT_NAME.</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>SOURCE_PATH <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>GEOTIFF_DIR<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>SATELLITE_NAME<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>SUB_PRODUCT_NAME<span class="sc">}</span><span class="ss">'</span>      <span class="co"># Where your files are</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>EVENT_NAME <span class="op">=</span> <span class="st">'202510_Flood_AK'</span>  <span class="co"># Your sensor or product name (e.g, Sentinel-1, Planet, Landsat)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>SUB_PRODUCT_NAME <span class="op">=</span> <span class="st">'aria'</span>         <span class="co"># Sub-directories within PRODUCT_NAME (RGB, trueColor, SWIR, etc.). Can leave blank and it will read from PRODUCT_NAME.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>SOURCE_PATH <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>GEOTIFF_DIR<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>EVENT_NAME<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>SUB_PRODUCT_NAME<span class="sc">}</span><span class="ss">'</span>      <span class="co"># Where your files are</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Processing Options</span></span>
@@ -1133,12 +1133,12 @@ If you <strong>do not</strong> have a VEDA Jupyterhub Account you can launch thi
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>VERIFY <span class="op">=</span> <span class="va">True</span>          <span class="co"># Set to True to verify results after processing</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>SAVE_RESULTS <span class="op">=</span> <span class="va">True</span>    <span class="co"># Set to False to skip saving results CSV to /output directory</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Event: </span><span class="sc">{</span>EVENT_NAME<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Event: </span><span class="sc">{</span>GEOTIFF_DIR<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Source: s3://</span><span class="sc">{</span>BUCKET<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>SOURCE_PATH<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Destination: s3://</span><span class="sc">{</span>BUCKET<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>DESTINATION_BASE<span class="sc">}</span><span class="ss">/"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Event: 202408_TropicalStorm_Debby
-Source: s3://nasa-disasters/geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8
+<pre><code>Event: drcs_activations
+Source: s3://nasa-disasters/drcs_activations/202510_Flood_AK/aria
 Destination: s3://nasa-disasters/drcs_activations_new/</code></pre>
 </div>
 </div>
@@ -1146,13 +1146,13 @@ Destination: s3://nasa-disasters/drcs_activations_new/</code></pre>
 <section id="step-2-connect-to-s3-and-list-files" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-connect-to-s3-and-list-files">🔍 Step 2: Connect to S3 and List Files</h2>
 <p>Let’s see what files are available before configuring filename transformations:</p>
-<div id="cell-7" class="cell" data-execution_count="9">
+<div id="cell-7" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary modules</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add parent directory to path</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add parent directory to path for importing functions</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sys.path.insert(<span class="dv">0</span>, <span class="bu">str</span>(Path(<span class="st">'..'</span>).resolve()))</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Import S3 operations</span></span>
@@ -1200,10 +1200,20 @@ Destination: s3://nasa-disasters/drcs_activations_new/</code></pre>
 <pre><code>🌐 Connecting to S3...
 ✅ Connected to S3
 
-📂 Files in s3://nasa-disasters/geotiffs_to_convert/202408_TropicalStorm_Debby/landsat8:
+📂 Files in s3://nasa-disasters/drcs_activations/202510_Flood_AK/aria:
 ============================================================
-⚠️ No .tif files found in the specified path.
-   Check your SOURCE_PATH configuration.</code></pre>
+Found 6 .tif files:
+
+ 1. OPERA_L3_DSWX-S1_V1_WTR_2025-10-08_mosaic.tif                (0.01 GB)
+ 2. OPERA_L3_DSWX-S1_V1_WTR_2025-10-10_mosaic.tif                (0.03 GB)
+ 3. OPERA_L3_DSWX-S1_V1_WTR_2025-10-12_mosaic.tif                (0.03 GB)
+ 4. OPERA_L3_DSWX-S1_V1_WTR_2025-10-15_mosaic.tif                (0.02 GB)
+ 5. OPERA_L3_DSWX-HLS_V1_WTR_2025-10-08_mosaic.tif               (0.01 GB)
+ 6. OPERA_L3_DSWX-HLS_V1_WTR_2025-10-13_mosaic.tif               (0.01 GB)
+
+============================================================
+
+💡 Use this information to create filename functions in Step 3</code></pre>
 </div>
 </div>
 </section>
@@ -1349,11 +1359,7 @@ Destination: s3://nasa-disasters/drcs_activations_new/</code></pre>
 <section id="step-4-initialize-processor-and-preview" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-initialize-processor-and-preview">🚀 Step 4: Initialize Processor and Preview</h2>
 <p>Now let’s set up the processor and preview all transformations:</p>
-</section>
-<section id="step-5-process-files" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-process-files">⚙️ Step 5: Process Files</h2>
-<p>Run this cell to start processing all files:</p>
-<div id="cell-14" class="cell" data-execution_count="12">
+<div id="cell-13" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import our simplified helper</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> notebooks.notebook_helpers <span class="im">import</span> SimpleProcessor</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1407,6 +1413,10 @@ Destination: s3://nasa-disasters/drcs_activations_new/</code></pre>
 ⚠️ No files found to process.</code></pre>
 </div>
 </div>
+</section>
+<section id="step-5-process-files" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-process-files">⚙️ Step 5: Process Files</h2>
+<p>Run this cell to start processing all files:</p>
 <div id="cell-15" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Process all files</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'num_files'</span> <span class="kw">in</span> <span class="bu">locals</span>() <span class="kw">and</span> num_files <span class="op">&gt;</span> <span class="dv">0</span>:</span>
