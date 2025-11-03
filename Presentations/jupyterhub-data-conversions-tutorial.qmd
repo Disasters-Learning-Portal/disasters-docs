@@ -34,7 +34,7 @@ Watch the complete walkthrough of this tutorial with live demonstrations and exp
 Due to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.
 
 <div style="text-align: center; margin: 1.5rem 0;">
-<a href="YOUR_VIDEO_LINK_HERE"
+<a href="https://drive.google.com/file/d/1QS3a_sskYzHhumQ68wYvB30TuV8Tmsb0/view"
    target="_blank"
    style="display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
    ▶ Watch Tutorial Video
@@ -135,6 +135,6 @@ We welcome feedback on this tutorial! If you have suggestions for improvements o
 
 ## Conclusion
 
-This embedded tutorial provides comprehensive guidance for using JupyterHub and performing data conversions for the Disasters project. Mastering these tools and workflows will enable efficient data processing and analysis.
+This tutorial provides comprehensive guidance for using JupyterHub and performing data conversions for the Disasters project.
 
 
