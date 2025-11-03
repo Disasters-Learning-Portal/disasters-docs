@@ -38,6 +38,7 @@ website:
         text: AWS
         contents:
           - AWS/AWS_SSO_Setup_Guide.qmd
+          - AWS/AWS_SSO_Remote_Server.qmd
           - AWS/aws-mfa-setup.qmd
           - AWS/aws-s3-commands-guide.qmd
       - section: git-github-comprehensive-guide.qmd
