@@ -1,0 +1,382 @@
+# 🖥️ AWS SSO Remote Server Configuration Guide
+
+## 🔐 Use AWS SSO Credentials on Remote Servers
+
+This guide explains how to use your AWS SSO credentials from your local machine on remote servers (like JupyterHub or SSH servers) without storing permanent credentials.
+
+---
+
+## 📋 Prerequisites
+
+- ✅ Completed [AWS SSO Setup Guide](AWS_SSO_Setup_Guide.qmd) on your local machine
+- ✅ SSH/SCP access to your remote server
+- ✅ AWS CLI v2 installed on the remote server
+
+---
+
+## 🎯 How It Works
+
+AWS SSO generates temporary credentials stored in:
+
+- **Configuration**: `~/.aws/config` (SSO profile settings)
+- **Credentials Cache**: `~/.aws/sso/cache/` (temporary session tokens)
+
+To use SSO on a remote server, you need to:
+
+1. Copy the SSO profile configuration once
+2. Sync the temporary credentials cache regularly (before each session)
+
+---
+
+## 🛠️ Step 1: Initial Setup - Copy SSO Configuration
+
+### Copy AWS Config to Remote Server
+
+First, copy your SSO profile configuration from your local machine to the remote server:
+
+**Linux/macOS:**
+```bash
+# Copy the AWS config file containing your SSO profile
+scp ~/.aws/config username@remote-host:~/.aws/config
+```
+
+**Windows (PowerShell):**
+```powershell
+# Copy the AWS config file containing your SSO profile
+scp "$env:USERPROFILE\.aws\config" username@remote-host:~/.aws/config
+```
+
+**Alternative**: If you have other profiles in your config, you can manually copy just the SSO section:
+
+**Linux/macOS:**
+```bash
+# View your local SSO configuration
+cat ~/.aws/config
+```
+
+**Windows (PowerShell):**
+```powershell
+# View your local SSO configuration
+Get-Content "$env:USERPROFILE\.aws\config"
+```
+
+Then SSH into your remote server and create/edit `~/.aws/config`:
+
+```ini
+[profile disasters-sso]
+sso_session = disasters
+sso_account_id = 867530900000
+sso_role_name = Project-Power-User
+region = us-east-1
+output = json
+
+[sso-session disasters]
+sso_start_url = https://d-9067c5bbc5.awsapps.com/start/#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access
+```
+
+💡 **Important**: Replace the account ID, role name, and SSO URL with your actual values from the local AWS SSO setup.
+
+---
+
+## 🛠️ Step 2: Automate Credential Sync
+
+Since SSO credentials are temporary and expire, you'll need to sync them from your local machine to the remote server regularly. Below are automated solutions for both Windows and Linux.
+
+---
+
+## 🪟 Step 2 (Windows) - PowerShell Profile Setup
+
+### Check if PowerShell Profile Exists
+
+Open PowerShell and run:
+
+```powershell
+Test-Path $PROFILE
+```
+
+If it returns `False`, create the profile:
+
+```powershell
+New-Item -Type File -Path $PROFILE -Force
+```
+
+### Add the Disaster Login Function
+
+Edit your PowerShell profile:
+
+```powershell
+notepad $PROFILE
+```
+
+Add the following function (replace `username` and `remote-host` with your actual values):
+
+```powershell
+function disasterlogin {
+    try {
+        Write-Host "Logging into AWS SSO..." -ForegroundColor Yellow
+        aws sso login --profile disasters-sso
+
+        Write-Host "Copying SSO cache to remote server..." -ForegroundColor Yellow
+        scp -r "$env:USERPROFILE\.aws\sso\cache\*" username@remote-host:~/.aws/sso/cache/
+
+        Write-Host "Complete!" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "Error: $_" -ForegroundColor Red
+    }
+}
+```
+
+### Reload Your Profile
+
+Close and reopen PowerShell, or run:
+
+```powershell
+. $PROFILE
+```
+
+### Usage
+
+From now on, simply run:
+
+```powershell
+disasterlogin
+```
+
+This will:
+
+1. Prompt you to log in via AWS SSO in your browser
+2. Automatically copy the temporary credentials to your remote server
+3. Display status updates
+
+---
+
+## 🐧 Step 2 (Linux/macOS) - Bash Profile Setup
+
+### Add the Disaster Login Function
+
+Edit your shell profile file (choose based on your shell):
+
+```bash
+# For bash
+nano ~/.bashrc
+
+# For zsh (macOS default)
+nano ~/.zshrc
+```
+
+Add the following function (replace `username` and `remote-host` with your actual values):
+
+```bash
+disasterlogin() {
+    echo -e "\033[1;33mLogging into AWS SSO...\033[0m"
+    aws sso login --profile disasters-sso
+
+    if [ $? -eq 0 ]; then
+        echo -e "\033[1;33mCopying SSO cache to remote server...\033[0m"
+        scp -r ~/.aws/sso/cache/* username@remote-host:~/.aws/sso/cache/
+
+        if [ $? -eq 0 ]; then
+            echo -e "\033[1;32mComplete!\033[0m"
+        else
+            echo -e "\033[1;31mError copying credentials to remote server\033[0m"
+            return 1
+        fi
+    else
+        echo -e "\033[1;31mError logging into AWS SSO\033[0m"
+        return 1
+    fi
+}
+```
+
+### Reload Your Profile
+
+```bash
+# For bash
+source ~/.bashrc
+
+# For zsh
+source ~/.zshrc
+```
+
+### Usage
+
+From now on, simply run:
+
+```bash
+disasterlogin
+```
+
+This will:
+1. Prompt you to log in via AWS SSO in your browser
+2. Automatically copy the temporary credentials to your remote server
+3. Display status updates with color-coded messages
+
+---
+
+## ✅ Verification
+
+### Test on Remote Server
+
+SSH into your remote server:
+
+```bash
+ssh username@remote-host
+```
+
+Test the AWS CLI with your SSO profile:
+
+```bash
+# List S3 buckets
+aws s3 ls --profile disasters-sso
+
+# Verify identity
+aws sts get-caller-identity --profile disasters-sso
+```
+
+Expected output:
+```json
+{
+    "UserId": "AIDAXXXXXXXXXXXXXXXXX:user@example.com",
+    "Account": "867530900000",
+    "Arn": "arn:aws:sts::867530900000:assumed-role/Project-Power-User/user@example.com"
+}
+```
+
+---
+
+## 🔄 Daily Workflow
+
+### Starting a Remote Work Session
+
+1. **On your local machine**, run the login function:
+   - **Windows**: `disasterlogin` in PowerShell
+   - **Linux/macOS**: `disasterlogin` in terminal
+
+2. **SSH into your remote server**:
+   ```bash
+   ssh username@remote-host
+   ```
+
+3. **Use AWS commands** (optionally set the profile as default):
+
+   **Temporary (for current session only):**
+   ```bash
+   # For bash/zsh
+   export AWS_PROFILE=disasters-sso
+   aws s3 ls
+   ```
+
+   **Permanent (add to shell profile):**
+
+   To avoid setting this every time you log in, add it to your shell profile:
+
+   ```bash
+   # For bash - add to ~/.bashrc
+   echo 'export AWS_PROFILE=disasters-sso' >> ~/.bashrc
+   source ~/.bashrc
+
+   # For zsh - add to ~/.zshrc
+   echo 'export AWS_PROFILE=disasters-sso' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+   **Alternative for csh/tcsh shells:**
+
+   If `export` doesn't work, you may be using a csh/tcsh shell. Use `setenv` instead:
+
+   ```csh
+   # Temporary (for current session)
+   setenv AWS_PROFILE disasters-sso
+   aws s3 ls
+
+   # Permanent - add to ~/.cshrc or ~/.tcshrc
+   echo 'setenv AWS_PROFILE disasters-sso' >> ~/.cshrc
+   source ~/.cshrc
+   ```
+
+### When Credentials Expire
+
+If you see errors like "The security token included in the request is invalid":
+
+1. Run `disasterlogin` again on your **local machine**
+2. The fresh credentials will be synced to the remote server
+3. Continue working on the remote server
+
+---
+
+## 🚨 Troubleshooting
+
+### "Permission denied" when using SCP
+
+**Cause**: SSH key not configured or remote directory doesn't exist
+
+**Solution**:
+```bash
+# Ensure .aws/sso/cache directory exists on remote server
+ssh username@remote-host "mkdir -p ~/.aws/sso/cache"
+
+# Test SSH connection
+ssh username@remote-host "echo 'SSH works'"
+```
+
+### "aws: command not found" on remote server
+
+**Cause**: AWS CLI not installed on remote server
+
+**Solution**: Install AWS CLI v2 on the remote server
+```bash
+# On the remote server (Linux)
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+### Credentials work locally but not on remote server
+
+**Cause**: Missing or incorrect `~/.aws/config` on remote server
+
+**Solution**: Re-copy the config file from Step 1
+
+
+---
+
+## 🎯 Best Practices
+
+1. **Always sync before starting work** - Run `disasterlogin` at the beginning of each session
+2. **Don't store permanent credentials** - Never put long-term credentials on remote servers
+3. **Use SSH keys** - Set up SSH key authentication for passwordless SCP
+4. **Set AWS_PROFILE** - Export `AWS_PROFILE=disasters-sso` to avoid typing `--profile` repeatedly
+5. **Monitor credential expiration** - SSO tokens typically last 1-12 hours
+
+---
+
+## 🔐 Security Considerations
+
+### Why This Approach is Secure
+
+- ✅ **No permanent credentials on remote servers** - Only temporary tokens are synced
+- ✅ **Automatic expiration** - Tokens expire after a few hours
+- ✅ **Centralized access control** - Revoke access in AWS SSO, affects all servers immediately
+- ✅ **No credential storage** - Credentials are never stored in code or config files
+
+### What NOT to Do
+
+- ❌ Don't copy `~/.aws/credentials` to remote servers
+- ❌ Don't run `aws configure` with permanent keys on remote servers
+- ❌ Don't commit credentials to git repositories
+- ❌ Don't share your SSO cache with other users
+
+---
+
+## 📚 Resources
+
+- [AWS SSO Setup Guide (Local)](AWS_SSO_Setup_Guide.qmd)
+- [AWS CLI SSO Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)
+- [SSH Key Setup Guide](https://www.ssh.com/academy/ssh/keygen)
+
+---
+
+*🔐 Remember: Temporary credentials are your friend. Never use permanent credentials on shared servers!*

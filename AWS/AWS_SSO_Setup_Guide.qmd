@@ -2,13 +2,13 @@
 
 ## 🔐 Secure Your AWS Credentials with AWS Identity Center (SSO)
 
-This guide walks you through setting up AWS Single Sign-On (SSO) to securely manage your AWS credentials without storing them in plain text.
+This guide walks you through setting up AWS Single Sign-On (SSO) to securely manage your AWS credentials without storing them in plain text which is not encrypted.
 
 ---
 
 ## 📋 Prerequisites
 
-- ✅ AWS CLI v2 installed (version 2.x or higher)
+- ✅ [AWS CLI v2 installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (version 2.x or higher)
 - ✅ Access to AWS Identity Center (formerly AWS SSO)
 - ✅ Your organization's SSO portal URL
 
@@ -23,69 +23,72 @@ aws configure sso
 
 ### Step 2: Choose a Profile Name
 When prompted for `SSO session name`, enter a descriptive name for your profile:
-```
-SSO session name (Recommended): disasters
-```
-💡 **Tip**: Use meaningful names like `prod-admin`, `dev-poweruser`, etc.
+
+<mark>SSO session name (Recommended): disasters</mark>
+
+💡 **Tip**: Can use meaningful names like `prod-admin-disasters`, `dev-poweruser-disasters`, etc. But if you are only using a single profile then it is suggested to use `disasters` as this is what this tutorial assumes.
 
 ### Step 3: Enter Your SSO Start URL
 Find your SSO URL in the AWS Identity Center portal and enter it:
-```
-SSO start URL [None]: https://d-9067c5bbc5.awsapps.com/start/#
-```
-📍 **Where to find**: Navigate to your AWS SSO portal → Look for the URL in your browser
+
+<mark>SSO start URL [None]: https://d-9067c5bbc5.awsapps.com/start/#</mark>
+
+📍 **Where to find**: Navigate to your AWS SSO portal from link within NASA SMCE email → Look for the URL in your browser
 
 ### Step 4: Specify SSO Region
-Enter the region where your Identity Center is configured:
-```
-SSO region [None]: us-east-1
-```
+Enter the region where your Identity Center is configured. Although the bucket is located in `us-west-2` this is **NOT** what you should enter. Please enter `us-east-1`.
+
+<mark>SSO region [None]: us-east-1</mark>
 
 ### Step 5: SSO Registration Scopes
-Press Enter to accept the default:
-```
-SSO registration scopes [sso:account:access]: 
-```
+Leave this section blank. Press Enter to accept the default:
+
+<mark>SSO registration scopes [sso:account:access]:</mark>
+
 ✨ The default scope is sufficient for most use cases
 
 ### Step 6: Browser Authentication
 🌐 A browser window will open automatically:
+
 1. Log in with your corporate credentials
 2. Click "Allow" to grant access to `AWS CLI (botocore)`
 3. Return to your terminal
 
 ### Step 7: Select AWS Account
 Enter your AWS account ID (12 digits):
-```
-AWS account ID: 867530900000
-```
-📝 Find this in your AWS SSO portal under the accounts tab
+
+<mark>AWS account ID: 867530900000</mark>
+
+💡 **Tip**: Find this in your AWS SSO portal under the accounts tab
 
 ### Step 8: Choose IAM Role
 Select from available roles:
 ```
-There are 2 roles available to you.
+You may see up to 3 roles available to you, select the one that you will most commonly use. 
 > Project-Power-User
   ReadOnlyAccess
 ```
-Use arrow keys to select, then press Enter
+✨ Use arrow keys to select, then press Enter
 
 ### Step 9: Set Default Region
-Confirm or change the AWS region:
-```
-CLI default region [us-east-1]: us-east-1
-```
+If region is auto-filled to `us-east-1`, then leave as it is. Otherwise please input `us-east-1`:
+
+<mark>CLI default region [us-east-1]: us-east-1</mark>
 
 ### Step 10: Set Output Format
 Choose your preferred output format:
-```
-CLI default output format [None]: json
-```
+
+<mark>CLI default output format [None]: json</mark>
+
 Options: `json`, `yaml`, `text`, `table`
+
+💡 **Tip**: It is recommended to use `json` as the preferred output format
 
 ---
 
 ## ✅ Verification
+
+To access data from the AWS S3 bucket, you will need to utilize the `--profile disasters-sso` flag which tells the AWS command to pull config information from `~/.aws/config`.
 
 Test your configuration:
 ```bash
@@ -118,17 +121,8 @@ aws s3 ls --profile disasters-sso
 aws sts get-caller-identity --profile disasters-sso
 ```
 
-### Alternative: Set AWS_PROFILE Environment Variable
-To avoid passing `--profile disasters-sso` with every command, you can set the `AWS_PROFILE` environment variable:
 
-```bash
-# Set the environment variable
-export AWS_PROFILE=disasters-sso
 
-# Now you can run commands without --profile
-aws s3 ls
-aws sts get-caller-identity
-```
 
 This is especially helpful when running many AWS commands in a session.
 
