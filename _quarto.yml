@@ -79,6 +79,8 @@ website:
                 href: Presentations/aws-grafana-tutorial.qmd
               - text: "JupyterHub and Data Conversions Tutorial"
                 href: Presentations/jupyterhub-data-conversions-tutorial.qmd
+              - text: "STAC Database and Apache Airflow Tutorial"
+                href: Presentations/stac-airflow-tutorial.qmd
       # - href: datausage.qmd
       #   text: Data Usage Notebooks   
       # - href: datatransformation.qmd
