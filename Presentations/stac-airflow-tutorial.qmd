@@ -1,0 +1,126 @@
+---
+title: "STAC Database and Apache Airflow Tutorial"
+subtitle: "Instructions & Guidance for STAC and Apache Airflow"
+author: "Kyle Lesinger"
+format:
+  html:
+    toc: false
+    page-layout: full
+---
+
+## STAC Database and Apache Airflow Tutorial
+
+This page provides comprehensive instructions and guidance for using VEDA STAC Database and Apache Airflow for the Disasters project.
+
+::: {.callout-note}
+
+**Controls:**
+<ul>
+<li>Click the "︙" menu for additional options such as Full Screen mode</li>
+<li>Advance slides using your mouse cursor</li>
+</ul>
+:::
+
+### Tutorial Video Recording
+
+Watch the complete walkthrough of this tutorial with live demonstrations and explanations:
+
+::: {.callout-warning}
+## Large Video File Notice
+
+Due to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.
+
+<div style="text-align: center; margin: 1.5rem 0;">
+<a href="https://drive.google.com/file/d/1lS9MalIAc0Lxk-1MBGUfbKEJoN7OMlwA/view"
+   target="_blank"
+   style="display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+   ▶ Watch Tutorial Video
+</a>
+</div>
+
+
+:::
+
+::: {.callout-note collapse="true"}
+## Video Details
+
+This recorded tutorial includes:
+- Introduction to STAC (SpatioTemporal Asset Catalog) concepts
+- STAC database structure and implementation
+- Apache Airflow setup and configuration
+- Building data pipelines with Airflow
+- Integrating STAC with Airflow workflows
+
+**Duration:** [Add duration here]
+:::
+
+---
+
+### Powerpoint Presentation (no audio)
+
+<div style="text-align: center; margin: 2rem 0;">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRmsfUNSNQStvXH2VMhYd31ZFO6s4HqPD263eSs4MoGp4pLhUvingBvRSMG6GwzQQ/pubembed?start=false&loop=false&delayms=3000"
+        frameborder="0"
+        width="1280"
+        height="749"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        style="border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 100%;">
+</iframe>
+</div>
+
+::: {.callout-tip collapse="true"}
+## Alternative Viewing Options
+
+If the embedded presentation doesn't load properly, you can:
+
+1. **Open in new tab**: [View presentation in Google Slides →](https://docs.google.com/presentation/d/e/2PACX-1vRmsfUNSNQStvXH2VMhYd31ZFO6s4HqPD263eSs4MoGp4pLhUvingBvRSMG6GwzQQ/pub)
+
+2. **Fullscreen mode**: Click the fullscreen button in the embedded player above
+
+3. **Download**: Open the link above and look for download options if available
+:::
+
+---
+
+## What You'll Learn
+
+This tutorial covers the following topics:
+
+### 📊 STAC Database Fundamentals
+- Understanding STAC specification
+- STAC database architecture
+- Cataloging geospatial assets
+
+### ⚙️ Apache Airflow Workflows
+- Apache Airflow overview
+- DAG (Directed Acyclic Graph) creation
+- Task scheduling and orchestration
+
+---
+
+## Related Resources
+
+### STAC Resources
+- [STAC Specification](https://stacspec.org/)
+- [STAC API Documentation](https://github.com/radiantearth/stac-api-spec)
+- [PySTAC Documentation](https://pystac.readthedocs.io/)
+
+### Apache Airflow Resources
+- [Apache Airflow Documentation](https://airflow.apache.org/docs/)
+- [Airflow Best Practices](https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html)
+- [Airflow DAG Authoring](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html)
+
+---
+
+### Feedback
+
+We welcome feedback on this tutorial! If you have suggestions for improvements or find any issues, please reach out to the data team.
+
+---
+
+## Conclusion
+
+This tutorial provides comprehensive guidance for using STAC Database and Apache Airflow for the Disasters project's data pipeline management.
+

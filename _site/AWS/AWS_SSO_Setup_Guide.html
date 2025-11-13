@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>aws_sso_setup_guide – U.S. Greenhouse Gas Center Documentation</title>
+<title>aws_sso_setup_guide – NASA Disasters Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../AWS/aws-mfa-setup.html" rel="next">
+<link href="../AWS/AWS_SSO_Remote_Server.html" rel="next">
 <link href="../aws.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -73,14 +73,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ca24d4459ea48b6d86e57b4fecbb35c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-47732130d4368f36b8c72e31939bd287.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-ca24d4459ea48b6d86e57b4fecbb35c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ca9f6e1296d592723e1e1e0c7c1a8eb9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1555355ee1ba2ba771b7825afb2d978d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ca9f6e1296d592723e1e1e0c7c1a8eb9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -303,8 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="../logo/disasters_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://earth.gov/ghgcenter" title="US GHG Center Website" class="quarto-navigation-tool px-1" aria-label="US GHG Center Website"><i class="bi bi-globe-americas"></i></a>
-    <a href="https://github.com/us-ghg-center/ghgc-docs" title="Repository home" class="quarto-navigation-tool px-1" aria-label="Repository home"><i class="bi bi-github"></i></a>
+    <a href="https://disasters.openveda.cloud/" title="NASA Disasters Portal" class="quarto-navigation-tool px-1" aria-label="NASA Disasters Portal"><i class="bi bi-globe-americas"></i></a>
+    <a href="https://github.com/Disasters-Learning-Portal" title="Repository home" class="quarto-navigation-tool px-1" aria-label="Repository home"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index2.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -334,6 +334,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../AWS/AWS_SSO_Setup_Guide.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">🚀 AWS SSO Configuration Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../AWS/AWS_SSO_Remote_Server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🖥️ AWS SSO Remote Server Configuration Guide</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -365,12 +371,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">The VEDA Project</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../GitHub/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Setup and Installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../GitHub/commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Uses</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../GitHub/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources &amp; Links</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">jupyterhub.qmd</span></a>
+            <a href="../jupyterhub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JupyterHub</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -388,23 +412,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Setting Up Disaster Repository - Step-by-Step Guide</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
+  <a href="../Jupyterhub/convert_to_geotiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter Notebook Guide for Disaster COG Processing</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Jupyterhub/simple_disaster_template.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🌍 Simple Disaster COG Processing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">User Services</span></a>
+            <a href="../workflow2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Workflow Diagrams</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data_workflow2/NRT_data_download.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NRT Data Download</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data_workflow2/NRT_directory_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NRT Directory Structure</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Documentation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Guide for Beginners</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">User Services</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../services/apis.html" class="sidebar-item-text sidebar-link">
@@ -421,22 +491,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../datausage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Usage Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Presentations</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">GHG Center Dataset Tutorials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">PowerPoints</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Presentations/disasters-powerpoint-template.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Disasters Logo and Template Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Presentations/aws-grafana-tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AWS and Grafana Monitoring Tutorial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Presentations/jupyterhub-data-conversions-tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JupyterHub and Data Conversions Tutorial</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../datausage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Usage Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">GHG Center Dataset Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../user_data_notebooks/eccodarwin-co2flux-monthgrid-v5_User_Notebook.html" class="sidebar-item-text sidebar-link">
@@ -511,13 +621,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
  <span class="menu-text">OCO-2 MIP Top-Down CO<sub>2</sub> Budgets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../user_data_notebooks/oco2-mip-co2budget-yeargrid-v1_User_Notebook.html" class="sidebar-item-text sidebar-link">
@@ -574,11 +684,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../datatransformationcode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Transformation Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../cog_transformation/eccodarwin-co2flux-monthgrid-v5.html" class="sidebar-item-text sidebar-link">
@@ -681,11 +791,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../processingreport.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Processing and Verification Reports</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
@@ -806,11 +916,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Flow Diagrams</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data_workflow/eccodarwin-co2flux-monthgrid-v5_Data_Flow.html" class="sidebar-item-text sidebar-link">
@@ -959,7 +1069,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#login-to-sso-session" id="toc-login-to-sso-session" class="nav-link" data-scroll-target="#login-to-sso-session">Login to SSO Session</a></li>
   <li><a href="#use-aws-commands" id="toc-use-aws-commands" class="nav-link" data-scroll-target="#use-aws-commands">Use AWS Commands</a></li>
-  <li><a href="#alternative-set-aws_profile-environment-variable" id="toc-alternative-set-aws_profile-environment-variable" class="nav-link" data-scroll-target="#alternative-set-aws_profile-environment-variable">Alternative: Set AWS_PROFILE Environment Variable</a></li>
   <li><a href="#logout-when-done" id="toc-logout-when-done" class="nav-link" data-scroll-target="#logout-when-done">Logout When Done</a></li>
   </ul></li>
   <li><a href="#configuration-files" id="toc-configuration-files" class="nav-link" data-scroll-target="#configuration-files">📂 Configuration Files</a></li>
@@ -992,13 +1101,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>🚀 AWS SSO Configuration Guide</h1>
 <section id="secure-your-aws-credentials-with-aws-identity-center-sso" class="level2">
 <h2 class="anchored" data-anchor-id="secure-your-aws-credentials-with-aws-identity-center-sso">🔐 Secure Your AWS Credentials with AWS Identity Center (SSO)</h2>
-<p>This guide walks you through setting up AWS Single Sign-On (SSO) to securely manage your AWS credentials without storing them in plain text.</p>
+<p>This guide walks you through setting up AWS Single Sign-On (SSO) to securely manage your AWS credentials without storing them in plain text which is not encrypted.</p>
 <hr>
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">📋 Prerequisites</h2>
 <ul>
-<li>✅ AWS CLI v2 installed (version 2.x or higher)</li>
+<li>✅ <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI v2 installed</a> (version 2.x or higher)</li>
 <li>✅ Access to AWS Identity Center (formerly AWS SSO)</li>
 <li>✅ Your organization’s SSO portal URL</li>
 </ul>
@@ -1013,61 +1122,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2-choose-a-profile-name" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-choose-a-profile-name">Step 2: Choose a Profile Name</h3>
 <p>When prompted for <code>SSO session name</code>, enter a descriptive name for your profile:</p>
-<pre><code>SSO session name (Recommended): disasters</code></pre>
-<p>💡 <strong>Tip</strong>: Use meaningful names like <code>prod-admin</code>, <code>dev-poweruser</code>, etc.</p>
+<p><mark>SSO session name (Recommended): disasters</mark></p>
+<p>💡 <strong>Tip</strong>: Can use meaningful names like <code>prod-admin-disasters</code>, <code>dev-poweruser-disasters</code>, etc. But if you are only using a single profile then it is suggested to use <code>disasters</code> as this is what this tutorial assumes.</p>
 </section>
 <section id="step-3-enter-your-sso-start-url" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-enter-your-sso-start-url">Step 3: Enter Your SSO Start URL</h3>
 <p>Find your SSO URL in the AWS Identity Center portal and enter it:</p>
-<pre><code>SSO start URL [None]: https://d-9067c5bbc5.awsapps.com/start/#</code></pre>
-<p>📍 <strong>Where to find</strong>: Navigate to your AWS SSO portal → Look for the URL in your browser</p>
+<p><mark>SSO start URL [None]: https://d-9067c5bbc5.awsapps.com/start/#</mark></p>
+<p>📍 <strong>Where to find</strong>: Navigate to your AWS SSO portal from link within NASA SMCE email → Look for the URL in your browser</p>
 </section>
 <section id="step-4-specify-sso-region" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-specify-sso-region">Step 4: Specify SSO Region</h3>
-<p>Enter the region where your Identity Center is configured:</p>
-<pre><code>SSO region [None]: us-east-1</code></pre>
+<p>Enter the region where your Identity Center is configured. Although the bucket is located in <code>us-west-2</code> this is <strong>NOT</strong> what you should enter. Please enter <code>us-east-1</code>.</p>
+<p><mark>SSO region [None]: us-east-1</mark></p>
 </section>
 <section id="step-5-sso-registration-scopes" class="level3">
 <h3 class="anchored" data-anchor-id="step-5-sso-registration-scopes">Step 5: SSO Registration Scopes</h3>
-<p>Press Enter to accept the default:</p>
-<pre><code>SSO registration scopes [sso:account:access]: </code></pre>
+<p>Leave this section blank. Press Enter to accept the default:</p>
+<p><mark>SSO registration scopes [sso:account:access]:</mark></p>
 <p>✨ The default scope is sufficient for most use cases</p>
 </section>
 <section id="step-6-browser-authentication" class="level3">
 <h3 class="anchored" data-anchor-id="step-6-browser-authentication">Step 6: Browser Authentication</h3>
-<p>🌐 A browser window will open automatically: 1. Log in with your corporate credentials 2. Click “Allow” to grant access to <code>AWS CLI (botocore)</code> 3. Return to your terminal</p>
+<p>🌐 A browser window will open automatically:</p>
+<ol type="1">
+<li>Log in with your corporate credentials</li>
+<li>Click “Allow” to grant access to <code>AWS CLI (botocore)</code></li>
+<li>Return to your terminal</li>
+</ol>
 </section>
 <section id="step-7-select-aws-account" class="level3">
 <h3 class="anchored" data-anchor-id="step-7-select-aws-account">Step 7: Select AWS Account</h3>
 <p>Enter your AWS account ID (12 digits):</p>
-<pre><code>AWS account ID: 867530900000</code></pre>
-<p>📝 Find this in your AWS SSO portal under the accounts tab</p>
+<p><mark>AWS account ID: 867530900000</mark></p>
+<p>💡 <strong>Tip</strong>: Find this in your AWS SSO portal under the accounts tab</p>
 </section>
 <section id="step-8-choose-iam-role" class="level3">
 <h3 class="anchored" data-anchor-id="step-8-choose-iam-role">Step 8: Choose IAM Role</h3>
 <p>Select from available roles:</p>
-<pre><code>There are 2 roles available to you.
+<pre><code>You may see up to 3 roles available to you, select the one that you will most commonly use. 
 &gt; Project-Power-User
   ReadOnlyAccess</code></pre>
-<p>Use arrow keys to select, then press Enter</p>
+<p>✨ Use arrow keys to select, then press Enter</p>
 </section>
 <section id="step-9-set-default-region" class="level3">
 <h3 class="anchored" data-anchor-id="step-9-set-default-region">Step 9: Set Default Region</h3>
-<p>Confirm or change the AWS region:</p>
-<pre><code>CLI default region [us-east-1]: us-east-1</code></pre>
+<p>If region is auto-filled to <code>us-east-1</code>, then leave as it is. Otherwise please input <code>us-east-1</code>:</p>
+<p><mark>CLI default region [us-east-1]: us-east-1</mark></p>
 </section>
 <section id="step-10-set-output-format" class="level3">
 <h3 class="anchored" data-anchor-id="step-10-set-output-format">Step 10: Set Output Format</h3>
 <p>Choose your preferred output format:</p>
-<pre><code>CLI default output format [None]: json</code></pre>
+<p><mark>CLI default output format [None]: json</mark></p>
 <p>Options: <code>json</code>, <code>yaml</code>, <code>text</code>, <code>table</code></p>
+<p>💡 <strong>Tip</strong>: It is recommended to use <code>json</code> as the preferred output format</p>
 <hr>
 </section>
 </section>
 <section id="verification" class="level2">
 <h2 class="anchored" data-anchor-id="verification">✅ Verification</h2>
+<p>To access data from the AWS S3 bucket, you will need to utilize the <code>--profile disasters-sso</code> flag which tells the AWS command to pull config information from <code>~/.aws/config</code>.</p>
 <p>Test your configuration:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls <span class="at">--profile</span> disasters-sso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls <span class="at">--profile</span> disasters-sso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected output:</p>
 <pre><code>                           PRE browseui/
                            PRE california_wildfires_202501/
@@ -1079,47 +1195,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="daily-usage">🔄 Daily Usage</h2>
 <section id="login-to-sso-session" class="level3">
 <h3 class="anchored" data-anchor-id="login-to-sso-session">Login to SSO Session</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sso login <span class="at">--profile</span> disasters-sso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sso login <span class="at">--profile</span> disasters-sso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="use-aws-commands" class="level3">
 <h3 class="anchored" data-anchor-id="use-aws-commands">Use AWS Commands</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List S3 buckets</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls <span class="at">--profile</span> disasters-sso</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get caller identity</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sts get-caller-identity <span class="at">--profile</span> disasters-sso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="alternative-set-aws_profile-environment-variable" class="level3">
-<h3 class="anchored" data-anchor-id="alternative-set-aws_profile-environment-variable">Alternative: Set AWS_PROFILE Environment Variable</h3>
-<p>To avoid passing <code>--profile disasters-sso</code> with every command, you can set the <code>AWS_PROFILE</code> environment variable:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the environment variable</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">AWS_PROFILE</span><span class="op">=</span>disasters-sso</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you can run commands without --profile</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sts get-caller-identity</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List S3 buckets</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls <span class="at">--profile</span> disasters-sso</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get caller identity</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sts get-caller-identity <span class="at">--profile</span> disasters-sso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is especially helpful when running many AWS commands in a session.</p>
 </section>
 <section id="logout-when-done" class="level3">
 <h3 class="anchored" data-anchor-id="logout-when-done">Logout When Done</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sso logout</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sso logout</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 </section>
 <section id="configuration-files" class="level2">
 <h2 class="anchored" data-anchor-id="configuration-files">📂 Configuration Files</h2>
 <p>Your SSO configuration is stored in <code>~/.aws/config</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile disasters-sso]</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_session </span><span class="ot">=</span><span class="st"> disasters</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_account_id </span><span class="ot">=</span><span class="st"> </span><span class="dv">867530900000</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_role_name </span><span class="ot">=</span><span class="st"> Project-Power-User</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">region </span><span class="ot">=</span><span class="st"> us-east-1</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">output </span><span class="ot">=</span><span class="st"> json</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[sso-session disasters]</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_start_url </span><span class="ot">=</span><span class="st"> https://d-9067c5bbc5.awsapps.com/start/#</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_region </span><span class="ot">=</span><span class="st"> us-east-1</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_registration_scopes </span><span class="ot">=</span><span class="st"> sso:account:access</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile disasters-sso]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_session </span><span class="ot">=</span><span class="st"> disasters</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_account_id </span><span class="ot">=</span><span class="st"> </span><span class="dv">867530900000</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_role_name </span><span class="ot">=</span><span class="st"> Project-Power-User</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">region </span><span class="ot">=</span><span class="st"> us-east-1</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dt">output </span><span class="ot">=</span><span class="st"> json</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[sso-session disasters]</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_start_url </span><span class="ot">=</span><span class="st"> https://d-9067c5bbc5.awsapps.com/start/#</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_region </span><span class="ot">=</span><span class="st"> us-east-1</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_registration_scopes </span><span class="ot">=</span><span class="st"> sso:account:access</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="important-notes" class="level2">
@@ -1147,20 +1253,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="browser-doesnt-open-automatically" class="level3">
 <h3 class="anchored" data-anchor-id="browser-doesnt-open-automatically">Browser doesn’t open automatically</h3>
 <p><strong>Solution</strong>: Add <code>--use-device-code</code> flag:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sso login <span class="at">--profile</span> disasters-sso <span class="at">--use-device-code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> sso login <span class="at">--profile</span> disasters-sso <span class="at">--use-device-code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="multiple-aws-accountsroles" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-aws-accountsroles">Multiple AWS accounts/roles</h3>
 <p>Create separate profiles for each account/role combination:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile prod-admin]</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_session </span><span class="ot">=</span><span class="st"> mycompany</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_account_id </span><span class="ot">=</span><span class="st"> </span><span class="dv">111111111111</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_role_name </span><span class="ot">=</span><span class="st"> Administrator</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile dev-readonly]</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_session </span><span class="ot">=</span><span class="st"> mycompany</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_account_id </span><span class="ot">=</span><span class="st"> </span><span class="dv">222222222222</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_role_name </span><span class="ot">=</span><span class="st"> ReadOnlyAccess</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile prod-admin]</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_session </span><span class="ot">=</span><span class="st"> mycompany</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_account_id </span><span class="ot">=</span><span class="st"> </span><span class="dv">111111111111</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_role_name </span><span class="ot">=</span><span class="st"> Administrator</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile dev-readonly]</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_session </span><span class="ot">=</span><span class="st"> mycompany</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_account_id </span><span class="ot">=</span><span class="st"> </span><span class="dv">222222222222</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="dt">sso_role_name </span><span class="ot">=</span><span class="st"> ReadOnlyAccess</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 </section>
@@ -1620,8 +1726,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../AWS/aws-mfa-setup.html" class="pagination-link" aria-label="AWS MFA Authentication Setup and Usage Guide">
-        <span class="nav-page-text">AWS MFA Authentication Setup and Usage Guide</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../AWS/AWS_SSO_Remote_Server.html" class="pagination-link" aria-label="🖥️ AWS SSO Remote Server Configuration Guide">
+        <span class="nav-page-text">🖥️ AWS SSO Remote Server Configuration Guide</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
