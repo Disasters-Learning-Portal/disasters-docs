@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aaron Serre (UAH)">
-<meta name="author" content="Kyle Lesinger (editor)">
+<meta name="author" content="Kyle Lesinger (UAH)">
 <meta name="dcterms.date" content="2025-11-12">
 <meta name="description" content="Analysis of the river flooding that occured along the Guadalupe River in Texas on July 4, 2025 using Sentinel-2 True Color and NDVI to visualize it.">
 
@@ -955,7 +955,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a>
   <ul class="collapse">
   <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
-  <li><a href="#install-the-required-libraires" id="toc-install-the-required-libraires" class="nav-link" data-scroll-target="#install-the-required-libraires">Install the Required Libraires</a></li>
+  <li><a href="#install-the-required-libraries" id="toc-install-the-required-libraries" class="nav-link" data-scroll-target="#install-the-required-libraries">Install the Required Libraries</a></li>
   <li><a href="#querying-the-stac-api" id="toc-querying-the-stac-api" class="nav-link" data-scroll-target="#querying-the-stac-api">Querying the STAC API</a></li>
   <li><a href="#requesting-tiles" id="toc-requesting-tiles" class="nav-link" data-scroll-target="#requesting-tiles">Requesting Tiles</a></li>
   <li><a href="#create-maps-using-folium" id="toc-create-maps-using-folium" class="nav-link" data-scroll-target="#create-maps-using-folium">Create Maps Using Folium</a></li>
@@ -986,7 +986,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
              <p>Aaron Serre (UAH) </p>
-             <p>Kyle Lesinger (editor) </p>
+             <p>Kyle Lesinger (UAH) </p>
           </div>
   </div>
     
@@ -1056,8 +1056,8 @@ If you <strong>do not</strong> have a VEDA Jupyterhub Account you can launch thi
 <p>Collection: A set of STAC definied for a specific item (such as Sentinel-2-vars-daily in our case)</p>
 <p>Tiles: A square fragment of a satellite image. Together they make an image, but we call up once specific one for this example since th area we are looking at is small.</p>
 </section>
-<section id="install-the-required-libraires" class="level2">
-<h2 class="anchored" data-anchor-id="install-the-required-libraires">Install the Required Libraires</h2>
+<section id="install-the-required-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-required-libraries">Install the Required Libraries</h2>
 <div id="e4d77f39-3875-41f3-8701-e239dcbe3098" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import the following libraries:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
