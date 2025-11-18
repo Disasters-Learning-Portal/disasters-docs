@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - main
-      - addContent
   workflow_dispatch:
 
 permissions: write-all
