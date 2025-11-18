@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions: write-all
 
@@ -27,6 +28,27 @@ jobs:
       - run: quarto install tinytex
       - run: pip install -r requirements.txt
       - run: quarto render --to html
+
+      - name: Verify auth script is present in rendered HTML
+        run: |
+          if grep -q "disasters_docs_auth" _site/index.html; then
+            echo "✓ Authentication script found in rendered HTML"
+          else
+            echo "✗ ERROR: Authentication script not found in rendered HTML"
+            exit 1
+          fi
+
+      - name: Inject password into login page
+        run: |
+          # Replace {{SITE_PASSWORD}} with actual password from GitHub secret
+          if [ -f "_site/password-protect.html" ]; then
+            sed -i "s/{{SITE_PASSWORD}}/${{ secrets.SITE_PASSWORD }}/g" _site/password-protect.html
+            echo "Password injected successfully"
+          else
+            echo "Warning: password-protect.html not found"
+          fi
+        env:
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
