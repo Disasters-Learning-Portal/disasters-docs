@@ -1036,39 +1036,39 @@
   {
     "objectID": "datausage.html",
     "href": "datausage.html",
-    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
+    "title": "NASA Disasters: Case Studies",
     "section": "",
-    "text": "Welcome to the homepage for the U.S. Greenhouse Gas (GHG) Center data usage notebooks. Each dataset available in the GHG Center Data Catalog has an associated “Introductory notebook” created by the GHG Center team which demonstrates how to access, visualize, and conduct basic data analysis in a Jupyter Notebook environment. Additional notebooks may be provided with each dataset. Click on a dataset under “GHG Center Dataset Tutorials” to learn more about the dataset and to view the associated code notebooks.\nAlong with GHG Center-curated notebooks, science users can also contribute notebooks that use GHG Center datasets. Notebooks submitted by the scientific community can be found under the “Community-Contributed Tutorials” section.",
+    "text": "Welcome to the NASA Disasters Learning Portal case studies. These Jupyter notebooks demonstrate how to access, visualize, and analyze disaster-related data for real-world events. Each case study walks through data acquisition, processing, and analysis techniques relevant to disaster response and monitoring.",
     "crumbs": [
       "Disaster Case Studies"
     ]
   },
   {
-    "objectID": "datausage.html#ghg-center-dataset-tutorials",
-    "href": "datausage.html#ghg-center-dataset-tutorials",
-    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
-    "section": "GHG Center Dataset Tutorials",
-    "text": "GHG Center Dataset Tutorials\nTutorial notebooks created by the GHG Center team. Introductory notebooks demonstrate how to access, visualize, and conduct basic data analysis for each dataset available in the GHG Center Data Catalog. Notebooks demonstrating how to conduct additional or more specialized analyses may also be listed under the relevant dataset.\n\nAir-Sea CO₂ Flux, ECCO-Darwin Model v5\n\nIntroductory notebook\n\nAtmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory\n\nIntroductory notebook\n\nCarbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)\n\nIntroductory notebook\n\nCarbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project\n\nIntroductory notebook\n\nCarbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed\n\nIntroductory notebook\n\nCarbonTracker-CH₄ Isotopic Methane Inverse Fluxes\n\nIntroductory notebook\n\nEMIT Methane Point Source Plume Complexes\n\nIntroductory notebook\n\nGeostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure\n\nIntroductory notebook\n\nGOSAT-based Top-down Total and Natural Methane Emissions\n\nIntroductory notebook\n\nGRA²PES Greenhouse Gas and Air Quality Species\n\nIntroductory notebook\n\nMiCASA Land Carbon Flux\n\nIntroductory notebook\n\nOCO-2 GEOS Column CO₂ Concentrations\n\nIntroductory notebook\n\nOCO-2 MIP Top-Down CO₂ Budgets\n\nIntroductory notebook\nIntermediate level notebook to read and visualize National CO₂ Budgets using OCO-2 MIP Top-Down CO₂ Budget country total data. This notebook utilizes the country totals available at https://ceos.org/gst/carbon-dioxide.html, which compliment the global 1° x 1° gridded CO₂ Budget data featured in the US GHG Center.\n\nODIAC Fossil Fuel CO₂ Emissions\n\nIntroductory notebook\n\nSEDAC Gridded World Population Density\n\nIntroductory notebook\n\nU.S. Gridded Anthropogenic Methane Emissions Inventory\n\nIntroductory notebook\n\nVulcan Fossil Fuel CO₂ Emissions\n\nIntroductory notebook\n\nWetland Methane Emissions, LPJ-EOSIM Model\n\nIntroductory notebook",
+    "objectID": "datausage.html#featured-case-studies",
+    "href": "datausage.html#featured-case-studies",
+    "title": "NASA Disasters: Case Studies",
+    "section": "Featured Case Studies",
+    "text": "Featured Case Studies\nThese case studies showcase practical applications of satellite data and geospatial analysis for disaster monitoring and response.\n\nTexas Flood 2025\n\nView Notebook\nDemonstrates flood monitoring and analysis using satellite imagery and geospatial data\nLearn how to track water extent changes and assess flood impacts\n\n\n\nNew Mexico Fire 2025\n\nView Notebook\nShows wildfire detection, monitoring, and impact assessment techniques\nExplore methods for tracking fire progression and burn area mapping",
     "crumbs": [
       "Disaster Case Studies"
     ]
   },
   {
-    "objectID": "datausage.html#community-contributed-tutorials",
-    "href": "datausage.html#community-contributed-tutorials",
-    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
-    "section": "Community-Contributed Tutorials",
-    "text": "Community-Contributed Tutorials\nNotebooks provided by the scientific community that use GHG Center datasets. The GHG Center is in the process of establishing a workflow for community notebook contribution. Once available, the contribution process will be published here. In the meantime, please submit any notebook contribution inquiries through the US GHG Center Contact Form.\nNote: these notebooks are contributed by the scientific community, and are not actively maintained by the GHG Center team.",
+    "objectID": "datausage.html#contributing",
+    "href": "datausage.html#contributing",
+    "title": "NASA Disasters: Case Studies",
+    "section": "Contributing",
+    "text": "Contributing\nThe NASA Disasters Learning Portal welcomes contributions from the scientific community. If you have developed a case study using disaster-related datasets and would like to share it, please contact the team through the NASA Disasters Portal.",
     "crumbs": [
       "Disaster Case Studies"
     ]
   },
   {
-    "objectID": "datausage.html#contact",
-    "href": "datausage.html#contact",
-    "title": "U.S. Greenhouse Gas Center: Data Usage Notebooks",
-    "section": "Contact",
-    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
+    "objectID": "datausage.html#resources",
+    "href": "datausage.html#resources",
+    "title": "NASA Disasters: Case Studies",
+    "section": "Resources",
+    "text": "Resources\n\nNASA Disasters Portal - Main portal for disaster data and tools\nJupyterHub Guide - Learn how to run these notebooks in a JupyterHub environment\nData Workflow Diagrams - Understand the data processing pipelines",
     "crumbs": [
       "Disaster Case Studies"
     ]
@@ -2560,7 +2560,7 @@
     "href": "quarto-guide.html#file-types-and-formats",
     "title": "Quarto Guide for Beginners",
     "section": "File Types and Formats",
-    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#160286d4 .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
+    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#d61c5e99 .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -2593,7 +2593,7 @@
     "href": "quarto-guide.html#working-with-code",
     "title": "Quarto Guide for Beginners",
     "section": "Working with Code",
-    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#9ba94be3 .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
+    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#debf95ff .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -2659,7 +2659,7 @@
     "href": "quarto-guide.html#common-issues-and-solutions",
     "title": "Quarto Guide for Beginners",
     "section": "Common Issues and Solutions",
-    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#7ac1353d .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
+    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#470229ea .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
