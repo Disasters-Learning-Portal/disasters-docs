@@ -110,7 +110,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="auth-check.js"></script>
+<script>
+// Authentication check for all pages - inlined to ensure it's always present
+(function() {
+    const SESSION_KEY = 'disasters_docs_auth';
+
+    // Get the base path for the current page
+    function getBasePath() {
+        const path = window.location.pathname;
+        // Extract base directory from current path
+        const parts = path.split('/').filter(p => p);
+        // Find the index.html or last segment
+        const fileIndex = parts.findIndex(p => p.endsWith('.html'));
+        if (fileIndex > 0) {
+            return '/' + parts.slice(0, fileIndex).join('/') + '/';
+        }
+        // Default: go to root of disasters-docs
+        return '/disasters-docs/';
+    }
+
+    function getLoginPage() {
+        const basePath = getBasePath();
+        return basePath + 'password-protect.html';
+    }
+
+    function checkAuth() {
+        // Skip authentication on localhost (for development)
+        if (window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1') {
+            console.log('Running on localhost - skipping authentication');
+            return;
+        }
+
+        // Skip check if we're on the login page
+        if (window.location.pathname.endsWith('password-protect.html') ||
+            window.location.pathname.endsWith('login.html')) {
+            return;
+        }
+
+        const auth = localStorage.getItem(SESSION_KEY);
+
+        if (!auth) {
+            // No authentication, redirect to login
+            window.location.href = getLoginPage();
+            return;
+        }
+
+        try {
+            const authData = JSON.parse(auth);
+            const now = new Date().getTime();
+
+            if (authData.expires <= now || !authData.authenticated) {
+                // Expired or invalid session
+                localStorage.removeItem(SESSION_KEY);
+                window.location.href = getLoginPage();
+                return;
+            }
+
+            // Valid session - allow page to load
+        } catch (e) {
+            // Invalid auth data
+            localStorage.removeItem(SESSION_KEY);
+            window.location.href = getLoginPage();
+        }
+    }
+
+    // Run check immediately
+    checkAuth();
+
+    // Add logout functionality
+    window.addEventListener('DOMContentLoaded', function() {
+        // Add logout button to page if it doesn't exist
+        const existingLogout = document.getElementById('logout-btn');
+        if (!existingLogout) {
+            const logoutBtn = document.createElement('button');
+            logoutBtn.id = 'logout-btn';
+            logoutBtn.textContent = 'Logout';
+            logoutBtn.style.cssText = 'position: fixed; top: 10px; right: 10px; padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 9999; font-size: 14px;';
+            logoutBtn.onclick = function() {
+                localStorage.removeItem(SESSION_KEY);
+                window.location.href = getLoginPage();
+            };
+            document.body.appendChild(logoutBtn);
+        }
+    });
+})();
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -731,7 +816,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>This is a Quarto document with **markdown** formatting.</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>::: {#60f7ed55 .cell execution_count=1}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>::: {#06ff33e6 .cell execution_count=1}</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">``` {.python .cell-code}</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># You can include code</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello from Python!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -975,7 +1060,7 @@ Content goes here.</code></pre>
 <h3 class="anchored" data-anchor-id="executable-vs.-non-executable-code">Executable vs.&nbsp;Non-Executable Code</h3>
 <p>By default, code blocks in <code>.qmd</code> files are <strong>executable</strong>. To display code without running:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>::: {#b8036479 .cell execution_count=2}</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>::: {#b539f324 .cell execution_count=2}</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">``` {.python .cell-code}</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This code is shown but not executed</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1263,7 +1348,7 @@ Content goes here.</code></pre>
 <p><strong>Solution:</strong> Check code block syntax</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Correct (with braces)</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>::: {#b25c7701 .cell execution_count=3}</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>::: {#5638dcd3 .cell execution_count=3}</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="in">``` {.python .cell-code}</span></span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
