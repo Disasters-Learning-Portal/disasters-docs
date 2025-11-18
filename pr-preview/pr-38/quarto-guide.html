@@ -117,16 +117,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     // Get the base path for the current page
     function getBasePath() {
-        const path = window.location.pathname;
-        // Extract base directory from current path
-        const parts = path.split('/').filter(p => p);
-        // Find the index.html or last segment
-        const fileIndex = parts.findIndex(p => p.endsWith('.html'));
-        if (fileIndex > 0) {
-            return '/' + parts.slice(0, fileIndex).join('/') + '/';
+        let path = window.location.pathname;
+
+        // If path ends with / or is a directory, it's already the base
+        if (path.endsWith('/')) {
+            return path;
         }
-        // Default: go to root of disasters-docs
-        return '/disasters-docs/';
+
+        // If path ends with .html, get the directory
+        if (path.endsWith('.html')) {
+            const lastSlash = path.lastIndexOf('/');
+            return path.substring(0, lastSlash + 1);
+        }
+
+        // Otherwise, assume it's a directory and add trailing slash
+        return path + '/';
     }
 
     function getLoginPage() {
@@ -816,7 +821,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>This is a Quarto document with **markdown** formatting.</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>::: {#079993c8 .cell execution_count=1}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>::: {#3483f779 .cell execution_count=1}</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">``` {.python .cell-code}</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># You can include code</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello from Python!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1060,7 +1065,7 @@ Content goes here.</code></pre>
 <h3 class="anchored" data-anchor-id="executable-vs.-non-executable-code">Executable vs.&nbsp;Non-Executable Code</h3>
 <p>By default, code blocks in <code>.qmd</code> files are <strong>executable</strong>. To display code without running:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>::: {#93b2641e .cell execution_count=2}</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>::: {#9f8205bc .cell execution_count=2}</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">``` {.python .cell-code}</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This code is shown but not executed</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1348,7 +1353,7 @@ Content goes here.</code></pre>
 <p><strong>Solution:</strong> Check code block syntax</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Correct (with braces)</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>::: {#555c6c79 .cell execution_count=3}</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>::: {#a6e704ac .cell execution_count=3}</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="in">``` {.python .cell-code}</span></span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
