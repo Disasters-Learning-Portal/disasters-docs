@@ -1,5 +1,8 @@
 project:
   type: website
+  resources:
+    - password-protect.html
+    - auth-check.js
 
 website:
   page-navigation: true
