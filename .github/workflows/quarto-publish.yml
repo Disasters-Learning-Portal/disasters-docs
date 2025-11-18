@@ -2,6 +2,8 @@ on:
   push:
     branches:
       - main
+      - addContent
+  workflow_dispatch:
 
 permissions: write-all
 
@@ -27,6 +29,18 @@ jobs:
       - run: quarto install tinytex
       - run: pip install -r requirements.txt
       - run: quarto render --to html
+
+      - name: Inject password into login page
+        run: |
+          # Replace {{SITE_PASSWORD}} with actual password from GitHub secret
+          if [ -f "_site/password-protect.html" ]; then
+            sed -i "s/{{SITE_PASSWORD}}/${{ secrets.SITE_PASSWORD }}/g" _site/password-protect.html
+            echo "Password injected successfully"
+          else
+            echo "Warning: password-protect.html not found"
+          fi
+        env:
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
