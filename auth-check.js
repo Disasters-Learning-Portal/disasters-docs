@@ -3,6 +3,13 @@
     const SESSION_KEY = 'disasters_docs_auth';
 
     function checkAuth() {
+        // Skip authentication on localhost (for development)
+        if (window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1') {
+            console.log('Running on localhost - skipping authentication');
+            return;
+        }
+
         // Skip check if we're on the login page
         if (window.location.pathname.endsWith('password-protect.html') ||
             window.location.pathname.endsWith('login.html')) {
