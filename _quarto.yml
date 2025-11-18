@@ -184,5 +184,8 @@ format:
     code-overflow: wrap
     toc: true
     toc-depth: 3
+    include-in-header:
+      - text: |
+          <script src="auth-check.js"></script>
 filters:
   - quarto
