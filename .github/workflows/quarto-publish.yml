@@ -29,6 +29,15 @@ jobs:
       - run: pip install -r requirements.txt
       - run: quarto render --to html
 
+      - name: Verify auth script is present in rendered HTML
+        run: |
+          if grep -q "disasters_docs_auth" _site/index.html; then
+            echo "✓ Authentication script found in rendered HTML"
+          else
+            echo "✗ ERROR: Authentication script not found in rendered HTML"
+            exit 1
+          fi
+
       - name: Inject password into login page
         run: |
           # Replace {{SITE_PASSWORD}} with actual password from GitHub secret
