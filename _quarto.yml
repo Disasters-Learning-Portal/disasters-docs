@@ -80,6 +80,8 @@ website:
                 href: Presentations/disasters-powerpoint-template.qmd
               - text: "AWS and Grafana Monitoring Tutorial"
                 href: Presentations/aws-grafana-tutorial.qmd
+              - text: "AWS Cost Management"
+                href: Presentations/aws-cost-management.qmd
               - text: "JupyterHub and Data Conversions Tutorial"
                 href: Presentations/jupyterhub-data-conversions-tutorial.qmd
               - text: "STAC Database and Apache Airflow Tutorial"
