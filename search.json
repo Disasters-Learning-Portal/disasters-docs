@@ -24,7 +24,7 @@
     "href": "aws.html#aws-data-operations-and-management",
     "title": "AWS Authentication and S3 Operations Guides",
     "section": "AWS Data Operations and Management",
-    "text": "AWS Data Operations and Management\nPractical reference for working with Amazon S3 using the AWS CLI, including data upload, access control, and cost optimization.\n\nAWS S3 Commands and Operations Guide\n\nGuide\nA complete reference of commonly used AWS S3 CLI commands for bucket and object management.\nKey sections include:\nCLI installation and configuration\n\nFile operations (cp, mv, rm, sync)\n\nRecursive uploads and downloads\n\nAccess control, encryption, and bucket policies\n\nPerformance and cost management techniques\n\nSecurity best practices and troubleshooting methods",
+    "text": "AWS Data Operations and Management\nPractical reference for working with Amazon S3 using the AWS CLI, including data upload, access control, and cost optimization.\n\nAWS S3 Commands and Operations Guide\n\nGuide A complete reference of commonly used AWS S3 CLI commands for bucket and object management. Key sections include:\nCLI installation and configuration\nFile operations (cp, mv, rm, sync)\nRecursive uploads and downloads\nAccess control, encryption, and bucket policies\nPerformance and cost management techniques\nSecurity best practices and troubleshooting methods \n\nAWS Cost Management\n\nPresentation Comprehensive presentation on managing and optimizing AWS costs. Key topics include:\nCost monitoring with Cost Explorer and billing dashboard\nSetting up budgets and billing alerts\nOptimization strategies including right-sizing and Reserved Instances\nTagging strategies for cost allocation\nMulti-account cost management and governance",
     "crumbs": [
       "AWS"
     ]
@@ -1205,6 +1205,78 @@
     ]
   },
   {
+    "objectID": "Presentations/aws-grafana-tutorial.html",
+    "href": "Presentations/aws-grafana-tutorial.html",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "",
+    "text": "This page provides introductory instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size (150MB), it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Walkthrough of AWS Console and AWS SSO - NASA SMCE and SMDC for Cloud Management - Common AWS S3 operators - Grafana setup and support\nDuration: [43 minutes]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
+    "href": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "",
+    "text": "This page provides introductory instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size (150MB), it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Walkthrough of AWS Console and AWS SSO - NASA SMCE and SMDC for Cloud Management - Common AWS S3 operators - Grafana setup and support\nDuration: [43 minutes]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
+    "href": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "What You’ll Learn",
+    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🔧 Setup and Configuration\n\nAWS account setup and IAM configuration\nGrafana installation and initial setup\nLog aggregation and analysis\n\n\n\n🚀 Advanced Topics\n\nMulti-account AWS monitoring\nCost management and optimization\nTroubleshooting common issues",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#related-resources",
+    "href": "Presentations/aws-grafana-tutorial.html#related-resources",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Related Resources",
+    "text": "Related Resources\n\nAWS Documentation\n\nAWS CloudWatch Documentation\nAWS IAM Best Practices\nAWS Well-Architected Framework\n\n\n\nGrafana Resources\n\nGrafana CloudWatch Data Source\nGrafana Dashboard Best Practices\nGrafana Alerting Guide",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/aws-grafana-tutorial.html#conclusion",
+    "href": "Presentations/aws-grafana-tutorial.html#conclusion",
+    "title": "AWS and Grafana Monitoring Tutorial",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis tutorial provides comprehensive guidance for setting up and using AWS with Grafana for monitoring and observability. The combination of AWS’s robust cloud infrastructure and Grafana’s powerful visualization capabilities creates a strong foundation for modern monitoring solutions.\nKey Takeaways:\n\n\nAWS and Grafana integration enables powerful monitoring\n\n\nProper configuration is essential for security and performance\n\n\nFollowing best practices ensures scalable, maintainable solutions\n\n\nGood luck with your AWS and Grafana monitoring journey!",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "AWS and Grafana Monitoring Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/disasters-powerpoint-template.html",
+    "href": "Presentations/disasters-powerpoint-template.html",
+    "title": "NASA Disasters PowerPoint Template",
+    "section": "",
+    "text": "Note\n\n\n\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\nPresentation Viewer\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "Disasters Logo and Template Overview"
+    ]
+  },
+  {
     "objectID": "Presentations/stac-airflow-tutorial.html",
     "href": "Presentations/stac-airflow-tutorial.html",
     "title": "STAC Database and Apache Airflow Tutorial",
@@ -1265,76 +1337,25 @@
     ]
   },
   {
-    "objectID": "Presentations/disasters-powerpoint-template.html",
-    "href": "Presentations/disasters-powerpoint-template.html",
-    "title": "NASA Disasters PowerPoint Template",
+    "objectID": "Presentations/aws-cost-management.html",
+    "href": "Presentations/aws-cost-management.html",
+    "title": "AWS Cost Management",
     "section": "",
-    "text": "Note\n\n\n\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\nPresentation Viewer\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nDownload: Click the link above, then go to File → Download → Microsoft PowerPoint (.pptx)\nPresent mode: Click the link above and press the “Present” button in Google Slides for full-screen mode\n\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "Disasters Logo and Template Overview"
-    ]
+    "text": "This page provides guidance for managing and optimizing costs in Amazon Web Services (AWS).\n\n\n\n\n\n\nNoteAbout This Presentation\n\n\n\nThis presentation covers AWS cost management strategies, monitoring tools, and optimization best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - AWS Cost Explorer walkthrough - Setting up budgets and alerts - Cost optimization strategies - Tagging and cost allocation - Best practices for cost management\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available"
   },
   {
-    "objectID": "Presentations/aws-grafana-tutorial.html",
-    "href": "Presentations/aws-grafana-tutorial.html",
-    "title": "AWS and Grafana Monitoring Tutorial",
+    "objectID": "Presentations/aws-cost-management.html#aws-cost-management",
+    "href": "Presentations/aws-cost-management.html#aws-cost-management",
+    "title": "AWS Cost Management",
     "section": "",
-    "text": "This page provides introductory instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size (150MB), it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Walkthrough of AWS Console and AWS SSO - NASA SMCE and SMDC for Cloud Management - Common AWS S3 operators - Grafana setup and support\nDuration: [43 minutes]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
+    "text": "This page provides guidance for managing and optimizing costs in Amazon Web Services (AWS).\n\n\n\n\n\n\nNoteAbout This Presentation\n\n\n\nThis presentation covers AWS cost management strategies, monitoring tools, and optimization best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - AWS Cost Explorer walkthrough - Setting up budgets and alerts - Cost optimization strategies - Tagging and cost allocation - Best practices for cost management\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available"
   },
   {
-    "objectID": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
-    "href": "Presentations/aws-grafana-tutorial.html#aws-and-grafana-monitoring-tutorial",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "",
-    "text": "This page provides introductory instructions and guidance for integrating Amazon Web Services (AWS) with Grafana for monitoring and observability.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers AWS and Grafana monitoring setup, configuration, and best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size (150MB), it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Walkthrough of AWS Console and AWS SSO - NASA SMCE and SMDC for Cloud Management - Common AWS S3 operators - Grafana setup and support\nDuration: [43 minutes]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
-    "href": "Presentations/aws-grafana-tutorial.html#what-youll-learn",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "What You’ll Learn",
-    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🔧 Setup and Configuration\n\nAWS account setup and IAM configuration\nGrafana installation and initial setup\nLog aggregation and analysis\n\n\n\n🚀 Advanced Topics\n\nMulti-account AWS monitoring\nCost management and optimization\nTroubleshooting common issues",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#related-resources",
-    "href": "Presentations/aws-grafana-tutorial.html#related-resources",
-    "title": "AWS and Grafana Monitoring Tutorial",
+    "objectID": "Presentations/aws-cost-management.html#related-resources",
+    "href": "Presentations/aws-cost-management.html#related-resources",
+    "title": "AWS Cost Management",
     "section": "Related Resources",
-    "text": "Related Resources\n\nAWS Documentation\n\nAWS CloudWatch Documentation\nAWS IAM Best Practices\nAWS Well-Architected Framework\n\n\n\nGrafana Resources\n\nGrafana CloudWatch Data Source\nGrafana Dashboard Best Practices\nGrafana Alerting Guide",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
-  },
-  {
-    "objectID": "Presentations/aws-grafana-tutorial.html#conclusion",
-    "href": "Presentations/aws-grafana-tutorial.html#conclusion",
-    "title": "AWS and Grafana Monitoring Tutorial",
-    "section": "Conclusion",
-    "text": "Conclusion\nThis tutorial provides comprehensive guidance for setting up and using AWS with Grafana for monitoring and observability. The combination of AWS’s robust cloud infrastructure and Grafana’s powerful visualization capabilities creates a strong foundation for modern monitoring solutions.\nKey Takeaways:\n\n\nAWS and Grafana integration enables powerful monitoring\n\n\nProper configuration is essential for security and performance\n\n\nFollowing best practices ensures scalable, maintainable solutions\n\n\nGood luck with your AWS and Grafana monitoring journey!",
-    "crumbs": [
-      "Presentations",
-      "PowerPoints",
-      "AWS and Grafana Monitoring Tutorial"
-    ]
+    "text": "Related Resources\n\nAWS Cost Management Documentation\n\nAWS Cost Management\nAWS Cost Explorer\nAWS Budgets\n\n\n\nAWS Optimization Tools\n\nAWS Trusted Advisor\nAWS Compute Optimizer\nAWS Well-Architected Tool"
   },
   {
     "objectID": "advanceduser.html",
@@ -2427,7 +2448,7 @@
     "href": "quarto-guide.html#file-types-and-formats",
     "title": "Quarto Guide for Beginners",
     "section": "File Types and Formats",
-    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#30877f81 .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
+    "text": "File Types and Formats\n\nSource Files\n\n.qmd Files (Quarto Markdown)\nThe primary file type for Quarto documents:\n---\ntitle: \"My Document\"\nformat: html\n---\n\n## Introduction\n\nThis is a Quarto document with **markdown** formatting.\n\n::: {#b151dcaa .cell execution_count=1}\n``` {.python .cell-code}\n# You can include code\nprint(\"Hello from Python!\")\n\nHello from Python!\n\n:::\n\n#### .ipynb Files (Jupyter Notebooks)\n\nQuarto can directly render Jupyter notebooks:\n\n- Keep your existing notebook workflow\n- Add Quarto features through cell metadata\n- Render notebooks to any format\n\n#### .md Files (Plain Markdown)\n\nStandard Markdown files can be rendered by Quarto, though they lack code execution capabilities.\n\n### Output Formats\n\nQuarto can generate:\n\n| Format | Extension | Use Case |\n|--------|-----------|----------|\n| HTML | .html | Websites, interactive documents |\n| PDF | .pdf | Print publications, reports |\n| Word | .docx | Microsoft Word documents |\n| PowerPoint | .pptx | Presentations |\n| Reveal.js | .html | Interactive HTML presentations |\n| EPUB | .epub | E-books |\n| Markdown | .md | GitHub, other platforms |\n\n## Creating Different Types of Documents\n\n### Basic Document\n\nSimplest Quarto document:\n\n```yaml\n---\ntitle: \"My First Document\"\nauthor: \"Your Name\"\ndate: today\nformat: html\n---\n\n## Section 1\n\nContent goes here.\n\n\n\nMulti-Format Document\nOutput to multiple formats:\n---\ntitle: \"Multi-Format Document\"\nformat:\n  html:\n    toc: true\n    code-fold: true\n  pdf:\n    documentclass: article\n  docx:\n    reference-doc: template.docx\n---\n\n\nPresentation (PowerPoint)\n---\ntitle: \"My Presentation\"\nformat:\n  pptx:\n    slide-level: 2\n---\n\n# Section Title\n\n## Slide 1\n\n- First point\n- Second point\n\n## Slide 2\n\nMore content here.\nImportant: Level 1 headers (#) create section dividers, Level 2 headers (##) create new slides.\n\n\nPresentation (Reveal.js)\n---\ntitle: \"Interactive Presentation\"\nformat:\n  revealjs:\n    theme: dark\n    transition: slide\n---\n\n\nWebsite/Book\nRequires a _quarto.yml configuration file (covered below).",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -2460,7 +2481,7 @@
     "href": "quarto-guide.html#working-with-code",
     "title": "Quarto Guide for Beginners",
     "section": "Working with Code",
-    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#5c0695f5 .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
+    "text": "Working with Code\n\nCode Blocks\n```python\n# Python code\nimport pandas as pd\ndata = pd.read_csv('file.csv')\nprint(data.head())\n```\n\n\nExecutable vs. Non-Executable Code\nBy default, code blocks in .qmd files are executable. To display code without running:\n\n::: {#1e6c0c75 .cell execution_count=2}\n``` {.python .cell-code}\n# This code is shown but not executed\n```\n:::\n\n\n\nInline Code\nExecute code inline: 4\nOutput: 4\n\n\nCode Options\n#| echo: false        # Hide code, show output\n#| eval: false        # Show code, don't run\n#| warning: false     # Hide warnings\n#| message: false     # Hide messages\n#| label: fig-plot    # For cross-references\n#| fig-cap: \"Caption\" # Figure caption",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
@@ -2526,7 +2547,7 @@
     "href": "quarto-guide.html#common-issues-and-solutions",
     "title": "Quarto Guide for Beginners",
     "section": "Common Issues and Solutions",
-    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#0d3a5812 .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
+    "text": "Common Issues and Solutions\n\nIssue: “File not found”\nProblem: Referenced image or data file not found\nSolution: Use relative paths from the .qmd file location\n# Good\n![Logo](images/logo.png)\n\n# Bad (absolute paths break portability)\n![Logo](/Users/name/project/images/logo.png)\n\n\nIssue: Code not executing\nProblem: Code block shown but not running\nSolution: Check code block syntax\n# Correct (with braces)\n\n::: {#cf8b98c1 .cell execution_count=3}\n``` {.python .cell-code}\nprint(\"Hello\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nHello\n```\n:::\n:::\n\n\n# Wrong (no braces - just displays)\n```python\nprint(\"Hello\")\n```\n\n\nIssue: Links not working in rendered site\nProblem: Cross-references broken after rendering\nSolution: Use .qmd extension in links - Quarto converts automatically\n# Correct\n[See guide](guide.qmd)\n\n# Incorrect\n[See guide](guide.html)\n\n\nIssue: Changes not showing\nProblem: Made changes but don’t see them in preview\nSolution: - Refresh browser (hard refresh: Cmd+Shift+R or Ctrl+Shift+R) - Stop and restart quarto preview - Check if file is saved\n\n\nIssue: Table of contents not showing\nProblem: TOC enabled but not visible\nSolution: Need at least 2 headers for TOC to appear\n---\nformat:\n  html:\n    toc: true\n---\n\n## First Section\nContent\n\n## Second Section\nMore content",
     "crumbs": [
       "Documentation",
       "Quarto Guide for Beginners"
