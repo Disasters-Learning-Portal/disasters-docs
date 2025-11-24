@@ -37,15 +37,26 @@ Tutorial-style guides demonstrating secure authentication methods and credential
 Practical reference for working with Amazon S3 using the AWS CLI, including data upload, access control, and cost optimization.
 
 - **AWS S3 Commands and Operations Guide**
-   - [Guide](aws-s3-commands-guide.md)  
-   A complete reference of commonly used AWS S3 CLI commands for bucket and object management.  
+   - [Guide](aws-s3-commands-guide.md)
+   A complete reference of commonly used AWS S3 CLI commands for bucket and object management.
    Key sections include:
-   - CLI installation and configuration  
-   - File operations (`cp`, `mv`, `rm`, `sync`)  
-   - Recursive uploads and downloads  
-   - Access control, encryption, and bucket policies  
-   - Performance and cost management techniques  
-   - Security best practices and troubleshooting methods  
+   - CLI installation and configuration
+   - File operations (`cp`, `mv`, `rm`, `sync`)
+   - Recursive uploads and downloads
+   - Access control, encryption, and bucket policies
+   - Performance and cost management techniques
+   - Security best practices and troubleshooting methods
+   <br>
+
+- **AWS Cost Management**
+   - [Presentation](Presentations/aws-cost-management.qmd)
+   Comprehensive presentation on managing and optimizing AWS costs.
+   Key topics include:
+   - Cost monitoring with Cost Explorer and billing dashboard
+   - Setting up budgets and billing alerts
+   - Optimization strategies including right-sizing and Reserved Instances
+   - Tagging strategies for cost allocation
+   - Multi-account cost management and governance
    <br>
 
 ## Best Practices Summary

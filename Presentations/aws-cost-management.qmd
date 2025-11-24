@@ -1,0 +1,104 @@
+---
+title: "AWS Cost Management"
+subtitle: "Managing and Optimizing AWS Costs"
+format:
+  html:
+    toc: false
+    page-layout: full
+---
+
+## AWS Cost Management
+
+This page provides guidance for managing and optimizing costs in Amazon Web Services (AWS).
+
+::: {.callout-note}
+## About This Presentation
+
+This presentation covers AWS cost management strategies, monitoring tools, and optimization best practices.
+
+**Controls:**
+<ul>
+<li>Click the "︙" menu for additional options such as Full Screen mode</li>
+<li>Advance slides using your mouse cursor</li>
+</ul>
+:::
+
+---
+
+### Tutorial Video Recording
+
+Watch the complete walkthrough of this tutorial with live demonstrations and explanations:
+
+::: {.callout-warning}
+## Large Video File Notice
+
+Due to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.
+
+<div style="text-align: center; margin: 1.5rem 0;">
+<a href="https://drive.google.com/file/d/1fNSrA1-0WH11U9WvEfT_8jTYsfM1VTPr/view"
+   target="_blank"
+   style="display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+   ▶ Watch Tutorial Video
+</a>
+</div>
+
+
+:::
+
+::: {.callout-note collapse="true"}
+## Video Details
+
+This recorded tutorial includes:
+- AWS Cost Explorer walkthrough
+- Setting up budgets and alerts
+- Cost optimization strategies
+- Tagging and cost allocation
+- Best practices for cost management
+
+:::
+
+---
+
+### Presentation
+
+<div style="text-align: center; margin: 2rem 0;">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSWi_k461DA4LINasclBYp4SRaKuy_ycKfMwDemRqXiwRUmmq38OBHSFpU68p8pMA/pubembed?start=false&loop=false&delayms=3000"
+        frameborder="0"
+        width="1280"
+        height="749"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        style="border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 100%;">
+</iframe>
+</div>
+
+::: {.callout-tip collapse="true"}
+## Alternative Viewing Options
+
+If the embedded presentation doesn't load properly, you can:
+
+1. **Open in new tab**: [View presentation in Google Slides →](https://docs.google.com/presentation/d/e/2PACX-1vRmsfUNSNQStvXH2VMhYd31ZFO6s4HqPD263eSs4MoGp4pLhUvingBvRSMG6GwzQQ/pub?start=false&loop=false&delayms=3000)
+
+2. **Fullscreen mode**: Click the fullscreen button in the embedded player above
+
+3. **Download**: Open the link above and look for download options if available
+:::
+
+---
+
+## Related Resources
+
+### AWS Cost Management Documentation
+- [AWS Cost Management](https://aws.amazon.com/aws-cost-management/)
+- [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/)
+- [AWS Budgets](https://aws.amazon.com/aws-cost-management/aws-budgets/)
+
+### AWS Optimization Tools
+- [AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/)
+- [AWS Compute Optimizer](https://aws.amazon.com/compute-optimizer/)
+- [AWS Well-Architected Tool](https://aws.amazon.com/well-architected-tool/)
+
+---
+
+

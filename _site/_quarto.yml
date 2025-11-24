@@ -1,0 +1,194 @@
+project:
+  type: website
+  resources:
+    - password-protect.html
+    - auth-check.js
+
+website:
+  page-navigation: true
+  back-to-top-navigation: true
+  title: "NASA Disasters Documentation"
+  site-url: "https://us-ghg-center.github.io/ghgc-docs" #should I change these
+  repo-url: https://github.com/us-ghg-center/ghgc-docs  
+  repo-actions: [edit, issue]
+
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/)."
+    left: "&copy; CC-By US GHG Center, 2022-2023"  #how should I change this
+
+  sidebar:
+    logo: "logo/disasters_logo.png"
+    pinned: true
+    align: center
+    tools:
+      # - icon: info-circle
+      #   href: https://www.earthdata.nasa.gov/esds/veda
+      #   text: "earthdata.nasa.gov/esds/veda"
+      - icon: globe-americas
+        href: https://disasters.openveda.cloud/
+        text: "NASA Disasters Portal"
+      - icon: github
+        href: https://github.com/Disasters-Learning-Portal
+        text: "Repository home"
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Welcome
+      - section: aws.qmd
+        text: AWS
+        contents:
+          - AWS/AWS_SSO_Setup_Guide.qmd
+          - AWS/AWS_SSO_Remote_Server.qmd
+          - AWS/aws-mfa-setup.qmd
+          - AWS/aws-s3-commands-guide.qmd
+      - section: git-github-comprehensive-guide.qmd
+        text: GitHub
+        contents:
+          - text: "The VEDA Project"
+            href: GitHub/veda-preview.qmd
+          - GitHub/setup.qmd
+          - GitHub/commands.qmd
+          - GitHub/resources.qmd
+      - section: jupyterhub.qmd
+        text: JupyterHub
+        contents:
+          - Jupyterhub/jupyterhub-training-guide.qmd
+          - Jupyterhub/setup-disaster-repo.qmd
+          - Jupyterhub/convert_to_geotiff.qmd
+          - Jupyterhub/simple_disaster_template.ipynb
+      -  section: workflow2.qmd
+         text: Data Workflow Diagrams
+         contents:
+          - data_workflow2/NRT_data_download.qmd
+          - data_workflow2/NRT_directory_structure.qmd
+      - section: Documentation
+        contents:
+          - text: "Quarto Guide for Beginners"
+            href: quarto-guide.qmd
+      - section: User Services
+        contents:
+          - services/apis.qmd
+          - services/jupyterhub.qmd
+      - section: Presentations
+        contents:
+          - section: PowerPoints
+            contents:
+              - text: "Disasters Logo and Template Overview"
+                href: Presentations/disasters-powerpoint-template.qmd
+              - text: "AWS and Grafana Monitoring Tutorial"
+                href: Presentations/aws-grafana-tutorial.qmd
+              - text: "JupyterHub and Data Conversions Tutorial"
+                href: Presentations/jupyterhub-data-conversions-tutorial.qmd
+              - text: "STAC Database and Apache Airflow Tutorial"
+                href: Presentations/stac-airflow-tutorial.qmd
+      # - href: datausage.qmd
+      #   text: Data Usage Notebooks   
+      # - href: datatransformation.qmd
+      #   text: Data Transformation Documentation 
+      # - href: processingreport.qmd
+      #   text: Processing and Verification Reports   
+      # - href: workflow.qmd
+      #   text: Data Workflow
+      # - href: advanceduser.qmd
+      #   text: Advanced User Notebooks
+      - section: datausage.qmd
+        text: Data Usage Notebooks
+        contents:
+          - section: Disaster Case Studies
+            contents:
+              - text: "Texas Flood 2025"
+                href: user_data_notebooks/Texas_Flood_2025.ipynb
+              - text: "New Mexico Fire 2025"
+                href: user_data_notebooks/New_Mexico_Fire_2025.ipynb
+          - section: Community-Contributed Tutorials
+            contents:
+      - section: datatransformationcode.qmd
+        text: Data Transformation Notebooks
+        contents:
+          - cog_transformation/eccodarwin-co2flux-monthgrid-v5.ipynb
+          - text: Atmospheric Carbon Dioxide and Methane Concentrations from the NOAA Global Monitoring Laboratory 
+            href: cog_transformation/noaa-gggrn-concentrations.ipynb
+          - cog_transformation/influx-testbed-ghg-concentrations.ipynb
+          - cog_transformation/lam-testbed-ghg-concentrations.ipynb
+          - cog_transformation/nec-testbed-ghg-concentrations.ipynb
+          - cog_transformation/ct-ch4-monthgrid-v2023.ipynb
+          - cog_transformation/emit-ch4plume-v1.ipynb
+          - cog_transformation/goes-ch4plume-v1.ipynb
+          - cog_transformation/gosat-based-ch4budget-yeargrid-v1.ipynb
+          - cog_transformation/gra2pes-ghg-monthgrid-v1.ipynb
+          - cog_transformation/oco2geos-co2-daygrid-v10r.ipynb
+          - cog_transformation/oco2-mip-co2budget-yeargrid-v1.ipynb
+          - cog_transformation/odiac-ffco2-monthgrid-v2024.ipynb
+          - text: "SEDAC Gridded World Population Density" 
+            href: cog_transformation/sedac-popdensity-yeargrid5yr-v4.11.ipynb
+          - cog_transformation/epa-ch4emission-grid-v2express.ipynb   
+          - cog_transformation/vulcan-ffco2-yeargrid-v4.ipynb
+      - section: processingreport.qmd
+        text: Processing and Verification Reports
+        contents:
+          - processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.qmd
+          - text: "Atmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory" 
+            href: processing_and_verification_reports/noaa-gggrn-co2-concentrations_Processing and Verification Report.qmd
+          - processing_and_verification_reports/noaa-gggrn-ch4-concentrations_Processing and Verification Report.qmd
+          - processing_and_verification_reports/influx-testbed-ghg-concentrations_Processing and Verification Report.qmd
+          - processing_and_verification_reports/lam-testbed-ghg-concentrations_Processing and Verification Report.qmd
+          - processing_and_verification_reports/nec-testbed-ghg-concentrations_Processing and Verification Report.qmd 
+          - processing_and_verification_reports/ct-ch4-monthgrid-v2023_Processing and Verification Report.qmd
+          - processing_and_verification_reports/emit-ch4plume-v1_Processing and Verification Report.qmd
+          - processing_and_verification_reports/goes-ch4plume-v1_Processing and Verification Report.qmd
+          - processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.qmd
+          - processing_and_verification_reports/gra2pes-ghg-monthgrid-v1_Processing and Verification Report.qmd 
+          - processing_and_verification_reports/micasa-carbonflux-daygrid-v1_Processing and Verification Report.qmd
+          - processing_and_verification_reports/oco2geos-co2-daygrid-v10r_Processing and Verification Report.qmd  
+          - processing_and_verification_reports/oco2-mip-co2budget-yeargrid-v1_Processing and Verification Report.qmd
+          - processing_and_verification_reports/odiac-ffco2-monthgrid-v2024_Processing and Verification Report.qmd
+          - processing_and_verification_reports/sedac-popdensity-yeargrid5yr-v4.11_Processing and Verification Report.qmd
+          - processing_and_verification_reports/epa-ch4emission-grid-v2express_Processing and Verification Report.qmd 
+          - processing_and_verification_reports/vulcan-ffco2-yeargrid-v4_Processing and Verification Report.qmd  
+          - processing_and_verification_reports/lpjeosim-wetlandch4-grid-v1_Processing and Verification Report.qmd 
+      - section: workflow.qmd
+        text: Data Flow Diagrams
+        contents:
+          - data_workflow/eccodarwin-co2flux-monthgrid-v5_Data_Flow.qmd
+          - data_workflow/noaa-gggrn-co2-concentrations_Data_Flow.qmd
+          - data_workflow/noaa-gggrn-ch4-concentrations_Data_Flow.qmd
+          - data_workflow/influx-testbed-ghg-concentrations_Data_Flow.qmd
+          - data_workflow/lam-testbed-ghg-concentrations_Data_Flow.qmd
+          - data_workflow/nec-testbed-ghg-concentrations_Data_Flow.qmd
+          - data_workflow/ct-ch4-monthgrid-v2023_Data_Flow.qmd
+          - data_workflow/emit-ch4plume-v1_Data_Flow.qmd
+          - data_workflow/goes-ch4plume-v1_Data_Flow.qmd 
+          - data_workflow/gosat-based-ch4budget-yeargrid-v1_Data_Flow.qmd
+          - data_workflow/gra2pes-ghg-monthgrid-v1_Data_Flow.qmd 
+          - data_workflow/micasa-carbonflux-daygrid-v1_Data_Flow.qmd
+          - data_workflow/oco2geos-co2-daygrid-v10r_Data_Flow.qmd
+          - data_workflow/oco2-mip-co2budget-yeargrid-v1_Data_Flow.qmd
+          - data_workflow/odiac-ffco2-monthgrid-v2024_Data_Flow.qmd
+          - text: "SEDAC Gridded World Population Density"
+            href:  data_workflow/sedac-popdensity-yeargrid5yr-v4.11_Data_Flow.qmd
+          - text: "U.S. Gridded Anthropogenic Methane Emissions Inventory"
+            href: data_workflow/epa-ch4emission-grid-v2express_Data_Flow.qmd
+          - data_workflow/vulcan-ffco2-yeargrid-v4_Data_Flow.qmd  
+          - data_workflow/lpjeosim-wetlandch4-grid-v1_Data_Flow.qmd        
+  
+format:
+  html:
+    grid:
+      sidebar-width: 25vw
+      body-width: 900px
+    theme:
+      light: [flatly]
+      dark: [darkly]
+    css: styles.css
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    toc-depth: 3
+    include-in-header:
+      - text: |
+          <script src="auth-check.js"></script>
+filters:
+  - quarto
