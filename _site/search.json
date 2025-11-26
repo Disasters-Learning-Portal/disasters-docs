@@ -2010,5 +2010,347 @@
       "Videos",
       "AWS and Grafana Monitoring Tutorial"
     ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html",
+    "href": "user_data_notebooks/NM_Fire.html",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "",
+    "text": "You can launch this notebook using mybinder, by clicking the button below.",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#run-this-notebook",
+    "href": "user_data_notebooks/NM_Fire.html#run-this-notebook",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "",
+    "text": "You can launch this notebook using mybinder, by clicking the button below.",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#approach",
+    "href": "user_data_notebooks/NM_Fire.html#approach",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "Approach",
+    "text": "Approach\n\nIdentify available dates and temporal frequency of observations for collections pertaining to the NM wildfire event\nPass the STAC item into raster API collection endpoint\nWe’ll visualize tiles for each of the times/dates of interest using folium",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#about-the-data",
+    "href": "user_data_notebooks/NM_Fire.html#about-the-data",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "About the Data",
+    "text": "About the Data\nNASA provided satellite imagery at the request of federal and state emergency management officials in response to the Trout Fire near Silver City, New Mexico, in late June 2025. Satellite images assist in search and rescue, evacuation planning, and understanding the scope and development of the fire as it was ongoing.\nThe Trout Fire was caused by a lightning strike, burned over 47,000 acres, prompted evacuations, and destroyed two homes.\nIn this notebook, we will explore Sentinel-2, Normalized Burn Ratio Difference (dNBR), and Opera Disturbance Alert datasets, and how they were used in this Disasters article to monitor the effects of wildfires.",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#querying-the-stac-api",
+    "href": "user_data_notebooks/NM_Fire.html#querying-the-stac-api",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "Querying the STAC API",
+    "text": "Querying the STAC API\n\n#for querying\nimport requests\n#for mapping\nimport folium\nimport folium.plugins\nfrom folium.plugins import DualMap\nfrom folium import Map, TileLayer\nfrom branca.element import Template, MacroElement\nimport branca.colormap as cm\n\n\n# Provide STAC and RASTER API endpoints\nSTAC_API_URL = \"https://dev.openveda.cloud/api/stac\"\nRASTER_API_URL = \"https://dev.openveda.cloud/api/raster\"\n\n# Declare collection of interest - sentinel-2 daily data\ncollection_name = \"sentinel-2-all-vars-daily\"\n\n\n# Fetch STAC collection\ncollection = requests.get(f\"{STAC_API_URL}/collections/{collection_name}\").json()\ncollection\n\n{'id': 'sentinel-2-all-vars-daily',\n 'type': 'Collection',\n 'links': [{'rel': 'items',\n   'type': 'application/geo+json',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/sentinel-2-all-vars-daily/items'},\n  {'rel': 'parent',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/'},\n  {'rel': 'root',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/'},\n  {'rel': 'self',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/sentinel-2-all-vars-daily'},\n  {'rel': 'http://www.opengis.net/def/rel/ogc/1.0/queryables',\n   'type': 'application/schema+json',\n   'title': 'Queryables',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/sentinel-2-all-vars-daily/queryables'}],\n 'title': 'Sentinel-2 Daily',\n 'extent': {'spatial': {'bbox': [[-119.1975416533983,\n     -30.82134245583779,\n     40.26500671260549,\n     46.046265455836014]]},\n  'temporal': {'interval': [['2015-03-13 00:00:00+00',\n     '2025-07-17 00:00:00+00']]}},\n 'tenant': ['nasa-disasters'],\n 'license': 'CC0-1.0',\n 'renders': {'ndvi': {'assets': ['ndvi'],\n   'nodata': -9999.0,\n   'rescale': [[-1, 1]]},\n  'mndwi': {'assets': ['mndwi'], 'nodata': 999, 'rescale': [[-1, 1]]},\n  'colorIR': {'bidx': [1, 2, 3],\n   'assets': ['colorIR'],\n   'nodata': 0,\n   'rescale': [[0, 255]]},\n  'burnRatio': {'assets': ['burnRatio'],\n   'nodata': -9999,\n   'rescale': [[-1, 1]]},\n  'cloudMask': {'assets': ['cloudMask'], 'nodata': 0, 'rescale': [[0, 1]]},\n  'trueColor': {'bidx': [1, 2, 3],\n   'assets': ['trueColor'],\n   'nodata': 0,\n   'rescale': [[0, 255]]},\n  'shortwaveIR': {'bidx': [1, 2, 3],\n   'assets': ['shortwaveIR'],\n   'nodata': 0,\n   'rescale': [[0, 255]]},\n  'naturalColor': {'bidx': [1, 2, 3],\n   'assets': ['naturalColor'],\n   'nodata': 0,\n   'rescale': [[0, 255]]}},\n 'providers': [{'name': 'NASA'}],\n 'summaries': {'datetime': ['2015-03-13T00:00:00Z',\n   '2022-12-28T00:00:00Z',\n   '2023-01-10T00:00:00Z',\n   '2023-01-23T00:00:00Z',\n   '2023-02-07T00:00:00Z',\n   '2023-02-09T00:00:00Z',\n   '2023-02-12T00:00:00Z',\n   '2023-02-16T00:00:00Z',\n   '2023-02-19T00:00:00Z',\n   '2023-02-22T00:00:00Z',\n   '2023-07-20T00:00:00Z',\n   '2023-07-22T00:00:00Z',\n   '2023-10-18T00:00:00Z',\n   '2023-11-06T00:00:00Z',\n   '2023-11-19T00:00:00Z',\n   '2023-12-20T00:00:00Z',\n   '2024-01-12T00:00:00Z',\n   '2024-02-23T00:00:00Z',\n   '2024-05-05T00:00:00Z',\n   '2024-05-06T00:00:00Z',\n   '2024-05-07T00:00:00Z',\n   '2024-05-08T00:00:00Z',\n   '2024-08-10T00:00:00Z',\n   '2024-08-19T00:00:00Z',\n   '2024-09-08T00:00:00Z',\n   '2024-09-09T00:00:00Z',\n   '2024-09-20T00:00:00Z',\n   '2024-09-22T00:00:00Z',\n   '2024-09-27T00:00:00Z',\n   '2024-10-01T00:00:00Z',\n   '2024-10-02T00:00:00Z',\n   '2024-10-04T00:00:00Z',\n   '2024-10-05T00:00:00Z',\n   '2024-10-07T00:00:00Z',\n   '2024-10-10T00:00:00Z',\n   '2024-10-11T00:00:00Z',\n   '2024-10-12T00:00:00Z',\n   '2024-10-14T00:00:00Z',\n   '2024-12-18T00:00:00Z',\n   '2025-01-12T00:00:00Z',\n   '2025-02-10T00:00:00Z',\n   '2025-02-17T00:00:00Z',\n   '2025-02-20T00:00:00Z',\n   '2025-02-23T00:00:00Z',\n   '2025-02-25T00:00:00Z',\n   '2025-03-10T00:00:00Z',\n   '2025-03-12T00:00:00Z',\n   '2025-03-13T00:00:00Z',\n   '2025-03-17T00:00:00Z',\n   '2025-03-18T00:00:00Z',\n   '2025-03-19T00:00:00Z',\n   '2025-03-22T00:00:00Z',\n   '2025-03-31T00:00:00Z',\n   '2025-04-07T00:00:00Z',\n   '2025-04-08T00:00:00Z',\n   '2025-04-09T00:00:00Z',\n   '2025-06-08T00:00:00Z',\n   '2025-06-09T00:00:00Z',\n   '2025-06-11T00:00:00Z',\n   '2025-06-14T00:00:00Z',\n   '2025-06-17T00:00:00Z',\n   '2025-06-18T00:00:00Z',\n   '2025-06-19T00:00:00Z',\n   '2025-06-20T00:00:00Z',\n   '2025-06-21T00:00:00Z',\n   '2025-06-28T00:00:00Z',\n   '2025-06-29T00:00:00Z',\n   '2025-07-08T00:00:00Z',\n   '2025-07-10T00:00:00Z',\n   '2025-07-17T00:00:00Z']},\n 'description': 'Sentinel-2 is a multispectral optical imaging mission providing high-resolution imagery for disaster monitoring and environmental assessment. This collection includes multiple spectral band products and derived indices: true color and false color composites for visual analysis, NDVI for vegetation health monitoring, burn ratio for fire damage assessment, MNDWI for water detection, and cloud masks for data quality filtering.',\n 'item_assets': {'ndvi': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'NDVI',\n   'description': 'Normalized Difference Vegetation Index measuring vegetation health and density using near-infrared and red bands.'},\n  'mndwi': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'MNDWI',\n   'description': 'Modified Normalized Difference Water Index for detecting and mapping surface water bodies and flood extent.'},\n  'colorIR': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Color Infrared',\n   'description': 'False color infrared composite (NIR, Red, Green) emphasizing vegetation health and vigor in red tones.'},\n  'burnRatio': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Burn Ratio',\n   'description': 'Normalized Burn Ratio (NBR) index highlighting burned areas by comparing near-infrared and shortwave infrared bands for fire damage assessment.'},\n  'cloudMask': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Cloud Mask',\n   'description': 'Cloud and cloud shadow mask identifying pixels obscured by atmospheric conditions for data quality filtering.'},\n  'trueColor': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'True Color',\n   'description': \"True color RGB composite using visible wavelengths for natural-looking imagery of Earth's surface.\"},\n  'shortwaveIR': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Shortwave Infrared',\n   'description': 'Shortwave infrared composite highlighting moisture content and penetrating smoke for fire and drought monitoring.'},\n  'naturalColor': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Natural Color',\n   'description': 'Natural color composite using visible bands (Red, Green, Blue) for intuitive visual interpretation of surface features.'}},\n 'stac_version': '1.0.0',\n 'stac_extensions': ['https://stac-extensions.github.io/render/v1.0.0/schema.json',\n  'https://stac-extensions.github.io/item-assets/v1.0.0/schema.json',\n  'https://stac-extensions.github.io/authentication/v1.1.0/schema.json'],\n 'dashboard:is_periodic': False,\n 'dashboard:time_interval': 'P1D',\n 'auth:schemes': {'oidc': {'type': 'openIdConnect',\n   'openIdConnectUrl': 'https://keycloak.delta-backend.xyz/realms/veda/.well-known/openid-configuration'}}}\n\n\nExamining the contents of our collection under summaries we see that the data is available on select dates. By looking at the renders we observe the products available, along with their rescale values. By looking at the documentation for the Sentinel-2 imagery for this event we can see the dates and products of interest.",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#exploring-true-color-color-infrared-imagery---using-the-raster-api",
+    "href": "user_data_notebooks/NM_Fire.html#exploring-true-color-color-infrared-imagery---using-the-raster-api",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "Exploring True Color & Color Infrared Imagery - Using the Raster API",
+    "text": "Exploring True Color & Color Infrared Imagery - Using the Raster API\nWe’ll explore Sentinel-2 imagery before and after the Trout Fire to observe the resulting burn scar. We’ll then visualize the outputs on a map using folium.\nTo start, we’ll identify which product we would like to plot.\nThe True Color RGB composite provides a product of how the surface would look to the naked eye from space. The RGB is created using the red, green, and blue channels of the respective instrument.\nThe Color Infrared composite is created using the near-infrared, red, and green channels, allowing for the ability to see areas impacted by the fires. The near-infrared gives the ability to see through thin clouds. Healthy vegetation is shown as red, water is in blue.\n\n#choose which product to visualize\nparams = {\n    \"assets\": \"colorIR\", #\"trueColor\",\n}\n\nNow we will pass the item date, collection name, and params to the Raster API endpoint. We will do this twice: once for before the fire, and once afterwards.\n\ntile_pre = requests.get(\n    f\"{RASTER_API_URL}/collections/{collection_name}/items/{'sentinel-2-2025-06-09'}/WebMercatorQuad/tilejson.json?\",\n    params=params,\n).json()\ntile_pre\n\n{'tilejson': '2.2.0',\n 'version': '1.0.0',\n 'scheme': 'xyz',\n 'tiles': ['https://dev.openveda.cloud/api/raster/collections/sentinel-2-all-vars-daily/items/sentinel-2-2025-06-09/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?assets=colorIR'],\n 'minzoom': 0,\n 'maxzoom': 24,\n 'bounds': [-108.87342891912581,\n  32.37731504449202,\n  -106.97869343172056,\n  33.46711546874811],\n 'center': [-107.92606117542319, 32.92221525662006, 0]}\n\n\n\ntile_post = requests.get(\n    f\"{RASTER_API_URL}/collections/{collection_name}/items/{'sentinel-2-2025-06-29'}/WebMercatorQuad/tilejson.json?\",\n    params=params,\n).json()\ntile_post\n\n{'tilejson': '2.2.0',\n 'version': '1.0.0',\n 'scheme': 'xyz',\n 'tiles': ['https://dev.openveda.cloud/api/raster/collections/sentinel-2-all-vars-daily/items/sentinel-2-2025-06-29/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?assets=colorIR'],\n 'minzoom': 0,\n 'maxzoom': 24,\n 'bounds': [-108.87342828381848,\n  32.37738839044249,\n  -106.97877645825533,\n  33.46711546874811],\n 'center': [-107.9261023710369, 32.922251929595305, 0]}\n\n\nWe will then use the tile URL prepared above to create a simple visualization for both time steps using folium. In the visualization you can zoom in and out of the map’s focus area and compare the burn scar to the pre-fire image side-by-side.\n\n# Set initial zoom and map for Trout Fire\nm = folium.plugins.DualMap(location=(32.97, -108.15), zoom_start=11)\n\n# June 9 2025\nmap_layer_pre = TileLayer(\n    tiles=tile_pre[\"tiles\"][0],\n    attr=\"VEDA\",\n    opacity=0.8,\n)\nmap_layer_pre.add_to(m.m1)\n\n# June 29 2025\nmap_layer_post = TileLayer(\n    tiles=tile_post[\"tiles\"][0],\n    attr=\"VEDA\",\n    opacity=0.8,\n)\nmap_layer_post.add_to(m.m2)\n\n# Properly styled title overlay for DualMap\ntitle_html = '''\n&lt;div style=\"\nposition: fixed; \ntop: 75px; left: 0; width: 100%;\ntext-align: center;\nfont-size: 20px;\nfont-weight: bold;\nbackground-color: rgba(255, 255, 255, 0.7);\npadding: 5px;\nz-index: 9999;\n\"&gt;\nSentinel-2 Imagery Pre-Post Fire\n&lt;/div&gt;\n'''\n\nm.get_root().html.add_child(folium.Element(title_html))\nm\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#exploring-normalized-burn-ratio-difference-dnbr-for-the-trout-fire",
+    "href": "user_data_notebooks/NM_Fire.html#exploring-normalized-burn-ratio-difference-dnbr-for-the-trout-fire",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "Exploring Normalized Burn Ratio Difference (dNBR) for the Trout Fire",
+    "text": "Exploring Normalized Burn Ratio Difference (dNBR) for the Trout Fire\nFollowing the same process, we will review visualizing imagery from two more STAC collections. First, we will explore dNBR.\nNBR is defined mathematically as (NIR – SWIR)/(NIR + SWIR) where NIR is near-infrared and SWIR is short-wave infrared. dNBR is computed by the difference between the pre-fire NBR and the post-fire NBR. NBR is commonly used as a proxy to indicate areas which have charred vegetation. Darker areas (more negative values) in the NBR image more strongly represent the presence of burned vegetation. Since the dNBR considers the condition of the scene before the fire occurred, the resulting value has been used as a proxy for burn severity. Higher dNBR values represent a proxy for greater burn severity. Negative dNBR values may represent a re-greening of or growth of vegetation in between pre and post imagery.\nMore information on dNBR can be found here: https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio.\ndNBR data may be computed while the fire is in progress. This is intentionally done to prioritize rapid data availability for proactive disaster response but means data can change over the course of the fire.\ndNBR is produced by NASA’s Observational Products for End-Users from Remote Sensing Analysis (OPERA) program, which generates surface products derived from satellite data. Therefore, dNBR data will be found in an opera collection.\n\n# Fetch STAC collection\ncollection_name_opera_subdaily = \"opera-all-vars-subdaily\"\ncollection_opera_subdaily = requests.get(f\"{STAC_API_URL}/collections/{collection_name_opera_subdaily}\").json()\ncollection_opera_subdaily\n\n{'id': 'opera-all-vars-subdaily',\n 'type': 'Collection',\n 'links': [{'rel': 'items',\n   'type': 'application/geo+json',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/opera-all-vars-subdaily/items'},\n  {'rel': 'parent',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/'},\n  {'rel': 'root',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/'},\n  {'rel': 'self',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/opera-all-vars-subdaily'},\n  {'rel': 'http://www.opengis.net/def/rel/ogc/1.0/queryables',\n   'type': 'application/schema+json',\n   'title': 'Queryables',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/opera-all-vars-subdaily/queryables'}],\n 'title': 'OPERA All Variables Subdaily',\n 'extent': {'spatial': {'bbox': [[-124.13852907879547,\n     -32.71812239144448,\n     -49.82862066116967,\n     37.94758795791628]]},\n  'temporal': {'interval': [['2024-01-25 02:07:15+00',\n     '2025-06-22 17:45:00+00']]}},\n 'tenant': ['nasa-disasters'],\n 'license': 'CC0-1.0',\n 'renders': {'WTR': {'assets': ['WTR'], 'rescale': [[0, 255]]},\n  'dnbr': {'assets': ['dnbr'], 'rescale': [[-1, 1]]},\n  'hls-DSWx': {'assets': ['hls-DSWx'], 'rescale': [[0, 255]]}},\n 'providers': [{'url': 'https://disasters.openveda.cloud',\n   'name': 'NASA Disasters Program',\n   'roles': ['host']}],\n 'summaries': {'datetime': ['2024-01-25T02:07:15Z',\n   '2024-01-25T14:08:49Z',\n   '2024-02-06T02:07:15Z',\n   '2024-02-06T13:43:47Z',\n   '2024-04-21T13:31:51Z',\n   '2024-05-18T13:22:31Z',\n   '2024-05-21T13:31:51Z',\n   '2025-06-21T18:05:00Z',\n   '2025-06-22T17:45:00Z']},\n 'description': 'OPERA (Observational Products for End-Users from Remote Sensing Analysis) provides subdaily Earth observation products for disaster monitoring. This collection includes surface water extent mapping from SAR and HLS sources, and burn severity assessment using delta Normalized Burn Ratio for rapid fire response and flood monitoring.',\n 'item_assets': {'WTR': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Water Classification',\n   'description': 'Surface water extent classification layer derived from SAR or optical imagery.'},\n  'dnbr': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Delta Normalized Burn Ratio',\n   'description': 'Delta Normalized Burn Ratio showing burn severity from pre- and post-fire imagery comparison.'},\n  'hls-DSWx': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Dynamic Surface Water Extent',\n   'description': 'HLS Dynamic Surface Water Extent product showing water presence and classification.'}},\n 'stac_version': '1.0.0',\n 'stac_extensions': ['https://stac-extensions.github.io/render/v1.0.0/schema.json',\n  'https://stac-extensions.github.io/item-assets/v1.0.0/schema.json',\n  'https://stac-extensions.github.io/authentication/v1.1.0/schema.json'],\n 'dashboard:is_periodic': False,\n 'dashboard:time_interval': 'P1S',\n 'auth:schemes': {'oidc': {'type': 'openIdConnect',\n   'openIdConnectUrl': 'https://keycloak.delta-backend.xyz/realms/veda/.well-known/openid-configuration'}}}\n\n\nBased on the rescale for dNBR, we will set that in the parameters and asssign it a colormap. Once again, we will select dates based on the post-event dates documnented.\nWe rescaled the values from 0-1 instead of the -1-1 range of data because it was found when first plotting, there were no noticeable areas of sub-zero dNBR.\n\nparams = {\n    \"assets\": \"dnbr\",\n    \"rescale\": \"0,1\",\n    \"colormap_name\": \"inferno\"\n}\n\n\ntile_fire_1 = requests.get(\n    f\"{RASTER_API_URL}/collections/{collection_name_opera_subdaily}/items/{'opera-2025-06-21T18:05:00'}/WebMercatorQuad/tilejson.json?\",\n    params=params,\n).json()\ntile_fire_1\n\n{'tilejson': '2.2.0',\n 'version': '1.0.0',\n 'scheme': 'xyz',\n 'tiles': ['https://dev.openveda.cloud/api/raster/collections/opera-all-vars-subdaily/items/opera-2025-06-21T18:05:00/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?assets=dnbr&rescale=0%2C1&colormap_name=inferno'],\n 'minzoom': 0,\n 'maxzoom': 24,\n 'bounds': [-108.23813471556193,\n  32.87367428279499,\n  -108.01506342300563,\n  33.04157419951851],\n 'center': [-108.12659906928377, 32.95762424115675, 0]}\n\n\n\ntile_fire_2 = requests.get(\n    f\"{RASTER_API_URL}/collections/{collection_name_opera_subdaily}/items/{'opera-2025-06-22T17:45:00'}/WebMercatorQuad/tilejson.json?\",\n    params=params,\n).json()\ntile_fire_2\n\n{'tilejson': '2.2.0',\n 'version': '1.0.0',\n 'scheme': 'xyz',\n 'tiles': ['https://dev.openveda.cloud/api/raster/collections/opera-all-vars-subdaily/items/opera-2025-06-22T17:45:00/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?assets=dnbr&rescale=0%2C1&colormap_name=inferno'],\n 'minzoom': 0,\n 'maxzoom': 24,\n 'bounds': [-108.23813471556193,\n  32.87367428279499,\n  -108.01506342300563,\n  33.04157419951851],\n 'center': [-108.12659906928377, 32.95762424115675, 0]}\n\n\n\n# --- Create the DualMap ---\nm = DualMap(location=(32.92, -108.15), zoom_start=12)\n\n# --- Add your tiles ---\nmap_layer_1 = TileLayer(\n    tiles=tile_fire_1[\"tiles\"][0],\n    attr=\"VEDA\",\n    opacity=0.5,\n)\nmap_layer_1.add_to(m.m1)\n\nmap_layer_2 = TileLayer(\n    tiles=tile_fire_2[\"tiles\"][0],\n    attr=\"VEDA\",\n    opacity=0.5,\n)\nmap_layer_2.add_to(m.m2)\n\n# --- Add title ---\ntitle_html = '''\n&lt;div style=\"\nposition: fixed; \ntop: 75px; left: 0; width: 100%;\ntext-align: center;\nfont-size: 20px;\nfont-weight: bold;\nbackground-color: rgba(255, 255, 255, 0.7);\npadding: 5px;\nz-index: 9999;\n\"&gt;\nBurn Severity Map (dNBR) on 6-21 (Left) & 6-22 (Right)\n&lt;/div&gt;\n'''\nm.get_root().html.add_child(folium.Element(title_html))\n\n# --- Create inferno colormap ---\ncolormap = cm.linear.inferno.scale(0, 1)\ncolormap.caption = 'dNBR'\n\n# --- Use to_step() to get stable HTML ---\ncolormap_step = colormap.to_step(n=50)\ncolorbar_html = colormap_step._repr_html_()\n\n# --- Wrap and fix position (bottom-left) ---\nfixed_colorbar = f'''\n&lt;div style=\"\nposition: fixed;\nbottom: 30px;\nleft: 30px;\nwidth: 220px;\nz-index: 9999;\n\"&gt;\n{colorbar_html}\n&lt;/div&gt;\n'''\nm.get_root().html.add_child(folium.Element(fixed_colorbar))\n\nm\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#exploring-opera-disturbance-alert-from-harmonized-landsat-sentinel-2---veg-anom-max-product-for-the-trout-fire",
+    "href": "user_data_notebooks/NM_Fire.html#exploring-opera-disturbance-alert-from-harmonized-landsat-sentinel-2---veg-anom-max-product-for-the-trout-fire",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "Exploring OPERA Disturbance Alert from Harmonized Landsat Sentinel-2 - VEG-ANOM-MAX Product for the Trout Fire",
+    "text": "Exploring OPERA Disturbance Alert from Harmonized Landsat Sentinel-2 - VEG-ANOM-MAX Product for the Trout Fire\nFinally, we will explore changes in vegetation cover.\nVEG-ANOM-MAX is the difference between historical and current year observed vegetation cover at the date of maximum decrease (vegetation loss of 0-100%). This layer can be used to threshold vegetation disturbance per a given sensitivity (e.g. disturbance of &gt;=20% vegetation cover loss). The sum of the historical percent vegetation and the anomaly value will be the vegetation cover estimate for the current year.\nThe process for visualization will exactly follow prior examples.\n\n# Fetch STAC collection\ncollection_name_opera_daily = \"opera-all-vars-daily\"\ncollection_opera_daily = requests.get(f\"{STAC_API_URL}/collections/{collection_name_opera_daily}\").json()\ncollection_opera_daily\n\n{'id': 'opera-all-vars-daily',\n 'type': 'Collection',\n 'links': [{'rel': 'items',\n   'type': 'application/geo+json',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/opera-all-vars-daily/items'},\n  {'rel': 'parent',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/'},\n  {'rel': 'root',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/'},\n  {'rel': 'self',\n   'type': 'application/json',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/opera-all-vars-daily'},\n  {'rel': 'http://www.opengis.net/def/rel/ogc/1.0/queryables',\n   'type': 'application/schema+json',\n   'title': 'Queryables',\n   'href': 'https://dev.openveda.cloud/api/stac/collections/opera-all-vars-daily/queryables'}],\n 'title': 'OPERA All Variables Daily',\n 'extent': {'spatial': {'bbox': [[-127.047501638,\n     -32.66765099343841,\n     92.1772250157607,\n     42.5476]]},\n  'temporal': {'interval': [['2023-06-12 00:00:00+00',\n     '2025-07-11 00:00:00+00']]}},\n 'tenant': ['nasa-disasters'],\n 'license': 'CC0-1.0',\n 'renders': {'AZ': {'assets': ['AZ'], 'rescale': [[-10, 72]]},\n  'RNG': {'assets': ['RNG'], 'rescale': [[-15, 15]]},\n  'UNW': {'assets': ['UNW'], 'rescale': [[-1, 1]]},\n  'WRP': {'assets': ['WRP'], 'rescale': [[-3.14, 3.14]]},\n  'hls-WTR': {'assets': ['hls-WTR'], 'rescale': [[0, 255]]},\n  'hls-BWTR': {'assets': ['hls-BWTR'], 'rescale': [[0, 255]]},\n  'hls-DWSx': {'assets': ['hls-DWSx'], 'rescale': [[0, 255]]},\n  'GEN-ANOM-MAX': {'assets': ['GEN-ANOM-MAX'],\n   'rescale': [[0, 100]],\n   'colormap_name': 'ylorrd'},\n  'VEG-ANOM-MAX': {'assets': ['VEG-ANOM-MAX'],\n   'rescale': [[0, 255]],\n   'colormap_name': 'ylorrd'},\n  'hls-FloodMap': {'assets': ['hls-FloodMap'], 'rescale': [[0, 1]]},\n  'hls-NoSnowIce': {'assets': ['hls-NoSnowIce'], 'rescale': [[0, 255]]},\n  'GEN-DIST-STATUS': {'assets': ['GEN-DIST-STATUS'],\n   'rescale': [[0, 255]],\n   'colormap_name': 'ylorrd'},\n  'VEG-DIST-STATUS': {'assets': ['VEG-DIST-STATUS'],\n   'rescale': [[0, 255]],\n   'colormap_name': 'ylorrd'},\n  'hls-changeMap-date1': {'assets': ['hls-changeMap-date1'],\n   'rescale': [[0, 1]]},\n  'hls-changeMap-date2': {'assets': ['hls-changeMap-date2'],\n   'rescale': [[0, 1]]}},\n 'providers': [{'url': 'https://disasters.openveda.cloud',\n   'name': 'NASA Disasters Program',\n   'roles': ['host']}],\n 'summaries': {'datetime': ['2023-06-12T00:00:00Z',\n   '2023-06-17T00:00:00Z',\n   '2023-08-12T00:00:00Z',\n   '2023-08-14T00:00:00Z',\n   '2023-08-19T00:00:00Z',\n   '2023-08-24T00:00:00Z',\n   '2023-09-03T00:00:00Z',\n   '2023-09-04T00:00:00Z',\n   '2023-09-05T00:00:00Z',\n   '2023-09-06T00:00:00Z',\n   '2023-09-08T00:00:00Z',\n   '2023-09-10T00:00:00Z',\n   '2024-04-21T00:00:00Z',\n   '2024-05-05T00:00:00Z',\n   '2024-08-09T00:00:00Z',\n   '2024-08-21T00:00:00Z',\n   '2024-09-14T00:00:00Z',\n   '2024-09-26T00:00:00Z',\n   '2024-09-27T00:00:00Z',\n   '2024-10-02T00:00:00Z',\n   '2024-10-03T00:00:00Z',\n   '2024-10-08T00:00:00Z',\n   '2024-10-10T00:00:00Z',\n   '2024-10-11T00:00:00Z',\n   '2024-10-12T00:00:00Z',\n   '2024-11-25T00:00:00Z',\n   '2025-01-12T00:00:00Z',\n   '2025-01-14T00:00:00Z',\n   '2025-06-23T00:00:00Z',\n   '2025-06-24T00:00:00Z',\n   '2025-06-26T00:00:00Z',\n   '2025-06-28T00:00:00Z',\n   '2025-07-11T00:00:00Z']},\n 'description': 'OPERA (Observational Products for End-Users from Remote Sensing Analysis) provides multiple Earth observation products including InSAR displacement measurements, vegetation disturbance alerts, and surface water extent mapping. This collection combines OPERA-InSAR displacement products (unwrapped/wrapped phase, azimuth and range offsets), ARIA OPERA vegetation disturbance status and anomaly products derived from Sentinel-2, and HLS-derived dynamic surface water extent products for comprehensive land surface monitoring.',\n 'item_assets': {'AZ': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Azimuth Offset',\n   'description': 'Azimuth offset measurements detecting horizontal ground displacement perpendicular to satellite flight direction from InSAR processing.'},\n  'RNG': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Range Offset',\n   'description': 'Range offset measurements detecting ground displacement parallel to satellite line-of-sight from InSAR processing.'},\n  'UNW': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Unwrapped Phase',\n   'description': 'Unwrapped interferometric phase representing ground displacement measurements after phase ambiguity resolution.'},\n  'WRP': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Wrapped Phase',\n   'description': 'Wrapped interferometric phase showing ground displacement within 2π phase cycles before unwrapping.'},\n  'hls-WTR': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Water',\n   'description': 'HLS water classification layer.'},\n  'hls-BWTR': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Binary Water',\n   'description': 'HLS binary water classification.'},\n  'hls-DWSx': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Dynamic Surface Water Extent',\n   'description': 'HLS Dynamic Surface Water Extent product showing water presence and classification.'},\n  'GEN-ANOM-MAX': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Sentinel-2 ARIA OPERA Disturbance Alert (GEN ANOM MAX)',\n   'description': 'Generic disturbance maximum anomaly value.'},\n  'VEG-ANOM-MAX': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Sentinel-2 ARIA OPERA Disturbance Alert (VEG ANOM MAX)',\n   'description': 'S2 ARIA OPERA disturbance alert maximum vegetation anomaly value.'},\n  'hls-FloodMap': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Flood Map',\n   'description': 'HLS-derived flood extent map identifying inundated areas.'},\n  'hls-NoSnowIce': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Water No Snow/Ice',\n   'description': 'HLS water extent excluding snow and ice coverage.'},\n  'GEN-DIST-STATUS': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Sentinel-2 ARIA OPERA Disturbance Alert (GEN DIST STATUS)',\n   'description': 'Generic disturbance status.'},\n  'VEG-DIST-STATUS': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'Sentinel-2 ARIA OPERA Disturbance Alert (VEG DIST STATUS)',\n   'description': 'S2 ARIA OPERA vegetation disturbance status.'},\n  'hls-changeMap-date1': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Change Map',\n   'description': 'HLS surface water change detection map showing changes in water extent between time periods.'},\n  'hls-changeMap-date2': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',\n   'roles': ['data', 'layer'],\n   'title': 'HLS Change Map',\n   'description': 'HLS surface water change detection map showing changes in water extent between time periods.'}},\n 'stac_version': '1.0.0',\n 'stac_extensions': ['https://stac-extensions.github.io/render/v1.0.0/schema.json',\n  'https://stac-extensions.github.io/item-assets/v1.0.0/schema.json',\n  'https://stac-extensions.github.io/authentication/v1.1.0/schema.json'],\n 'dashboard:is_periodic': False,\n 'dashboard:time_interval': 'P1D',\n 'auth:schemes': {'oidc': {'type': 'openIdConnect',\n   'openIdConnectUrl': 'https://keycloak.delta-backend.xyz/realms/veda/.well-known/openid-configuration'}}}\n\n\nI will use the colormap under VEG-ANOM-MAX.\n\nparams = {\n    \"assets\": \"VEG-ANOM-MAX\",\n    \"rescale\": \"0,255\",\n    \"colormap_name\": \"ylorrd\"\n}\n\n\ntile = requests.get(\n    f\"{RASTER_API_URL}/collections/{collection_name_opera_daily}/items/{'opera-2025-06-24'}/WebMercatorQuad/tilejson.json?\",\n    params=params,\n).json()\ntile\n\n{'tilejson': '2.2.0',\n 'version': '1.0.0',\n 'scheme': 'xyz',\n 'tiles': ['https://dev.openveda.cloud/api/raster/collections/opera-all-vars-daily/items/opera-2025-06-24/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?assets=VEG-ANOM-MAX&rescale=0%2C255&colormap_name=ylorrd'],\n 'minzoom': 0,\n 'maxzoom': 24,\n 'bounds': [-108.97616786143968,\n  31.475062809632632,\n  -107.00321128236091,\n  33.46381942656848],\n 'center': [-107.9896895719003, 32.469441118100555, 0]}\n\n\n\nm = Map(\n    tiles=\"OpenStreetMap\",\n    location=[\n        32.97,\n        -108.15,\n    ],\n    zoom_start=12,\n)\n\nmap_layer = TileLayer(\n    tiles=tile[\"tiles\"][0],\n    attr=\"VEDA\",\n    opacity=0.6,\n)\n\nmap_layer.add_to(m)\n\n# --- Add title ---\ntitle_html = '''\n&lt;div style=\"\nposition: fixed; \ntop: 75px; left: 0; width: 100%;\ntext-align: center;\nfont-size: 20px;\nfont-weight: bold;\nbackground-color: rgba(255, 255, 255, 0.7);\npadding: 5px;\nz-index: 9999;\n\"&gt;\nMaximum Loss of Percent Vegetation 6-24-25\n&lt;/div&gt;\n'''\nm.get_root().html.add_child(folium.Element(title_html))\n\n# --- Create inferno colormap ---\ncolormap = cm.linear.YlOrRd_09.scale(0, 100)\ncolormap.caption = 'Vegetation Lost (%)'\n\n# --- Use to_step() to get stable HTML ---\ncolormap_step = colormap.to_step(n=50)\ncolorbar_html = colormap_step._repr_html_()\n\n# --- Wrap and fix position (bottom-left) ---\nfixed_colorbar = f'''\n&lt;div style=\"\nposition: fixed;\nbottom: 30px;\nleft: 30px;\nwidth: 220px;\nz-index: 9999;\n\"&gt;\n{colorbar_html}\n&lt;/div&gt;\n'''\nm.get_root().html.add_child(folium.Element(fixed_colorbar))\n\nm\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "user_data_notebooks/NM_Fire.html#summary",
+    "href": "user_data_notebooks/NM_Fire.html#summary",
+    "title": "June 2025 New Mexico Wildfires",
+    "section": "Summary",
+    "text": "Summary\nIn this case study we have successfully visualized how NASA monitors wildfires with several satellite products observing the June 2025 Trout Fire in New Mexico.",
+    "crumbs": [
+      "Data Usage Notebooks",
+      "Disasters Dataset Tutorials",
+      "June 2025 New Mexico Wildfire Visible Satellite and Burn Data"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html",
+    "href": "AWS/AWS_SSO_Remote_Server.html",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "This guide explains how to use your AWS SSO credentials from your local machine on remote servers (like JupyterHub or SSH servers) without storing permanent credentials.\n\n\n\n\n\n✅ Completed AWS SSO Setup Guide on your local machine\n✅ SSH/SCP access to your remote server\n✅ AWS CLI v2 installed on the remote server\n\n\n\n\n\nAWS SSO generates temporary credentials stored in:\n\nConfiguration: ~/.aws/config (SSO profile settings)\nCredentials Cache: ~/.aws/sso/cache/ (temporary session tokens)\n\nTo use SSO on a remote server, you need to:\n\nCopy the SSO profile configuration once\nSync the temporary credentials cache regularly (before each session)\n\n\n\n\n\n\n\nFirst, copy your SSO profile configuration from your local machine to the remote server:\nLinux/macOS:\n# Copy the AWS config file containing your SSO profile\nscp ~/.aws/config username@remote-host:~/.aws/config\nWindows (PowerShell):\n# Copy the AWS config file containing your SSO profile\nscp \"$env:USERPROFILE\\.aws\\config\" username@remote-host:~/.aws/config\nAlternative: If you have other profiles in your config, you can manually copy just the SSO section:\nLinux/macOS:\n# View your local SSO configuration\ncat ~/.aws/config\nWindows (PowerShell):\n# View your local SSO configuration\nGet-Content \"$env:USERPROFILE\\.aws\\config\"\nThen SSH into your remote server and create/edit ~/.aws/config:\n[profile disasters-sso]\nsso_session = disasters\nsso_account_id = 867530900000\nsso_role_name = Project-Power-User\nregion = us-east-1\noutput = json\n\n[sso-session disasters]\nsso_start_url = https://d-9067c5bbc5.awsapps.com/start/#\nsso_region = us-east-1\nsso_registration_scopes = sso:account:access\n💡 Important: Replace the account ID, role name, and SSO URL with your actual values from the local AWS SSO setup.\n\n\n\n\n\nSince SSO credentials are temporary and expire, you’ll need to sync them from your local machine to the remote server regularly. Below are automated solutions for both Windows and Linux.\n\n\n\n\n\n\nOpen PowerShell and run:\nTest-Path $PROFILE\nIf it returns False, create the profile:\nNew-Item -Type File -Path $PROFILE -Force\n\n\n\nEdit your PowerShell profile:\nnotepad $PROFILE\nAdd the following function (replace username and remote-host with your actual values):\nfunction disasterlogin {\n    try {\n        Write-Host \"Logging into AWS SSO...\" -ForegroundColor Yellow\n        aws sso login --profile disasters-sso\n\n        Write-Host \"Copying SSO cache to remote server...\" -ForegroundColor Yellow\n        scp -r \"$env:USERPROFILE\\.aws\\sso\\cache\\*\" username@remote-host:~/.aws/sso/cache/\n\n        Write-Host \"Complete!\" -ForegroundColor Green\n    }\n    catch {\n        Write-Host \"Error: $_\" -ForegroundColor Red\n    }\n}\n\n\n\nClose and reopen PowerShell, or run:\n. $PROFILE\n\n\n\nFrom now on, simply run:\ndisasterlogin\nThis will:\n\nPrompt you to log in via AWS SSO in your browser\nAutomatically copy the temporary credentials to your remote server\nDisplay status updates\n\n\n\n\n\n\n\n\nEdit your shell profile file (choose based on your shell):\n# For bash\nnano ~/.bashrc\n\n# For zsh (macOS default)\nnano ~/.zshrc\nAdd the following function (replace username and remote-host with your actual values):\ndisasterlogin() {\n    echo -e \"\\033[1;33mLogging into AWS SSO...\\033[0m\"\n    aws sso login --profile disasters-sso\n\n    if [ $? -eq 0 ]; then\n        echo -e \"\\033[1;33mCopying SSO cache to remote server...\\033[0m\"\n        scp -r ~/.aws/sso/cache/* username@remote-host:~/.aws/sso/cache/\n\n        if [ $? -eq 0 ]; then\n            echo -e \"\\033[1;32mComplete!\\033[0m\"\n        else\n            echo -e \"\\033[1;31mError copying credentials to remote server\\033[0m\"\n            return 1\n        fi\n    else\n        echo -e \"\\033[1;31mError logging into AWS SSO\\033[0m\"\n        return 1\n    fi\n}\n\n\n\n# For bash\nsource ~/.bashrc\n\n# For zsh\nsource ~/.zshrc\n\n\n\nFrom now on, simply run:\ndisasterlogin\nThis will: 1. Prompt you to log in via AWS SSO in your browser 2. Automatically copy the temporary credentials to your remote server 3. Display status updates with color-coded messages\n\n\n\n\n\n\n\nSSH into your remote server:\nssh username@remote-host\nTest the AWS CLI with your SSO profile:\n# List S3 buckets\naws s3 ls --profile disasters-sso\n\n# Verify identity\naws sts get-caller-identity --profile disasters-sso\nExpected output:\n{\n    \"UserId\": \"AIDAXXXXXXXXXXXXXXXXX:user@example.com\",\n    \"Account\": \"867530900000\",\n    \"Arn\": \"arn:aws:sts::867530900000:assumed-role/Project-Power-User/user@example.com\"\n}\n\n\n\n\n\n\n\n\nOn your local machine, run the login function:\n\nWindows: disasterlogin in PowerShell\nLinux/macOS: disasterlogin in terminal\n\nSSH into your remote server:\nssh username@remote-host\nUse AWS commands (optionally set the profile as default):\nTemporary (for current session only):\n# For bash/zsh\nexport AWS_PROFILE=disasters-sso\naws s3 ls\nPermanent (add to shell profile):\nTo avoid setting this every time you log in, add it to your shell profile:\n# For bash - add to ~/.bashrc\necho 'export AWS_PROFILE=disasters-sso' &gt;&gt; ~/.bashrc\nsource ~/.bashrc\n\n# For zsh - add to ~/.zshrc\necho 'export AWS_PROFILE=disasters-sso' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\nAlternative for csh/tcsh shells:\nIf export doesn’t work, you may be using a csh/tcsh shell. Use setenv instead:\n# Temporary (for current session)\nsetenv AWS_PROFILE disasters-sso\naws s3 ls\n\n# Permanent - add to ~/.cshrc or ~/.tcshrc\necho 'setenv AWS_PROFILE disasters-sso' &gt;&gt; ~/.cshrc\nsource ~/.cshrc\n\n\n\n\nIf you see errors like “The security token included in the request is invalid”:\n\nRun disasterlogin again on your local machine\nThe fresh credentials will be synced to the remote server\nContinue working on the remote server\n\n\n\n\n\n\n\n\nCause: SSH key not configured or remote directory doesn’t exist\nSolution:\n# Ensure .aws/sso/cache directory exists on remote server\nssh username@remote-host \"mkdir -p ~/.aws/sso/cache\"\n\n# Test SSH connection\nssh username@remote-host \"echo 'SSH works'\"\n\n\n\nCause: AWS CLI not installed on remote server\nSolution: Install AWS CLI v2 on the remote server\n# On the remote server (Linux)\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\n\n\n\nCause: Missing or incorrect ~/.aws/config on remote server\nSolution: Re-copy the config file from Step 1\n\n\n\n\n\n\nAlways sync before starting work - Run disasterlogin at the beginning of each session\nDon’t store permanent credentials - Never put long-term credentials on remote servers\nUse SSH keys - Set up SSH key authentication for passwordless SCP\nSet AWS_PROFILE - Export AWS_PROFILE=disasters-sso to avoid typing --profile repeatedly\nMonitor credential expiration - SSO tokens typically last 1-12 hours\n\n\n\n\n\n\n\n\n✅ No permanent credentials on remote servers - Only temporary tokens are synced\n✅ Automatic expiration - Tokens expire after a few hours\n✅ Centralized access control - Revoke access in AWS SSO, affects all servers immediately\n✅ No credential storage - Credentials are never stored in code or config files\n\n\n\n\n\n❌ Don’t copy ~/.aws/credentials to remote servers\n❌ Don’t run aws configure with permanent keys on remote servers\n❌ Don’t commit credentials to git repositories\n❌ Don’t share your SSO cache with other users\n\n\n\n\n\n\n\nAWS SSO Setup Guide (Local)\nAWS CLI SSO Documentation\nSSH Key Setup Guide\n\n\n🔐 Remember: Temporary credentials are your friend. Never use permanent credentials on shared servers!",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#use-aws-sso-credentials-on-remote-servers",
+    "href": "AWS/AWS_SSO_Remote_Server.html#use-aws-sso-credentials-on-remote-servers",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "This guide explains how to use your AWS SSO credentials from your local machine on remote servers (like JupyterHub or SSH servers) without storing permanent credentials.",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#prerequisites",
+    "href": "AWS/AWS_SSO_Remote_Server.html#prerequisites",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "✅ Completed AWS SSO Setup Guide on your local machine\n✅ SSH/SCP access to your remote server\n✅ AWS CLI v2 installed on the remote server",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#how-it-works",
+    "href": "AWS/AWS_SSO_Remote_Server.html#how-it-works",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "AWS SSO generates temporary credentials stored in:\n\nConfiguration: ~/.aws/config (SSO profile settings)\nCredentials Cache: ~/.aws/sso/cache/ (temporary session tokens)\n\nTo use SSO on a remote server, you need to:\n\nCopy the SSO profile configuration once\nSync the temporary credentials cache regularly (before each session)",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#step-1-initial-setup---copy-sso-configuration",
+    "href": "AWS/AWS_SSO_Remote_Server.html#step-1-initial-setup---copy-sso-configuration",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "First, copy your SSO profile configuration from your local machine to the remote server:\nLinux/macOS:\n# Copy the AWS config file containing your SSO profile\nscp ~/.aws/config username@remote-host:~/.aws/config\nWindows (PowerShell):\n# Copy the AWS config file containing your SSO profile\nscp \"$env:USERPROFILE\\.aws\\config\" username@remote-host:~/.aws/config\nAlternative: If you have other profiles in your config, you can manually copy just the SSO section:\nLinux/macOS:\n# View your local SSO configuration\ncat ~/.aws/config\nWindows (PowerShell):\n# View your local SSO configuration\nGet-Content \"$env:USERPROFILE\\.aws\\config\"\nThen SSH into your remote server and create/edit ~/.aws/config:\n[profile disasters-sso]\nsso_session = disasters\nsso_account_id = 867530900000\nsso_role_name = Project-Power-User\nregion = us-east-1\noutput = json\n\n[sso-session disasters]\nsso_start_url = https://d-9067c5bbc5.awsapps.com/start/#\nsso_region = us-east-1\nsso_registration_scopes = sso:account:access\n💡 Important: Replace the account ID, role name, and SSO URL with your actual values from the local AWS SSO setup.",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#step-2-automate-credential-sync",
+    "href": "AWS/AWS_SSO_Remote_Server.html#step-2-automate-credential-sync",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "Since SSO credentials are temporary and expire, you’ll need to sync them from your local machine to the remote server regularly. Below are automated solutions for both Windows and Linux.",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#step-2-windows---powershell-profile-setup",
+    "href": "AWS/AWS_SSO_Remote_Server.html#step-2-windows---powershell-profile-setup",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "Open PowerShell and run:\nTest-Path $PROFILE\nIf it returns False, create the profile:\nNew-Item -Type File -Path $PROFILE -Force\n\n\n\nEdit your PowerShell profile:\nnotepad $PROFILE\nAdd the following function (replace username and remote-host with your actual values):\nfunction disasterlogin {\n    try {\n        Write-Host \"Logging into AWS SSO...\" -ForegroundColor Yellow\n        aws sso login --profile disasters-sso\n\n        Write-Host \"Copying SSO cache to remote server...\" -ForegroundColor Yellow\n        scp -r \"$env:USERPROFILE\\.aws\\sso\\cache\\*\" username@remote-host:~/.aws/sso/cache/\n\n        Write-Host \"Complete!\" -ForegroundColor Green\n    }\n    catch {\n        Write-Host \"Error: $_\" -ForegroundColor Red\n    }\n}\n\n\n\nClose and reopen PowerShell, or run:\n. $PROFILE\n\n\n\nFrom now on, simply run:\ndisasterlogin\nThis will:\n\nPrompt you to log in via AWS SSO in your browser\nAutomatically copy the temporary credentials to your remote server\nDisplay status updates",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#step-2-linuxmacos---bash-profile-setup",
+    "href": "AWS/AWS_SSO_Remote_Server.html#step-2-linuxmacos---bash-profile-setup",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "Edit your shell profile file (choose based on your shell):\n# For bash\nnano ~/.bashrc\n\n# For zsh (macOS default)\nnano ~/.zshrc\nAdd the following function (replace username and remote-host with your actual values):\ndisasterlogin() {\n    echo -e \"\\033[1;33mLogging into AWS SSO...\\033[0m\"\n    aws sso login --profile disasters-sso\n\n    if [ $? -eq 0 ]; then\n        echo -e \"\\033[1;33mCopying SSO cache to remote server...\\033[0m\"\n        scp -r ~/.aws/sso/cache/* username@remote-host:~/.aws/sso/cache/\n\n        if [ $? -eq 0 ]; then\n            echo -e \"\\033[1;32mComplete!\\033[0m\"\n        else\n            echo -e \"\\033[1;31mError copying credentials to remote server\\033[0m\"\n            return 1\n        fi\n    else\n        echo -e \"\\033[1;31mError logging into AWS SSO\\033[0m\"\n        return 1\n    fi\n}\n\n\n\n# For bash\nsource ~/.bashrc\n\n# For zsh\nsource ~/.zshrc\n\n\n\nFrom now on, simply run:\ndisasterlogin\nThis will: 1. Prompt you to log in via AWS SSO in your browser 2. Automatically copy the temporary credentials to your remote server 3. Display status updates with color-coded messages",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#verification",
+    "href": "AWS/AWS_SSO_Remote_Server.html#verification",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "SSH into your remote server:\nssh username@remote-host\nTest the AWS CLI with your SSO profile:\n# List S3 buckets\naws s3 ls --profile disasters-sso\n\n# Verify identity\naws sts get-caller-identity --profile disasters-sso\nExpected output:\n{\n    \"UserId\": \"AIDAXXXXXXXXXXXXXXXXX:user@example.com\",\n    \"Account\": \"867530900000\",\n    \"Arn\": \"arn:aws:sts::867530900000:assumed-role/Project-Power-User/user@example.com\"\n}",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#daily-workflow",
+    "href": "AWS/AWS_SSO_Remote_Server.html#daily-workflow",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "On your local machine, run the login function:\n\nWindows: disasterlogin in PowerShell\nLinux/macOS: disasterlogin in terminal\n\nSSH into your remote server:\nssh username@remote-host\nUse AWS commands (optionally set the profile as default):\nTemporary (for current session only):\n# For bash/zsh\nexport AWS_PROFILE=disasters-sso\naws s3 ls\nPermanent (add to shell profile):\nTo avoid setting this every time you log in, add it to your shell profile:\n# For bash - add to ~/.bashrc\necho 'export AWS_PROFILE=disasters-sso' &gt;&gt; ~/.bashrc\nsource ~/.bashrc\n\n# For zsh - add to ~/.zshrc\necho 'export AWS_PROFILE=disasters-sso' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\nAlternative for csh/tcsh shells:\nIf export doesn’t work, you may be using a csh/tcsh shell. Use setenv instead:\n# Temporary (for current session)\nsetenv AWS_PROFILE disasters-sso\naws s3 ls\n\n# Permanent - add to ~/.cshrc or ~/.tcshrc\necho 'setenv AWS_PROFILE disasters-sso' &gt;&gt; ~/.cshrc\nsource ~/.cshrc\n\n\n\n\nIf you see errors like “The security token included in the request is invalid”:\n\nRun disasterlogin again on your local machine\nThe fresh credentials will be synced to the remote server\nContinue working on the remote server",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#troubleshooting",
+    "href": "AWS/AWS_SSO_Remote_Server.html#troubleshooting",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "Cause: SSH key not configured or remote directory doesn’t exist\nSolution:\n# Ensure .aws/sso/cache directory exists on remote server\nssh username@remote-host \"mkdir -p ~/.aws/sso/cache\"\n\n# Test SSH connection\nssh username@remote-host \"echo 'SSH works'\"\n\n\n\nCause: AWS CLI not installed on remote server\nSolution: Install AWS CLI v2 on the remote server\n# On the remote server (Linux)\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\n\n\n\nCause: Missing or incorrect ~/.aws/config on remote server\nSolution: Re-copy the config file from Step 1",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#best-practices",
+    "href": "AWS/AWS_SSO_Remote_Server.html#best-practices",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "Always sync before starting work - Run disasterlogin at the beginning of each session\nDon’t store permanent credentials - Never put long-term credentials on remote servers\nUse SSH keys - Set up SSH key authentication for passwordless SCP\nSet AWS_PROFILE - Export AWS_PROFILE=disasters-sso to avoid typing --profile repeatedly\nMonitor credential expiration - SSO tokens typically last 1-12 hours",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#security-considerations",
+    "href": "AWS/AWS_SSO_Remote_Server.html#security-considerations",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "✅ No permanent credentials on remote servers - Only temporary tokens are synced\n✅ Automatic expiration - Tokens expire after a few hours\n✅ Centralized access control - Revoke access in AWS SSO, affects all servers immediately\n✅ No credential storage - Credentials are never stored in code or config files\n\n\n\n\n\n❌ Don’t copy ~/.aws/credentials to remote servers\n❌ Don’t run aws configure with permanent keys on remote servers\n❌ Don’t commit credentials to git repositories\n❌ Don’t share your SSO cache with other users",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "AWS/AWS_SSO_Remote_Server.html#resources",
+    "href": "AWS/AWS_SSO_Remote_Server.html#resources",
+    "title": "🖥️ AWS SSO Remote Server Configuration Guide",
+    "section": "",
+    "text": "AWS SSO Setup Guide (Local)\nAWS CLI SSO Documentation\nSSH Key Setup Guide\n\n\n🔐 Remember: Temporary credentials are your friend. Never use permanent credentials on shared servers!",
+    "crumbs": [
+      "AWS",
+      "🖥️ AWS SSO Remote Server Configuration Guide"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "",
+    "text": "This page provides comprehensive instructions and guidance for using JupyterHub and performing data conversions for the Disasters project.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers JupyterHub setup, data transformation workflows, and conversion best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Live demonstrations of JupyterHub setup and navigation - Step-by-step data conversion walkthroughs - Real-world examples of geospatial data processing - Troubleshooting common issues and best practices\nDuration: [Add duration here]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#jupyterhub-and-data-conversions-tutorial",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#jupyterhub-and-data-conversions-tutorial",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "",
+    "text": "This page provides comprehensive instructions and guidance for using JupyterHub and performing data conversions for the Disasters project.\n\n\n\n\n\n\nNoteAbout This Tutorial\n\n\n\nThis presentation covers JupyterHub setup, data transformation workflows, and conversion best practices.\nControls:\n\n\nClick the “︙” menu for additional options such as Full Screen mode\n\n\nAdvance slides using your mouse cursor\n\n\n\n\n\n\nWatch the complete walkthrough of this tutorial with live demonstrations and explanations:\n\n\n\n\n\n\nWarningLarge Video File Notice\n\n\n\nDue to the video file size, it cannot be embedded directly. Please use the button below to watch the video in a new tab.\n\n ▶ Watch Tutorial Video \n\n\n\n\n\n\n\n\n\nNoteVideo Details\n\n\n\n\n\nThis recorded tutorial includes: - Live demonstrations of JupyterHub setup and navigation - Step-by-step data conversion walkthroughs - Real-world examples of geospatial data processing - Troubleshooting common issues and best practices\nDuration: [Add duration here]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipAlternative Viewing Options\n\n\n\n\n\nIf the embedded presentation doesn’t load properly, you can:\n\nOpen in new tab: View presentation in Google Slides →\nFullscreen mode: Click the fullscreen button in the embedded player above\nDownload: Open the link above and look for download options if available",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#what-youll-learn",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#what-youll-learn",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "What You’ll Learn",
+    "text": "What You’ll Learn\nThis tutorial covers the following topics:\n\n🚀 JupyterHub Basics\n\nJupyterHub environment overview\nNavigating the JupyterHub interface\nCreating and managing notebooks\n\n\n\n🔄 Data Conversion Workflows\n\nConnecting to AWS S3 buckets\nRetrieving data\nFilename transformations\nGeoTIFF generation and optimization\nWorking with COG (Cloud Optimized GeoTIFF)",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#related-resources",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#related-resources",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "Related Resources",
+    "text": "Related Resources\n\nJupyterHub Documentation\n\nJupyterHub Documentation\nJupyter Notebook Documentation\nJupyterLab Documentation\n\n\n\nGeospatial Data Resources\n\nGDAL Documentation\nRasterio Documentation\nCOG Specification\n\n\n\nPython Libraries\n\nNumPy Documentation\nPandas Documentation\nXarray Documentation\n\n\n\nAdditional Guides\n\nJupyterHub Training Guide - Detailed JupyterHub setup\nConvert to GeoTIFF Guide - Step-by-step conversion instructions\n\n\n\n\nFeedback\nWe welcome feedback on this tutorial! If you have suggestions for improvements or find any issues, please reach out to the data team.",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "Presentations/jupyterhub-data-conversions-tutorial.html#conclusion",
+    "href": "Presentations/jupyterhub-data-conversions-tutorial.html#conclusion",
+    "title": "JupyterHub and Data Conversions Tutorial",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis tutorial provides comprehensive guidance for using JupyterHub and performing data conversions for the Disasters project.",
+    "crumbs": [
+      "Presentations",
+      "PowerPoints",
+      "JupyterHub and Data Conversions Tutorial"
+    ]
+  },
+  {
+    "objectID": "datatransformationcode.html",
+    "href": "datatransformationcode.html",
+    "title": "U.S. Greenhouse Gas Center: Data Transformation Notebooks",
+    "section": "",
+    "text": "Welcome to the homepage for the U.S. Greenhouse Gas (GHG) Center data transformation notebooks. Our curated collection of GHG datasets are optimized for seamless accessibility and analysis. The GHG Center uses Cloud Optimized Geotiffs (COGs) and other cloud-optimized data formats where applicable to offer a dynamic platform for exploring and analyzing data within the GHG Center Data Catalog.\nIf a dataset was processed from its original format for integration into the GHG Center portal, the code used for this transformation is cataloged below. Click on a dataset name to learn more about the process.\nNote: Not all datasets have a transformation code",
+    "crumbs": [
+      "Data Transformation Notebooks"
+    ]
+  },
+  {
+    "objectID": "datatransformationcode.html#contact",
+    "href": "datatransformationcode.html#contact",
+    "title": "U.S. Greenhouse Gas Center: Data Transformation Notebooks",
+    "section": "Contact",
+    "text": "Contact\nFor technical help or general questions, please contact the support team using the feedback form.",
+    "crumbs": [
+      "Data Transformation Notebooks"
+    ]
   }
 ]

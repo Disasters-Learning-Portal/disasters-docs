@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/index.html</loc>
-    <lastmod>2025-10-24T21:25:32.035Z</lastmod>
+    <lastmod>2025-11-10T20:06:11.250Z</lastmod>
   </url>
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/datausage.html</loc>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/aws.html</loc>
-    <lastmod>2025-10-14T21:40:41.663Z</lastmod>
+    <lastmod>2025-11-10T20:06:11.230Z</lastmod>
   </url>
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/index2.html</loc>
@@ -111,5 +111,21 @@
   <url>
     <loc>https://us-ghg-center.github.io/ghgc-docs/Presentations/disasters-training-1.html</loc>
     <lastmod>2025-10-24T21:50:41.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/user_data_notebooks/NM_Fire.html</loc>
+    <lastmod>2025-11-05T23:09:18.866Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/AWS/AWS_SSO_Remote_Server.html</loc>
+    <lastmod>2025-11-10T20:06:10.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/Presentations/jupyterhub-data-conversions-tutorial.html</loc>
+    <lastmod>2025-11-10T20:06:10.596Z</lastmod>
+  </url>
+  <url>
+    <loc>https://us-ghg-center.github.io/ghgc-docs/datatransformationcode.html</loc>
+    <lastmod>2025-10-13T20:00:41.851Z</lastmod>
   </url>
 </urlset>
