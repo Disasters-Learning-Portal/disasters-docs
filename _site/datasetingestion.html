@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NASA Disasters: Case Studies – NASA Disasters Documentation</title>
+<title>Dataset Ingestion – NASA Disasters Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./user_data_notebooks/Texas_Flood_2025.html" rel="next">
-<link href="./Presentations/stac-airflow-tutorial.html" rel="prev">
+<link href="./DataIngestion/stac-collection.html" rel="next">
+<link href="./contentcuration.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -340,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datausage.html">Disaster Case Studies</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contentcuration.html">Content Curation</a></li><li class="breadcrumb-item"><a href="./datasetingestion.html">Dataset Ingestion</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -507,13 +507,41 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Documentation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="./contentcuration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Content Curation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./datasetingestion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Dataset Ingestion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DataIngestion/stac-collection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boilerplate Ingest Example</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Documentation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto-guide.html" class="sidebar-item-text sidebar-link">
@@ -524,13 +552,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">User Services</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./services/apis.html" class="sidebar-item-text sidebar-link">
@@ -547,22 +575,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
  <span class="menu-text">PowerPoints</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Presentations/disasters-powerpoint-template.html" class="sidebar-item-text sidebar-link">
@@ -599,13 +627,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./datausage.html" class="sidebar-item-text sidebar-link active">
+            <a href="./datausage.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Disaster Case Studies</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./user_data_notebooks/Texas_Flood_2025.html" class="sidebar-item-text sidebar-link">
@@ -625,28 +653,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#featured-case-studies" id="toc-featured-case-studies" class="nav-link active" data-scroll-target="#featured-case-studies">Featured Case Studies</a>
-  <ul class="collapse">
-  <li><a href="#texas-flood-2025" id="toc-texas-flood-2025" class="nav-link" data-scroll-target="#texas-flood-2025">Texas Flood 2025</a></li>
-  <li><a href="#new-mexico-fire-2025" id="toc-new-mexico-fire-2025" class="nav-link" data-scroll-target="#new-mexico-fire-2025">New Mexico Fire 2025</a></li>
-  </ul></li>
-  <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/datausage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contentcuration.html">Content Curation</a></li><li class="breadcrumb-item"><a href="./datasetingestion.html">Dataset Ingestion</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">NASA Disasters: Case Studies</h1>
+<h1 class="title">Dataset Ingestion</h1>
 </div>
 
 
@@ -663,41 +679,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to the NASA Disasters Learning Portal case studies. These Jupyter notebooks demonstrate how to access, visualize, and analyze disaster-related data for real-world events. Each case study walks through data acquisition, processing, and analysis techniques relevant to disaster response and monitoring.</p>
-<section id="featured-case-studies" class="level2">
-<h2 class="anchored" data-anchor-id="featured-case-studies">Featured Case Studies</h2>
-<p>These case studies showcase practical applications of satellite data and geospatial analysis for disaster monitoring and response.</p>
-<section id="texas-flood-2025" class="level3">
-<h3 class="anchored" data-anchor-id="texas-flood-2025">Texas Flood 2025</h3>
-<ul>
-<li><a href="./user_data_notebooks/Texas_Flood_2025.html">View Notebook</a></li>
-<li>Demonstrates flood monitoring and analysis using satellite imagery and geospatial data</li>
-<li>Learn how to track water extent changes and assess flood impacts</li>
-</ul>
-</section>
-<section id="new-mexico-fire-2025" class="level3">
-<h3 class="anchored" data-anchor-id="new-mexico-fire-2025">New Mexico Fire 2025</h3>
-<ul>
-<li><a href="./user_data_notebooks/New_Mexico_Fire_2025.html">View Notebook</a></li>
-<li>Shows wildfire detection, monitoring, and impact assessment techniques</li>
-<li>Explore methods for tracking fire progression and burn area mapping</li>
-</ul>
-</section>
-</section>
-<section id="contributing" class="level2">
-<h2 class="anchored" data-anchor-id="contributing">Contributing</h2>
-<p>The NASA Disasters Learning Portal welcomes contributions from the scientific community. If you have developed a case study using disaster-related datasets and would like to share it, please contact the team through the <a href="https://disasters.openveda.cloud/">NASA Disasters Portal</a>.</p>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<ul>
-<li><a href="https://disasters.openveda.cloud/">NASA Disasters Portal</a> - Main portal for disaster data and tools</li>
-<li><a href="jupyterhub.html">JupyterHub Guide</a> - Learn how to run these notebooks in a JupyterHub environment</li>
-<li><a href="workflow2.html">Data Workflow Diagrams</a> - Understand the data processing pipelines</li>
-</ul>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1115,13 +1098,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Presentations/stac-airflow-tutorial.html" class="pagination-link" aria-label="STAC Database and Apache Airflow Tutorial">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">STAC Database and Apache Airflow Tutorial</span>
+      <a href="./contentcuration.html" class="pagination-link" aria-label="Content Curation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Content Curation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./user_data_notebooks/Texas_Flood_2025.html" class="pagination-link" aria-label="Texas Flood 2025">
-        <span class="nav-page-text">Texas Flood 2025</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./DataIngestion/stac-collection.html" class="pagination-link" aria-label="Boilerplate Ingest Example">
+        <span class="nav-page-text">Boilerplate Ingest Example</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1133,7 +1116,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/datausage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/datasetingestion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -64,6 +64,15 @@ website:
          contents:
           - data_workflow2/NRT_data_download.qmd
           - data_workflow2/NRT_directory_structure.qmd
+      - section: contentcuration.qmd
+        text: Content Curation
+        contents:
+          - section: datasetingestion.qmd
+            text: Dataset Ingestion
+            contents:
+              - text: Boilerplate Ingest Example
+                href: DataIngestion/stac-collection.ipynb
+
       - section: Documentation
         contents:
           - text: "Quarto Guide for Beginners"
