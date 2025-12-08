@@ -22,8 +22,10 @@ jobs:
           python-version: '3.9'
           cache: 'pip'
 
-      - run: pip install jupyter
-      - run: pip install -r requirements.txt
+      - run: |
+          python -m pip install --upgrade pip
+          pip install jupyter nbformat nbclient
+          pip install -r requirements.txt
       - run: quarto render --to html
 
       - name: Verify auth script is present in rendered HTML

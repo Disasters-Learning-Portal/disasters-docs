@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aaron Serre (UAH)">
-<meta name="author" content="Kyle Lesinger (editor)">
+<meta name="author" content="Kyle Lesinger (UAH)">
 <meta name="dcterms.date" content="2025-11-12">
 <meta name="description" content="Analysis of the river flooding that occured along the Guadalupe River in Texas on July 4, 2025 using Sentinel-2 True Color and NDVI to visualize it.">
 
@@ -77,14 +77,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ca9f6e1296d592723e1e1e0c7c1a8eb9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-1555355ee1ba2ba771b7825afb2d978d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-ca9f6e1296d592723e1e1e0c7c1a8eb9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ca24d4459ea48b6d86e57b4fecbb35c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-47732130d4368f36b8c72e31939bd287.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ca24d4459ea48b6d86e57b4fecbb35c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -115,6 +115,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script>
+// Authentication check for all pages - inlined to ensure it's always present
+(function() {
+    const SESSION_KEY = 'disasters_docs_auth';
+
+    // Get the base path for the current page
+    function getBasePath() {
+        let path = window.location.pathname;
+
+        // If path ends with / or is a directory, it's already the base
+        if (path.endsWith('/')) {
+            return path;
+        }
+
+        // If path ends with .html, get the directory
+        if (path.endsWith('.html')) {
+            const lastSlash = path.lastIndexOf('/');
+            return path.substring(0, lastSlash + 1);
+        }
+
+        // Otherwise, assume it's a directory and add trailing slash
+        return path + '/';
+    }
+
+    function getLoginPage() {
+        const basePath = getBasePath();
+        return basePath + 'password-protect.html';
+    }
+
+    function checkAuth() {
+        // Skip authentication on localhost (for development)
+        if (window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1') {
+            console.log('Running on localhost - skipping authentication');
+            return;
+        }
+
+        // Skip check if we're on the login page
+        if (window.location.pathname.endsWith('password-protect.html') ||
+            window.location.pathname.endsWith('login.html')) {
+            return;
+        }
+
+        const auth = localStorage.getItem(SESSION_KEY);
+
+        if (!auth) {
+            // No authentication, redirect to login
+            window.location.href = getLoginPage();
+            return;
+        }
+
+        try {
+            const authData = JSON.parse(auth);
+            const now = new Date().getTime();
+
+            if (authData.expires <= now || !authData.authenticated) {
+                // Expired or invalid session
+                localStorage.removeItem(SESSION_KEY);
+                window.location.href = getLoginPage();
+                return;
+            }
+
+            // Valid session - allow page to load
+        } catch (e) {
+            // Invalid auth data
+            localStorage.removeItem(SESSION_KEY);
+            window.location.href = getLoginPage();
+        }
+    }
+
+    // Run check immediately
+    checkAuth();
+
+    // Add logout functionality
+    window.addEventListener('DOMContentLoaded', function() {
+        // Add logout button to page if it doesn't exist
+        const existingLogout = document.getElementById('logout-btn');
+        if (!existingLogout) {
+            const logoutBtn = document.createElement('button');
+            logoutBtn.id = 'logout-btn';
+            logoutBtn.textContent = 'Logout';
+            logoutBtn.style.cssText = 'position: fixed; top: 10px; right: 10px; padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 9999; font-size: 14px;';
+            logoutBtn.onclick = function() {
+                localStorage.removeItem(SESSION_KEY);
+                window.location.href = getLoginPage();
+            };
+            document.body.appendChild(logoutBtn);
+        }
+    });
+})();
+</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -291,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datausage.html">Data Usage Notebooks</a></li><li class="breadcrumb-item"><a href="../user_data_notebooks/Texas_Flood_2025.html">Disaster Case Studies</a></li><li class="breadcrumb-item"><a href="../user_data_notebooks/Texas_Flood_2025.html">Texas Flood 2025</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datausage.html">Disaster Case Studies</a></li><li class="breadcrumb-item"><a href="../user_data_notebooks/Texas_Flood_2025.html">Texas Flood 2025</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -528,6 +619,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../Presentations/aws-cost-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AWS Cost Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../Presentations/jupyterhub-data-conversions-tutorial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">JupyterHub and Data Conversions Tutorial</span></a>
   </div>
@@ -545,21 +642,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../datausage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Usage Notebooks</span></a>
+ <span class="menu-text">Disaster Case Studies</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">Disaster Case Studies</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../user_data_notebooks/Texas_Flood_2025.html" class="sidebar-item-text sidebar-link active">
@@ -570,369 +658,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../user_data_notebooks/New_Mexico_Fire_2025.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">New Mexico Fire 2025</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Community-Contributed Tutorials</span></span>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../datatransformationcode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Transformation Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/eccodarwin-co2flux-monthgrid-v5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Air-Sea CO₂ Flux, ECCO-Darwin Model v5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/noaa-gggrn-concentrations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Atmospheric Carbon Dioxide and Methane Concentrations from the NOAA Global Monitoring Laboratory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/influx-testbed-ghg-concentrations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/lam-testbed-ghg-concentrations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/nec-testbed-ghg-concentrations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/ct-ch4-monthgrid-v2023.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/emit-ch4plume-v1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EMIT Methane Point Source Plume Complexes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/goes-ch4plume-v1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/gosat-based-ch4budget-yeargrid-v1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GOSAT-based Top-down Total and Natural Methane Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/gra2pes-ghg-monthgrid-v1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GRA²PES Greenhouse Gas and Air Quality Species</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/oco2geos-co2-daygrid-v10r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OCO-2 GEOS Column CO₂ Concentrations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/oco2-mip-co2budget-yeargrid-v1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OCO-2 MIP Top-Down CO₂ Budgets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/odiac-ffco2-monthgrid-v2024.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ODIAC Fossil Fuel CO₂ Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/sedac-popdensity-yeargrid5yr-v4.11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SEDAC Gridded World Population Density</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/epa-ch4emission-grid-v2express.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">U.S. Gridded Anthropogenic Methane Emissions Inventory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../cog_transformation/vulcan-ffco2-yeargrid-v4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Vulcan Fossil Fuel CO₂ Emissions v4.0</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../processingreport.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Processing and Verification Reports</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/eccodarwin-co2flux-monthgrid-v5_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Air-Sea CO₂ Flux, ECCO-Darwin Model v5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/noaa-gggrn-co2-concentrations_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Atmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/noaa-gggrn-ch4-concentrations_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/influx-testbed-ghg-concentrations_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/lam-testbed-ghg-concentrations_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/nec-testbed-ghg-concentrations_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/ct-ch4-monthgrid-v2023_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/emit-ch4plume-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EMIT Methane Point Source Plume Complexes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/goes-ch4plume-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/gosat-based-ch4budget-yeargrid-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GOSAT-based Top-down Total and Natural Methane Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/gra2pes-ghg-monthgrid-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GRA²PES Greenhouse Gas and Air Quality Species</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/micasa-carbonflux-daygrid-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MiCASA Land Carbon Flux</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/oco2geos-co2-daygrid-v10r_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OCO-2 GEOS Column CO₂ Concentrations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/oco2-mip-co2budget-yeargrid-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OCO-2 MIP Top-Down CO₂ Budgets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/odiac-ffco2-monthgrid-v2024_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ODIAC Fossil Fuel CO₂ Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/sedac-popdensity-yeargrid5yr-v4.11_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SEDAC Gridded World Population Density</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/epa-ch4emission-grid-v2express_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gridded Anthropogenic Methane Emissions Inventory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/vulcan-ffco2-yeargrid-v4_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Vulcan Fossil Fuel CO₂ Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../processing_and_verification_reports/lpjeosim-wetlandch4-grid-v1_Processing and Verification Report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wetland Methane Emissions, LPJ-EOSIM Model</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Flow Diagrams</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/eccodarwin-co2flux-monthgrid-v5_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Air-Sea CO₂ Flux, ECCO-Darwin Model v5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/noaa-gggrn-co2-concentrations_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Atmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/noaa-gggrn-ch4-concentrations_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/influx-testbed-ghg-concentrations_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/lam-testbed-ghg-concentrations_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/nec-testbed-ghg-concentrations_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/ct-ch4-monthgrid-v2023_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/emit-ch4plume-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EMIT Methane Point Source Plume Complexes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/goes-ch4plume-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/gosat-based-ch4budget-yeargrid-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GOSAT-based Top-down Total and Natural Methane Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/gra2pes-ghg-monthgrid-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GRA²PES Greenhouse Gas and Air Quality Species</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/micasa-carbonflux-daygrid-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MiCASA Land Carbon Flux - Data Workflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/oco2geos-co2-daygrid-v10r_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OCO-2 GEOS Column CO₂ Concentrations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/oco2-mip-co2budget-yeargrid-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OCO-2 MIP Top-Down CO₂ Budgets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/odiac-ffco2-monthgrid-v2024_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ODIAC Fossil Fuel CO₂ Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/sedac-popdensity-yeargrid5yr-v4.11_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SEDAC Gridded World Population Density</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/epa-ch4emission-grid-v2express_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">U.S. Gridded Anthropogenic Methane Emissions Inventory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/vulcan-ffco2-yeargrid-v4_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Vulcan Fossil Fuel CO₂ Emissions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data_workflow/lpjeosim-wetlandch4-grid-v1_Data_Flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wetland Methane Emissions, LPJ-EOSIM Model</span></a>
   </div>
 </li>
       </ul>
@@ -955,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a>
   <ul class="collapse">
   <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
-  <li><a href="#install-the-required-libraires" id="toc-install-the-required-libraires" class="nav-link" data-scroll-target="#install-the-required-libraires">Install the Required Libraires</a></li>
+  <li><a href="#install-the-required-libraries" id="toc-install-the-required-libraries" class="nav-link" data-scroll-target="#install-the-required-libraries">Install the Required Libraries</a></li>
   <li><a href="#querying-the-stac-api" id="toc-querying-the-stac-api" class="nav-link" data-scroll-target="#querying-the-stac-api">Querying the STAC API</a></li>
   <li><a href="#requesting-tiles" id="toc-requesting-tiles" class="nav-link" data-scroll-target="#requesting-tiles">Requesting Tiles</a></li>
   <li><a href="#create-maps-using-folium" id="toc-create-maps-using-folium" class="nav-link" data-scroll-target="#create-maps-using-folium">Create Maps Using Folium</a></li>
@@ -968,7 +693,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datausage.html">Data Usage Notebooks</a></li><li class="breadcrumb-item"><a href="../user_data_notebooks/Texas_Flood_2025.html">Disaster Case Studies</a></li><li class="breadcrumb-item"><a href="../user_data_notebooks/Texas_Flood_2025.html">Texas Flood 2025</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datausage.html">Disaster Case Studies</a></li><li class="breadcrumb-item"><a href="../user_data_notebooks/Texas_Flood_2025.html">Texas Flood 2025</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">The Texas Flooding of July 4, 2025</h1>
 </div>
@@ -986,7 +711,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
              <p>Aaron Serre (UAH) </p>
-             <p>Kyle Lesinger (editor) </p>
+             <p>Kyle Lesinger (UAH) </p>
           </div>
   </div>
     
@@ -1056,8 +781,8 @@ If you <strong>do not</strong> have a VEDA Jupyterhub Account you can launch thi
 <p>Collection: A set of STAC definied for a specific item (such as Sentinel-2-vars-daily in our case)</p>
 <p>Tiles: A square fragment of a satellite image. Together they make an image, but we call up once specific one for this example since th area we are looking at is small.</p>
 </section>
-<section id="install-the-required-libraires" class="level2">
-<h2 class="anchored" data-anchor-id="install-the-required-libraires">Install the Required Libraires</h2>
+<section id="install-the-required-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-required-libraries">Install the Required Libraries</h2>
 <div id="e4d77f39-3875-41f3-8701-e239dcbe3098" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import the following libraries:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -113357,8 +113082,8 @@ If you <strong>do not</strong> have a VEDA Jupyterhub Account you can launch thi
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../datausage.html" class="pagination-link" aria-label="Data Usage Notebooks">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Usage Notebooks</span>
+      <a href="../datausage.html" class="pagination-link" aria-label="Disaster Case Studies">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Disaster Case Studies</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
