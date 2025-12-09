@@ -56,9 +56,7 @@ website:
         text: JupyterHub
         contents:
           - Jupyterhub/jupyterhub-training-guide.qmd
-          - Jupyterhub/setup-disaster-repo.qmd
-          - Jupyterhub/convert_to_geotiff.qmd
-          - Jupyterhub/simple_disaster_template.ipynb
+          - Jupyterhub/clone_conversion_repo.ipynb
       -  section: workflow2.qmd
          text: Data Workflow Diagrams
          contents:
