@@ -3,7 +3,6 @@ This repository contains documentation for the [US Greenhouse Gas Center](https:
 
 # Structure
 - `cog_transformation/`: Contains transformation scripts used to convert raw datasets into Cloud Optimized GeoTIFFs (COGs) for the US GHG Center.
-- `generating_statistics_for_validation`/: Includes notebooks and scripts for generating data statistics of both raw and transformed files.
 - `processing_and_verification_reports/`: Houses verification reports generated to validate the data transformations.
 - `user_data_notebooks/`: Provides notebooks that guide users on how to access and utilize datasets within the US GHG Center.
 - `data_workflow/`: Contains a detailed data flow diagram illustrating the entire dataset processing workflow.
