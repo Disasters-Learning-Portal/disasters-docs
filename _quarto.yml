@@ -57,9 +57,9 @@ website:
         contents:
           - Jupyterhub/jupyterhub-training-guide.qmd
           - Jupyterhub/clone_conversion_repo.ipynb
-      -  section: workflow2.qmd
-         text: Data Workflow Diagrams
-         contents:
+      - section: workflow.qmd
+        text: Data Workflow Diagrams
+        contents:
           - data_workflow2/NRT_data_download.qmd
           - data_workflow2/NRT_directory_structure.qmd
       - section: contentcuration.qmd
