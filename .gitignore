@@ -1,8 +1,7 @@
 /.quarto/
 
 **/*.quarto_ipynb
-<<<<<<< Updated upstream
-=======
 
 .claude
->>>>>>> Stashed changes
+
+_site/
