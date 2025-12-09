@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>U.S. Greenhouse Gas Center: Data Flow Diagrams – NASA Disasters Documentation</title>
+<title>NASA Disasters: Data Flow Diagrams – NASA Disasters Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -338,7 +338,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">U.S. Greenhouse Gas Center: Data Flow Diagrams</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">NASA Disasters: Data Flow Diagrams</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -462,25 +462,16 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Jupyterhub/setup-disaster-repo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setting Up Disaster Repository - Step-by-Step Guide</span></a>
+  <a href="./Jupyterhub/clone_conversion_repo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clone conversion repository into current directory</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Jupyterhub/convert_to_geotiff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Jupyter Notebook Guide for Disaster COG Processing</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
- <span class="menu-text">Jupyterhub/simple_disaster_template.ipynb</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./workflow2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Workflow Diagrams</span></a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">workflow2.qmd</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -648,14 +639,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#contact" id="toc-contact" class="nav-link active" data-scroll-target="#contact">Contact</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -663,7 +648,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">U.S. Greenhouse Gas Center: Data Flow Diagrams</h1>
+<h1 class="title">NASA Disasters: Data Flow Diagrams</h1>
 </div>
 
 
@@ -680,36 +665,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to the homepage for <a href="https://earth.gov/ghgcenter">U.S. Greenhouse Gas (GHG) Center</a> data flow diagrams. These diagrams summarize the process a dataset goes through from acquisition to integration in the U.S. GHG Center.</p>
+<p>Welcome to the homepage for <a href="https://appliedsciences.nasa.gov/what-we-do/disasters">NASA Disasters</a> data flow diagrams. These diagrams summarize the process of how to find, download, and process data for NASA Disasters.</p>
 <p>Click on a dataset name to view the data flow diagram for that dataset.</p>
-<p><a href="https://earth.gov/ghgcenter/data-catalog">View the US GHG Center Data Catalog</a></p>
+<p><a href="https://appliedsciences.nasa.gov/what-we-do/disasters/practitioner-resources#portal">View the NASA Disasters Resources</a></p>
 <ul>
-<li><p><a href="./data_workflow/eccodarwin-co2flux-monthgrid-v5_Data_Flow.html">Air-Sea CO₂ Flux, ECCO-Darwin Model v5 Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/noaa-gggrn-co2-concentrations_Data_Flow.html">Atmospheric Carbon Dioxide Concentrations from the NOAA Global Monitoring Laboratory Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/noaa-gggrn-ch4-concentrations_Data_Flow.html">Atmospheric Methane Concentrations from the NOAA Global Monitoring Laboratory Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/influx-testbed-ghg-concentrations_Data_Flow.html">Carbon Dioxide and Methane Concentrations from the Indianapolis Flux Experiment (INFLUX) Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/lam-testbed-ghg-concentrations_Data_Flow.html">Carbon Dioxide and Methane Concentrations from the Los Angeles Megacity Carbon Project Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/nec-testbed-ghg-concentrations_Data_Flow.html">Carbon Dioxide and Methane Concentrations from the Northeast Corridor (NEC) Urban Test Bed Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/ct-ch4-monthgrid-v2023_Data_Flow.html">CarbonTracker-CH₄ Isotopic Methane Inverse Fluxes Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/emit-ch4plume-v1_Data_Flow.html">EMIT Methane Point Source Plume Complexes Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/goes-ch4plume-v1_Data_Flow.html">Geostationary Satellite Observations of Extreme and Transient Methane Emissions from Oil and Gas Infrastructure Complexes Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/gosat-based-ch4budget-yeargrid-v1_Data_Flow.html">GOSAT-based Top-down Total and Natural Methane Emissions Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/gra2pes-ghg-monthgrid-v1_Data_Flow.html">GRA²PES Greenhouse Gas and Air Quality Species Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/micasa-carbonflux-daygrid-v1_Data_Flow.html">MiCASA Land Carbon Flux Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/oco2geos-co2-daygrid-v10r_Data_Flow.html">OCO-2 GEOS Column CO₂ Concentrations Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/oco2-mip-co2budget-yeargrid-v1_Data_Flow.html">OCO-2 MIP Top-Down CO₂ Budgets Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/odiac-ffco2-monthgrid-v2024_Data_Flow.html">ODIAC Fossil Fuel CO₂ Emissions Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/sedac-popdensity-yeargrid5yr-v4.11_Data_Flow.html">SEDAC Gridded World Population Density Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/epa-ch4emission-grid-v2express_Data_Flow.html">U.S. Gridded Anthropogenic Methane Emissions Inventory Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/vulcan-ffco2-yeargrid-v4_Data_Flow.html">Vulcan Fossil Fuel CO₂ Emissions Data Flow Diagram</a></p></li>
-<li><p><a href="./data_workflow/lpjeosim-wetlandch4-grid-v1_Data_Flow.html">Wetland Methane Emissions, LPJ-EOSIM Model Data Flow Diagram</a></p></li>
+<li><p><a href="./data_workflow2/NRT_data_download.html">NRT Data Download</a></p></li>
+<li><p><a href="./data_workflow2/NRT_directory_structure.html">NRT Directory Structure</a></p></li>
 </ul>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>For technical help or general questions, please contact the support team using the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVWCrnca08Gt_qoWYjTo6gnj1BEGL4NCUC9VEiQnXA02gzVQ/viewform">feedback form</a>.</p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1133,7 +1097,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

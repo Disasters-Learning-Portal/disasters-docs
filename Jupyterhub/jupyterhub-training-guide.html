@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Jupyterhub/setup-disaster-repo.html" rel="next">
+<link href="../Jupyterhub/clone_conversion_repo.html" rel="next">
 <link href="../jupyterhub.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -499,25 +499,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Jupyterhub/setup-disaster-repo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setting Up Disaster Repository - Step-by-Step Guide</span></a>
+  <a href="../Jupyterhub/clone_conversion_repo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clone conversion repository into current directory</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Jupyterhub/convert_to_geotiff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Jupyter Notebook Guide for Disaster COG Processing</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
- <span class="menu-text">Jupyterhub/simple_disaster_template.ipynb</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../workflow2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Workflow Diagrams</span></a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">workflow2.qmd</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -708,20 +699,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-jupyterlab-interface" id="toc-the-jupyterlab-interface" class="nav-link" data-scroll-target="#the-jupyterlab-interface">The JupyterLab Interface</a></li>
   <li><a href="#key-interface-components" id="toc-key-interface-components" class="nav-link" data-scroll-target="#key-interface-components">Key Interface Components</a></li>
-  <li><a href="#creating-your-first-notebook" id="toc-creating-your-first-notebook" class="nav-link" data-scroll-target="#creating-your-first-notebook">Creating Your First Notebook</a></li>
   </ul></li>
   <li><a href="#working-with-jupyter-notebooks" id="toc-working-with-jupyter-notebooks" class="nav-link" data-scroll-target="#working-with-jupyter-notebooks">Working with Jupyter Notebooks</a>
   <ul class="collapse">
   <li><a href="#notebook-basics" id="toc-notebook-basics" class="nav-link" data-scroll-target="#notebook-basics">Notebook Basics</a></li>
   <li><a href="#cell-operations" id="toc-cell-operations" class="nav-link" data-scroll-target="#cell-operations">Cell Operations</a></li>
   <li><a href="#working-with-kernels" id="toc-working-with-kernels" class="nav-link" data-scroll-target="#working-with-kernels">Working with Kernels</a></li>
-  <li><a href="#notebook-best-practices" id="toc-notebook-best-practices" class="nav-link" data-scroll-target="#notebook-best-practices">Notebook Best Practices</a></li>
   </ul></li>
   <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management">Data Management</a>
   <ul class="collapse">
   <li><a href="#file-uploaddownload" id="toc-file-uploaddownload" class="nav-link" data-scroll-target="#file-uploaddownload">File Upload/Download</a></li>
   <li><a href="#working-with-cloud-storage" id="toc-working-with-cloud-storage" class="nav-link" data-scroll-target="#working-with-cloud-storage">Working with Cloud Storage</a></li>
-  <li><a href="#data-organization" id="toc-data-organization" class="nav-link" data-scroll-target="#data-organization">Data Organization</a></li>
   <li><a href="#data-persistence" id="toc-data-persistence" class="nav-link" data-scroll-target="#data-persistence">Data Persistence</a></li>
   </ul></li>
   <li><a href="#environment-and-package-management" id="toc-environment-and-package-management" class="nav-link" data-scroll-target="#environment-and-package-management">Environment and Package Management</a>
@@ -729,54 +717,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
   <li><a href="#managing-python-environments" id="toc-managing-python-environments" class="nav-link" data-scroll-target="#managing-python-environments">Managing Python Environments</a></li>
   <li><a href="#using-different-kernels" id="toc-using-different-kernels" class="nav-link" data-scroll-target="#using-different-kernels">Using Different Kernels</a></li>
-  </ul></li>
-  <li><a href="#terminal-and-command-line-access" id="toc-terminal-and-command-line-access" class="nav-link" data-scroll-target="#terminal-and-command-line-access">Terminal and Command Line Access</a>
-  <ul class="collapse">
-  <li><a href="#opening-terminal" id="toc-opening-terminal" class="nav-link" data-scroll-target="#opening-terminal">Opening Terminal</a></li>
-  <li><a href="#common-terminal-commands" id="toc-common-terminal-commands" class="nav-link" data-scroll-target="#common-terminal-commands">Common Terminal Commands</a></li>
-  <li><a href="#working-with-data-files" id="toc-working-with-data-files" class="nav-link" data-scroll-target="#working-with-data-files">Working with Data Files</a></li>
-  </ul></li>
-  <li><a href="#collaboration-and-sharing" id="toc-collaboration-and-sharing" class="nav-link" data-scroll-target="#collaboration-and-sharing">Collaboration and Sharing</a>
-  <ul class="collapse">
-  <li><a href="#sharing-notebooks" id="toc-sharing-notebooks" class="nav-link" data-scroll-target="#sharing-notebooks">Sharing Notebooks</a></li>
-  <li><a href="#real-time-collaboration" id="toc-real-time-collaboration" class="nav-link" data-scroll-target="#real-time-collaboration">Real-time Collaboration</a></li>
-  <li><a href="#version-control-best-practices" id="toc-version-control-best-practices" class="nav-link" data-scroll-target="#version-control-best-practices">Version Control Best Practices</a></li>
-  </ul></li>
-  <li><a href="#resource-management" id="toc-resource-management" class="nav-link" data-scroll-target="#resource-management">Resource Management</a>
-  <ul class="collapse">
-  <li><a href="#understanding-resource-limits" id="toc-understanding-resource-limits" class="nav-link" data-scroll-target="#understanding-resource-limits">Understanding Resource Limits</a></li>
-  <li><a href="#monitoring-resource-usage" id="toc-monitoring-resource-usage" class="nav-link" data-scroll-target="#monitoring-resource-usage">Monitoring Resource Usage</a></li>
-  <li><a href="#optimizing-resource-usage" id="toc-optimizing-resource-usage" class="nav-link" data-scroll-target="#optimizing-resource-usage">Optimizing Resource Usage</a></li>
   <li><a href="#shutting-down-properly" id="toc-shutting-down-properly" class="nav-link" data-scroll-target="#shutting-down-properly">Shutting Down Properly</a></li>
   </ul></li>
-  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a>
-  <ul class="collapse">
-  <li><a href="#project-organization" id="toc-project-organization" class="nav-link" data-scroll-target="#project-organization">Project Organization</a></li>
-  <li><a href="#security-considerations" id="toc-security-considerations" class="nav-link" data-scroll-target="#security-considerations">Security Considerations</a></li>
-  <li><a href="#performance-tips" id="toc-performance-tips" class="nav-link" data-scroll-target="#performance-tips">Performance Tips</a></li>
-  </ul></li>
-  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
-  <ul class="collapse">
-  <li><a href="#common-issues-and-solutions" id="toc-common-issues-and-solutions" class="nav-link" data-scroll-target="#common-issues-and-solutions">Common Issues and Solutions</a></li>
-  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
-  </ul></li>
-  <li><a href="#keyboard-shortcuts" id="toc-keyboard-shortcuts" class="nav-link" data-scroll-target="#keyboard-shortcuts">Keyboard Shortcuts</a>
-  <ul class="collapse">
-  <li><a href="#command-mode-blue-cell-border" id="toc-command-mode-blue-cell-border" class="nav-link" data-scroll-target="#command-mode-blue-cell-border">Command Mode (Blue cell border)</a></li>
-  <li><a href="#edit-mode-green-cell-border" id="toc-edit-mode-green-cell-border" class="nav-link" data-scroll-target="#edit-mode-green-cell-border">Edit Mode (Green cell border)</a></li>
-  <li><a href="#jupyterlab-shortcuts" id="toc-jupyterlab-shortcuts" class="nav-link" data-scroll-target="#jupyterlab-shortcuts">JupyterLab Shortcuts</a></li>
-  </ul></li>
-  <li><a href="#resources-and-links" id="toc-resources-and-links" class="nav-link" data-scroll-target="#resources-and-links">Resources and Links</a>
-  <ul class="collapse">
-  <li><a href="#official-documentation" id="toc-official-documentation" class="nav-link" data-scroll-target="#official-documentation">Official Documentation</a></li>
-  <li><a href="#tutorials-and-learning-resources" id="toc-tutorials-and-learning-resources" class="nav-link" data-scroll-target="#tutorials-and-learning-resources">Tutorials and Learning Resources</a></li>
-  <li><a href="#disaster-response-specific-resources" id="toc-disaster-response-specific-resources" class="nav-link" data-scroll-target="#disaster-response-specific-resources">Disaster Response Specific Resources</a></li>
-  <li><a href="#python-libraries-for-disaster-analysis" id="toc-python-libraries-for-disaster-analysis" class="nav-link" data-scroll-target="#python-libraries-for-disaster-analysis">Python Libraries for Disaster Analysis</a></li>
-  <li><a href="#helpful-extensions" id="toc-helpful-extensions" class="nav-link" data-scroll-target="#helpful-extensions">Helpful Extensions</a></li>
-  <li><a href="#community-and-support" id="toc-community-and-support" class="nav-link" data-scroll-target="#community-and-support">Community and Support</a></li>
-  <li><a href="#quick-reference-pdfs" id="toc-quick-reference-pdfs" class="nav-link" data-scroll-target="#quick-reference-pdfs">Quick Reference PDFs</a></li>
-  </ul></li>
-  <li><a href="#appendix-sample-workflow" id="toc-appendix-sample-workflow" class="nav-link" data-scroll-target="#appendix-sample-workflow">Appendix: Sample Workflow</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/Jupyterhub/jupyterhub-training-guide.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -799,13 +741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#working-with-jupyter-notebooks">Working with Jupyter Notebooks</a></li>
 <li><a href="#data-management">Data Management</a></li>
 <li><a href="#environment-and-package-management">Environment and Package Management</a></li>
-<li><a href="#terminal-and-command-line-access">Terminal and Command Line Access</a></li>
-<li><a href="#collaboration-and-sharing">Collaboration and Sharing</a></li>
-<li><a href="#resource-management">Resource Management</a></li>
-<li><a href="#best-practices">Best Practices</a></li>
-<li><a href="#troubleshooting">Troubleshooting</a></li>
-<li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
-<li><a href="#resources-and-links">Resources and Links</a></li>
+<li><a href="#shutting-down-properly">Shutting Down</a></li>
 </ol>
 <hr>
 </section>
@@ -839,8 +775,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✅ <strong>Pre-configured Environments</strong> - Common packages already installed<br>
 ✅ <strong>Persistent Storage</strong> - Your work is saved between sessions<br>
 ✅ <strong>Collaboration Ready</strong> - Share notebooks with team members<br>
-✅ <strong>Scalable Resources</strong> - Access to GPU and high-memory instances when needed</p>
-<hr>
+—</p>
 </section>
 </section>
 <section id="getting-started" class="level2">
@@ -854,6 +789,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Go to: <a href="https://hub.disasters.2i2c.cloud/">https://hub.disasters.2i2c.cloud/</a></li>
 <li>Bookmark this URL for easy access</li>
 </ul></li>
+<li><strong>First-Time Login</strong>
+<ul>
+<li>Must sign in through <a href="https://cilogon.org/">Keycloak - CI Logon</a></li>
+<li>After Keycloak has been completed, request to be added to the Disasters Jupyterhub account</li>
+</ul></li>
 <li><strong>Authentication</strong>
 <ul>
 <li>You’ll see a login screen with authentication options</li>
@@ -865,12 +805,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Select your authentication method and follow the prompts</li>
 </ul></li>
-<li><strong>First-Time Login</strong>
-<ul>
-<li>Accept terms of service if prompted</li>
-<li>Your home directory will be created automatically</li>
-<li>Initial setup may take 30-60 seconds</li>
-</ul></li>
 </ol>
 </section>
 <section id="server-selection" class="level3">
@@ -878,12 +812,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After login, you may be presented with server options:</p>
 <pre><code>Server Options:
 ┌─────────────────────────────────────┐
-│ • Small (2 CPU, 4GB RAM)            │
-│ • Medium (4 CPU, 8GB RAM)           │
-│ • Large (8 CPU, 16GB RAM)           │
-│ • GPU Instance (if available)       │
+│ • Small (4 CPU, 4GB RAM)            │
+│ • Medium (4 CPU, 7GB RAM)           │
+│ • Large (4 CPU, 15GB RAM)           │
+│ • Additional resources if needed    │
 └─────────────────────────────────────┘</code></pre>
-<p><strong>Tips for Server Selection:</strong> - Start with <strong>Small</strong> for basic notebook work - Use <strong>Medium</strong> for data processing tasks - Choose <strong>Large</strong> for machine learning or big data - Select <strong>GPU</strong> only when needed (limited availability)</p>
 <hr>
 </section>
 </section>
@@ -933,15 +866,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>File encoding and type</li>
 </ul></li>
 </ol>
-</section>
-<section id="creating-your-first-notebook" class="level3">
-<h3 class="anchored" data-anchor-id="creating-your-first-notebook">Creating Your First Notebook</h3>
-<ol type="1">
-<li>Click the <strong>Python 3</strong> icon in the Launcher</li>
-<li>Or: File → New → Notebook</li>
-<li>Select kernel (usually Python 3)</li>
-<li>Rename your notebook: Right-click on “Untitled.ipynb” → Rename</li>
-</ol>
 <hr>
 </section>
 </section>
@@ -949,7 +873,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="working-with-jupyter-notebooks">Working with Jupyter Notebooks</h2>
 <section id="notebook-basics" class="level3">
 <h3 class="anchored" data-anchor-id="notebook-basics">Notebook Basics</h3>
-<p>A Jupyter notebook consists of <strong>cells</strong> that can contain: - <strong>Code</strong>: Executable Python (or other language) code - <strong>Markdown</strong>: Formatted text, equations, and images - <strong>Raw</strong>: Unformatted text</p>
+<p>A Jupyter notebook consists of <strong>cells</strong> that can contain:</p>
+<ul>
+<li><strong>Code</strong>: Executable Python (or other language) code</li>
+<li><strong>Markdown</strong>: Formatted text, equations, and images</li>
+<li><strong>Raw</strong>: Unformatted text</li>
+</ul>
 </section>
 <section id="cell-operations" class="level3">
 <h3 class="anchored" data-anchor-id="cell-operations">Cell Operations</h3>
@@ -1008,31 +937,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>[*]</strong>: Cell currently executing</li>
 <li><strong>[1]</strong>: Cell execution number</li>
 </ul>
-</section>
-</section>
-<section id="notebook-best-practices" class="level3">
-<h3 class="anchored" data-anchor-id="notebook-best-practices">Notebook Best Practices</h3>
-<ol type="1">
-<li><p><strong>Use meaningful cell divisions</strong></p>
-<ul>
-<li>One concept or operation per cell</li>
-<li>Separate imports, data loading, processing, visualization</li>
-</ul></li>
-<li><p><strong>Document your work</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good practice: Add comments and markdown cells</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load disaster response data</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'disaster_data.csv'</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preprocessing</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'date'</span>])</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Clear output before sharing</strong></p>
-<ul>
-<li>Kernel → Restart &amp; Clear Output</li>
-<li>Reduces file size and removes sensitive output</li>
-</ul></li>
-</ol>
 <hr>
+</section>
 </section>
 </section>
 <section id="data-management" class="level2">
@@ -1042,66 +948,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="uploading-files" class="level4">
 <h4 class="anchored" data-anchor-id="uploading-files">Uploading Files</h4>
 <ol type="1">
-<li><p><strong>Drag and drop</strong> files directly into the file browser</p></li>
-<li><p><strong>Upload button</strong>: Click the ⬆ button in the file browser toolbar</p></li>
-<li><p><strong>Terminal upload</strong>: Use <code>wget</code> or <code>curl</code> in terminal</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://example.com/data.csv</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://example.com/data.zip</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><strong>Drag and drop</strong> files directly into the file browser</li>
+<li><strong>Upload button</strong>: Click the ⬆ button in the file browser toolbar</li>
 </ol>
 </section>
 <section id="downloading-files" class="level4">
 <h4 class="anchored" data-anchor-id="downloading-files">Downloading Files</h4>
 <ol type="1">
-<li><p><strong>Right-click</strong> file in browser → Download</p></li>
-<li><p><strong>From notebook</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> FileLink</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>FileLink(<span class="st">'results.csv'</span>)  <span class="co"># Creates downloadable link</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><strong>Right-click</strong> file in browser → Download</li>
 </ol>
 </section>
 </section>
 <section id="working-with-cloud-storage" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-cloud-storage">Working with Cloud Storage</h3>
+<p>Credentials for reading from S3 are already integrated within the Disasters Hub!</p>
 <section id="aws-s3-integration" class="level4">
 <h4 class="anchored" data-anchor-id="aws-s3-integration">AWS S3 Integration</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read from S3</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'s3://bucket-name/path/to/file.csv'</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to S3</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'s3://bucket-name/output/results.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read from S3</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'s3://bucket-name/path/to/file.csv'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to S3</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'s3://bucket-name/output/results.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="google-cloud-storage" class="level4">
-<h4 class="anchored" data-anchor-id="google-cloud-storage">Google Cloud Storage</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read from GCS</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'gs://bucket-name/path/to/file.csv'</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using gsutil in terminal</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>gsutil cp gs:<span class="op">//</span>bucket<span class="op">/</span><span class="bu">file</span>.csv .<span class="op">/</span>data<span class="op">/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="data-organization" class="level3">
-<h3 class="anchored" data-anchor-id="data-organization">Data Organization</h3>
-<p>Recommended directory structure:</p>
-<pre><code>home/
-├── data/
-│   ├── raw/           # Original, immutable data
-│   ├── processed/     # Cleaned, transformed data
-│   └── external/      # Data from external sources
-├── notebooks/
-│   ├── exploratory/   # Initial explorations
-│   ├── analysis/      # Detailed analysis
-│   └── reports/       # Final reports
-├── scripts/           # Reusable Python scripts
-├── results/           # Output files, figures
-└── requirements.txt   # Package dependencies</code></pre>
 </section>
 <section id="data-persistence" class="level3">
 <h3 class="anchored" data-anchor-id="data-persistence">Data Persistence</h3>
 <p>⚠️ <strong>Important</strong>: Your home directory is persistent, but understand the storage limits:</p>
 <ul>
-<li><strong>Home directory</strong>: Usually 10-100 GB (persistent)</li>
+<li><strong>Home directory</strong>: 100 GB/user (persistent)</li>
 <li><strong>Shared data</strong>: Read-only datasets available to all users</li>
 <li><strong>Temporary storage</strong>: <code>/tmp</code> cleared on restart</li>
 <li><strong>Best practice</strong>: Store large datasets in cloud storage, not home directory</li>
@@ -1115,255 +992,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="installing-packages">Installing Packages</h3>
 <section id="using-pip-python-packages" class="level4">
 <h4 class="anchored" data-anchor-id="using-pip-python-packages">Using pip (Python packages)</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In a notebook cell</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install package_name</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install specific version</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas<span class="op">==</span><span class="fl">1.3.0</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Install from requirements file</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>r requirements.txt</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Install in user directory (if no write permissions)</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">--</span>user package_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In a notebook cell</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install package_name</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install specific version</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas<span class="op">==</span><span class="fl">1.3.0</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Install from requirements file</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>r requirements.txt</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Install in user directory (if no write permissions)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">--</span>user package_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-conda" class="level4">
 <h4 class="anchored" data-anchor-id="using-conda">Using conda</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In a notebook cell</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda install <span class="op">-</span>c conda<span class="op">-</span>forge package_name <span class="op">-</span>y</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install multiple packages</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda install numpy pandas matplotlib <span class="op">-</span>y</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new environment</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda create <span class="op">-</span>n myenv python<span class="op">=</span><span class="fl">3.9</span> <span class="op">-</span>y</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda activate myenv  <span class="co"># Note: Activation in notebooks is tricky</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In a notebook cell</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda install <span class="op">-</span>c conda<span class="op">-</span>forge package_name <span class="op">-</span>y</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install multiple packages</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda install numpy pandas matplotlib <span class="op">-</span>y</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new environment</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda create <span class="op">-</span>n myenv python<span class="op">=</span><span class="fl">3.9</span> <span class="op">-</span>y</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda activate myenv  <span class="co"># Note: Activation in notebooks is tricky</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="managing-python-environments" class="level3">
 <h3 class="anchored" data-anchor-id="managing-python-environments">Managing Python Environments</h3>
 <section id="check-current-environment" class="level4">
 <h4 class="anchored" data-anchor-id="check-current-environment">Check current environment</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)  <span class="co"># Python interpreter path</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)     <span class="co"># Python version</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List installed packages</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="bu">list</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda <span class="bu">list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)  <span class="co"># Python interpreter path</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)     <span class="co"># Python version</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List installed packages</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="bu">list</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda <span class="bu">list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="creating-isolated-environments" class="level4">
 <h4 class="anchored" data-anchor-id="creating-isolated-environments">Creating isolated environments</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In terminal</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv myproject</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> myproject/bin/activate  <span class="co"># Linux/Mac</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In terminal</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv myproject</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> myproject/bin/activate  <span class="co"># Linux/Mac</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="using-different-kernels" class="level3">
 <h3 class="anchored" data-anchor-id="using-different-kernels">Using Different Kernels</h3>
 <ol type="1">
 <li><p><strong>Install IPython kernel</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> mykernel <span class="at">--display-name</span> <span class="st">"My Kernel"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> mykernel <span class="at">--display-name</span> <span class="st">"My Kernel"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong>List available kernels</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong>Remove a kernel</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec uninstall mykernel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec uninstall mykernel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <hr>
-</section>
-</section>
-<section id="terminal-and-command-line-access" class="level2">
-<h2 class="anchored" data-anchor-id="terminal-and-command-line-access">Terminal and Command Line Access</h2>
-<section id="opening-terminal" class="level3">
-<h3 class="anchored" data-anchor-id="opening-terminal">Opening Terminal</h3>
-<ol type="1">
-<li><strong>From Launcher</strong>: Click “Terminal” icon</li>
-<li><strong>From menu</strong>: File → New → Terminal</li>
-<li><strong>Keyboard shortcut</strong>: (varies by setup)</li>
-</ol>
-</section>
-<section id="common-terminal-commands" class="level3">
-<h3 class="anchored" data-anchor-id="common-terminal-commands">Common Terminal Commands</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigation</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>                     <span class="co"># Print working directory</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span>                  <span class="co"># List files with details</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/notebooks         <span class="co"># Change directory</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># File operations</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> project          <span class="co"># Create directory</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> file1.txt file2.txt <span class="co"># Copy file</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> oldname newname     <span class="co"># Move/rename</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> file.txt           <span class="co"># Delete file (careful!)</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># File viewing</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file.txt          <span class="co"># Display file contents</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 10 data.csv   <span class="co"># First 10 lines</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 10 log.txt    <span class="co"># Last 10 lines</span></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> large_file.txt   <span class="co"># Page through file</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Process management</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux                <span class="co"># List processes</span></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span>                   <span class="co"># Monitor resources</span></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="at">-9</span> PID          <span class="co"># Kill process</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Git operations</span></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"message"</span></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="working-with-data-files" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-data-files">Working with Data Files</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count lines in file</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data.csv</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View CSV structure</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-1</span> data.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="st">','</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">nl</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Search in files</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"pattern"</span> file.txt</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="st">"pattern"</span> ./directory</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compress/decompress</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> archive.zip file1 file2</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> archive.zip</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-czf</span> archive.tar.gz directory/</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzf</span> archive.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-</section>
-<section id="collaboration-and-sharing" class="level2">
-<h2 class="anchored" data-anchor-id="collaboration-and-sharing">Collaboration and Sharing</h2>
-<section id="sharing-notebooks" class="level3">
-<h3 class="anchored" data-anchor-id="sharing-notebooks">Sharing Notebooks</h3>
-<section id="method-1-direct-file-sharing" class="level4">
-<h4 class="anchored" data-anchor-id="method-1-direct-file-sharing">Method 1: Direct File Sharing</h4>
-<ol type="1">
-<li>Download notebook: File → Download as → Notebook (.ipynb)</li>
-<li>Share via email, Slack, or file sharing service</li>
-<li>Recipient uploads to their JupyterHub</li>
-</ol>
-</section>
-<section id="method-2-using-git" class="level4">
-<h4 class="anchored" data-anchor-id="method-2-using-git">Method 2: Using Git</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize repository</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add notebook.ipynb</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add analysis notebook"</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/user/repo.git</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="method-3-export-formats" class="level4">
-<h4 class="anchored" data-anchor-id="method-3-export-formats">Method 3: Export Formats</h4>
-<ul>
-<li><strong>HTML</strong>: File → Export Notebook As → HTML</li>
-<li><strong>PDF</strong>: File → Export Notebook As → PDF (requires LaTeX)</li>
-<li><strong>Python script</strong>: File → Export Notebook As → Python</li>
-<li><strong>Markdown</strong>: File → Export Notebook As → Markdown</li>
-</ul>
-</section>
-</section>
-<section id="real-time-collaboration" class="level3">
-<h3 class="anchored" data-anchor-id="real-time-collaboration">Real-time Collaboration</h3>
-<p>Some JupyterHub deployments support real-time collaboration:</p>
-<ol type="1">
-<li><strong>Share workspace link</strong>: Get shareable link from hub admin</li>
-<li><strong>Collaborative editing</strong>: Multiple users can edit simultaneously</li>
-<li><strong>See collaborator cursors</strong>: Real-time cursor positions</li>
-<li><strong>Chat integration</strong>: Built-in chat for discussion</li>
-</ol>
-</section>
-<section id="version-control-best-practices" class="level3">
-<h3 class="anchored" data-anchor-id="version-control-best-practices">Version Control Best Practices</h3>
-<ol type="1">
-<li><p><strong>Clear outputs before committing</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> nbconvert <span class="at">--clear-output</span> notebook.ipynb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Use .gitignore</strong>:</p>
-<pre><code>.ipynb_checkpoints/
-__pycache__/
-*.pyc
-.DS_Store
-data/  # Don't commit large data files</code></pre></li>
-<li><p><strong>Notebook diff tools</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install nbdime for better notebook diffs</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install nbdime</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdime</span> config-git <span class="at">--enable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-<hr>
-</section>
-</section>
-<section id="resource-management" class="level2">
-<h2 class="anchored" data-anchor-id="resource-management">Resource Management</h2>
-<section id="understanding-resource-limits" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-resource-limits">Understanding Resource Limits</h3>
-<p>Your JupyterHub instance has resource limits:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check available resources</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> psutil</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Memory</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>memory <span class="op">=</span> psutil.virtual_memory()</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total RAM: </span><span class="sc">{</span>memory<span class="sc">.</span>total <span class="op">/</span> <span class="fl">1e9</span><span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Available: </span><span class="sc">{</span>memory<span class="sc">.</span>available <span class="op">/</span> <span class="fl">1e9</span><span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Used: </span><span class="sc">{</span>memory<span class="sc">.</span>percent<span class="sc">}</span><span class="ss">%"</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># CPU</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"CPU cores: </span><span class="sc">{</span>psutil<span class="sc">.</span>cpu_count()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"CPU usage: </span><span class="sc">{</span>psutil<span class="sc">.</span>cpu_percent()<span class="sc">}</span><span class="ss">%"</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Disk</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>disk <span class="op">=</span> psutil.disk_usage(<span class="st">'/'</span>)</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Disk space: </span><span class="sc">{</span>disk<span class="sc">.</span>total <span class="op">/</span> <span class="fl">1e9</span><span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Disk used: </span><span class="sc">{</span>disk<span class="sc">.</span>percent<span class="sc">}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="monitoring-resource-usage" class="level3">
-<h3 class="anchored" data-anchor-id="monitoring-resource-usage">Monitoring Resource Usage</h3>
-<section id="jupyterlab-extension" class="level4">
-<h4 class="anchored" data-anchor-id="jupyterlab-extension">JupyterLab Extension</h4>
-<ul>
-<li>Install Resource Usage extension</li>
-<li>Shows real-time memory and CPU usage in status bar</li>
-</ul>
-</section>
-<section id="command-line-monitoring" class="level4">
-<h4 class="anchored" data-anchor-id="command-line-monitoring">Command line monitoring</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Real-time resource monitoring</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span>  <span class="co"># If installed</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Memory usage</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Disk usage</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-sh</span> <span class="pp">*</span>  <span class="co"># Directory sizes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="optimizing-resource-usage" class="level3">
-<h3 class="anchored" data-anchor-id="optimizing-resource-usage">Optimizing Resource Usage</h3>
-<ol type="1">
-<li><p><strong>Clear variables when done</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear specific variable</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> large_dataframe</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear all variables</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Garbage collection</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gc</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>gc.collect()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Use efficient data types</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use categories for strings with few unique values</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'category'</span>] <span class="op">=</span> df[<span class="st">'category'</span>].astype(<span class="st">'category'</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use smaller numeric types when possible</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'count'</span>] <span class="op">=</span> df[<span class="st">'count'</span>].astype(<span class="st">'int32'</span>)  <span class="co"># Instead of int64</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Process data in chunks</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read large CSV in chunks</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>chunk_size <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chunk <span class="kw">in</span> pd.read_csv(<span class="st">'large_file.csv'</span>, chunksize<span class="op">=</span>chunk_size):</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    process_chunk(chunk)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
 </section>
 <section id="shutting-down-properly" class="level3">
 <h3 class="anchored" data-anchor-id="shutting-down-properly">Shutting Down Properly</h3>
@@ -1374,500 +1058,15 @@ data/  # Don't commit large data files</code></pre></li>
 <li><strong>Hub Control Panel</strong>: File → Hub Control Panel → Stop My Server</li>
 <li><strong>Logout</strong>: File → Log Out</li>
 </ol>
-<p>⚠️ <strong>Important</strong>: Idle servers may be automatically culled after a period of inactivity (usually 1-2 hours).</p>
+<p>⚠️ <strong>Important</strong>: Idle servers will be automatically culled after a period of inactivity (usually 1-2 hours).</p>
 <hr>
-</section>
-</section>
-<section id="best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
-<section id="project-organization" class="level3">
-<h3 class="anchored" data-anchor-id="project-organization">Project Organization</h3>
-<ol type="1">
-<li><p><strong>Use consistent naming</strong>:</p>
-<pre><code>2024-01-15_earthquake_analysis.ipynb  # Good
-untitled1.ipynb                       # Bad</code></pre></li>
-<li><p><strong>Create project templates</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notebook_template.ipynb</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Imports</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Configuration</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn'</span>)</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Data Loading</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Data Exploration</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Analysis</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Results</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Document dependencies</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate requirements.txt</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip freeze <span class="op">&gt;</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-</section>
-<section id="security-considerations" class="level3">
-<h3 class="anchored" data-anchor-id="security-considerations">Security Considerations</h3>
-<ol type="1">
-<li><p><strong>Never commit credentials</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">"sk-abc123def456"</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Good - Use environment variables</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> os.environ.get(<span class="st">'API_KEY'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Use secrets management</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store secrets in .env file</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Access secrets</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>secret <span class="op">=</span> os.getenv(<span class="st">'SECRET_KEY'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Be careful with outputs</strong>:</p>
-<ul>
-<li>Clear cells containing sensitive information</li>
-<li>Review notebooks before sharing</li>
-</ul></li>
-</ol>
-</section>
-<section id="performance-tips" class="level3">
-<h3 class="anchored" data-anchor-id="performance-tips">Performance Tips</h3>
-<ol type="1">
-<li><p><strong>Vectorize operations</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slow</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(df)):</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    results.append(df.iloc[i][<span class="st">'column'</span>] <span class="op">*</span> <span class="dv">2</span>)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fast</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> df[<span class="st">'column'</span>] <span class="op">*</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Use built-in functions</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas/numpy operations instead of loops</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new_col'</span>] <span class="op">=</span> df[<span class="st">'col1'</span>] <span class="op">+</span> df[<span class="st">'col2'</span>]  <span class="co"># Vectorized</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Profile your code</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time  <span class="co"># Time entire cell</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit function()  <span class="co"># Time single line</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Detailed profiling</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext line_profiler</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>lprun <span class="op">-</span>f function_to_profile function_to_profile()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-<hr>
-</section>
-</section>
-<section id="troubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
-<section id="common-issues-and-solutions" class="level3">
-<h3 class="anchored" data-anchor-id="common-issues-and-solutions">Common Issues and Solutions</h3>
-<section id="kernel-wont-start" class="level4">
-<h4 class="anchored" data-anchor-id="kernel-wont-start">Kernel Won’t Start</h4>
-<ul>
-<li><strong>Check resources</strong>: Server might be full</li>
-<li><strong>Try different kernel</strong>: Some kernels may be broken</li>
-<li><strong>Restart server</strong>: Hub Control Panel → Stop → Start</li>
-</ul>
-</section>
-<section id="package-import-errors" class="level4">
-<h4 class="anchored" data-anchor-id="package-import-errors">Package Import Errors</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if package is installed</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> importlib</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> importlib.util.find_spec(<span class="st">"package_name"</span>) <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>pip install package_name</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Restart kernel after installation</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython <span class="im">import</span> get_ipython</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>get_ipython().kernel.do_shutdown(<span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="out-of-memory-errors" class="level4">
-<h4 class="anchored" data-anchor-id="out-of-memory-errors">Out of Memory Errors</h4>
-<ol type="1">
-<li>Clear unnecessary variables: <code>del variable_name</code></li>
-<li>Use smaller data samples for testing</li>
-<li>Request larger server instance</li>
-<li>Process data in chunks</li>
-</ol>
-</section>
-<section id="notebook-wont-save" class="level4">
-<h4 class="anchored" data-anchor-id="notebook-wont-save">Notebook Won’t Save</h4>
-<ul>
-<li><strong>Check disk space</strong>: <code>df -h</code> in terminal</li>
-<li><strong>Check file permissions</strong>: <code>ls -la notebook.ipynb</code></li>
-<li><strong>Save with new name</strong>: File → Save As</li>
-<li><strong>Download backup</strong>: File → Download</li>
-</ul>
-</section>
-<section id="connection-issues" class="level4">
-<h4 class="anchored" data-anchor-id="connection-issues">Connection Issues</h4>
-<ul>
-<li><strong>Check internet connection</strong></li>
-<li><strong>Try different browser</strong></li>
-<li><strong>Clear browser cache</strong></li>
-<li><strong>Check if hub is under maintenance</strong></li>
-</ul>
-</section>
-</section>
-<section id="getting-help" class="level3">
-<h3 class="anchored" data-anchor-id="getting-help">Getting Help</h3>
-<ol type="1">
-<li><p><strong>Built-in help</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(function_name)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>function_name?  <span class="co"># Quick help</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>function_name??  <span class="co"># Source code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Documentation</strong>:</p>
-<ul>
-<li>JupyterHub docs: https://jupyterhub.readthedocs.io</li>
-<li>JupyterLab docs: https://jupyterlab.readthedocs.io</li>
-<li>2i2c docs: https://docs.2i2c.org</li>
-</ul></li>
-<li><p><strong>Community support</strong>:</p>
-<ul>
-<li>Discourse forum</li>
-<li>GitHub issues</li>
-<li>Stack Overflow with tags: <code>jupyter</code>, <code>jupyterhub</code></li>
-</ul></li>
-</ol>
-<hr>
-</section>
-</section>
-<section id="keyboard-shortcuts" class="level2">
-<h2 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard Shortcuts</h2>
-<section id="command-mode-blue-cell-border" class="level3">
-<h3 class="anchored" data-anchor-id="command-mode-blue-cell-border">Command Mode (Blue cell border)</h3>
-<p>Press <code>Esc</code> to enter command mode</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Shortcut</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Enter</code></td>
-<td>Enter edit mode</td>
-</tr>
-<tr class="even">
-<td><code>A</code></td>
-<td>Insert cell above</td>
-</tr>
-<tr class="odd">
-<td><code>B</code></td>
-<td>Insert cell below</td>
-</tr>
-<tr class="even">
-<td><code>D,D</code></td>
-<td>Delete cell</td>
-</tr>
-<tr class="odd">
-<td><code>Y</code></td>
-<td>Change to code cell</td>
-</tr>
-<tr class="even">
-<td><code>M</code></td>
-<td>Change to markdown cell</td>
-</tr>
-<tr class="odd">
-<td><code>Shift+Up/Down</code></td>
-<td>Select multiple cells</td>
-</tr>
-<tr class="even">
-<td><code>Shift+M</code></td>
-<td>Merge selected cells</td>
-</tr>
-<tr class="odd">
-<td><code>C</code></td>
-<td>Copy cell</td>
-</tr>
-<tr class="even">
-<td><code>X</code></td>
-<td>Cut cell</td>
-</tr>
-<tr class="odd">
-<td><code>V</code></td>
-<td>Paste cell below</td>
-</tr>
-<tr class="even">
-<td><code>Shift+V</code></td>
-<td>Paste cell above</td>
-</tr>
-<tr class="odd">
-<td><code>Z</code></td>
-<td>Undo cell deletion</td>
-</tr>
-<tr class="even">
-<td><code>0,0</code></td>
-<td>Restart kernel</td>
-</tr>
-<tr class="odd">
-<td><code>I,I</code></td>
-<td>Interrupt kernel</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="edit-mode-green-cell-border" class="level3">
-<h3 class="anchored" data-anchor-id="edit-mode-green-cell-border">Edit Mode (Green cell border)</h3>
-<p>Press <code>Enter</code> to enter edit mode</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Shortcut</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Esc</code></td>
-<td>Enter command mode</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+Enter</code></td>
-<td>Run cell</td>
-</tr>
-<tr class="odd">
-<td><code>Shift+Enter</code></td>
-<td>Run cell, select below</td>
-</tr>
-<tr class="even">
-<td><code>Alt+Enter</code></td>
-<td>Run cell, insert below</td>
-</tr>
-<tr class="odd">
-<td><code>Ctrl+S</code></td>
-<td>Save notebook</td>
-</tr>
-<tr class="even">
-<td><code>Tab</code></td>
-<td>Code completion</td>
-</tr>
-<tr class="odd">
-<td><code>Shift+Tab</code></td>
-<td>Tooltip</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+]</code></td>
-<td>Indent</td>
-</tr>
-<tr class="odd">
-<td><code>Ctrl+[</code></td>
-<td>Dedent</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+A</code></td>
-<td>Select all</td>
-</tr>
-<tr class="odd">
-<td><code>Ctrl+Z</code></td>
-<td>Undo</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+Y</code></td>
-<td>Redo</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="jupyterlab-shortcuts" class="level3">
-<h3 class="anchored" data-anchor-id="jupyterlab-shortcuts">JupyterLab Shortcuts</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Shortcut</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>Ctrl+Shift+C</code></td>
-<td>Command palette</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+B</code></td>
-<td>Toggle left sidebar</td>
-</tr>
-<tr class="odd">
-<td><code>Ctrl+Shift+D</code></td>
-<td>Toggle file browser</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+Shift+F</code></td>
-<td>Find and replace</td>
-</tr>
-<tr class="odd">
-<td><code>Ctrl+Shift+[</code></td>
-<td>Previous tab</td>
-</tr>
-<tr class="even">
-<td><code>Ctrl+Shift+]</code></td>
-<td>Next tab</td>
-</tr>
-<tr class="odd">
-<td><code>Alt+W</code></td>
-<td>Close tab</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-</section>
-<section id="resources-and-links" class="level2">
-<h2 class="anchored" data-anchor-id="resources-and-links">Resources and Links</h2>
-<section id="official-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="official-documentation">Official Documentation</h3>
-<ul>
-<li><strong>JupyterHub Documentation</strong>: https://jupyterhub.readthedocs.io</li>
-<li><strong>JupyterLab Documentation</strong>: https://jupyterlab.readthedocs.io</li>
-<li><strong>Jupyter Notebook Documentation</strong>: https://jupyter-notebook.readthedocs.io</li>
-<li><strong>2i2c Infrastructure Guide</strong>: https://docs.2i2c.org</li>
-</ul>
-</section>
-<section id="tutorials-and-learning-resources" class="level3">
-<h3 class="anchored" data-anchor-id="tutorials-and-learning-resources">Tutorials and Learning Resources</h3>
-<ul>
-<li><strong>Jupyter Tutorial</strong>: https://jupyter.org/try</li>
-<li><strong>Real Python Jupyter Guide</strong>: https://realpython.com/jupyter-notebook-introduction/</li>
-<li><strong>DataCamp Jupyter Tutorial</strong>: https://www.datacamp.com/tutorial/tutorial-jupyter-notebook</li>
-<li><strong>Official Jupyter Examples</strong>: https://github.com/jupyter/jupyter/wiki/Gallery-of-Jupyter-Notebooks</li>
-</ul>
-</section>
-<section id="disaster-response-specific-resources" class="level3">
-<h3 class="anchored" data-anchor-id="disaster-response-specific-resources">Disaster Response Specific Resources</h3>
-<ul>
-<li><strong>NASA Disasters Program</strong>: https://disasters.nasa.gov</li>
-<li><strong>USGS Hazards Data</strong>: https://www.usgs.gov/natural-hazards</li>
-<li><strong>NOAA Disaster Data</strong>: https://www.ncdc.noaa.gov/billions/</li>
-<li><strong>Copernicus Emergency Management</strong>: https://emergency.copernicus.eu</li>
-</ul>
-</section>
-<section id="python-libraries-for-disaster-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="python-libraries-for-disaster-analysis">Python Libraries for Disaster Analysis</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geospatial analysis</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data processing</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.dataframe <span class="im">as</span> dd</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Machine learning</span></span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Earth observation</span></span>
-<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ee  <span class="co"># Google Earth Engine</span></span>
-<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> planetary_computer <span class="im">as</span> pc</span>
-<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pystac_client</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="helpful-extensions" class="level3">
-<h3 class="anchored" data-anchor-id="helpful-extensions">Helpful Extensions</h3>
-<p>Install JupyterLab extensions for enhanced functionality:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable inspector</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> labextension install @lckr/jupyterlab_variableinspector</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Table of contents</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> labextension install @jupyterlab/toc</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Git integration</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab-git</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Code formatter</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab-code-formatter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="community-and-support" class="level3">
-<h3 class="anchored" data-anchor-id="community-and-support">Community and Support</h3>
-<ul>
-<li><strong>Jupyter Discourse Forum</strong>: https://discourse.jupyter.org</li>
-<li><strong>Stack Overflow</strong>: https://stackoverflow.com/questions/tagged/jupyter</li>
-<li><strong>GitHub Issues</strong>: https://github.com/jupyterhub/jupyterhub/issues</li>
-<li><strong>2i2c Support</strong>: https://2i2c.org/support</li>
-<li><strong>Gitter Chat</strong>: https://gitter.im/jupyterhub/jupyterhub</li>
-</ul>
-</section>
-<section id="quick-reference-pdfs" class="level3">
-<h3 class="anchored" data-anchor-id="quick-reference-pdfs">Quick Reference PDFs</h3>
-<ul>
-<li><strong>JupyterLab Cheat Sheet</strong>: https://www.datacamp.com/cheat-sheet/jupyterlab-cheat-sheet</li>
-<li><strong>Jupyter Shortcuts PDF</strong>: https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/</li>
-<li><strong>Markdown Guide</strong>: https://www.markdownguide.org/cheat-sheet/</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="appendix-sample-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-sample-workflow">Appendix: Sample Workflow</h2>
-<p>Here’s a complete example workflow for disaster analysis:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Setup and Imports</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Load Data</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Earthquake data</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>earthquakes <span class="op">=</span> pd.read_csv(<span class="st">'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.csv'</span>)</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>earthquakes[<span class="st">'time'</span>] <span class="op">=</span> pd.to_datetime(earthquakes[<span class="st">'time'</span>])</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Data Processing</span></span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter recent events</span></span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>recent <span class="op">=</span> earthquakes[earthquakes[<span class="st">'time'</span>] <span class="op">&gt;</span> datetime.now() <span class="op">-</span> timedelta(days<span class="op">=</span><span class="dv">7</span>)]</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to GeoDataFrame</span></span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>geometry <span class="op">=</span> gpd.points_from_xy(recent.longitude, recent.latitude)</span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>geo_df <span class="op">=</span> gpd.GeoDataFrame(recent, geometry<span class="op">=</span>geometry, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>)</span>
-<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Analysis</span></span>
-<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total earthquakes in last 7 days: </span><span class="sc">{</span><span class="bu">len</span>(recent)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average magnitude: </span><span class="sc">{</span>recent[<span class="st">'mag'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Largest earthquake: </span><span class="sc">{</span>recent[<span class="st">'mag'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Visualization</span></span>
-<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Static plot</span></span>
-<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
-<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>world <span class="op">=</span> gpd.read_file(gpd.datasets.get_path(<span class="st">'naturalearth_lowres'</span>))</span>
-<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>world.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'lightgray'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>geo_df.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'red'</span>, markersize<span class="op">=</span>geo_df[<span class="st">'mag'</span>]<span class="op">**</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Recent Earthquakes (M4.5+)'</span>)</span>
-<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive map</span></span>
-<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> folium.Map(location<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>], zoom_start<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, row <span class="kw">in</span> geo_df.iterrows():</span>
-<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a>    folium.CircleMarker(</span>
-<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a>        location<span class="op">=</span>[row[<span class="st">'latitude'</span>], row[<span class="st">'longitude'</span>]],</span>
-<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a>        radius<span class="op">=</span>row[<span class="st">'mag'</span>]<span class="op">*</span><span class="dv">2</span>,</span>
-<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a>        popup<span class="op">=</span><span class="ss">f"M</span><span class="sc">{</span>row[<span class="st">'mag'</span>]<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>row[<span class="st">'place'</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb41-44"><a href="#cb41-44" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'red'</span>,</span>
-<span id="cb41-45"><a href="#cb41-45" aria-hidden="true" tabindex="-1"></a>        fill<span class="op">=</span><span class="va">True</span></span>
-<span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a>    ).add_to(m)</span>
-<span id="cb41-47"><a href="#cb41-47" aria-hidden="true" tabindex="-1"></a>m.save(<span class="st">'earthquake_map.html'</span>)</span>
-<span id="cb41-48"><a href="#cb41-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Export Results</span></span>
-<span id="cb41-50"><a href="#cb41-50" aria-hidden="true" tabindex="-1"></a>geo_df.to_csv(<span class="st">'processed_earthquakes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb41-51"><a href="#cb41-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Analysis complete! Results saved."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-<p><em>Last Updated: 2024</em><br>
+<p><em>Last Updated: 2025</em><br>
 <em>Version: 1.0</em><br>
 <em>Disasters Hub Training Guide</em></p>
 <p>For additional assistance, contact your hub administrator or visit the 2i2c support portal.</p>
 
 
+</section>
 </section>
 </section>
 
@@ -2292,8 +1491,8 @@ untitled1.ipynb                       # Bad</code></pre></li>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Jupyterhub/setup-disaster-repo.html" class="pagination-link" aria-label="Setting Up Disaster Repository - Step-by-Step Guide">
-        <span class="nav-page-text">Setting Up Disaster Repository - Step-by-Step Guide</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Jupyterhub/clone_conversion_repo.html" class="pagination-link" aria-label="Clone conversion repository into current directory">
+        <span class="nav-page-text">Clone conversion repository into current directory</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
