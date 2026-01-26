@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nrt_directory_structure – NASA Disasters Documentation</title>
+<title>Loading Disaster Hub Image – NASA Disasters Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contentcuration.html" rel="next">
-<link href="../data_workflow2/NRT_data_download.html" rel="prev">
+<link href="../Jupyterhub/clone_conversion_repo.html" rel="next">
+<link href="../Jupyterhub/jupyterhub-training-guide.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -340,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflow.html">Data Workflow Diagrams</a></li><li class="breadcrumb-item"><a href="../data_workflow2/NRT_directory_structure.html">NRT Directory Structure</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../jupyterhub.html">JupyterHub</a></li><li class="breadcrumb-item"><a href="../Jupyterhub/loading-disaster-hub-image.html">Loading Disaster Hub Image</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -451,11 +451,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="../jupyterhub.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">JupyterHub</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Jupyterhub/jupyterhub-training-guide.html" class="sidebar-item-text sidebar-link">
@@ -464,7 +464,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Jupyterhub/loading-disaster-hub-image.html" class="sidebar-item-text sidebar-link">
+  <a href="../Jupyterhub/loading-disaster-hub-image.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Loading Disaster Hub Image</span></a>
   </div>
 </li>
@@ -480,11 +480,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="../workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Workflow Diagrams</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data_workflow2/NRT_data_download.html" class="sidebar-item-text sidebar-link">
@@ -493,7 +493,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data_workflow2/NRT_directory_structure.html" class="sidebar-item-text sidebar-link active">
+  <a href="../data_workflow2/NRT_directory_structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">NRT Directory Structure</span></a>
   </div>
 </li>
@@ -652,27 +652,107 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#nrt-directory-structure" id="toc-nrt-directory-structure" class="nav-link active" data-scroll-target="#nrt-directory-structure">NRT Directory Structure</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#steps-to-load-custom-image" id="toc-steps-to-load-custom-image" class="nav-link" data-scroll-target="#steps-to-load-custom-image">Steps to Load Custom Image</a>
+  <ul class="collapse">
+  <li><a href="#login-to-jupyterhub" id="toc-login-to-jupyterhub" class="nav-link" data-scroll-target="#login-to-jupyterhub">1. Login to JupyterHub</a></li>
+  <li><a href="#select-my-server" id="toc-select-my-server" class="nav-link" data-scroll-target="#select-my-server">2. Select My Server</a></li>
+  <li><a href="#choose-environment" id="toc-choose-environment" class="nav-link" data-scroll-target="#choose-environment">3. Choose Environment</a></li>
+  <li><a href="#enter-custom-image" id="toc-enter-custom-image" class="nav-link" data-scroll-target="#enter-custom-image">4. Enter Custom Image</a></li>
+  <li><a href="#start-server" id="toc-start-server" class="nav-link" data-scroll-target="#start-server">5. Start Server</a></li>
+  </ul></li>
+  <li><a href="#running-sentinel-2-algorithms" id="toc-running-sentinel-2-algorithms" class="nav-link" data-scroll-target="#running-sentinel-2-algorithms">Running Sentinel-2 Algorithms</a>
+  <ul class="collapse">
+  <li><a href="#access-the-sentinel-2-workflow" id="toc-access-the-sentinel-2-workflow" class="nav-link" data-scroll-target="#access-the-sentinel-2-workflow">Access the Sentinel-2 Workflow</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/data_workflow2/NRT_directory_structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/Jupyterhub/loading-disaster-hub-image.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflow.html">Data Workflow Diagrams</a></li><li class="breadcrumb-item"><a href="../data_workflow2/NRT_directory_structure.html">NRT Directory Structure</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
 
 
-
-
-
-<section id="nrt-directory-structure" class="level1">
-<h1>NRT Directory Structure</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./media/NRT_dir.png" class="img-fluid figure-img"></p>
-<figcaption>Data Flow Diagram Extending From Acquisition/Creation to User Delivery</figcaption>
-</figure>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../jupyterhub.html">JupyterHub</a></li><li class="breadcrumb-item"><a href="../Jupyterhub/loading-disaster-hub-image.html">Loading Disaster Hub Image</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Loading Disaster Hub Image</h1>
 </div>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This guide walks you through loading a custom Docker image in the Disasters JupyterHub environment.</p>
+</section>
+<section id="steps-to-load-custom-image" class="level2">
+<h2 class="anchored" data-anchor-id="steps-to-load-custom-image">Steps to Load Custom Image</h2>
+<section id="login-to-jupyterhub" class="level3">
+<h3 class="anchored" data-anchor-id="login-to-jupyterhub">1. Login to JupyterHub</h3>
+<p>Navigate to <a href="https://hub.disasters.2i2c.cloud/">https://hub.disasters.2i2c.cloud/</a> and log in with your credentials.</p>
+</section>
+<section id="select-my-server" class="level3">
+<h3 class="anchored" data-anchor-id="select-my-server">2. Select My Server</h3>
+<p>After logging in, you’ll see the server management screen. Click on “Start My Server” or manage your existing servers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/login-screen-hub.png" class="img-fluid figure-img"></p>
+<figcaption>JupyterHub Login Screen</figcaption>
+</figure>
+</div>
+</section>
+<section id="choose-environment" class="level3">
+<h3 class="anchored" data-anchor-id="choose-environment">3. Choose Environment</h3>
+<p>In the Server Options page, locate the <strong>Environment</strong> dropdown and select <strong>“Bring your own image”</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/select-image-hub.png" class="img-fluid figure-img"></p>
+<figcaption>Select Environment</figcaption>
+</figure>
+</div>
+</section>
+<section id="enter-custom-image" class="level3">
+<h3 class="anchored" data-anchor-id="enter-custom-image">4. Enter Custom Image</h3>
+<p>In the <strong>Custom image</strong> field, enter the following Docker image:</p>
+<pre><code>klesinger/disasters-jupyterhub-docker-image</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/add-image-hub.png" class="img-fluid figure-img"></p>
+<figcaption>Add Custom Image</figcaption>
+</figure>
+</div>
+</section>
+<section id="start-server" class="level3">
+<h3 class="anchored" data-anchor-id="start-server">5. Start Server</h3>
+<p>Click the <strong>Start</strong> button to launch your JupyterHub server with the custom Disasters image.</p>
+</section>
+</section>
+<section id="running-sentinel-2-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="running-sentinel-2-algorithms">Running Sentinel-2 Algorithms</h2>
+<p>Once your server is running, you can process Sentinel-2 data using the pre-configured workflows.</p>
+<section id="access-the-sentinel-2-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="access-the-sentinel-2-workflow">Access the Sentinel-2 Workflow</h3>
+<ol type="1">
+<li>Navigate to the <strong>shared-readwrite</strong> directory in your JupyterHub file browser</li>
+<li>Open the <strong>process_sentinel2</strong> directory</li>
+<li>Launch the <strong>sentinel2_workflow.ipynb</strong> notebook</li>
+<li>Configure the notebook parameters as needed for your specific use case</li>
+<li>Run the cells to process Sentinel-2 imagery</li>
+</ol>
+<p>The workflow notebook contains pre-configured algorithms for common Sentinel-2 data processing tasks.</p>
+
+
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1091,13 +1171,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../data_workflow2/NRT_data_download.html" class="pagination-link" aria-label="NRT Data Download">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">NRT Data Download</span>
+      <a href="../Jupyterhub/jupyterhub-training-guide.html" class="pagination-link" aria-label="JupyterHub Training Guide - Disasters Hub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">JupyterHub Training Guide - Disasters Hub</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contentcuration.html" class="pagination-link" aria-label="Content Curation">
-        <span class="nav-page-text">Content Curation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Jupyterhub/clone_conversion_repo.html" class="pagination-link" aria-label="Clone conversion repository into current directory">
+        <span class="nav-page-text">Clone conversion repository into current directory</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1109,7 +1189,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/data_workflow2/NRT_directory_structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/us-ghg-center/ghgc-docs/edit/main/Jupyterhub/loading-disaster-hub-image.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/us-ghg-center/ghgc-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
