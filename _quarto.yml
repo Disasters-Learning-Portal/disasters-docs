@@ -58,6 +58,7 @@ website:
           - Jupyterhub/jupyterhub-training-guide.qmd
           - Jupyterhub/loading-disaster-hub-image.qmd
           - Jupyterhub/clone_conversion_repo.ipynb
+          - Jupyterhub/sentinel2_workflow-testUpdates.ipynb
       - section: workflow.qmd
         text: Data Workflow Diagrams
         contents:
